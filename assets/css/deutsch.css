@@ -784,3 +784,42 @@ body::before {
   .notes-layout { grid-template-columns: 1fr; }
   .note-list { position: static; max-height: 300px; }
 }
+
+/* ============================================================
+   速查表 Referenz（数字/时间/颜色/四季）
+   ============================================================ */
+.ref-sec { padding: 28px 30px 26px; margin-bottom: 20px; }
+.ref-h2 { font-family: var(--font-display); font-size: 23px; font-weight: 650; display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+.ref-h2 em { color: var(--accent); font-style: italic; }
+.ref-no { font-family: var(--font-mono); color: var(--accent); font-size: 12px; letter-spacing: .18em; }
+.ref-h3 { font-size: 14px; color: var(--ink-2); margin: 24px 0 10px; letter-spacing: .04em; padding-left: 10px; border-left: 3px solid var(--gold); }
+.ref-tips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.ref-tip { font-size: 12px; background: var(--paper-3); border: 1px solid var(--line); padding: 4px 11px; border-radius: 99px; color: var(--ink-2); }
+.ref-tip.warn { background: #FBF4E0; border-color: #E8D49A; color: #96700A; }
+
+.ref-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 8px 0 4px; }
+.ref-table th { text-align: left; font-size: 11.5px; letter-spacing: .06em; color: var(--ink-3); font-weight: 600; padding: 7px 10px; border-bottom: 2px solid var(--line); }
+.ref-table td { padding: 7px 10px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-n { font-family: var(--font-mono); color: var(--ink-3); width: 46px; font-size: 12px; }
+.ref-de { font-weight: 650; color: var(--ink); }
+.ref-ipa { font-family: var(--font-mono); font-size: 12px; color: var(--accent); white-space: nowrap; }
+.ref-zh { color: var(--ink-2); }
+.ref-note { font-size: 11.5px; color: var(--ink-3); font-weight: 400; }
+
+.ref-numgrid { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 8px 0 4px; }
+.ref-numgrid td { border: 1px solid var(--line-soft); border-radius: 10px; padding: 10px 12px; width: 25%; vertical-align: top; background: var(--paper-2); }
+.nc-n { font-family: var(--font-mono); font-size: 11px; color: var(--accent); }
+.nc-de { font-weight: 650; font-size: 14px; color: var(--ink); margin: 2px 0; }
+.nc-ipa { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); }
+.nc-zh { font-size: 11.5px; color: var(--c-adj); margin-top: 2px; }
+
+[data-theme="dark"] .ref-tip.warn { background: #33280F; border-color: #6B5220; color: #E8D49A; }
+[data-theme="dark"] .ref-numgrid td { border-color: var(--line-soft); background: var(--paper-2); }
+
+@media (max-width: 900px) {
+  .ref-sec { padding: 20px 16px 18px; }
+  .ref-table { font-size: 12.5px; }
+  .ref-ipa { white-space: normal; }
+  .ref-numgrid td { width: 50%; }
+}

@@ -110,9 +110,10 @@ function renderStart(app) {
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "texte.html", num: "04", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
-    { route: "uebungen.html", num: "05", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
-    { route: "notion.html", num: "06", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
-    { route: "kursplan.html", num: "07", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
+    { route: "referenz.html", num: "05", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
+    { route: "uebungen.html", num: "06", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
+    { route: "notion.html", num: "07", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
+    { route: "kursplan.html", num: "08", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
   ];
 
   app.innerHTML = `

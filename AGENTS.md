@@ -15,6 +15,7 @@
 | `wortschatz.html` | 256 词卡：主题/词性筛选、搜索、点击翻面 |
 | `grammatik.html` | 12 语法专题（手风琴 + 变位表） |
 | `texte.html` | 2 篇课文逐段中德对照（可隐藏中文自测） |
+| `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
 | `uebungen.html` | 5 组测验（48 题），即时解析 + 成绩页 |
 | `notion.html` | Notion 笔记库：14 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
 | `kursplan.html` | 15 主题大纲（9 已学 / 1 部分 / 5 待学） |
@@ -42,5 +43,5 @@
 
 ## 更新记录
 
-- 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。同日追加：Gießen 全部替换为 XX（隐私）；新增 assets/js/data/pron.js（256 词条 IPA+中文谐音，词卡正面直接展示）。
+- 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。同日追加：Gießen 全部替换为 XX（隐私）；新增 assets/js/data/pron.js（256 词条 IPA+中文谐音）；新增 referenz.html 速查表（数字/时间/颜色/四季，脚本 /tmp 生成逻辑已固化于本次 commit 说明）。
 - 2026-10-12：初版 SPA 上线（hash 路由单页）。

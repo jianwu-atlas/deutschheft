@@ -12,6 +12,7 @@
 ├── wortschatz.html       生词表（256 词卡：音标+中文谐音、筛选/搜索/翻面）
 ├── grammatik.html        语法十二讲
 ├── texte.html            课文精读（2 篇，逐段中德对照）
+├── referenz.html         速查表：数字 0–100 / 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音）
 ├── uebungen.html         互动练习（5 组测验）
 ├── notion.html           Notion 笔记库 + 导入/同步
 ├── kursplan.html         课程大纲（15 主题进度）
