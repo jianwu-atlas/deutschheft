@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分级课程目录 · Mein Deutschheft</title>
+<meta name="description" content="13 课按实际上课顺序排列：词汇、语法、句型、本课焦点，可标记已复习。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/deutsch.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23201B14'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23C9A227' font-family='Georgia,serif' font-style='italic'%3ED%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="lektionen">
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-mark">D</span>
+      <span class="nav-brand-text">
+        <span class="nav-brand-title">MEIN DEUTSCHHEFT</span>
+        <span class="nav-brand-sub">JIAN · DEUTSCH A1–A1.2</span>
+      </span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">首页 <span style="opacity:.55;font-size:12px">Start</span></a>
+      <a href="lektionen.html" class="active">课程 <span style="opacity:.55;font-size:12px">Lektionen</span></a>
+      <a href="wortschatz.html">生词表 <span style="opacity:.55;font-size:12px">Wortschatz</span></a>
+      <a href="grammatik.html">语法 <span style="opacity:.55;font-size:12px">Grammatik</span></a>
+      <a href="texte.html">课文 <span style="opacity:.55;font-size:12px">Texte</span></a>
+      <a href="uebungen.html">练习 <span style="opacity:.55;font-size:12px">Übungen</span></a>
+      <a href="notion.html">Notion 同步 <span style="opacity:.55;font-size:12px">Notizen</span></a>
+      <a href="kursplan.html">大纲 <span style="opacity:.55;font-size:12px">Kursplan</span></a>
+    </div>
+    <div class="nav-tools">
+      <button id="themeToggle" title="切换到深色">🌙</button>
+      <button class="nav-burger" id="navBurger" title="菜单">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="page-head">
+    <div class="page-kicker">01 · Lektionen</div>
+    <h1 class="page-title">分级课程 <em>目录</em></h1>
+    <p class="page-desc">按你实际的上课时间与进度排列（A1 11 课 → A1.2 2 课）。点击课程展开词汇、语法要点与核心句型；右上圆点可标记「已复习」（保存在本机）。</p>
+  </div>
+  <div id="app"></div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a class="footer-chip" href="index.html">Start</a>
+      <a class="footer-chip" href="lektionen.html">Lektionen</a>
+      <a class="footer-chip" href="wortschatz.html">Wortschatz</a>
+      <a class="footer-chip" href="grammatik.html">Grammatik</a>
+      <a class="footer-chip" href="texte.html">Texte</a>
+      <a class="footer-chip" href="uebungen.html">Übungen</a>
+      <a class="footer-chip" href="notion.html">Notion 同步</a>
+      <a class="footer-chip" href="kursplan.html">Kursplan</a>
+    </div>
+    <div class="footer-copyright">© 2026 Jian Wu · Mein Deutschheft (A1 → A1.2) · Stand 2026-10-13 ·
+      <a href="https://github.com/jianwu-atlas" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://jackng833.notion.site/38e20c5c739a80cb9445c9f080fc19d5" target="_blank" rel="noopener">Notion 笔记源</a>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script src="assets/js/data/deutsch-data.js"></script>
+<script src="assets/js/data/notion-notes.js"></script>
+<script src="assets/js/deutsch.js"></script>
+</body>
+</html>

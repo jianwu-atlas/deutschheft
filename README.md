@@ -1,0 +1,68 @@
+# Mein Deutschheft · Jian 的德语学习网站
+
+基于 Jian 的 A1–A1.2 课堂笔记与 Notion 笔记库构建的个人德语学习站：**分级课程、生词表、语法讲解、课文精读、互动练习、Notion 同步、课程大纲**。
+
+架构与部署方式完全参考 [`jianwu-atlas-private`](https://github.com/jianwu-atlas)（静态多页站点 + Cloudflare Workers）。
+
+## 目录结构
+
+```
+├── index.html            首页（学习地图 + 进度）
+├── lektionen.html        分级课程（13 课）
+├── wortschatz.html       生词表（256 词卡，可筛选/搜索/翻面）
+├── grammatik.html        语法十二讲
+├── texte.html            课文精读（2 篇，逐段中德对照）
+├── uebungen.html         互动练习（5 组测验）
+├── notion.html           Notion 笔记库 + 导入/同步
+├── kursplan.html         课程大纲（15 主题进度）
+├── assets/
+│   ├── css/deutsch.css   设计系统（浅色/深色双主题）
+│   └── js/
+│       ├── data/deutsch-data.js    课程/词汇/语法/课文/测验数据
+│       ├── data/notion-notes.js    Notion 笔记（脚本生成，请勿手改）
+│       ├── deutsch.js              页面渲染与交互核心
+│       └── notion-import.js        Markdown 渲染 + 导入 + 搜索
+├── content-notion/        Notion 笔记源文件（.md，改这里 → 重跑脚本）
+└── scripts/notion_export_sync.py    Notion → 网站 同步脚本
+```
+
+## 本地预览
+
+```bash
+cd website && python3 -m http.server 8631 --bind 127.0.0.1
+# http://127.0.0.1:8631
+```
+
+## 更新 Notion 内容
+
+**方式 A（推荐）：Notion 导出 → 本地同步**
+
+1. Notion 页面「···」→ 导出 → Markdown & CSV
+2. 解压，把 `.md` 放进 `content-notion/`（可含子文件夹）
+3. `python3 scripts/notion_export_sync.py`
+4. commit & push → 自动部署
+
+**方式 B：Notion API 直连**
+
+```bash
+NOTION_TOKEN=ntn_xxx NOTION_ROOT_PAGE_ID=xxx python3 scripts/notion_export_sync.py --api
+```
+
+**方式 C：网站端导入（不重跑脚本）**
+
+打开 `/notion.html`，把导出的 `.md` / `.zip` 拖进导入面板（或直接粘贴 Markdown）。导入的笔记保存在本机浏览器 localStorage，可全文搜索阅读。
+
+## 部署
+
+| 通道 | 地址 | 说明 |
+|---|---|---|
+| GitHub Pages | `https://jianwu-atlas.github.io/deutschheft/` | push 即自动发布 |
+| Cloudflare Workers | `https://deutschheft.<subdomain>.workers.dev` | 需在仓库 Secrets 配置 `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`，push 后由 `.github/workflows/deploy.yml` 自动执行 |
+
+本地手动部署 Workers：`npx wrangler deploy`（需先 `npx wrangler login`）。
+
+## 约定
+
+- 视觉：暖纸底 + Fraunces 衬线 + 德金/焦橙；词性配色 `der 蓝 / die 红 / das 绿 / 动词紫`；深色模式可切换（localStorage 记忆）。
+- 复习/测验进度存 localStorage（key：`deutschheft_v1`）。
+- 改**内容**只动 `content-notion/` 与 `assets/js/data/deutsch-data.js`；**看完整约定见仓库 `AGENTS.md`**。

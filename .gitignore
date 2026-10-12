@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.log
+.workbuddy-ai/
+node_modules/
+__pycache__/
+.wrangler/
