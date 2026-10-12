@@ -53,7 +53,7 @@ const LESSONS = [
     sentences: [
       { de: "Mein Name ist Jian.", zh: "我的名字是 Jian。" },
       { de: "Ich komme aus China.", zh: "我来自中国。" },
-      { de: "Ich wohne in Gießen.", zh: "我住在吉森。" },
+      { de: "Ich wohne in XX.", zh: "我住在XX。" },
       { de: "Ich bin 34 Jahre alt.", zh: "我今年 34 岁。" },
       { de: "Ich arbeite für Max Planck.", zh: "我在马克斯·普朗克研究所工作。" },
       { de: "Ich studiere Biologie.", zh: "我学习生物学。" },

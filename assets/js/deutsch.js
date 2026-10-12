@@ -107,7 +107,7 @@ function renderStart(app) {
 
   const modules = [
     { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 2 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
-    { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡，按主题与词性筛选，点卡片翻面看释义。" },
+    { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "texte.html", num: "04", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
     { route: "uebungen.html", num: "05", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
@@ -266,16 +266,19 @@ function renderVocabGrid() {
   $("#vCount").textContent = list.length + " 个词条" + (vocabState.topic ? " · " + vocabState.topic : "");
   $("#vGrid").innerHTML = list.map(v => {
     const meta = POS_META[v.pos] || POS_META.phrase;
+    const p = (typeof PRON !== "undefined" && PRON[v.de]) || {};
     return `
       <div class="vcard" tabindex="0">
         <div class="vcard-inner">
           <div class="vface front">
             <span class="v-hint">↻</span>
             <div class="v-de ${meta.cls}">${v.de}</div>
-            <div class="v-ipa">${v.ipa || meta.label}</div>
+            <div class="v-ipa">${p.ipa || v.ipa || meta.label}</div>
+            <div class="v-pron">${p.zh ? "≈ " + p.zh : ""}</div>
           </div>
           <div class="vface back">
             <div class="v-zh">${v.zh}</div>
+            ${p.zh ? `<div class="v-back-pron">≈ ${p.zh}</div>` : ""}
             <div class="v-back-meta">${v.plural ? "Pl. " + v.plural + " · " : ""}${v.topic}</div>
           </div>
         </div>

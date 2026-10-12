@@ -21,6 +21,7 @@
 | `content-notion/` | **Notion 笔记源（.md）——改内容只动这里** |
 | `scripts/notion_export_sync.py` | content-notion/ → assets/js/data/notion-notes.js |
 | `assets/js/data/deutsch-data.js` | 课程/词汇/语法/课文/测验数据（手维护） |
+| `assets/js/data/pron.js` | 发音库：256 词条 IPA + 中文谐音（key 与 VOCAB.de 一一对应） |
 | `assets/js/data/notion-notes.js` | 脚本生成，勿手改 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
@@ -41,5 +42,5 @@
 
 ## 更新记录
 
-- 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。
+- 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。同日追加：Gießen 全部替换为 XX（隐私）；新增 assets/js/data/pron.js（256 词条 IPA+中文谐音，词卡正面直接展示）。
 - 2026-10-12：初版 SPA 上线（hash 路由单页）。

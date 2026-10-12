@@ -9,7 +9,7 @@
 ```
 ├── index.html            首页（学习地图 + 进度）
 ├── lektionen.html        分级课程（13 课）
-├── wortschatz.html       生词表（256 词卡，可筛选/搜索/翻面）
+├── wortschatz.html       生词表（256 词卡：音标+中文谐音、筛选/搜索/翻面）
 ├── grammatik.html        语法十二讲
 ├── texte.html            课文精读（2 篇，逐段中德对照）
 ├── uebungen.html         互动练习（5 组测验）

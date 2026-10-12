@@ -422,6 +422,8 @@ body::before {
 .v-de.pos-adj { color: var(--c-adj); }
 .v-de.pos-adv, .v-de.pos-phrase, .v-de.pos-pl { color: var(--ink-2); }
 .v-ipa { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); margin-top: 5px; }
+.v-pron { font-size: 12.5px; color: var(--c-adj); margin-top: 3px; font-weight: 600; letter-spacing: .02em; }
+.v-back-pron { font-size: 12.5px; color: var(--gold); margin-top: 5px; font-weight: 600; }
 .v-zh { font-size: 15px; font-weight: 600; line-height: 1.35; }
 .v-back-meta { font-size: 11.5px; color: rgba(253,250,243,.55); margin-top: 6px; font-family: var(--font-mono); }
 .v-hint { position: absolute; right: 10px; top: 10px; font-size: 10px; color: var(--ink-3); opacity: .7; }
