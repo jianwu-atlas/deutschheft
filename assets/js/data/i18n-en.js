@@ -762,7 +762,7 @@ Object.assign(window.EN_UI, {
 "Formen 词形变化":"Formen · Word Forms","Lehrbuch 教材":"Lehrbuch · Textbook","Referenz 速查表":"Referenz · Reference",
 "Notion 同步":"Notion sync","🔈 音标：关":"🔈 IPA: off","🔊 音标：开":"🔊 IPA: on",
 /* 首页 */
-"Jian 的德语学习手册 —— 整合你的 A1 课堂笔记、A1.2 实验室课文与 Notion 笔记库：词汇、语法、句型、课文、练习，一册在手，随时复习。":"Jian's German handbook — your A1 class notes, A1.2 lab texts and Notion notes gathered into one place: vocabulary, grammar, sentences, texts and exercises, ready for review anytime.",
+"Jian (Jack) Wu 的德语学习手册 —— 整合你的 A1 课堂笔记、A1.2 实验室课文与 Notion 笔记库：词汇、语法、句型、课文、练习，一册在手，随时复习。":"Jian (Jack) Wu's German handbook — your A1 class notes, A1.2 lab texts and Notion notes gathered into one place: vocabulary, grammar, sentences, texts and exercises, ready for review anytime.",
 "大纲进度 · Kursplan":"Syllabus progress · Kursplan","已学课程 · Lektionen":"Lessons done · Lektionen",
 "核心生词 · Wörter":"Core vocabulary · Wörter","语法专题 · Grammatik":"Grammar topics · Grammatik","课文 · Texte":"Texts · Texte",
 "Notion 笔记 · Notizen":"Notion notes · Notizen","已复习标记 · Wiederholt":"Marked as reviewed · Wiederholt","学习板块 · Module":"Modules",

@@ -60,6 +60,11 @@
 
 ## 更新记录
 
+- 2026-10-13（Notion 按上课日期排序 + 站点改名 Jian (Jack) Wu）：
+  - **Notion 排序**：`notion_export_sync.py` 新增 `CLASSDATE_OVERRIDES`（前缀映射，仿 `TITLE_OVERRIDES`）+ `class_date()`（优先映射，否则从 front-matter title 解析 `YYYYMMDD`/`YYYY-MM-DD`），输出对象加 `classDate` 字段；`notion-import.js` 的 `renderNotionPage` 对 `all` 按 `(classDate||date)` 升序（无日期排最后、同日期按 id），列表 meta 与阅读器头部改显示上课日期。重跑后 14 篇按上课顺序 `0→1→2→3→5→6→7→9→10→11→12→08-10→13→14`。
+  - 注：`date` 字段是「笔记导出日」（14 条里 11 条都是 2026-08-06），无区分度；真·上课时间散在正文/题注且格式乱（`2026-04-10`/`20260615`/`2026-04-XX`），故用映射补全 0/3/5/6/7/13（**估算**，见脚本注释）。
+  - **改名**：站点展示位「Jian」→「Jian (Jack) Wu」——12 页导航副标 + 页脚、index meta/og description、`i18n.js` 的 `brand.sub`/`foot.copyright`(EN)、`deutsch-data.js` subtitle、`i18n-en.js` 首页长句（EN_UI key 同步改，否则英文失效）、`brand/og-image.svg`（+ 重栅格化 `assets/img/og-image.png`，字号 30→28、字距 4→2 防超版面）。**未动**课程/笔记正文（正文里的 Jian 是「用音名拼读名字」教学内容）。
+  - 版本号：i18n.js→v35、i18n-en.js→v32、deutsch-data.js→v31、notion-notes.js→v32、notion-import.js 首次加 `?v=31`。
 - 2026-10-13（在线朗读语速调节 + 课文一键复制全文）：
   - **语速**：`annotate.js` 把写死 `u.rate=0.88` 改为 `curSpeed()`，三档 `慢 0.66 / 正常 0.88 / 快 1.10`，localStorage `deutschheft_srate` 记忆；全站在线朗读（逐句🔊 / 整段「朗读全段」/ 点单词）一处生效。新增右下角浮动按钮 `#speedToggle`（`deutsch.css` 复用 `#ipaToggle` 样式、`bottom:74px`，点一下循环切换）。⚠️ 语速**只影响在线朗读**，预生成 MP3 语速固定（edge-tts `-5%`，改它要重跑 `gen_text_audio.py`）。
   - **复制全文**：`deutsch.js` 课文控制区加 `#copyFull`「📋 复制全文」，把 `t.paragraphs.map(p=>p.de).join("\n")`（纯德语、不含 IPA/中文）写入剪贴板（`navigator.clipboard` + `execCommand` 兜底），按钮短暂变「✓ 已复制」，方便整篇贴到「文本转MP3」生成/收听。

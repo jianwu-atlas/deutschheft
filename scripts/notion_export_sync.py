@@ -45,6 +45,25 @@ TITLE_OVERRIDES = {
     "2026-08-10": "2026-08-10 · 八主题例句 + Malawi 的一天",
 }
 
+# 文件名前缀 → 上课日期（YYYY-MM-DD）。缺日期或题注残缺的在此补全；其余从 frontmatter title 自动解析。
+CLASSDATE_OVERRIDES = {
+    "0_": "2026-04-10",   # 德语大纲（估算，置于课程起点）
+    "3_": "2026-04-27",   # 估算
+    "5_": "2026-05-04",   # 估算（原题注仅到月 2026-04-XX）
+    "6_": "2026-05-11",   # 估算（原题注仅到月 2026-04-XX）
+    "7_": "2026-05-18",   # 估算
+    "13_": "2026-08-31",  # A1.2 第 1 次
+}
+
+
+def class_date(stem: str, raw_title: str) -> str:
+    """上课日期：优先前缀映射，否则从 frontmatter title 解析（兼容 2026-06-29 / 20260615）。"""
+    for prefix, d in CLASSDATE_OVERRIDES.items():
+        if stem.startswith(prefix):
+            return d
+    m = re.search(r"(20\d{2})[-./]?(\d{2})[-./]?(\d{2})", raw_title or "")
+    return f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else ""
+
 
 def nice_title(stem: str, fallback: str) -> str:
     for prefix, t in TITLE_OVERRIDES.items():
@@ -82,6 +101,7 @@ def parse_markdown_note(path: Path) -> dict:
         "id": re.sub(r"[^0-9A-Za-z]+", "-", path.stem).strip("-").lower() or "note",
         "title": nice_title(path.stem, meta["title"]),
         "date": meta.get("date", ""),
+        "classDate": class_date(path.stem, meta.get("title", "")),
         "source": meta.get("source", "notion"),
         "notion_url": meta.get("notion_url", ""),
         "file": path.name,
@@ -132,7 +152,7 @@ def fetch_from_api() -> list:
         title = (page.get("properties", {}).get("title", {}) or [{}],)[0]
         title = page.get("url", "").split("/")[-2] if not title.get("title") else title["title"][0].get("text", {}).get("content", page_id)
         body_md = blocks_to_md(get(f"https://api.notion.com/v1/blocks/{page_id}/children").get("results", []))
-        notes.append({"id": page_id.replace("-", "")[:8], "title": title, "date": "", "source": "notion-api",
+        notes.append({"id": page_id.replace("-", "")[:8], "title": title, "date": "", "classDate": "", "source": "notion-api",
                       "notion_url": page.get("url", ""), "file": "", "text": body_md})
         for b in get(f"https://api.notion.com/v1/blocks/{page_id}/children").get("results", []):
             if b.get("type") == "child_page" and depth < 2:

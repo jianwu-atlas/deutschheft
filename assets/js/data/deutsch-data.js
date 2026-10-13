@@ -6,7 +6,7 @@
 
 const SITE = {
   title: "Mein Deutschheft",
-  subtitle: "Jian 的德语学习手册",
+  subtitle: "Jian (Jack) Wu 的德语学习手册",
   stand: "2026-10-12",
   level: "A1.2"
 };
