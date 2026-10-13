@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文本转 MP3 · Mein Deutschheft</title>
+<meta name="description" content="粘贴任意德语文本，用微软 Edge 神经语音（同 Speecher）实时合成 MP3，可在线试听与下载。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/deutsch.css?v=33">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=32">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=32">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=32">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=32">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jianwu-atlas.github.io/deutschheft/assets/img/og-image.png">
+<meta property="og:title" content="文本转 MP3 · Mein Deutschheft">
+<meta property="og:description" content="粘贴任意德语文本，实时合成 MP3（微软 Edge 神经语音，同 Speecher）。">
+</head>
+<body data-page="tts">
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-mark">D</span>
+      <span class="nav-brand-text">
+        <span class="nav-brand-title">MEIN DEUTSCHHEFT</span>
+        <span class="nav-brand-sub" data-i18n="brand.sub">Jian · DEUTSCH A1–A1.2</span>
+      </span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" data-i18n="nav.start">首页</a>
+      <a href="lektionen.html" data-i18n="nav.lektionen">课程</a>
+      <a href="wortschatz.html" data-i18n="nav.wortschatz">生词表</a>
+      <a href="grammatik.html" data-i18n="nav.grammatik">语法</a>
+      <a href="formen.html" data-i18n="nav.formen">词形</a>
+      <a href="texte.html" data-i18n="nav.texte">课文</a>
+      <a href="lehrbuch.html" data-i18n="nav.lehrbuch">教材</a>
+      <a href="referenz.html" data-i18n="nav.referenz">速查表</a>
+      <a href="uebungen.html" data-i18n="nav.uebungen">练习</a>
+      <a href="notion.html" data-i18n="nav.notion">Notion 同步</a>
+      <a href="kursplan.html" data-i18n="nav.kursplan">大纲</a>
+      <a href="tts.html" class="active" data-i18n="nav.tts">文本转MP3</a>
+    </div>
+    <div class="nav-tools">
+      <button id="themeToggle" title="切换到深色">🌙</button>
+      <button class="nav-burger" id="navBurger" title="菜单">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="page-head">
+    <div class="page-kicker" data-i18n="head.tts.kicker">11 · Werkzeug</div>
+    <h1 class="page-title" data-i18n="head.tts.title">文本转 <em>MP3</em></h1>
+    <p class="page-desc" data-i18n="head.tts.desc">粘贴任意德语文本，用微软 Edge 神经语音实时合成 MP3（音色同 speecher.org 的 Lena / Tobias），可在线试听与下载。适合把自己的句子、课文或听力材料转成音频反复磨耳朵。</p>
+  </div>
+
+  <div id="ttsNotice" class="card tts-notice" hidden>
+    ⚠️ <strong>后端函数未配置。</strong>「文本转 MP3」需要一个云函数（<code>edge-fn/</code>）。部署后，把 <code>tts.html</code> 顶部 <code>const TTS_ENDPOINT</code> 填成你的函数地址即可。详见 <code>edge-fn/README.md</code>。
+    <br>（课文页的 <b>🎧 逐段/全文 MP3</b> 是预生成好的，不依赖此函数，可正常使用。）
+  </div>
+
+  <div class="card tts-card">
+    <label class="tts-label" for="ttsText">德语文本（Deutsche Eingabe）</label>
+    <textarea id="ttsText" class="tts-input" rows="7" placeholder="在此输入或粘贴德语文本，例如：Ich interessiere mich besonders für Pflanzen und Zellen."></textarea>
+    <div class="tts-actions">
+      <button class="btn" id="ttsSample">填入示例</button>
+      <button class="btn" id="ttsClear">清空</button>
+    </div>
+
+    <div class="tts-opts">
+      <div class="tts-opt">
+        <label for="ttsVoice">声音</label>
+        <select id="ttsVoice">
+          <option value="katja" selected>Katja（女 · ≈ Lena）</option>
+          <option value="tobias">Tobias（男）</option>
+          <option value="seraphina">Seraphina（女）</option>
+          <option value="conrad">Conrad（男）</option>
+        </select>
+      </div>
+      <div class="tts-opt">
+        <label for="ttsRate">语速</label>
+        <select id="ttsRate">
+          <option value="-15%">慢（-15%）</option>
+          <option value="0%" selected>正常</option>
+          <option value="+15%">快（+15%）</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn primary tts-gen" id="ttsGen">🎧 生成 MP3</button>
+    <p class="tts-status" id="ttsStatus"></p>
+
+    <div class="tts-result" id="ttsResult" hidden>
+      <audio id="ttsAudio" controls></audio>
+      <a class="btn" id="ttsDownload" download="deutschheft.mp3">⬇ 下载 MP3</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a class="footer-chip" href="index.html">Start</a>
+      <a class="footer-chip" href="lektionen.html">Lektionen</a>
+      <a class="footer-chip" href="texte.html">Texte</a>
+      <a class="footer-chip" href="uebungen.html">Übungen</a>
+      <a class="footer-chip" href="notion.html">Notion 同步</a>
+      <a class="footer-chip" href="kursplan.html">Kursplan</a>
+    </div>
+    <div class="footer-copyright" data-i18n="foot.copyright">© 2026 Jian Wu · Mein Deutschheft (A1 → A1.2) · Stand 2026-10-13 ·
+      <a href="https://github.com/jianwu-atlas" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data/i18n-en.js?v=30"></script>
+<script src="assets/js/i18n.js?v=33"></script>
+<script>
+/* ============================================================
+   文本转 MP3（B：实时）——调用 edge-fn 云函数
+   部署函数后，把 TTS_ENDPOINT 填成它的公网地址（不带末尾 /tts）。
+   ============================================================ */
+const TTS_ENDPOINT = "https://39f5c42429294dc99dba052cbfcb23be.sg2.agentos-app.run";   // edge-fn 已部署（WorkBuddy 云函数）
+
+const $ = s => document.querySelector(s);
+const status = $("#ttsStatus");
+const notice = $("#ttsNotice");
+
+const SAMPLES = [
+  "Mein Name ist Daniel. Ich bin 38 Jahre alt und arbeite als Biologe in einem Labor. Ich interessiere mich besonders für Pflanzen und Zellen.",
+  "Am Morgen beginnt mein Arbeitstag. Zuerst wasche ich meine Hände und bereite meinen Arbeitsplatz vor.",
+  "Gestern hat Mia einen besonders interessanten Arbeitstag gehabt. Sie hat viele Experimente kontrolliert."
+];
+
+if (!TTS_ENDPOINT) { notice.hidden = false; $("#ttsGen").disabled = true; }
+
+$("#ttsSample").addEventListener("click", () => { $("#ttsText").value = SAMPLES[Math.floor(Math.random() * SAMPLES.length)]; });
+$("#ttsClear").addEventListener("click", () => { $("#ttsText").value = ""; $("#ttsResult").hidden = true; $("#ttsAudio").pause(); status.textContent = ""; });
+
+$("#ttsGen").addEventListener("click", async () => {
+  const text = $("#ttsText").value.trim();
+  if (!text) { status.textContent = "请先输入或粘贴德语文本。"; return; }
+  if (!TTS_ENDPOINT) { status.textContent = "后端未配置，见页面顶部提示。"; return; }
+  const voice = $("#ttsVoice").value;
+  const rate = $("#ttsRate").value;
+  status.textContent = "合成中…（微软 Edge TTS）";
+  $("#ttsGen").disabled = true;
+  try {
+    const resp = await fetch(TTS_ENDPOINT.replace(/\/+$/, "") + "/tts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, voice, rate })
+    });
+    if (!resp.ok) {
+      let msg = "HTTP " + resp.status;
+      try { const j = await resp.json(); if (j.error) msg = j.error; } catch (e) {}
+      throw new Error(msg);
+    }
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const audio = $("#ttsAudio");
+    audio.src = url;
+    const dl = $("#ttsDownload");
+    dl.href = url;
+    $("#ttsResult").hidden = false;
+    status.textContent = "✅ 已生成（" + Math.round(blob.size / 1024) + " KB）";
+    audio.play().catch(() => {});
+  } catch (e) {
+    status.textContent = "❌ " + e.message;
+  } finally {
+    $("#ttsGen").disabled = false;
+  }
+});
+</script>
+</body>
+</html>

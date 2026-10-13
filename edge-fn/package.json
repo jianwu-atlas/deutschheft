@@ -1,0 +1,14 @@
+{
+  "name": "deutschheft-tts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mein Deutschheft 文本转 MP3 云函数（微软 Edge TTS，免费无 key）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "msedge-tts": "^2.1.0"
+  }
+}

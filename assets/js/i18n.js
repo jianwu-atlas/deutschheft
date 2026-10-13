@@ -58,7 +58,11 @@
     "nav.uebungen": 'Exercises <span style="opacity:.55;font-size:12px">Übungen</span>',
     "nav.notion": 'Notes <span style="opacity:.55;font-size:12px">Notizen</span>',
     "nav.kursplan": 'Syllabus <span style="opacity:.55;font-size:12px">Kursplan</span>',
+    "nav.tts": 'Text to MP3 <span style="opacity:.55;font-size:12px">Sprechen</span>',
     "brand.sub": "Jian · GERMAN A1–A1.2",
+    "head.tts.kicker": "11 · Tool",
+    "head.tts.title": "Text to <em>MP3</em>",
+    "head.tts.desc": "Paste any German text and synthesise a real MP3 in real time with Microsoft Edge neural voices (same as speecher.org's Lena / Tobias) — listen online or download. Great for turning your own sentences, texts or listening material into audio.",
     /* 页头 */
     "head.lektionen.kicker": "01 · Lessons",
     "head.lektionen.title": "Lessons <em>Overview</em>",

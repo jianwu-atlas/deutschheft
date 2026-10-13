@@ -21,10 +21,14 @@
 | `uebungen.html` | 5 组测验（48 题），即时解析 + 成绩页 |
 | `notion.html` | Notion 笔记库：14 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
 | `kursplan.html` | 15 主题大纲（9 已学 / 1 部分 / 5 待学） |
+| `tts.html` | 文本转 MP3 工具页（B：实时，调 edge-fn；未部署函数时显示提示、按钮禁用） |
 | `content-notion/` | **Notion 笔记源（.md）——改内容只动这里** |
 | `scripts/notion_export_sync.py` | content-notion/ → assets/js/data/notion-notes.js |
 | `scripts/gen_wortliste.js` | 全站语料 → assets/js/data/wortliste.js（改词库后重跑） |
 | `scripts/pack_site.py` | 打包 `dist/`（站点资源，用于 EdgeOne Pages 等静态托管） |
+| `scripts/gen_text_audio.py` | 用微软 Edge TTS 预生成课文德语 MP3（B'）→ `assets/audio/textes/{id}_p{n}.mp3` + `{id}_full.mp3` + `manifest.json`；音色 `TTS_VOICE`（默认 de-DE-KatjaNeural≈Lena）、语速 `TTS_RATE`（默认 -5%） |
+| `assets/audio/textes/` | 预生成课文 MP3（2 篇 × 10 段 + 2 全文 = 22 个，共 ~3.7M）；改课文后需重跑 gen_text_audio.py |
+| `edge-fn/` | 文本转 MP3 云函数（B）：`server.js`（Node + msedge-tts，POST /tts）+ `package.json` + `README.md`；需部署到 FaaS 后把地址填入 `tts.html` 的 `TTS_ENDPOINT` |
 | `assets/js/data/deutsch-data.js` | 课程/词汇/语法/课文/测验数据（手维护） |
 | `assets/js/data/pron.js` | 发音库：PRON 282（含中文谐音）+ 变位 94 + 裸词 221 + `PRON_EXTRA` / `PRON_FUNC` / `PRON_MORE`（约 1200 条 IPA）+ `PRON_ZH`（813 条中文释义） |
 | `assets/js/data/wortliste.js` | 全站词表（脚本生成，勿手改；zh=中文释义、pron=中文谐音） |
@@ -55,6 +59,11 @@
 
 ## 更新记录
 
+- 2026-10-13（朗读/文本转 MP3 整合，三档 C+B'+B）：
+  - **C 在线整段朗读**：课文页 `renderTexts` 原有「🔊 朗读全段」+ 逐句 🔊（Web Speech，`annotate.js` 的 `__dhSpeak`）保留；新增 `playTextMp3()` 在 MP3 缺失时自动回退 Web Speech。
+  - **B' 预生成 MP3**：新增 `scripts/gen_text_audio.py`（微软 Edge TTS），已生成 `assets/audio/textes/` 22 个 MP3（2 课文 × 逐段 10 + 全文）；课文页每段加「🎧」按钮 + 控制区加「🎧 全文 MP3」，点即播放真 MP3（音色=Speecher 的 Lena）。
+  - **B 实时粘贴转 MP3**：新增 `edge-fn/`（Node + msedge-tts，`POST /tts`→audio/mpeg，本地实测 200 出真 MP3）+ `tts.html` 工具页（粘贴/选音色/选语速/试听/下载；`TTS_ENDPOINT` 未填时显示提示并禁用）。已接入全站导航「文本转MP3」。**edge-fn 已部署上线**（WorkBuddy 云函数，2026-10-13），`tts.html` 的 `TTS_ENDPOINT` 已填入并线上实测 `POST /tts`→200 出真 MP3。重新部署 edge-fn 后需确认新 URL 并回填 `tts.html`。
+  - 版本号：deutsch.css→v33、deutsch.js→v31、i18n.js→v33（12 页统一）；i18n-en/i18n.js 增 `nav.tts` + `head.tts.*`。
 - 2026-10-13（品牌 logo · Gilded Seal 金印）：新增 `brand/`（设计哲学 + logo-mark.svg + og-image.svg）与 `assets/img/`（favicon.svg/16/32/48 + apple-touch-icon 180 + og-image 1200×630）。11 页 head 由内联 data-uri 图标改为正式 `<link>` icon + apple-touch-icon + og 元信息（修复 Safari 首字占位符）；导航 `.brand-mark` 由文字 D 改为新 logo 背景图；css `?v=31`。设计沿用 jwtools 的「monogram + 三点」语言：墨黑圆角印底 + 德金 Georgia D + 细金线 + der/die/das 三点（蓝 #2456A6 / 红 #B03048 / 绿 #2E7D5B）。已部署 edgeone + 同步 github.io。
 - 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。同日追加：Gießen 全部替换为 XX（隐私）；新增 assets/js/data/pron.js（256 词条 IPA+中文谐音）；新增 referenz.html 速查表（数字/时间/颜色/四季）；新增 lehrbuch.html 教材库（5 份 PDF）；目录 website/ → deutschheft/。
 - 2026-10-13（语料变形索引 + 国内部署）：formen 页动词补至 **111**、新增「语料变形索引」页签；新增 `scripts/pack_site.py`；部署腾讯 EdgeOne Pages（国内可访问）→ https://deutschheft.edgeone.cool/；修复首页空白（模块卡误引用仅单页加载的 FORMEN_VERBEN）。

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "t1",
+    "kind": "full",
+    "file": "assets/audio/textes/t1_full.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 1,
+    "file": "assets/audio/textes/t1_p1.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 2,
+    "file": "assets/audio/textes/t1_p2.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 3,
+    "file": "assets/audio/textes/t1_p3.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 4,
+    "file": "assets/audio/textes/t1_p4.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 5,
+    "file": "assets/audio/textes/t1_p5.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 6,
+    "file": "assets/audio/textes/t1_p6.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 7,
+    "file": "assets/audio/textes/t1_p7.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 8,
+    "file": "assets/audio/textes/t1_p8.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 9,
+    "file": "assets/audio/textes/t1_p9.mp3"
+  },
+  {
+    "id": "t1",
+    "kind": "para",
+    "n": 10,
+    "file": "assets/audio/textes/t1_p10.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "full",
+    "file": "assets/audio/textes/t2_full.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 1,
+    "file": "assets/audio/textes/t2_p1.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 2,
+    "file": "assets/audio/textes/t2_p2.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 3,
+    "file": "assets/audio/textes/t2_p3.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 4,
+    "file": "assets/audio/textes/t2_p4.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 5,
+    "file": "assets/audio/textes/t2_p5.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 6,
+    "file": "assets/audio/textes/t2_p6.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 7,
+    "file": "assets/audio/textes/t2_p7.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 8,
+    "file": "assets/audio/textes/t2_p8.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 9,
+    "file": "assets/audio/textes/t2_p9.mp3"
+  },
+  {
+    "id": "t2",
+    "kind": "para",
+    "n": 10,
+    "file": "assets/audio/textes/t2_p10.mp3"
+  }
+]

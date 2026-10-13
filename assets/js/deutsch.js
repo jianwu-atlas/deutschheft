@@ -819,6 +819,16 @@ function renderGrammar(app, openId) {
    ============================================================ */
 let textState = { id: "t2", hideZh: false };
 
+/* ---- 课文 MP3 播放（B' 预生成·微软神经语音）；文件缺失 → 回退在线 Web Speech（C）---- */
+let __mp3 = null;
+function playTextMp3(src, fallbackText) {
+  if (!__mp3) { __mp3 = new Audio(); __mp3.preload = "none"; }
+  const fallback = () => { if (window.__dhSpeak && fallbackText) window.__dhSpeak(fallbackText); };
+  __mp3.onerror = fallback;
+  __mp3.src = src;
+  __mp3.play().catch(fallback);
+}
+
 function renderTexts(app) {
   const t = TEXTS.find(x => x.id === textState.id) || TEXTS[0];
   const splitSentences = str => (str.match(/[^.!?]+[.!?]+[""'\)\]]*\s*/g) || [str]).map(s => s.trim()).filter(Boolean);
@@ -833,14 +843,15 @@ function renderTexts(app) {
     <p class="text-intro">${t.intro}</p>
     <div class="text-controls">
       <button class="btn primary" id="toggleZh">${textState.hideZh ? "显示中文翻译" : "隐藏中文翻译（自测）"}</button>
-      <button class="btn" id="speakAll">🔊 朗读全段</button>
+      <button class="btn" id="speakAll" title="在线朗读（浏览器语音，无需文件）">🔊 朗读全段</button>
+      <button class="btn" id="mp3All" title="听整篇 MP3（微软神经语音，同 Speecher）">🎧 全文 MP3</button>
     </div>
     <div id="textBody" class="${textState.hideZh ? "hide-zh" : ""}">
       ${t.paragraphs.map((p, i) => {
         const sents = splitSentences(p.de);
         return `
         <div class="card para">
-          <div class="para-head"><span class="para-no">${String(i + 1).padStart(2, "0")}</span><span class="para-title">${p.title || ""}</span></div>
+          <div class="para-head"><span class="para-no">${String(i + 1).padStart(2, "0")}</span><span class="para-title">${p.title || ""}</span><button class="para-mp3" data-i="${i}" title="听本段 MP3（微软神经语音；点击朗读）">🎧</button></div>
           <div class="para-body no-ipa">
             ${sents.map((s, si) => `
               <div class="s-line">
@@ -859,6 +870,12 @@ function renderTexts(app) {
   $("#speakAll").addEventListener("click", () => {
     if (window.__dhSpeak) window.__dhSpeak(t.paragraphs.map(p => p.de).join(" "));
   });
+  $("#mp3All").addEventListener("click", () => playTextMp3("assets/audio/textes/" + t.id + "_full.mp3", t.paragraphs.map(p => p.de).join(" ")));
+  $$(".para-mp3", app).forEach(b => b.addEventListener("click", e => {
+    e.stopPropagation();
+    const i = +b.dataset.i;
+    playTextMp3("assets/audio/textes/" + t.id + "_p" + (i + 1) + ".mp3", t.paragraphs[i].de);
+  }));
 }
 
 /* ============================================================
