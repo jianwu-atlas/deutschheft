@@ -828,6 +828,18 @@ function playTextMp3(src, fallbackText) {
   __mp3.src = src;
   __mp3.play().catch(fallback);
 }
+/* 复制文本到剪贴板（navigator.clipboard 优先，execCommand 兜底） */
+async function copyToClipboard(text) {
+  try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return; } } catch (e) {}
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch (e) {}
+  document.body.removeChild(ta);
+}
 
 function renderTexts(app) {
   const t = TEXTS.find(x => x.id === textState.id) || TEXTS[0];
@@ -845,6 +857,7 @@ function renderTexts(app) {
       <button class="btn primary" id="toggleZh">${textState.hideZh ? "显示中文翻译" : "隐藏中文翻译（自测）"}</button>
       <button class="btn" id="speakAll" title="在线朗读（浏览器语音，无需文件）">🔊 朗读全段</button>
       <button class="btn" id="mp3All" title="听整篇 MP3（微软神经语音，同 Speecher）">🎧 全文 MP3</button>
+      <button class="btn" id="copyFull" title="复制整篇课文德语全文（可直接粘贴到「文本转MP3」生成/收听）">📋 复制全文</button>
     </div>
     <div id="textBody" class="${textState.hideZh ? "hide-zh" : ""}">
       ${t.paragraphs.map((p, i) => {
@@ -871,6 +884,14 @@ function renderTexts(app) {
     if (window.__dhSpeak) window.__dhSpeak(t.paragraphs.map(p => p.de).join(" "));
   });
   $("#mp3All").addEventListener("click", () => playTextMp3("assets/audio/textes/" + t.id + "_full.mp3", t.paragraphs.map(p => p.de).join(" ")));
+  $("#copyFull").addEventListener("click", async () => {
+    const full = t.paragraphs.map(p => p.de).join("\n");
+    await copyToClipboard(full);
+    const btn = $("#copyFull");
+    const old = btn.textContent;
+    btn.textContent = "✓ 已复制";
+    setTimeout(() => { btn.textContent = old; }, 1500);
+  });
   $$(".para-mp3", app).forEach(b => b.addEventListener("click", e => {
     e.stopPropagation();
     const i = +b.dataset.i;

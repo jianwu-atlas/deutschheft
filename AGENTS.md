@@ -52,13 +52,20 @@
 
 ## 部署
 
-- **国内可访问（推荐）**：腾讯 EdgeOne Pages → **https://deutschheft.edgeone.cool/**；更新：`python3 scripts/pack_site.py` → 用同名项目覆盖发布
+- **国内可访问（首选，2026-10-13 起）**：Cloudflare Pages → **https://deutschheft.pages.dev/**；更新：`python3 scripts/pack_site.py` 重建 dist/ → `wrangler pages deploy dist --project-name=deutschheft --branch=main`（凭据在 `~/.wrangler`，OAuth 登录 jian.wu@mpi-bn.mpg.de，**免手机号**；国内可达性待实测确认）
+- 腾讯 EdgeOne Pages → **https://deutschheft.edgeone.cool/**（⚠️ 当前登录 Global=新加坡边缘，**国内不可达**；要国内需切中国站 + ICP 备案域名，见 memory 2026-10-13）
 - GitHub Pages：push main 即发布 → https://jianwu-atlas.github.io/deutschheft/（`*.github.io` 国内常不可达）
 - Cloudflare Workers（可选，需 secrets）：wrangler.toml（name=deutschheft）+ .github/workflows/deploy.yml
 - 仓库：https://github.com/jianwu-atlas/deutschheft （描述用中文）
 
 ## 更新记录
 
+- 2026-10-13（在线朗读语速调节 + 课文一键复制全文）：
+  - **语速**：`annotate.js` 把写死 `u.rate=0.88` 改为 `curSpeed()`，三档 `慢 0.66 / 正常 0.88 / 快 1.10`，localStorage `deutschheft_srate` 记忆；全站在线朗读（逐句🔊 / 整段「朗读全段」/ 点单词）一处生效。新增右下角浮动按钮 `#speedToggle`（`deutsch.css` 复用 `#ipaToggle` 样式、`bottom:74px`，点一下循环切换）。⚠️ 语速**只影响在线朗读**，预生成 MP3 语速固定（edge-tts `-5%`，改它要重跑 `gen_text_audio.py`）。
+  - **复制全文**：`deutsch.js` 课文控制区加 `#copyFull`「📋 复制全文」，把 `t.paragraphs.map(p=>p.de).join("\n")`（纯德语、不含 IPA/中文）写入剪贴板（`navigator.clipboard` + `execCommand` 兜底），按钮短暂变「✓ 已复制」，方便整篇贴到「文本转MP3」生成/收听。
+  - `i18n-en.js` 加 5 条英文标签（Copy full text / Copied / Speed: slow·normal·fast）。11 页版本号破缓存：annotate.js→v31、deutsch.css→v34、deutsch.js→v32、i18n-en.js→v31（**tts.html 不加载 annotate/deutsch.js**，无此二按钮，符合预期）。
+- 2026-10-13（国内免费托管：Cloudflare Pages）：Gitee Pages 卡在需大陆 +86 手机号收短信（Jian 在德国无 +86 号）→ 改走 **Cloudflare Pages**（邮箱登录、免手机号）。流程：隔离 node 装 wrangler → `wrangler login` OAuth（jian.wu@mpi-bn.mpg.de）→ `pages project create deutschheft` → `pages deploy dist/`（62 文件，26s）→ **https://deutschheft.pages.dev/**（curl / headless 全 200，`.html` 自动 308→干净 URL）。**以后更新**：`python3 scripts/pack_site.py` 重建 dist/ → `wrangler pages deploy dist --project-name=deutschheft --branch=main`（URL 不变）。国内可达性待老婆实测。
+- 2026-10-13（英文导航重叠修复）：英文模式 12 项导航在窄桌面（~1250px 以下）被 `overflow-x:auto` 硬裁到半截、且深色激活项贴着深色语言按钮造成「重叠」。改法：① `i18n.js` 压缩 4 个最长英文导航词（`Vocabulary→Vocab` / `Word Forms→Forms` / `Exercises→Quiz` / `Text to MP3→TTS`，德语副标签不动）；② 新增 `scrollActiveNav()` 把当前激活导航项自动滚入可见区（resize / 切语言时重算）；③ 12 页 `i18n.js?v=33→v=34` 破缓存；④ `.gitignore` 增补 `.edgeone/`（42M 部署残留）、`.env`。commit `1578708` 已 push 到 github.io，并 `pack_site.py` 重打包同步 EdgeOne（`deutschheft.edgeone.cool`，同名覆盖）。
 - 2026-10-13（朗读/文本转 MP3 整合，三档 C+B'+B）：
   - **C 在线整段朗读**：课文页 `renderTexts` 原有「🔊 朗读全段」+ 逐句 🔊（Web Speech，`annotate.js` 的 `__dhSpeak`）保留；新增 `playTextMp3()` 在 MP3 缺失时自动回退 Web Speech。
   - **B' 预生成 MP3**：新增 `scripts/gen_text_audio.py`（微软 Edge TTS），已生成 `assets/audio/textes/` 22 个 MP3（2 课文 × 逐段 10 + 全文）；课文页每段加「🎧」按钮 + 控制区加「🎧 全文 MP3」，点即播放真 MP3（音色=Speecher 的 Lena）。

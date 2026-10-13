@@ -96,12 +96,23 @@
     pickVoice();
     speechSynthesis.onvoiceschanged = pickVoice;
   }
+  /* ---------- 语速（三档，localStorage 记忆；一处改全站在线朗读生效） ---------- */
+  const SRATE_KEY = "deutschheft_srate";
+  const SPEEDS = [
+    { r: 0.66, label: "语速：慢" },
+    { r: 0.88, label: "语速：正常" },
+    { r: 1.10, label: "语速：快" },
+  ];
+  function curSpeed() {
+    const v = parseFloat(localStorage.getItem(SRATE_KEY));
+    return SPEEDS.find(s => s.r === v) || SPEEDS[1];
+  }
   function speak(text) {
     if (!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "de-DE";
-    u.rate = 0.88;
+    u.rate = curSpeed().r;
     if (voice) u.voice = voice;
     speechSynthesis.speak(u);
   }
@@ -180,8 +191,25 @@
     refreshButton();
   }
 
+  /* ---------- 语速按钮（右下角 #ipaToggle 上方，点一下循环 慢/正常/快） ---------- */
+  function buildSpeedButton() {
+    if (document.getElementById("speedToggle")) return;
+    const b = document.createElement("button");
+    b.id = "speedToggle";
+    b.title = "调节在线朗读语速（点一下切换 慢 / 正常 / 快）";
+    b.textContent = curSpeed().label;
+    b.addEventListener("click", () => {
+      const idx = SPEEDS.findIndex(s => s.r === curSpeed().r);
+      const next = SPEEDS[(idx + 1) % SPEEDS.length];
+      localStorage.setItem(SRATE_KEY, String(next.r));
+      b.textContent = next.label;
+    });
+    document.body.appendChild(b);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     buildButton();
+    buildSpeedButton();
     if (isOn()) setTimeout(annotateAll, 120);
     // 动态内容后若开着标注，重新扫一遍
     const mo = new MutationObserver(() => { if (isOn()) annotateAll(); });

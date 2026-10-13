@@ -855,7 +855,7 @@ ruby.dh-ipa rt {
 }
 ruby.dh-ipa:hover rt { color: var(--gold); }
 
-#ipaToggle {
+#ipaToggle, #speedToggle {
   position: fixed; right: 18px; bottom: 18px; z-index: 70;
   padding: 10px 16px; border-radius: 99px;
   background: var(--ink); color: var(--paper-2);
@@ -864,12 +864,14 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   cursor: pointer; box-shadow: 0 8px 24px rgba(32,27,20,.28);
   transition: transform .18s, background .18s;
 }
-#ipaToggle:hover { transform: translateY(-2px); }
+#speedToggle { bottom: 74px; }
+#ipaToggle:hover, #speedToggle:hover { transform: translateY(-2px); }
 #ipaToggle.on { background: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 900px) {
   .s-text { font-size: 16px; }
-  .ipaToggle { bottom: 14px; right: 14px; }
+  #ipaToggle { bottom: 14px; right: 14px; }
+  #speedToggle { bottom: 70px; right: 14px; }
 }
 
 /* ============================================================
