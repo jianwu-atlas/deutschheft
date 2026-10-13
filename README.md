@@ -75,11 +75,19 @@ NOTION_TOKEN=ntn_xxx NOTION_ROOT_PAGE_ID=xxx python3 scripts/notion_export_sync.
 
 ## 部署
 
-| 通道 | 地址 | 说明 |
-|---|---|---|
-| GitHub Pages | `https://jianwu-atlas.github.io/deutschheft/` | push 即自动发布 |
-| Cloudflare Workers | `https://deutschheft.<subdomain>.workers.dev` | 需在仓库 Secrets 配置 `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`，push 后由 `.github/workflows/deploy.yml` 自动执行 |
+| 通道 | 地址 | 国内访问 | 说明 |
+|---|---|---|---|
+| **腾讯 EdgeOne Pages** ⭐ | `https://deutschheft.edgeone.cool/` | ✅ 好 | 推荐。静态托管免费、免备案；更新见下方「打包发布」 |
+| GitHub Pages | `https://jianwu-atlas.github.io/deutschheft/` | ⚠️ 常打不开 | push 即自动发布，无需配置（`*.github.io` 在国内常被墙） |
+| Cloudflare Workers | `https://deutschheft.<subdomain>.workers.dev` | 一般 | 需在仓库 Secrets 配 `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`，push 后由 `.github/workflows/deploy.yml` 自动执行（未配则自动跳过） |
 
+### 打包发布（EdgeOne Pages / 任意静态托管）
+
+```bash
+python3 scripts/pack_site.py     # 产出 dist/（11 页 + assets，约 17 MB）
+```
+
+把 `dist/` 交给托管平台即可；EdgeOne Pages 用同名项目覆盖发布，**网址不变**。
 本地手动部署 Workers：`npx wrangler deploy`（需先 `npx wrangler login`）。
 
 ## 约定
