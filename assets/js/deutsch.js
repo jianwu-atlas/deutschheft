@@ -120,7 +120,8 @@ function renderFormen(app) {
     ["verben", "🔁 动词变位", "Konjugation"],
     ["substantive", "📦 名词复数", "Plural"],
     ["adjektive", "⚖️ 形容词比较级", "Komparation"],
-    ["deklination", "🧩 冠词·代词变格", "Deklination"]
+    ["deklination", "🧩 冠词·代词变格", "Deklination"],
+    ["index", "📖 语料变形索引", "Belegte Formen"]
   ];
   app.innerHTML = `
     <div class="vocab-tabs">
@@ -135,7 +136,102 @@ function renderFormen(app) {
   if (formenState.tab === "verben") renderFormenVerben(body);
   else if (formenState.tab === "substantive") renderFormenSubstantive(body);
   else if (formenState.tab === "adjektive") renderFormenAdjektive(body);
+  else if (formenState.tab === "index") renderFormenIndex(body);
   else renderFormenDeklination(body);
+}
+
+/* ---------- ⑤ 语料变形索引：网页正文里实际出现过的变形 ---------- */
+function corpusMap() {
+  const m = Object.create(null);
+  if (typeof WORTLISTE === "undefined") return m;
+  WORTLISTE.forEach(x => { m[x.w] = x.n; });
+  return m;
+}
+
+function renderFormenIndex(body) {
+  const C = corpusMap();
+  const hasCorpus = Object.keys(C).length > 0;
+
+  /* 非可分动词的全部单形 —— 用于把可分动词里「裸动词」的重复计数剔除 */
+  const baseForms = new Set();
+  FORMEN_VERBEN.filter(v => !v.trenn).forEach(v => {
+    konjugiere(v).concat([v.praet || "", v.part || "", v.de])
+      .forEach(f => String(f).split(/\s+/).forEach(t => baseForms.add(t.toLowerCase())));
+  });
+
+  /* 动词：把六人称 + 过去时 + 第二分词拆成单词，取语料中真实出现过的 */
+  const verbRows = FORMEN_VERBEN.map(v => {
+    const forms = konjugiere(v).concat([v.praet || "", v.part || "", v.de]);
+    const seen = new Set(), hits = [];
+    const skip = v.trenn ? v.trenn.toLowerCase() : null;   // 可分前缀本身（如 ein / auf）不计入
+    forms.forEach(f => String(f).split(/\s+/).forEach(t => {
+      const w = t.toLowerCase().replace(/[.,!?]$/, "");
+      if (!w || seen.has(w) || w === skip) return;
+      if (v.trenn && baseForms.has(w)) return;             // 可分动词的裸动词形归入其原动词
+      seen.add(w);
+      if (C[w]) hits.push({ w: w, n: C[w] });
+    }));
+    hits.sort((a, b) => b.n - a.n);
+    return { de: v.de, zh: v.zh, typ: VERB_TYP_LABEL[v.art], hits: hits, total: hits.reduce((a, b) => a + b.n, 0) };
+  }).filter(r => r.hits.length).sort((a, b) => b.total - a.total);
+
+  /* 名词：单数 / 复数在语料中的出现 */
+  const nounRows = VOCAB.filter(v => ["der", "die", "das"].includes(v.pos)).map(v => {
+    const sg = v.de.replace(/^(der|die|das)\s+/, "");
+    const pl = pluralForm(v.de, v.plural);
+    const hits = [];
+    [[sg, "单数"], [pl, "复数"]].forEach(([w, tag]) => {
+      const k = String(w).toLowerCase();
+      if (C[k]) hits.push({ w: w, tag: tag, n: C[k] });
+    });
+    return { de: v.de, zh: v.zh, hits: hits, total: hits.reduce((a, b) => a + b.n, 0) };
+  }).filter(r => r.hits.length).sort((a, b) => b.total - a.total);
+
+  const verbFormCount = verbRows.reduce((a, r) => a + r.hits.length, 0);
+  const nounFormCount = nounRows.reduce((a, r) => a + r.hits.length, 0);
+
+  body.innerHTML = `
+    <div class="fo-rules card">
+      <div class="fo-rules-title">语料变形索引 · 网页正文里真正出现过的变形</div>
+      <div class="fo-rule-grid">
+        <div><b>动词</b>${verbRows.length} 个原形 · ${verbFormCount} 个变形词形在语料中出现</div>
+        <div><b>名词</b>${nounRows.length} 个原形 · ${nounFormCount} 个单/复数形式在语料中出现</div>
+        <div><b>数据来源</b>全站词表（${hasCorpus ? WORTLISTE.length : "—"} 词形，扫描课程 / 词卡 / 语法 / 课文 / 练习 / 教材 / 笔记）</div>
+        <div><b>读法</b>「语料中出现的词形」= 你在网页正文里实际读到过的形式，后括号为出现次数</div>
+      </div>
+      <p class="fo-tip">💡 这张表回答的是：<b>某个动词/名词，我在网页里到底见过它的哪几个形式？</b> 空白的形式说明网页正文里还没出现（可在「动词变位」页补全整张变位表）。</p>
+    </div>
+
+    <h3 class="fo-h3">动词 · 语料中出现的词形（按出现次数排序）</h3>
+    <div class="fo-table-wrap">
+      <table class="fo-table fo-table-idx">
+        <thead><tr><th>原形</th><th>中文</th><th>语料中出现的词形</th><th>合计</th><th>变位类型</th></tr></thead>
+        <tbody>
+          ${verbRows.map(r => `<tr>
+            <td class="fo-de">${esc(r.de)}</td>
+            <td class="fo-zh2">${esc(r.zh)}</td>
+            <td class="fo-forms">${r.hits.map(h => `<span class="fo-chip">${esc(h.w)}<i>${h.n}</i></span>`).join("")}</td>
+            <td class="fo-num">${r.total}</td>
+            <td class="fo-typ">${esc(r.typ)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="fo-h3">名词 · 语料中出现的单数 / 复数</h3>
+    <div class="fo-table-wrap">
+      <table class="fo-table fo-table-idx">
+        <thead><tr><th>单数（含冠词）</th><th>中文</th><th>语料中出现的词形</th><th>合计</th></tr></thead>
+        <tbody>
+          ${nounRows.map(r => `<tr>
+            <td class="fo-de">${esc(r.de)}</td>
+            <td class="fo-zh2">${esc(r.zh)}</td>
+            <td class="fo-forms">${r.hits.map(h => `<span class="fo-chip">${esc(h.w)}<i>${esc(h.tag)} · ${h.n}</i></span>`).join("")}</td>
+            <td class="fo-num">${r.total}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
 }
 
 /* ---------- ① 动词变位 ---------- */
@@ -492,7 +588,7 @@ function renderStart(app) {
     { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 2 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
-    { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: "76 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格。" },
+    { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: "112 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格，以及「语料变形索引」。" },
     { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
     { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "5 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
     { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
