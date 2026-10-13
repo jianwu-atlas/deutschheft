@@ -897,6 +897,9 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 /* ============================================================
    教材页 Lehrbuch
    ============================================================ */
+.lbk-group { font-family: var(--font-display); font-size: 20px; color: var(--ink); margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.lbk-group-extra { margin-top: 36px; }
+.lbk-extra { display: inline-block; font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .06em; color: #fff; background: var(--accent); border-radius: 5px; padding: 1px 7px; vertical-align: middle; }
 .lbk-card { padding: 26px 28px 22px; margin-bottom: 20px; }
 .lbk-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
 .lbk-num { font-family: var(--font-display); font-style: italic; font-size: 30px; color: var(--accent); line-height: 1; }

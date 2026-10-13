@@ -11,7 +11,7 @@ const LEHRBUECHER = [
    "de": "Deutsch-Schnellkurs für Anfänger",
    "lesson": "综合速成教材",
    "pages": 338,
-   "star": true,
+   "extra": true,
    "words": [
     [
      "die Fahrkarte-n",
@@ -660,5 +660,19 @@ const LEHRBUECHER = [
    "方向链：geradeaus → links / rechts → neben / gegenüber / zwischen"
   ],
   "text": "1\n🚗 1. WORTSCHATZ – VERKEHRSMITTEL\nVerkehrsmittel\n🚶 zu Fuß gehen\n🚲 das Fahrrad\n🚗 das Auto\n🚌 der Bus\n🚆 der Zug\n🚊 die Straßenbahn\n🚇 die U-Bahn\n🚖 das Taxi\n✈ das Flugzeug\n🚢 das Schiff\n💡 Merkkasten\nfahren\nIch fahre mit dem Bus.\nDu fährst mit dem Auto.\nSie fahren mit dem Zug.\ngehen\nIch gehe zu Fuß.\nBeispiele\nIch fahre mit dem Fahrrad.\nIch fahre mit dem Bus.\nIch gehe zu Fuß.\n✏ Übung 1\nSchreiben Sie die Wörter.\n🚲 ______________________\n🚗 ______________________\n2\n🚌 ______________________\n🚆 ______________________\n✈ ______________________\n✏ Übung 2\nWas passt?\nIch fahre mit ________ Bus.\nIch fahre mit ________ Auto.\nIch fahre mit ________ Fahrrad.\nIch gehe ________ Fuß.\n🗣 2. WIE KOMMEN SIE ZUR ARBEIT?\nBeispiele\nIch fahre mit dem Bus.\nIch fahre mit dem Auto.\nIch gehe zu Fuß.\nIch fahre mit dem Fahrrad.\n✏ Übung 3\nAntworten Sie.\nWie kommen Sie zur Arbeit?\nWie kommen Sie zum Supermarkt?\n✏ Übung 4\nBilden Sie Sätze.\nich / Bus / fahren\n→ ______________________\nich / zu Fuß / gehen\n→ ______________________\n🧭 3. NACH DEM WEG FRAGEN\n3\nWichtige Fragen\nEntschuldigung.\nWo ist der Bahnhof?\nWo ist die Apotheke?\nWo ist der Supermarkt?\nWie komme ich zum Bahnhof?\nBeispiele\nEntschuldigung.\nWo ist die Bank?\n→ Die Bank ist dort.\n💡 Merkkasten\nWo?\n→ Ort\nWie komme ich…?\n→ Weg\n✏ Übung 5\nErgänzen Sie.\nEntschuldigung,\nwo ist __________ Bahnhof?\nWo ist __________ Apotheke?\n🗺 4. ORTSANGABEN\nWörter\nlinks\nrechts\ngeradeaus\nhier\ndort\nan der Ampel\n4\nan der Kreuzung\nBeispiele\nGehen Sie geradeaus.\nGehen Sie nach links.\nGehen Sie nach rechts.\n✏ Übung 6\nOrdnen Sie.\n⬅ __________________\n➡ __________________\n⬆ __________________\n🚦 __________________\n✏ Übung 7\nWas passt?\nGehen Sie __________.\n(Wörter)\ngeradeaus\nlinks\nrechts\n🏢 5. ORTE IN DER STADT\nder Bahnhof\ndie Apotheke\ndie Schule\nder Supermarkt\ndie Bank\ndas Krankenhaus\ndie Post\ndas Restaurant\ndas Hotel\n5\nder Park\n✏ Übung 8\nOrdnen Sie.\n💊 __________________\n🏦 __________________\n🏥 __________________\n🌳 __________________\n📖 6. LESETEXT\nMaria ist neu in der Stadt.\nSie möchte zum Bahnhof.\nSie fragt einen Mann.\n“Entschuldigung, wie komme ich zum Bahnhof?”\nDer Mann sagt:\n“Gehen Sie geradeaus.\nDann links.\nDer Bahnhof ist neben der Bank.”\n✏ Übung 9\nBeantworten Sie.\nWohin möchte Maria?\nWas sagt der Mann?\nWo ist der Bahnhof?\n✏ Übung 10\nRichtig oder falsch?\nMaria kennt den Weg.\n☐ richtig\n☐ falsch\n6\nDer Bahnhof ist neben der Bank.\n☐ richtig\n☐ falsch\n🔍 7. FEHLER FINDEN\nÜbung 11\nKorrigieren Sie.\nIch fahre zu Fuß.\n→ ______________________\nIch gehe mit Bus.\n→ ______________________\nGehen Sie links geradeaus.\n→ ______________________\n💬 8. DIALOG\nVerkäufer:\nKann ich helfen?\nTourist:\nEntschuldigung.\nWo ist der Bahnhof?\nPassant:\nGehen Sie geradeaus.\nDann rechts.\n✏ Übung 12\nErgänzen Sie.\nTourist:\nPassant:\n7\n👫 9. PARTNERARBEIT\nFragen Sie Ihren Partner.\nWie kommen Sie zur Arbeit?\nWie kommen Sie nach Hause?\nWie kommen Sie zum Supermarkt?\n✏ Übung 13\nNotieren Sie die Antworten.\n🗣 10. ROLLENSPIEL\nRolle A:\nSie suchen die Apotheke.\nRolle B:\nErklären Sie den Weg.\nBenutzen Sie:\n• geradeaus\n• links\n• rechts\n• neben\n• gegenüber\n✍ 11. SCHREIBEN\nÜbung 14\nBeschreiben Sie Ihren Weg zur Arbeit oder zur Schule.\nBenutzen Sie:\n• Ich fahre …\n• Ich gehe …\n• Dann …\n• Danach …\nSchreiben Sie 8–10 Sätze.\n🎲 BONUS 1 – STADTPLAN\nZeichnen Sie einen kleinen Stadtplan.\n8\nDer Partner erklärt den Weg.\n🎲 BONUS 2 – WEG-DIKTAT\nDer Lehrer sagt:\n“Geradeaus.\nLinks.\nRechts.”\nDie Teilnehmer zeichnen den Weg.\n🎲 BONUS 3 – WER BIN ICH?\nJeder bekommt eine Karte:\n🏥 Krankenhaus\n🏦 Bank\n🚉 Bahnhof\n🛒 Supermarkt\nAndere geben Wegbeschreibungen.\n👩🏫 GRAMMATIK-KASTEN\nfahren\nich fahre\ndu fährst\nSie fahren\ngehen\nich gehe\ndu gehst\nSie gehen\nPräpositionen\nmit dem Bus\nmit dem Auto\nmit dem Fahrrad\n9\nzu Fuß\nOrtsangaben\nlinks\nrechts\ngeradeaus\nneben\ngegenüber\nzwischen"
+ },
+ {
+  "id": "enwords",
+  "num": "E1",
+  "file": "E1_15000-en-words.pdf",
+  "zh": "15000 英语单词口袋书",
+  "de": "15000 English Words (Pocket Book)",
+  "lesson": "英语课外读物",
+  "pages": 1370,
+  "extra": true,
+  "words": [],
+  "sentences": [],
+  "points": [],
+  "text": ""
  }
 ];

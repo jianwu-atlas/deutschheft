@@ -81,7 +81,7 @@
     "head.texte.desc": "Two lab texts closely tied to your research routine (one present tense, one perfect tense). Each paragraph comes with an English translation and highlighted key verbs; the translation can be hidden for self-testing.",
     "head.lehrbuch.kicker": "Textbook · Course Books",
     "head.lehrbuch.title": "Textbook <em>Reader + Notes</em>",
-    "head.lehrbuch.desc": "Your five textbooks: four course handouts plus <em>German for Absolute Beginners</em> (338 pages). Each can be read online or downloaded, with a structured vocabulary list, core sentences (IPA + audio) and grammar notes; the raw PDF text is extracted automatically for reference.",
+    "head.lehrbuch.desc": "Your six textbooks: four in-class course handouts plus two extra materials (<em>German for Absolute Beginners</em>, 338 pages; <em>15000 English Words</em>). Each can be read online or downloaded, with a structured vocabulary list, core sentences (IPA + audio) and grammar notes; the raw PDF text is extracted automatically for reference.",
     "head.referenz.kicker": "Reference · Quick Lookup",
     "head.referenz.title": "Reference <em>Numbers · Time · Colours · Seasons</em>",
     "head.referenz.desc": "Four “open-and-check” tables: numbers 0–100, telling the time, 18 colours, and seasons / months / weekdays / weather — all with IPA.",

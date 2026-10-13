@@ -52,7 +52,7 @@ VOCAB.forEach(v => {
   if (!ZH[key]) ZH[key] = v.zh;
   LEX.add(key);
 });
-LEHRBUECHER.forEach(b => b.words.forEach(w => LEX.add(w[0].toLowerCase().replace(/^(der|die|das)\\s+/, ""))));
+LEHRBUECHER.filter(b => !b.extra).forEach(b => b.words.forEach(w => LEX.add(w[0].toLowerCase().replace(/^(der|die|das)\\s+/, ""))));
 // 全站词表中文释义（覆盖词卡之外的词形）
 if (typeof PRON_ZH !== "undefined") {
   Object.entries(PRON_ZH).forEach(([k, v]) => {
@@ -91,7 +91,7 @@ QUIZZES.forEach(q => {
   addText(q.de + " " + q.title + " " + q.desc, "Übungen");
   q.questions.forEach(qq => { addText(qq.q, "Übungen"); addText(qq.explain, "Übungen"); });
 });
-LEHRBUECHER.forEach(b => {
+LEHRBUECHER.filter(b => !b.extra).forEach(b => {
   b.words.forEach(w => addText(w[0] + " " + w[1], "Lehrbuch"));
   b.sentences.forEach(s => addText(s[0], "Lehrbuch"));
   b.points.forEach(p => addText(p, "Lehrbuch"));

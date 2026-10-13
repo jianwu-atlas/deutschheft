@@ -452,12 +452,12 @@ const LHRB_SIZE = {
 };
 
 function renderLehrbuch(app) {
-  app.innerHTML = LEHRBUECHER.map(b => `
+  const lbkCard = b => `
     <div class="lbk-card card" id="lbk-${b.id}">
       <div class="lbk-head">
         <span class="lbk-num">${b.num}</span>
         <div class="lbk-title">
-          <div class="lbk-zh">${b.star ? '<span class="lbk-star" title="综合入门教材">★</span> ' : ""}${b.zh} <span class="lbk-de">${b.de}</span></div>
+          <div class="lbk-zh">${b.extra ? '<span class="lbk-extra" title="课外教材资料">课外</span> ' : ""}${b.zh} <span class="lbk-de">${b.de}</span></div>
           <div class="lbk-meta">${b.lesson} · ${b.pages} 页 · PDF ${LHRB_SIZE[b.file] || ""}</div>
         </div>
         <div class="lbk-actions">
@@ -468,23 +468,29 @@ function renderLehrbuch(app) {
       <div class="lbk-viewer" id="viewer-${b.id}" hidden>
         <iframe src="assets/lehrbuch/${b.file}" title="${b.zh}（教材 PDF）" loading="lazy"></iframe>
       </div>
-      <div class="lbk-cols">
-        <div class="lbk-col">
+      ${(b.words && b.words.length) || (b.sentences && b.sentences.length) ? `<div class="lbk-cols">
+        ${b.words && b.words.length ? `<div class="lbk-col">
           <h4 class="lbk-h4">📚 词汇 Wortschatz · ${b.words.length}</h4>
           <div class="lbk-words">${b.words.map(w => `<span class="lbk-word"><b>${w[0]}</b><i>${w[1]}</i></span>`).join("")}</div>
-        </div>
-        <div class="lbk-col">
+        </div>` : ""}
+        ${b.sentences && b.sentences.length ? `<div class="lbk-col">
           <h4 class="lbk-h4">💬 核心句型 Sätze · ${b.sentences.length}</h4>
           ${b.sentences.map(s => `<div class="s-line"><button class="s-sp" data-de="${esc(s[0])}" title="朗读">🔊</button><div class="s-main"><span class="s-text">${s[0]}</span><span class="s-zh-inline">${s[1]}</span><span class="s-ipa">${s[2]}</span></div></div>`).join("")}
-        </div>
-      </div>
-      <h4 class="lbk-h4">🧩 语法要点 Grammatik</h4>
-      <ul class="grammar-list">${b.points.map(p => `<li>${p}</li>`).join("")}</ul>
-      <details class="lbk-raw">
+        </div>` : ""}
+      </div>` : ""}
+      ${b.points && b.points.length ? `<h4 class="lbk-h4">🧩 语法要点 Grammatik</h4>
+      <ul class="grammar-list">${b.points.map(p => `<li>${p}</li>`).join("")}</ul>` : ""}
+      ${b.text ? `<details class="lbk-raw">
         <summary>📄 课件原文（自动提取自 PDF）</summary>
         <pre>${esc(b.text)}</pre>
-      </details>
-    </div>`).join("");
+      </details>` : ""}
+    </div>`;
+  const lbkIn = LEHRBUECHER.filter(b => !b.extra);
+  const lbkExtra = LEHRBUECHER.filter(b => b.extra);
+  app.innerHTML = `
+    <h2 class="lbk-group">📘 课内教材 · Kursbuch</h2>
+    ${lbkIn.map(lbkCard).join("")}
+    ${lbkExtra.length ? `<h2 class="lbk-group lbk-group-extra">📗 课外教材资料 · Extra</h2>${lbkExtra.map(lbkCard).join("")}` : ""}`;
 
   $$(".lbk-view", app).forEach(btn => btn.addEventListener("click", () => {
     const v = $("#viewer-" + btn.dataset.id);
@@ -590,7 +596,7 @@ function renderStart(app) {
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: "112 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格，以及「语料变形索引」。" },
     { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
-    { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "5 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
+    { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
     { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
     { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
     { route: "notion.html", num: "09", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },

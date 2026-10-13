@@ -60,6 +60,13 @@
 
 ## 更新记录
 
+- 2026-10-13（课外教材分类 + 零基础标课外 + 课外词汇不计入词表）：
+  - **教材库分组**：`deutsch.js` 的 `renderLehrbuch` 重构为两组——「📘 课内教材 · Kursbuch」（4 份 Lektion 课件）+「📗 课外教材资料 · Extra」；课外书加「课外」徽章（`.lbk-extra`，替换原 ★）。空 `words/sentences/points/text` 段落自动隐藏。
+  - **零基础德语速成标为课外**：`lehrbuch.js` 的 `sucheng` 由 `star:true` 改 `extra:true`。
+  - **新增英语教材**：`15000 英语单词口袋书`（1370 页，6.8MB）→ `assets/lehrbuch/E1_15000-en-words.pdf`，加入 `LEHRBUECHER`（`id:"enwords"`、`extra:true`、无结构化词句）。
+  - **课外词汇不计入词表**：`gen_wortliste.js` 两处 `LEHRBUECHER.forEach` 改 `filter(b=>!b.extra)`；`deutsch-data.js` 的 10 条「零基础新增词汇」整段注释（保留可恢复）。重跑词表：**1053 → 1022 词形**；VOCAB **282 → 272**。
+  - 页面描述「5 份教材」→「6 份」（lehrbuch.html 页描述 + title、deutsch.js PAGES、i18n.js `head.lehrbuch.desc`、i18n-en.js）。
+  - 版本号：lehrbuch.js v31、wortliste.js v31、deutsch-data.js v32、deutsch.js v35、deutsch.css v36、i18n-en.js v35、i18n.js v36。
 - 2026-10-13（课文精读版式重构：三行堆叠 + 逐句中文 + 段末知识点）：
   - **版式**：每句改「三行堆叠」——德文行 / **音标行**（`s-ipa` 由小字改**浅色胶囊块**：`--accent-soft` 底 + `--accent` 字，与德文明确区分）/ **中文行**（`s-zh`，金色左条）。段末新增 **「💡 知识点」框**（`para-notes`：accent 左边条 + 圆角 + `{k,v}` 要点列表）。「隐藏中文翻译（自测）」由隐藏 `para-zh` 改为隐藏 `s-zh`；暗色主题已适配。
   - **数据**：新建 `assets/js/data/texte-extra.js`（`window.TEXTE_EXTRA[textId][段号] = { zhs:[逐句中文], notes:[{k,v}] }`）——**不动大文件 `deutsch-data.js`**。2 篇 × 10 段；逐句中文与 `splitSentences(p.de)` 一一对齐（5 段原文中文与德文句数不一致，按语义手工对齐）。
