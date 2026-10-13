@@ -92,6 +92,11 @@ const PAGES = {
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initBurger();
+  // 朗读按钮（句型表 / 课文逐句）
+  document.addEventListener("click", e => {
+    const sp = e.target.closest(".s-sp");
+    if (sp && window.__dhSpeak) window.__dhSpeak(sp.dataset.de);
+  });
   const page = document.body.dataset.page;
   if (PAGES[page]) PAGES[page]($("#app"));
 });
@@ -213,7 +218,7 @@ function lessonCardHTML(l) {
         <ul class="grammar-list">${l.grammar.map(g => `<li>${g}</li>`).join("")}</ul>
         <div class="lb-label">核心句型 · Sätze</div>
         <table class="sentence-table">
-          ${l.sentences.map(s => `<tr><td class="s-de">${s.de}</td><td class="s-zh">${s.zh}</td></tr>`).join("")}
+          ${l.sentences.map(s => `<tr><td class="s-de"><button class="s-sp" data-de="${esc(s.de)}" title="朗读">🔊</button><span class="s-text">${s.de}</span>${s.ipa ? `<span class="s-ipa">${s.ipa}</span>` : ""}</td><td class="s-zh">${s.zh}</td></tr>`).join("")}
         </table>
         <div class="focus-inline">💡 <strong>本课焦点：</strong>${l.focus}</div>
         <div class="lesson-vocab-link"><a href="wortschatz.html" data-topic="${l.topic}" class="to-vocab">→ 在生词表中查看「${l.topic}」主题词汇</a></div>
@@ -321,6 +326,7 @@ let textState = { id: "t2", hideZh: false };
 
 function renderTexts(app) {
   const t = TEXTS.find(x => x.id === textState.id) || TEXTS[0];
+  const splitSentences = str => (str.match(/[^.!?]+[.!?]+[""'\)\]]*\s*/g) || [str]).map(s => s.trim()).filter(Boolean);
   app.innerHTML = `
     <div class="text-tabs">
       ${TEXTS.map(x => `
@@ -332,19 +338,32 @@ function renderTexts(app) {
     <p class="text-intro">${t.intro}</p>
     <div class="text-controls">
       <button class="btn primary" id="toggleZh">${textState.hideZh ? "显示中文翻译" : "隐藏中文翻译（自测）"}</button>
+      <button class="btn" id="speakAll">🔊 朗读全段</button>
     </div>
     <div id="textBody" class="${textState.hideZh ? "hide-zh" : ""}">
-      ${t.paragraphs.map((p, i) => `
+      ${t.paragraphs.map((p, i) => {
+        const sents = splitSentences(p.de);
+        return `
         <div class="card para">
           <div class="para-head"><span class="para-no">${String(i + 1).padStart(2, "0")}</span><span class="para-title">${p.title || ""}</span></div>
-          <div class="para-de">${p.de}</div>
+          <div class="para-body no-ipa">
+            ${sents.map((s, si) => `
+              <div class="s-line">
+                <button class="s-sp" data-de="${esc(s)}" title="朗读此句">🔊</button>
+                <div class="s-main"><span class="s-text">${s}</span>${p.ips && p.ips[si] ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}</div>
+              </div>`).join("")}
+          </div>
           <div class="para-zh">${p.zh}</div>
           ${p.verbs ? `<div class="para-verbs">${p.verbs.map(v => `<span class="verb-chip">${v}</span>`).join("")}</div>` : ""}
-        </div>`).join("")}
+        </div>`;
+      }).join("")}
     </div>
   `;
   $$(".text-tab", app).forEach(b => b.addEventListener("click", () => { textState.id = b.dataset.id; renderTexts(app); }));
   $("#toggleZh").addEventListener("click", () => { textState.hideZh = !textState.hideZh; renderTexts(app); });
+  $("#speakAll").addEventListener("click", () => {
+    if (window.__dhSpeak) window.__dhSpeak(t.paragraphs.map(p => p.de).join(" "));
+  });
 }
 
 /* ============================================================

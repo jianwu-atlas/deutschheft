@@ -33,7 +33,9 @@
 - 本地预览：`python3 -m http.server 8631 --bind 127.0.0.1`
 - 更新 Notion 内容：`.md` 放入 `content-notion/` → `python3 scripts/notion_export_sync.py` → commit & push
 - 同步校验：`node --check assets/js/*.js`（CI 有同样检查）
-- 本地存储：`deutschheft_v1`（复习标记/测验成绩）、`deutschheft_notion_imports`（导入笔记）、`deutschheft_theme`
+- 本地存储：`deutschheft_v1`（复习标记/测验成绩）、`deutschheft_notion_imports`（导入笔记）、`deutschheft_theme`、`deutschheft_annotate`（全文标注开关）
+- **音标体系**：① 词卡正面 IPA+谐音；② 课程 86 句型 / 课文 57 句句子级 IPA（数据内置）；③ annotate.js 全文词级 ruby 标注 + 点击朗读（浏览器 de-DE 语音）；右下角「音标」开关
+- 静态资源版本号：HTML 中 `?v=N`，改 JS/CSS 后需同步 +1
 
 ## 部署
 

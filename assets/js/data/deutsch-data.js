@@ -31,9 +31,9 @@ const LESSONS = [
       "名词首字母大写：der Buchstabe / das Alphabet，动词 buchstabieren 小写"
     ],
     sentences: [
-      { de: "Wie heißen Sie? Können Sie das bitte buchstabieren?", zh: "您叫什么名字？能请您拼读一下吗？" },
-      { de: "Jian → J (yot) – i (i:) – a (a:) – n (ɛn)", zh: "用音名拼读名字 Jian" },
-      { de: "Wu → W (ve:) – u (u:)", zh: "用音名拼读姓氏 Wu" }
+      { de: "Wie heißen Sie? Können Sie das bitte buchstabieren?", zh: "您叫什么名字？能请您拼读一下吗？", ipa: "[viː ˈhaɪ̯sn̩ ziː | kœnən ziː das ˈbɪtə ˈbuːxʃtabiːʁən]"  },
+      { de: "Jian → J (yot) – i (i:) – a (a:) – n (ɛn)", zh: "用音名拼读名字 Jian", ipa: "[jɔt · iː · aː · ɛn]"  },
+      { de: "Wu → W (ve:) – u (u:)", zh: "用音名拼读姓氏 Wu", ipa: "[veː · uː]"  }
     ]
   },
   {
@@ -51,15 +51,15 @@ const LESSONS = [
       "sein + 形容词描述状态（krank, müde...）；haben + 名词宾语表拥有（Ich habe Geld.）"
     ],
     sentences: [
-      { de: "Mein Name ist Jian.", zh: "我的名字是 Jian。" },
-      { de: "Ich komme aus China.", zh: "我来自中国。" },
-      { de: "Ich wohne in XX.", zh: "我住在XX。" },
-      { de: "Ich bin 34 Jahre alt.", zh: "我今年 34 岁。" },
-      { de: "Ich arbeite für Max Planck.", zh: "我在马克斯·普朗克研究所工作。" },
-      { de: "Ich studiere Biologie.", zh: "我学习生物学。" },
-      { de: "Meine Hobbys sind Tennis spielen und Laufen.", zh: "我的爱好是打网球和跑步。" },
-      { de: "Ich bin ein Angestellter.", zh: "我是一名职员。" },
-      { de: "Ich habe das Haus.", zh: "我有这栋房子。" }
+      { de: "Mein Name ist Jian.", zh: "我的名字是 Jian。", ipa: "[maɪ̯n ˈnaːmə ɪst d͡ʒiːan]"  },
+      { de: "Ich komme aus China.", zh: "我来自中国。", ipa: "[ɪç ˈkɔmə aʊ̯s ˈçiːna]"  },
+      { de: "Ich wohne in XX.", zh: "我住在XX。", ipa: "[ɪç ˈvoːnə ɪn ˈʔɪks ˈʔɪks]"  },
+      { de: "Ich bin 34 Jahre alt.", zh: "我今年 34 岁。", ipa: "[ɪç bɪn ˈfiːɐ̯ʊntˈdʁaɪ̯sɪç ˈjaːʁə alt]"  },
+      { de: "Ich arbeite für Max Planck.", zh: "我在马克斯·普朗克研究所工作。", ipa: "[ɪç ˈʔaʁbaɪ̯tə fyːɐ̯ maks ˈplaŋk]"  },
+      { de: "Ich studiere Biologie.", zh: "我学习生物学。", ipa: "[ɪç ʃtuˈdiːʁə bioloˈɡiː]"  },
+      { de: "Meine Hobbys sind Tennis spielen und Laufen.", zh: "我的爱好是打网球和跑步。", ipa: "[ˈmaɪ̯nə ˈhɔbis zɪnt ˈtɛnɪs ˈʃpiːlən ʊnt ˈlaʊ̯fn̩]"  },
+      { de: "Ich bin ein Angestellter.", zh: "我是一名职员。", ipa: "[ɪç bɪn aɪ̯n ˈanɡəʃtɛltɐ]"  },
+      { de: "Ich habe das Haus.", zh: "我有这栋房子。", ipa: "[ɪç ˈhaːbə das haʊ̯s]"  }
     ]
   },
   {
@@ -77,11 +77,11 @@ const LESSONS = [
       "电话号码 / 邮编：初学者逐位念最安全（null-eins-sieben-sechs...）"
     ],
     sentences: [
-      { de: "34 = vierunddreißig", zh: "4 + und + 30，先个位后十位" },
-      { de: "79 = neunundsiebzig", zh: "9 + und + 70" },
-      { de: "45 = fünfundvierzig", zh: "5 + und + 40" },
-      { de: "Meine Telefonnummer ist null-eins-sieben-sechs ...", zh: "我的电话号码是 0176……（逐位念）" },
-      { de: "35390 → drei-fünf-drei-neun-null", zh: "邮编 35390 逐位读出" }
+      { de: "34 = vierunddreißig", zh: "4 + und + 30，先个位后十位", ipa: "[fiːɐ̯ʊntˈdʁaɪ̯sɪç]"  },
+      { de: "79 = neunundsiebzig", zh: "9 + und + 70", ipa: "[nɔʏnʊntˈziːpt͡sɪç]"  },
+      { de: "45 = fünfundvierzig", zh: "5 + und + 40", ipa: "[fʏnfʊntˈfɪʁt͡sɪç]"  },
+      { de: "Meine Telefonnummer ist null-eins-sieben-sechs ...", zh: "我的电话号码是 0176……（逐位念）", ipa: "[ˈmaɪ̯nə teleˈfoːnˌnʊmɐ ɪst nʊl aɪns ˈziːbn̩ zɛks]"  },
+      { de: "35390 → drei-fünf-drei-neun-null", zh: "邮编 35390 逐位读出", ipa: "[dʁaɪ̯ fʏnf dʁaɪ̯ nɔʏn nʊl]"  }
     ]
   },
   {
@@ -99,13 +99,13 @@ const LESSONS = [
       "-chen 指小词永远中性：das Hähnchen"
     ],
     sentences: [
-      { de: "Ich esse gern Salat.", zh: "我喜欢吃沙拉。" },
-      { de: "Was trinkst du gern?", zh: "你喜欢喝什么？" },
-      { de: "Ich hätte gern eine Pizza und ein Wasser.", zh: "我想要一份比萨和一杯水。（最礼貌点餐式）" },
-      { de: "Ich nehme einen Kaffee.", zh: "我要一杯咖啡。（阳性 → einen）" },
-      { de: "Was kostet das?", zh: "这个多少钱？" },
-      { de: "Die Rechnung, bitte.", zh: "请买单。" },
-      { de: "— Noch etwas? — Nein, danke.", zh: "— 还要别的吗？— 不用了，谢谢。" }
+      { de: "Ich esse gern Salat.", zh: "我喜欢吃沙拉。", ipa: "[ɪç ˈʔɛsə ɡɛʁn zaˈlaːt]"  },
+      { de: "Was trinkst du gern?", zh: "你喜欢喝什么？", ipa: "[vas tʁɪŋkst duː ɡɛʁn]"  },
+      { de: "Ich hätte gern eine Pizza und ein Wasser.", zh: "我想要一份比萨和一杯水。（最礼貌点餐式）", ipa: "[ɪç ˈhɛtə ɡɛʁn ˈʔaɪ̯nə ˈpɪt͡sa ʊnt aɪ̯n ˈvasɐ]"  },
+      { de: "Ich nehme einen Kaffee.", zh: "我要一杯咖啡。（阳性 → einen）", ipa: "[ɪç ˈneːmə ˈʔaɪ̯nən ˈkafe]"  },
+      { de: "Was kostet das?", zh: "这个多少钱？", ipa: "[vas ˈkɔstət das]"  },
+      { de: "Die Rechnung, bitte.", zh: "请买单。", ipa: "[diː ˈʁɛçnʊŋ ˈbɪtə]"  },
+      { de: "— Noch etwas? — Nein, danke.", zh: "— 还要别的吗？— 不用了，谢谢。", ipa: "[nɔx ˈʔɛtvas | naɪ̯n ˈdankə]"  }
     ]
   },
   {
@@ -123,14 +123,14 @@ const LESSONS = [
       "喜好梯度：gern / sehr gern / nicht gern"
     ],
     sentences: [
-      { de: "Ich lese gern.", zh: "我喜欢看书。" },
-      { de: "Ich schwimme sehr gern.", zh: "我非常喜欢游泳。" },
-      { de: "Ich tanze nicht gern.", zh: "我不喜欢跳舞。" },
-      { de: "Was machst du gern? / Was machen Sie gern?", zh: "你 / 您喜欢做什么？" },
-      { de: "Ich kaufe am Samstag ein.", zh: "我周六购物。（ein 甩句尾）" },
-      { de: "Er sieht gern fern.", zh: "他喜欢看电视。（换音 + 分离）" },
-      { de: "Mit Freunden koche ich gern.", zh: "我喜欢和朋友们一起做饭。（倒装）" },
-      { de: "Ich fahre Rad. / Ich spiele Fußball.", zh: "我骑自行车。/ 我踢足球。" }
+      { de: "Ich lese gern.", zh: "我喜欢看书。", ipa: "[ɪç ˈleːzə ɡɛʁn]"  },
+      { de: "Ich schwimme sehr gern.", zh: "我非常喜欢游泳。", ipa: "[ɪç ˈʃvɪmə zeːɐ̯ ɡɛʁn]"  },
+      { de: "Ich tanze nicht gern.", zh: "我不喜欢跳舞。", ipa: "[ɪç ˈtant͡sə nɪçt ɡɛʁn]"  },
+      { de: "Was machst du gern? / Was machen Sie gern?", zh: "你 / 您喜欢做什么？", ipa: "[vas maxst duː ɡɛʁn | vas ˈmaxn̩ ziː ɡɛʁn]"  },
+      { de: "Ich kaufe am Samstag ein.", zh: "我周六购物。（ein 甩句尾）", ipa: "[ɪç ˈkaʊ̯fə am ˈzamstaːk aɪ̯n]"  },
+      { de: "Er sieht gern fern.", zh: "他喜欢看电视。（换音 + 分离）", ipa: "[eːɐ̯ ziːt ɡɛʁn fɛʁn]"  },
+      { de: "Mit Freunden koche ich gern.", zh: "我喜欢和朋友们一起做饭。（倒装）", ipa: "[mɪt ˈfʁɔʏ̯ndn̩ ˈkɔxə ɪç ɡɛʁn]"  },
+      { de: "Ich fahre Rad. / Ich spiele Fußball.", zh: "我骑自行车。/ 我踢足球。", ipa: "[ɪç ˈfaːʁə ʁaːt | ɪç ˈʃpiːlə ˈfuːsbal]"  }
     ]
   },
   {
@@ -147,12 +147,12 @@ const LESSONS = [
       "写作任务 Übung 16：8–10 句描述一天，时间副词开头练倒装"
     ],
     sentences: [
-      { de: "Maria hat eine kleine Wohnung.", zh: "Maria 有一套小公寓。" },
-      { de: "Es gibt ein Wohnzimmer, ein Schlafzimmer und eine Küche.", zh: "（公寓里）有一间客厅、一间卧室和一间厨房。" },
-      { de: "Im Wohnzimmer gibt es ein Sofa und einen Fernseher.", zh: "客厅里有一张沙发和一台电视机。" },
-      { de: "Der Tisch ist in der Küche.", zh: "桌子在厨房里。（die Küche → in der）" },
-      { de: "Das Bett ist im Schlafzimmer.", zh: "床在卧室里。（das → im）" },
-      { de: "Der Grill steht auf dem Balkon.", zh: "烤肉架在阳台上。" }
+      { de: "Maria hat eine kleine Wohnung.", zh: "Maria 有一套小公寓。", ipa: "[maˈʁiːa hat ˈʔaɪ̯nə ˈklaɪ̯nə ˈvoːnʊŋ]"  },
+      { de: "Es gibt ein Wohnzimmer, ein Schlafzimmer und eine Küche.", zh: "（公寓里）有一间客厅、一间卧室和一间厨房。", ipa: "[ɛs ɡiːpt aɪ̯n ˈvoːnˌt͡sɪmɐ aɪ̯n ˈʃlaːfˌt͡sɪmɐ ʊnt ˈʔaɪ̯nə ˈkʏçə]"  },
+      { de: "Im Wohnzimmer gibt es ein Sofa und einen Fernseher.", zh: "客厅里有一张沙发和一台电视机。", ipa: "[ɪm ˈvoːnˌt͡sɪmɐ ɡiːpt ɛs aɪ̯n ˈzoːfa ʊnt ˈʔaɪ̯nən ˈfɛʁnzeːɐ]"  },
+      { de: "Der Tisch ist in der Küche.", zh: "桌子在厨房里。（die Küche → in der）", ipa: "[deːɐ̯ tɪʃ ɪst ɪn deːɐ̯ ˈkʏçə]"  },
+      { de: "Das Bett ist im Schlafzimmer.", zh: "床在卧室里。（das → im）", ipa: "[das bɛt ɪst ɪm ˈʃlaːfˌt͡sɪmɐ]"  },
+      { de: "Der Grill steht auf dem Balkon.", zh: "烤肉架在阳台上。", ipa: "[deːɐ̯ ɡʁɪl ʃteːt aʊ̯f deːm balˈkɔŋ]"  }
     ]
   },
   {
@@ -170,14 +170,14 @@ const LESSONS = [
       "问时间：Wie viel Uhr ist es? / Wie spät ist es?；在几点用 um"
     ],
     sentences: [
-      { de: "Es ist Viertel nach acht.", zh: "8:15（8 点过了一刻）。" },
-      { de: "Es ist halb neun.", zh: "8:30！（通往 9 点的一半）" },
-      { de: "Es ist Viertel vor neun.", zh: "8:45（差一刻到 9 点）。" },
-      { de: "Ich stehe um halb acht auf.", zh: "我 7:30 起床。" },
-      { de: "Morgens trinke ich Kaffee.", zh: "我早上喝咖啡。（倒装：动词第二）" },
-      { de: "Abends sehe ich fern.", zh: "我晚上看电视。" },
-      { de: "Wann stehen Sie auf?", zh: "您几点起床？" },
-      { de: "Ich schlafe um halb elf.", zh: "我 10:30 睡觉。" }
+      { de: "Es ist Viertel nach acht.", zh: "8:15（8 点过了一刻）。", ipa: "[ɛs ɪst ˈfɪʁtl̩ naːx axt]"  },
+      { de: "Es ist halb neun.", zh: "8:30！（通往 9 点的一半）", ipa: "[ɛs ɪst halp nɔʏn]"  },
+      { de: "Es ist Viertel vor neun.", zh: "8:45（差一刻到 9 点）。", ipa: "[ɛs ɪst ˈfɪʁtl̩ foːɐ̯ nɔʏn]"  },
+      { de: "Ich stehe um halb acht auf.", zh: "我 7:30 起床。", ipa: "[ɪç ˈʃteːə ʊm halp axt aʊ̯f]"  },
+      { de: "Morgens trinke ich Kaffee.", zh: "我早上喝咖啡。（倒装：动词第二）", ipa: "[ˈmɔʁɡn̩s ˈtʁɪŋkə ɪç ˈkafe]"  },
+      { de: "Abends sehe ich fern.", zh: "我晚上看电视。", ipa: "[ˈaːbn̩t͡s ˈzeːə ɪç fɛʁn]"  },
+      { de: "Wann stehen Sie auf?", zh: "您几点起床？", ipa: "[van ˈʃteːən ziː aʊ̯f]"  },
+      { de: "Ich schlafe um halb elf.", zh: "我 10:30 睡觉。", ipa: "[ɪç ˈʃlaːfə ʊm halp ʔɛlf]"  }
     ]
   },
   {
@@ -194,12 +194,12 @@ const LESSONS = [
       "季节句倒装：Im Herbst sind die Blätter rot und gelb."
     ],
     sentences: [
-      { de: "Ich trage gern Jeans.", zh: "我喜欢穿牛仔裤。" },
-      { de: "Meine Lieblingsfarbe ist Blau.", zh: "我最喜欢的颜色是蓝色。" },
-      { de: "Ich kaufe Kleidung bei H&M.", zh: "我常在 H&M 买衣服。" },
-      { de: "— Kann ich Ihnen helfen? — Welche Größe?", zh: "— 我能帮您吗？— 什么尺码？（店员用语）" },
-      { de: "Wie viel kostet das? — Ich nehme es.", zh: "这个多少钱？— 我要了。" },
-      { de: "Im Herbst sind die Blätter rot und gelb.", zh: "秋天，树叶是红色和黄色的。" }
+      { de: "Ich trage gern Jeans.", zh: "我喜欢穿牛仔裤。", ipa: "[ɪç ˈtʁaːɡə ɡɛʁn d͡ʒiːns]"  },
+      { de: "Meine Lieblingsfarbe ist Blau.", zh: "我最喜欢的颜色是蓝色。", ipa: "[ˈmaɪ̯nə ˈliːplɪŋsˌfaʁbə ɪst blaʊ̯]"  },
+      { de: "Ich kaufe Kleidung bei H&M.", zh: "我常在 H&M 买衣服。", ipa: "[ɪç ˈkaʊ̯fə ˈklaɪ̯dʊŋ baɪ̯ haːʔʊntˈʔɛm]"  },
+      { de: "— Kann ich Ihnen helfen? — Welche Größe?", zh: "— 我能帮您吗？— 什么尺码？（店员用语）", ipa: "[kan ɪç ˈʔiːnən ˈhɛlfn̩ | ˈvɛlçə ˈɡʁøːsə]"  },
+      { de: "Wie viel kostet das? — Ich nehme es.", zh: "这个多少钱？— 我要了。", ipa: "[viː fiːl ˈkɔstət das | ɪç ˈneːmə ʔɛs]"  },
+      { de: "Im Herbst sind die Blätter rot und gelb.", zh: "秋天，树叶是红色和黄色的。", ipa: "[ɪm hɛʁpst zɪnt diː ˈblɛtɐ ʁoːt ʊnt ɡɛlp]"  }
     ]
   },
   {
@@ -216,13 +216,13 @@ const LESSONS = [
       "节日词汇：Ostern（der Osterhase, das Osterei）、Weihnachten（der Glühwein, der Weihnachtsmarkt）、das Erntedankfest、das Oktoberfest"
     ],
     sentences: [
-      { de: "Es ist im Sommer heiß.", zh: "夏天热。（正装）" },
-      { de: "Im Winter ist es kalt.", zh: "冬天冷。（倒装）" },
-      { de: "Im Herbst regnet es oft.", zh: "秋天经常下雨。" },
-      { de: "Heute ist es sehr warm.", zh: "今天非常暖和。" },
-      { de: "Im Frühling blühen die Blumen.", zh: "春天百花盛开。" },
-      { de: "Im Winter bauen die Kinder einen Schneemann.", zh: "冬天孩子们堆雪人。" },
-      { de: "Das Gras ist grün.", zh: "草是绿色的。" }
+      { de: "Es ist im Sommer heiß.", zh: "夏天热。（正装）", ipa: "[ɛs ɪst ɪm ˈzɔmɐ haɪ̯s]"  },
+      { de: "Im Winter ist es kalt.", zh: "冬天冷。（倒装）", ipa: "[ɪm ˈvɪntɐ ɪst ɛs kalt]"  },
+      { de: "Im Herbst regnet es oft.", zh: "秋天经常下雨。", ipa: "[ɪm hɛʁpst ˈʁeːɡnət ɛs ʔɔft]"  },
+      { de: "Heute ist es sehr warm.", zh: "今天非常暖和。", ipa: "[ˈhɔʏ̯tə ɪst ɛs zeːɐ̯ vaʁm]"  },
+      { de: "Im Frühling blühen die Blumen.", zh: "春天百花盛开。", ipa: "[ɪm ˈfʁyːlɪŋ ˈblyːən diː ˈbluːmən]"  },
+      { de: "Im Winter bauen die Kinder einen Schneemann.", zh: "冬天孩子们堆雪人。", ipa: "[ɪm ˈvɪntɐ ˈbaʊ̯ən diː ˈkɪndɐ ˈʔaɪ̯nən ˈʃneːman]"  },
+      { de: "Das Gras ist grün.", zh: "草是绿色的。", ipa: "[das ɡʁaːs ɪst ɡʁyːn]"  }
     ]
   },
   {
@@ -240,14 +240,14 @@ const LESSONS = [
       "指路高频：geradeaus 直走、links/rechts、an der Ampel、vorbei（经过）、bis（直到）"
     ],
     sentences: [
-      { de: "Wo ist die Bank?", zh: "银行在哪里？（问静态位置）" },
-      { de: "Wie komme ich zum Bahnhof / zur Arztpraxis?", zh: "去火车站 / 诊所怎么走？（问动态路线）" },
-      { de: "Gehen Sie geradeaus.", zh: "请您直走。" },
-      { de: "Gehen Sie an der Ampel nach links.", zh: "请在红绿灯处左转。" },
-      { de: "Ich fahre mit dem Bus.", zh: "我乘公交车。" },
-      { de: "Ich gehe zu Fuß.", zh: "我步行去。" },
-      { de: "Die Arztpraxis ist neben dem Bäcker.", zh: "诊所在面包店旁边。" },
-      { de: "Geh die Straße runter, dann links neben dem Bäcker — da ist die Arztpraxis.", zh: "沿街往下走，然后左转，面包店旁边就是诊所。" }
+      { de: "Wo ist die Bank?", zh: "银行在哪里？（问静态位置）", ipa: "[voː ɪst diː baŋk]"  },
+      { de: "Wie komme ich zum Bahnhof / zur Arztpraxis?", zh: "去火车站 / 诊所怎么走？（问动态路线）", ipa: "[viː ˈkɔmə ɪç t͡sʊm ˈbaːnˌhoːf | t͡suːɐ̯ ˈʔaːɐ̯tstˌpʁaksɪs]"  },
+      { de: "Gehen Sie geradeaus.", zh: "请您直走。", ipa: "[ˈɡeːən ziː ɡəˈʁaːdəʔaʊ̯s]"  },
+      { de: "Gehen Sie an der Ampel nach links.", zh: "请在红绿灯处左转。", ipa: "[ˈɡeːən ziː an deːɐ̯ ˈampl̩ naːx lɪŋks]"  },
+      { de: "Ich fahre mit dem Bus.", zh: "我乘公交车。", ipa: "[ɪç ˈfaːʁə mɪt deːm bʊs]"  },
+      { de: "Ich gehe zu Fuß.", zh: "我步行去。", ipa: "[ɪç ˈɡeːə t͡suː fuːs]"  },
+      { de: "Die Arztpraxis ist neben dem Bäcker.", zh: "诊所在面包店旁边。", ipa: "[diː ˈʔaːɐ̯tstˌpʁaksɪs ɪst ˈneːbm̩ deːm ˈbɛkɐ]"  },
+      { de: "Geh die Straße runter, dann links neben dem Bäcker — da ist die Arztpraxis.", zh: "沿街往下走，然后左转，面包店旁边就是诊所。", ipa: "[ɡeː diː ˈʃtʁaːsə ˈʁʊntɐ dan lɪŋks ˈneːbm̩ deːm ˈbɛkɐ | daː ɪst diː ˈʔaːɐ̯tstˌpʁaksɪs]"  }
     ]
   },
   {
@@ -264,12 +264,12 @@ const LESSONS = [
       "状态表达：Ich bin beschäftigt / spät dran.；Überstunden machen 加班；länger bleiben 多留一会"
     ],
     sentences: [
-      { de: "Der Drucker funktioniert nicht.", zh: "打印机坏了 / 不工作了。" },
-      { de: "Ich brauche einen Tacker.", zh: "我需要一个订书机。（阳性 einen）" },
-      { de: "Ich mache heute Überstunden.", zh: "我今天加班。" },
-      { de: "Ich bleibe länger.", zh: "我多留一会儿。" },
-      { de: "Ich bin spät dran.", zh: "我快迟到了。" },
-      { de: "Wir haben ein Meeting.", zh: "我们有个会议。" }
+      { de: "Der Drucker funktioniert nicht.", zh: "打印机坏了 / 不工作了。", ipa: "[deːɐ̯ ˈdʁʊkɐ fʊŋkt͡si̯oˈniːɐ̯t nɪçt]"  },
+      { de: "Ich brauche einen Tacker.", zh: "我需要一个订书机。（阳性 einen）", ipa: "[ɪç ˈbʁaʊ̯xə ˈʔaɪ̯nən ˈtakɐ]"  },
+      { de: "Ich mache heute Überstunden.", zh: "我今天加班。", ipa: "[ɪç ˈmaxə ˈhɔʏ̯tə ˈʔyːbɐˌʃtʊndn̩]"  },
+      { de: "Ich bleibe länger.", zh: "我多留一会儿。", ipa: "[ɪç ˈblaɪ̯bə ˈlɛŋɐ]"  },
+      { de: "Ich bin spät dran.", zh: "我快迟到了。", ipa: "[ɪç bɪn ʃpɛːt dʁaːn]"  },
+      { de: "Wir haben ein Meeting.", zh: "我们有个会议。", ipa: "[viːɐ̯ ˈhaːbn̩ aɪ̯n ˈmiːtɪŋ]"  }
     ]
   },
   {
@@ -287,12 +287,12 @@ const LESSONS = [
       "从句预热（动词后置）：Wenn ich ins Labor komme, ... / Bevor ich nach Hause gehe, ... / ... weil es immer etwas Neues zu entdecken gibt."
     ],
     sentences: [
-      { de: "Ich arbeite als Biologe in einem Labor.", zh: "我在实验室担任生物学家。" },
-      { de: "Am Morgen kontrolliere ich meine Experimente.", zh: "早上我检查我的实验。（倒装）" },
-      { de: "Wenn ich ins Labor komme, ziehe ich zuerst meinen Laborkittel an.", zh: "我到实验室时，先穿上实验服。" },
-      { de: "Gegen 10:30 Uhr mache ich eine kurze Pause.", zh: "10 点半左右我短暂休息。" },
-      { de: "Womit untersucht er die Pflanzenzellen? — Mit einem Mikroskop.", zh: "他用什么研究植物细胞？— 用显微镜。" },
-      { de: "Meine Arbeit ist manchmal schwierig, aber sie ist nie langweilig.", zh: "我的工作有时很难，但从不无聊。" }
+      { de: "Ich arbeite als Biologe in einem Labor.", zh: "我在实验室担任生物学家。", ipa: "[ɪç ˈʔaʁbaɪ̯tə als bi̯oˈloːɡə ɪn ˈʔaɪ̯nəm laˈboːɐ̯]"  },
+      { de: "Am Morgen kontrolliere ich meine Experimente.", zh: "早上我检查我的实验。（倒装）", ipa: "[am ˈmɔʁɡn̩ kɔntʁoˈliːʁə ɪç ˈmaɪ̯nə ʔɛkspeʁiˈmɛntə]"  },
+      { de: "Wenn ich ins Labor komme, ziehe ich zuerst meinen Laborkittel an.", zh: "我到实验室时，先穿上实验服。", ipa: "[vɛn ɪç ʔɪns laˈboːɐ̯ ˈkɔmə ˈt͡siːʁə ɪç t͡suˈʔeːɐ̯st ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ an]"  },
+      { de: "Gegen 10:30 Uhr mache ich eine kurze Pause.", zh: "10 点半左右我短暂休息。", ipa: "[ˈɡeːɡn̩ ˈt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ˈmaxə ɪç ˈʔaɪ̯nə ˈkʊʁt͡sə ˈpaʊ̯zə]"  },
+      { de: "Womit untersucht er die Pflanzenzellen? — Mit einem Mikroskop.", zh: "他用什么研究植物细胞？— 用显微镜。", ipa: "[voˈmɪt ʊntɐˈzuːxt eːɐ̯ diː ˈpflant͡sn̩ˌt͡sɛln̩ | mɪt ˈʔaɪ̯nəm mikʁoˈskoːp]"  },
+      { de: "Meine Arbeit ist manchmal schwierig, aber sie ist nie langweilig.", zh: "我的工作有时很难，但从不无聊。", ipa: "[ˈmaɪ̯nə ˈʔaʁbaɪ̯t ɪst ˈmançmaːl ˈʃviːʁɪç ˈʔaːbɐ ziː ɪst niː ˈlaŋvaɪ̯lɪç]"  }
     ]
   },
   {
@@ -310,13 +310,13 @@ const LESSONS = [
       "过去时残留：war（sein 的 Präteritum）描述状态时可用（Am Abend war Mia müde.）"
     ],
     sentences: [
-      { de: "Gestern hat sie einen besonders interessanten Arbeitstag gehabt.", zh: "昨天她度过了特别有趣的一个工作日。" },
-      { de: "Mia ist schon um 7:15 Uhr ins Labor gekommen.", zh: "Mia 早上 7:15 就来到了实验室。（位移 → sein）" },
-      { de: "Sie hat zuerst ihren Computer eingeschaltet.", zh: "她首先打开了电脑。（可分：ein+ge+schaltet）" },
-      { de: "Sie hat alle Behälter kontrolliert und die Nummern notiert.", zh: "她检查了所有容器并记录了编号。（-ieren 无 ge-）" },
-      { de: "Bei einer Probe haben sie ein unerwartetes Ergebnis gefunden.", zh: "在一份样品中她们发现了意外的结果。" },
-      { de: "Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", zh: "16:30 她骑自行车回家了。（位移 → sein）" },
-      { de: "Trotzdem war sie zufrieden, denn sie hat etwas Neues gelernt.", zh: "但她依然很满足，因为她学到了新东西。" }
+      { de: "Gestern hat sie einen besonders interessanten Arbeitstag gehabt.", zh: "昨天她度过了特别有趣的一个工作日。", ipa: "[ˈɡɛstɐn hat ziː ˈʔaɪ̯nən bəˈzɔndɐs ʔɪntəʁɛˈsantn̩ ˈʔaʁbaɪ̯tstaːk ɡəˈhaːpt]"  },
+      { de: "Mia ist schon um 7:15 Uhr ins Labor gekommen.", zh: "Mia 早上 7:15 就来到了实验室。（位移 → sein）", ipa: "[ˈmiːa ɪst ʃoːn ʊm ˈziːbn̩ ʊntˈt͡seːn uːɐ̯ ʔɪns laˈboːɐ̯ ɡəˈkɔmən]"  },
+      { de: "Sie hat zuerst ihren Computer eingeschaltet.", zh: "她首先打开了电脑。（可分：ein+ge+schaltet）", ipa: "[ziː hat t͡suˈʔeːɐ̯st ˈʔiːʁən kɔmˈpjuːtɐ ˈʔaɪ̯nɡəˌʃaltət]"  },
+      { de: "Sie hat alle Behälter kontrolliert und die Nummern notiert.", zh: "她检查了所有容器并记录了编号。（-ieren 无 ge-）", ipa: "[ziː hat ˈʔalə bəˈhɛltɐ kɔntʁoˈliːɐ̯t ʊnt diː ˈnʊmɐn noˈtiːɐ̯t]"  },
+      { de: "Bei einer Probe haben sie ein unerwartetes Ergebnis gefunden.", zh: "在一份样品中她们发现了意外的结果。", ipa: "[baɪ̯ ˈʔaɪ̯nɐ ˈpʁoːbə ˈhaːbn̩ ziː aɪ̯n ʊnʔɛɐ̯ˈvaʁtətəs ʔɛɐ̯ˈɡeːpnɪs ɡəˈfʊndn̩]"  },
+      { de: "Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", zh: "16:30 她骑自行车回家了。（位移 → sein）", ipa: "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ɪst ziː mɪt deːm ˈfaːɐ̯ʁaːt naːx ˈhaʊ̯zə ɡəˈfaːʁən]"  },
+      { de: "Trotzdem war sie zufrieden, denn sie hat etwas Neues gelernt.", zh: "但她依然很满足，因为她学到了新东西。", ipa: "[ˈtʁɔt͡sdɛm vaːɐ̯ ziː t͡suˈfʁiːdn̩ dɛn ziː hat ˈʔɛtvas ˈnɔʏ̯əs ɡəˈlɛʁnt]" }
     ]
   }
 ];
@@ -787,16 +787,16 @@ const TEXTS = [
     level: "A1 → A2 过渡", date: "2026-08-31",
     intro: "以生物学家 Daniel 的日常工作为蓝本的叙事范文，按时间顺序展开，是现在时、可分离动词与倒装语序的综合演练。",
     paragraphs: [
-      { title: "开场介绍", de: "Mein Name ist Daniel. Ich bin 38 Jahre alt und arbeite als Biologe in einem Labor. Ich interessiere mich besonders für Pflanzen und Zellen.", zh: "我叫 Daniel。我 38 岁，在实验室担任生物学家。我对植物和细胞特别感兴趣。" },
-      { title: "早晨准备", de: "Mein Arbeitstag beginnt um 8:00 Uhr. Wenn ich ins Labor komme, ziehe ich zuerst meinen Laborkittel an. Dann wasche ich meine Hände und bereite meinen Arbeitsplatz vor.", zh: "我的工作日 8 点开始。到实验室时，我先穿上实验服，然后洗手并准备工作台。", verbs: ["anziehen 穿上（可分）", "vorbereiten 准备（可分）", "Wenn 从句：动词 komme 后置"] },
-      { title: "上午工作", de: "Am Morgen kontrolliere ich meine Experimente. Ich untersuche Pflanzenzellen und arbeite oft mit einem Mikroskop. Unter dem Mikroskop kann ich sehr kleine Dinge sehen, die man mit den Augen nicht sehen kann.", zh: "早上我检查实验。我研究植物细胞，经常用显微镜工作。在显微镜下我能看到肉眼看不见的微小东西。", verbs: ["Am Morgen 开头 → 倒装", "unter + Dativ（静态位置）"] },
-      { title: "做记录", de: "Ich mache auch viele Notizen. Für jedes Experiment schreibe ich auf, was ich mache und was ich beobachte. Das ist sehr wichtig für meine Arbeit.", zh: "我也做很多笔记。每个实验我都记下我做了什么、观察到了什么。这对我的工作非常重要。", verbs: ["aufschreiben 记录（可分）", "Notizen machen 做笔记"] },
-      { title: "茶歇交流", de: "Gegen 10:30 Uhr mache ich eine kurze Pause. Ich trinke einen Kaffee und spreche mit meinen Kollegen. Wir sprechen über unsere Arbeit, aber manchmal auch über das Wochenende oder unsere Familien.", zh: "10 点半左右我短暂休息。我喝杯咖啡，和同事们聊天。我们聊工作，有时也聊周末或家人。", verbs: ["gegen + 时间 ≈ 将近", "sprechen über + Akk 谈论"] },
-      { title: "返回实验室", de: "Danach gehe ich zurück ins Labor. Manchmal bereite ich neue Experimente vor. Ich benutze verschiedene Geräte und untersuche Proben. Eine Probe kann zum Beispiel ein kleines Stück von einer Pflanze sein.", zh: "之后我回到实验室。有时我准备新实验。我使用各种仪器并检测样品。样品可以是比如一小块植物。" },
-      { title: "午休", de: "Um 12:30 Uhr mache ich Mittagspause. Meistens esse ich mit meinen Kollegen in der Kantine.", zh: "12 点半我午休。我通常和同事们在食堂吃饭。", verbs: ["12:30 口语 = halb eins"] },
-      { title: "下午工作", de: "Am Nachmittag arbeite ich oft am Computer. Ich sehe mir die Ergebnisse meiner Experimente an und schreibe Berichte. Manchmal haben wir auch eine Besprechung. Dann sprechen wir über neue Projekte und unsere Forschung.", zh: "下午我常在电脑前工作。我查看实验结果、撰写报告。有时我们也开会，讨论新项目和研究。", verbs: ["ansehen 查看（可分）", "eine Besprechung haben 开会"] },
-      { title: "下班收尾", de: "Um 17:00 Uhr ist mein Arbeitstag normalerweise zu Ende. Bevor ich nach Hause gehe, räume ich meinen Arbeitsplatz auf und kontrolliere noch einmal meine Experimente.", zh: "我的工作日常在 17 点结束。回家前，我整理工作台并再次检查实验。", verbs: ["aufräumen 整理（可分）", "Bevor 从句：动词 gehe 后置"] },
-      { title: "总结感受", de: "Meine Arbeit ist manchmal schwierig, aber sie ist nie langweilig. Ich mag Biologie, weil es immer etwas Neues zu entdecken gibt.", zh: "我的工作有时很难，但从不无聊。我喜欢生物学，因为总有新东西可以发现。", verbs: ["weil 从句：动词 gibt 后置"] }
+      { title: "开场介绍", de: "Mein Name ist Daniel. Ich bin 38 Jahre alt und arbeite als Biologe in einem Labor. Ich interessiere mich besonders für Pflanzen und Zellen.", ips: ["[maɪ̯n ˈnaːmə ɪst ˈdaːni̯ɛl]", "[ɪç bɪn ˈʔaxtʊntˈdʁaɪ̯sɪç ˈjaːʁə alt ʊnt ˈʔaʁbaɪ̯tə als bi̯oˈloːɡə ɪn ˈʔaɪ̯nəm laˈboːɐ̯]", "[ɪç ʔɪntəʁɛˈsiːʁə mɪç bəˈzɔndɐs fyːɐ̯ ˈpflant͡sn̩ ʊnt ˈt͡sɛln̩]"], zh: "我叫 Daniel。我 38 岁，在实验室担任生物学家。我对植物和细胞特别感兴趣。" },
+      { title: "早晨准备", de: "Mein Arbeitstag beginnt um 8:00 Uhr. Wenn ich ins Labor komme, ziehe ich zuerst meinen Laborkittel an. Dann wasche ich meine Hände und bereite meinen Arbeitsplatz vor.", ips: ["[maɪ̯n ˈʔaʁbaɪ̯tstaːk bəˈɡɪnt ʊm ˈʔaxt uːɐ̯]", "[vɛn ɪç ʔɪns laˈboːɐ̯ ˈkɔmə ˈt͡siːʁə ɪç t͡suˈʔeːɐ̯st ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ an]", "[dan ˈvaʃə ɪç ˈmaɪ̯nə ˈhɛndə ʊnt bəˈʁaɪ̯tə ˈmaɪ̯nən ˈʔaʁbaɪ̯t͡sˌplat͡s foːɐ̯]"], zh: "我的工作日 8 点开始。到实验室时，我先穿上实验服，然后洗手并准备工作台。", verbs: ["anziehen 穿上（可分）", "vorbereiten 准备（可分）", "Wenn 从句：动词 komme 后置"] },
+      { title: "上午工作", de: "Am Morgen kontrolliere ich meine Experimente. Ich untersuche Pflanzenzellen und arbeite oft mit einem Mikroskop. Unter dem Mikroskop kann ich sehr kleine Dinge sehen, die man mit den Augen nicht sehen kann.", ips: ["[am ˈmɔʁɡn̩ kɔntʁoˈliːʁə ɪç ˈmaɪ̯nə ʔɛkspeʁiˈmɛntə]", "[ɪç ʔʊntɐˈzuːxə ˈpflant͡sn̩ˌt͡sɛln̩ ʊnt ˈʔaʁbaɪ̯tə ʔɔft mɪt ˈʔaɪ̯nəm mikʁoˈskoːp]", "[ʔʊntɐ deːm mikʁoˈskoːp kan ɪç zeːɐ̯ ˈklaɪ̯nə ˈdɪŋə ˈzeːən diː man mɪt deːn ˈʔaʊ̯ɡŋ nɪçt ˈzeːən kan]"], zh: "早上我检查实验。我研究植物细胞，经常用显微镜工作。在显微镜下我能看到肉眼看不见的微小东西。", verbs: ["Am Morgen 开头 → 倒装", "unter + Dativ（静态位置）"] },
+      { title: "做记录", de: "Ich mache auch viele Notizen. Für jedes Experiment schreibe ich auf, was ich mache und was ich beobachte. Das ist sehr wichtig für meine Arbeit.", ips: ["[ɪç ˈmaxə aʊ̯x ˈfiːlə noˈtiːt͡sn̩]", "[fyːɐ̯ ˈjeːdəs ʔɛkspeʁiˈmɛnt ˈʃʁaɪ̯bə ɪç aʊ̯f vas ɪç ˈmaxə ʊnt vas ɪç bəˈʔoːbaxtə]", "[das ɪst zeːɐ̯ ˈvɪçtɪç fyːɐ̯ ˈmaɪ̯nə ˈʔaʁbaɪ̯t]"], zh: "我也做很多笔记。每个实验我都记下我做了什么、观察到了什么。这对我的工作非常重要。", verbs: ["aufschreiben 记录（可分）", "Notizen machen 做笔记"] },
+      { title: "茶歇交流", de: "Gegen 10:30 Uhr mache ich eine kurze Pause. Ich trinke einen Kaffee und spreche mit meinen Kollegen. Wir sprechen über unsere Arbeit, aber manchmal auch über das Wochenende oder unsere Familien.", ips: ["[ˈɡeːɡn̩ ˈt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ˈmaxə ɪç ˈʔaɪ̯nə ˈkʊʁt͡sə ˈpaʊ̯zə]", "[ɪç ˈtʁɪŋkə ˈʔaɪ̯nən ˈkafe ʊnt ˈʃpʁɛçə mɪt ˈmaɪ̯nən kɔˈleːɡŋ]", "[viːɐ̯ ˈʃpʁɛçn̩ ˈʔyːbɐ ˈʔʊnzəʁə ˈʔaʁbaɪ̯t ˈʔaːbɐ ˈmançmaːl aʊ̯x ˈʔyːbɐ das ˈvɔxn̩ˌʔɛndə ˈʔoːdɐ ˈʔʊnzəʁə faˈmiːliən]"], zh: "10 点半左右我短暂休息。我喝杯咖啡，和同事们聊天。我们聊工作，有时也聊周末或家人。", verbs: ["gegen + 时间 ≈ 将近", "sprechen über + Akk 谈论"] },
+      { title: "返回实验室", de: "Danach gehe ich zurück ins Labor. Manchmal bereite ich neue Experimente vor. Ich benutze verschiedene Geräte und untersuche Proben. Eine Probe kann zum Beispiel ein kleines Stück von einer Pflanze sein.", ips: ["[daˈnaːx ˈɡeːə ɪç t͡suˈʁʏk ʔɪns laˈboːɐ̯]", "[ˈmançmaːl bəˈʁaɪ̯tə ɪç ˈnɔʏ̯ə ʔɛkspeʁiˈmɛntə foːɐ̯]", "[ɪç bəˈnʊt͡sə fɛɐ̯ˈʃiːdənə ɡəˈʁɛːtə ʊnt ʔʊntɐˈzuːxə ˈpʁoːbn̩]", "[ˈʔaɪ̯nə ˈpʁoːbə kan t͡sʊm ˈbaɪ̯ʃpiːl aɪ̯n ˈklaɪ̯nəs ʃtʏk fɔn ˈʔaɪ̯nɐ ˈpflant͡sə zaɪ̯n]"], zh: "之后我回到实验室。有时我准备新实验。我使用各种仪器并检测样品。样品可以是比如一小块植物。" },
+      { title: "午休", de: "Um 12:30 Uhr mache ich Mittagspause. Meistens esse ich mit meinen Kollegen in der Kantine.", ips: ["[ʊm ˈt͡svœlf uːɐ̯ ˈdʁaɪ̯sɪç ˈmaxə ɪç ˈmɪtaːkˌpaʊ̯zə]", "[ˈmaɪ̯stn̩s ˈʔɛsə ɪç mɪt ˈmaɪ̯nən kɔˈleːɡŋ ɪn deːɐ̯ kanˈtiːnə]"], zh: "12 点半我午休。我通常和同事们在食堂吃饭。", verbs: ["12:30 口语 = halb eins"] },
+      { title: "下午工作", de: "Am Nachmittag arbeite ich oft am Computer. Ich sehe mir die Ergebnisse meiner Experimente an und schreibe Berichte. Manchmal haben wir auch eine Besprechung. Dann sprechen wir über neue Projekte und unsere Forschung.", ips: ["[am ˈnaːxmɪtaːk ˈʔaʁbaɪ̯tə ɪç ʔɔft am kɔmˈpjuːtɐ]", "[ɪç ˈzeːə miːɐ̯ diː ʔɛɐ̯ˈɡeːbnɪsə maɪ̯nɐ ʔɛkspeʁiˈmɛntə an ʊnt ˈʃʁaɪ̯bə bəˈʁɪçtə]", "[ˈmançmaːl ˈhaːbn̩ viːɐ̯ aʊ̯x ˈʔaɪ̯nə bəˈʃpʁɛçʊŋ]", "[dan ˈʃpʁɛçn̩ viːɐ̯ ˈʔyːbɐ ˈnɔʏ̯ə pʁoˈjɛktə ʊnt ˈʔʊnzəʁə ˈfɔʁʃʊŋ]"], zh: "下午我常在电脑前工作。我查看实验结果、撰写报告。有时我们也开会，讨论新项目和研究。", verbs: ["ansehen 查看（可分）", "eine Besprechung haben 开会"] },
+      { title: "下班收尾", de: "Um 17:00 Uhr ist mein Arbeitstag normalerweise zu Ende. Bevor ich nach Hause gehe, räume ich meinen Arbeitsplatz auf und kontrolliere noch einmal meine Experimente.", ips: ["[ʊm ˈziːbn̩ˌt͡seːn uːɐ̯ ɪst maɪ̯n ˈʔaʁbaɪ̯tstaːk nɔʁmaˈlʔɛʁvaɪ̯zə t͡suː ˈʔɛndə]", "[bəˈfoːɐ̯ ɪç naːx ˈhaʊ̯zə ˈɡeːə ˈʁɔʏ̯mə ɪç ˈmaɪ̯nən ˈʔaʁbaɪ̯t͡sˌplat͡s aʊ̯f ʊnt kɔntʁoˈliːʁə nɔx ˈʔaɪ̯nmaːl ˈmaɪ̯nə ʔɛkspeʁiˈmɛntə]"], zh: "我的工作日常在 17 点结束。回家前，我整理工作台并再次检查实验。", verbs: ["aufräumen 整理（可分）", "Bevor 从句：动词 gehe 后置"] },
+      { title: "总结感受", de: "Meine Arbeit ist manchmal schwierig, aber sie ist nie langweilig. Ich mag Biologie, weil es immer etwas Neues zu entdecken gibt.", ips: ["[ˈmaɪ̯nə ˈʔaʁbaɪ̯t ɪst ˈmançmaːl ˈʃviːʁɪç ˈʔaːbɐ ziː ɪst niː ˈlaŋvaɪ̯lɪç]", "[ɪç maːk bioloˈɡiː vaɪ̯l ɛs ˈʔɪmɐ ˈʔɛtvas ˈnɔʏ̯əs t͡suː ʔɛntˈdɛkn̩ ɡiːpt]"], zh: "我的工作有时很难，但从不无聊。我喜欢生物学，因为总有新东西可以发现。", verbs: ["weil 从句：动词 gibt 后置"] }
     ]
   },
   {
@@ -805,16 +805,16 @@ const TEXTS = [
     level: "A1.2 · Das Perfekt", date: "2026-10-07",
     intro: "Mia 在食品检测实验室的一天——全文以现在完成时写成，是巩固 haben/sein + Partizip II 框架结构的最佳范本。",
     paragraphs: [
-      { title: "背景介绍", de: "Mia arbeitet als Biologin in einem kleinen Forschungslabor. Dort untersucht sie Lebensmittel und Mikroorganismen. Gestern hat sie einen besonders interessanten Arbeitstag gehabt.", zh: "Mia 在一家小型研究实验室担任生物学家。她在那里检测食品和微生物。昨天，她度过了特别有趣的一个工作日。", verbs: ["hat … gehabt（haben 的完成时）"] },
-      { title: "早晨的准备", de: "Am Morgen ist Mia schon um 7:15 Uhr ins Labor gekommen. Sie hat zuerst ihren Computer eingeschaltet und ihre E-Mails gelesen. Danach hat sie ihren Laborkittel angezogen und ihre Hände gewaschen.", zh: "早上 7:15，Mia 就来到了实验室。她首先打开电脑、读了电子邮件。之后她穿上实验服并洗了手。", verbs: ["ist … gekommen（位移 → sein）", "hat … eingeschaltet（可分）", "hat … gelesen", "hat … angezogen（可分）", "hat … gewaschen"] },
-      { title: "检查与登记样品", de: "Auf ihrem Tisch haben mehrere Proben aus einer Molkerei gestanden. Mia sollte untersuchen, ob in den Proben bestimmte Bakterien vorhanden sind. Zuerst hat sie alle Behälter kontrolliert und die Nummern der Proben notiert.", zh: "她的桌上放着几份来自乳品厂的样品。Mia 需要检测样品中是否存在特定细菌。首先，她检查了所有容器，并记录了样品编号。", verbs: ["haben … gestanden（stehen）", "hat … kontrolliert（-ieren 无 ge-）", "hat … notiert（-ieren 无 ge-）"] },
-      { title: "准备与同事协助", de: "Danach hat Mia kleine Mengen der Proben vorbereitet. Sie hat verschiedene Geräte benutzt und sehr genau gearbeitet. Eine Kollegin namens Elena ist später ins Labor gekommen und hat Mia bei der Arbeit geholfen.", zh: "随后，Mia 准备了少量样品。她使用了不同的仪器，工作非常细致。同事 Elena 随后来到实验室，协助了 Mia 的工作。", verbs: ["hat … vorbereitet（可分）", "hat … benutzt（be- 无 ge-）", "hat … gearbeitet", "ist … gekommen（sein）", "hat … geholfen（强变化 e→o）"] },
-      { title: "休息与交流", de: "Gegen 10:00 Uhr haben die beiden eine kurze Pause gemacht. Mia hat einen Kaffee getrunken und Elena hat einen Joghurt gegessen. Dabei haben sie über ihren Urlaub und ihre Pläne für das Wochenende gesprochen.", zh: "10 点左右，两人短暂休息。Mia 喝了杯咖啡，Elena 吃了盒酸奶。期间她们聊到了假期和周末计划。", verbs: ["haben … gemacht", "hat … getrunken（i→u）", "hat … gegessen", "haben … gesprochen（e→o）"] },
-      { title: "进一步检测与异常发现", de: "Nach der Pause haben Mia und Elena die Proben weiter untersucht. Bei einer Probe haben sie ein unerwartetes Ergebnis gefunden. Deshalb haben sie die Untersuchung noch einmal wiederholt.", zh: "休息过后，Mia 和 Elena 继续检测样品。在一份样品中，她们发现了一个意料之外的结果。因此她们把检测重新做了一遍。", verbs: ["haben … untersucht（unter- 无 ge-）", "haben … gefunden（i→u）", "haben … wiederholt（wieder- 无 ge-）"] },
-      { title: "午餐与录入数据", de: "Um 12:30 Uhr sind sie in die Kantine gegangen. Nach dem Mittagessen ist Mia zurück ins Labor gegangen. Dort hat sie die neuen Ergebnisse am Computer eingetragen.", zh: "12:30 她们去了食堂。午饭后 Mia 回到实验室，在电脑上录入了新的结果。", verbs: ["sind … gegangen（位移 → sein）", "hat … eingetragen（可分）"] },
-      { title: "汇报与决策", de: "Am Nachmittag hat Mia mit ihrer Teamleiterin telefoniert. Sie hat ihr von dem ungewöhnlichen Ergebnis erzählt. Die Teamleiterin hat entschieden, dass das Team am nächsten Tag weitere Tests machen soll.", zh: "下午，Mia 和团队主管通了电话，讲述了这一异常结果。主管决定团队第二天做进一步测试。", verbs: ["hat … telefoniert（-ieren 无 ge-）", "hat … erzählt（er- 无 ge-）", "hat … entschieden（ent- 无 ge-）"] },
-      { title: "整理与下班", de: "Zum Schluss hat Mia ihren Arbeitsplatz aufgeräumt, die Geräte gereinigt und die Proben sicher weggeräumt. Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", zh: "最后，Mia 整理了工作台、清洗了仪器，并将样品安全归位。16:30 她骑自行车回家了。", verbs: ["hat … aufgeräumt（可分）", "hat … gereinigt", "hat … weggeräumt（可分）", "ist … gefahren（位移 → sein）"] },
-      { title: "总结与感受", de: "Am Abend war Mia müde. Trotzdem war sie zufrieden, denn sie hat an diesem Tag etwas Neues gelernt.", zh: "晚上 Mia 很累，但她依然很满足，因为这一天她学到了新东西。", verbs: ["war（sein 过去时，表状态）", "hat … gelernt"] }
+      { title: "背景介绍", de: "Mia arbeitet als Biologin in einem kleinen Forschungslabor. Dort untersucht sie Lebensmittel und Mikroorganismen. Gestern hat sie einen besonders interessanten Arbeitstag gehabt.", ips: ["[ˈmiːa ˈʔaʁbaɪ̯tət als bi̯oˈloːɡɪn ɪn ˈʔaɪ̯nəm ˈklaɪ̯nən ˈfɔʁʃʊŋslaˌboːɐ̯]", "[dɔʁt ʔʊntɐˈzuːxt ziː ˈleːbn̩sˌmɪtl̩ ʊnt mikʁoʔɔʁɡaˈnɪsmən]", "[ˈɡɛstɐn hat ziː ˈʔaɪ̯nən bəˈzɔndɐs ʔɪntəʁɛˈsantn̩ ˈʔaʁbaɪ̯tstaːk ɡəˈhaːpt]"], zh: "Mia 在一家小型研究实验室担任生物学家。她在那里检测食品和微生物。昨天，她度过了特别有趣的一个工作日。", verbs: ["hat … gehabt（haben 的完成时）"] },
+      { title: "早晨的准备", de: "Am Morgen ist Mia schon um 7:15 Uhr ins Labor gekommen. Sie hat zuerst ihren Computer eingeschaltet und ihre E-Mails gelesen. Danach hat sie ihren Laborkittel angezogen und ihre Hände gewaschen.", ips: ["[am ˈmɔʁɡn̩ ɪst ˈmiːa ʃoːn ʊm ˈziːbn̩ ʊntˈt͡seːn uːɐ̯ ʔɪns laˈboːɐ̯ ɡəˈkɔmən]", "[ziː hat t͡suˈʔeːɐ̯st ˈʔiːʁən kɔmˈpjuːtɐ ˈʔaɪ̯nɡəˌʃaltət ʊnt ˈʔiːʁə ˈʔiːmeɪ̯ls ɡəˈleːzn̩]", "[daˈnaːx hat ziː ˈʔiːʁən laˈboːɐ̯ˌkɪtl̩ ˈʔanɡəˌt͡soːɡn̩ ʊnt ˈʔiːʁə ˈhɛndə ɡəˈvaʃn̩]"], zh: "早上 7:15，Mia 就来到了实验室。她首先打开电脑、读了电子邮件。之后她穿上实验服并洗了手。", verbs: ["ist … gekommen（位移 → sein）", "hat … eingeschaltet（可分）", "hat … gelesen", "hat … angezogen（可分）", "hat … gewaschen"] },
+      { title: "检查与登记样品", de: "Auf ihrem Tisch haben mehrere Proben aus einer Molkerei gestanden. Mia sollte untersuchen, ob in den Proben bestimmte Bakterien vorhanden sind. Zuerst hat sie alle Behälter kontrolliert und die Nummern der Proben notiert.", ips: ["[ʔaʊ̯f ˈʔiːʁəm tɪʃ ˈhaːbn̩ ˈmeːʁəʁə ˈpʁoːbn̩ aʊ̯s ˈʔaɪ̯nɐ mɔlkəˈʁaɪ̯ ɡəˈʃtandn̩]", "[ˈmiːa ˈzɔltə ʔʊntɐˈzuːxn̩ ʔɔp ʔɪn deːn ˈpʁoːbn̩ bəˈʃtɪmtə bakˈteːʁiən fɔɐ̯ˈhandn̩ zɪnt]", "[t͡suˈʔeːɐ̯st hat ziː ˈʔalə bəˈhɛltɐ kɔntʁoˈliːɐ̯t ʊnt diː ˈnʊmɐn deːɐ̯ ˈpʁoːbn̩ noˈtiːɐ̯t]"], zh: "她的桌上放着几份来自乳品厂的样品。Mia 需要检测样品中是否存在特定细菌。首先，她检查了所有容器，并记录了样品编号。", verbs: ["haben … gestanden（stehen）", "hat … kontrolliert（-ieren 无 ge-）", "hat … notiert（-ieren 无 ge-）"] },
+      { title: "准备与同事协助", de: "Danach hat Mia kleine Mengen der Proben vorbereitet. Sie hat verschiedene Geräte benutzt und sehr genau gearbeitet. Eine Kollegin namens Elena ist später ins Labor gekommen und hat Mia bei der Arbeit geholfen.", ips: ["[daˈnaːx hat ˈmiːa ˈklaɪ̯nə ˈmɛŋŋ deːɐ̯ ˈpʁoːbn̩ foːɐ̯bəˈʁaɪ̯tət]", "[ziː hat fɛɐ̯ˈʃiːdənə ɡəˈʁɛːtə bəˈnʊt͡st ʊnt zeːɐ̯ ɡəˈnaʊ̯ ɡəˈʔaʁbaɪ̯tət]", "[ˈʔaɪ̯nə kɔˈleːɡɪn ˈnaːməns eˈleːna ɪst ˈʃpɛːtɐ ʔɪns laˈboːɐ̯ ɡəˈkɔmən ʊnt hat ˈmiːa baɪ̯ deːɐ̯ ˈʔaʁbaɪ̯t ɡəˈhɔlfn̩]"], zh: "随后，Mia 准备了少量样品。她使用了不同的仪器，工作非常细致。同事 Elena 随后来到实验室，协助了 Mia 的工作。", verbs: ["hat … vorbereitet（可分）", "hat … benutzt（be- 无 ge-）", "hat … gearbeitet", "ist … gekommen（sein）", "hat … geholfen（强变化 e→o）"] },
+      { title: "休息与交流", de: "Gegen 10:00 Uhr haben die beiden eine kurze Pause gemacht. Mia hat einen Kaffee getrunken und Elena hat einen Joghurt gegessen. Dabei haben sie über ihren Urlaub und ihre Pläne für das Wochenende gesprochen.", ips: ["[ˈɡeːɡn̩ ˈt͡seːn uːɐ̯ ˈhaːbn̩ diː ˈbaɪ̯dn̩ ˈʔaɪ̯nə ˈkʊʁt͡sə ˈpaʊ̯zə ɡəˈmaxt]", "[ˈmiːa hat ˈʔaɪ̯nən ˈkafe ɡəˈtʁʊŋkn̩ ʊnt eˈleːna hat ˈʔaɪ̯nən ˈjoːɡʊʁt ɡəˈɡɛsn̩]", "[daˈbaɪ̯ ˈhaːbn̩ ziː ˈʔyːbɐ ˈʔiːʁən ˈʔuːɐ̯laʊ̯p ʊnt ˈʔiːʁə ˈplɛːnə fyːɐ̯ das ˈvɔxn̩ˌʔɛndə ɡəˈʃpʁɔxn̩]"], zh: "10 点左右，两人短暂休息。Mia 喝了杯咖啡，Elena 吃了盒酸奶。期间她们聊到了假期和周末计划。", verbs: ["haben … gemacht", "hat … getrunken（i→u）", "hat … gegessen", "haben … gesprochen（e→o）"] },
+      { title: "进一步检测与异常发现", de: "Nach der Pause haben Mia und Elena die Proben weiter untersucht. Bei einer Probe haben sie ein unerwartetes Ergebnis gefunden. Deshalb haben sie die Untersuchung noch einmal wiederholt.", ips: ["[naːx deːɐ̯ ˈpaʊ̯zə ˈhaːbn̩ ˈmiːa ʊnt eˈleːna diː ˈpʁoːbn̩ ˈvaɪ̯tɐ ʔʊntɐˈzuːxt]", "[baɪ̯ ˈʔaɪ̯nɐ ˈpʁoːbə ˈhaːbn̩ ziː aɪ̯n ʊnʔɛɐ̯ˈvaʁtətəs ʔɛɐ̯ˈɡeːpnɪs ɡəˈfʊndn̩]", "[dɛsˈhalp ˈhaːbn̩ ziː diː ʔʊntɐˈzuːxʊŋ nɔx ˈʔaɪ̯nmaːl viːdɐˈhoːlt]"], zh: "休息过后，Mia 和 Elena 继续检测样品。在一份样品中，她们发现了一个意料之外的结果。因此她们把检测重新做了一遍。", verbs: ["haben … untersucht（unter- 无 ge-）", "haben … gefunden（i→u）", "haben … wiederholt（wieder- 无 ge-）"] },
+      { title: "午餐与录入数据", de: "Um 12:30 Uhr sind sie in die Kantine gegangen. Nach dem Mittagessen ist Mia zurück ins Labor gegangen. Dort hat sie die neuen Ergebnisse am Computer eingetragen.", ips: ["[ʊm ˈt͡svœlf uːɐ̯ ˈdʁaɪ̯sɪç zɪnt ziː ʔɪn diː kanˈtiːnə ɡəˈɡaŋən]", "[naːx deːm ˈmɪtaːkˌʔɛsn̩ ɪst ˈmiːa t͡suˈʁʏk ʔɪns laˈboːɐ̯ ɡəˈɡaŋən]", "[dɔʁt hat ziː diː ˈnɔʏ̯ən ʔɛɐ̯ˈɡeːbnɪsə am kɔmˈpjuːtɐ ˈʔaɪ̯nɡəˌtʁaːɡn̩]"], zh: "12:30 她们去了食堂。午饭后 Mia 回到实验室，在电脑上录入了新的结果。", verbs: ["sind … gegangen（位移 → sein）", "hat … eingetragen（可分）"] },
+      { title: "汇报与决策", de: "Am Nachmittag hat Mia mit ihrer Teamleiterin telefoniert. Sie hat ihr von dem ungewöhnlichen Ergebnis erzählt. Die Teamleiterin hat entschieden, dass das Team am nächsten Tag weitere Tests machen soll.", ips: ["[am ˈnaːxmɪtaːk hat ˈmiːa mɪt ˈʔiːʁɐ ˈtiːmˌlaɪ̯təʁɪn telefoˈniːɐ̯t]", "[ziː hat ˈʔiːɐ̯ fɔn deːm ʊnɡəˈvøːnlɪçn̩ ʔɛɐ̯ˈɡeːpnɪs ʔɛɐ̯ˈt͡sɛːlt]", "[diː ˈtiːmˌlaɪ̯təʁɪn hat ʔɛntˈʃiːdn̩ das das tiːm am ˈnɛːkstn̩ taːk ˈvaɪ̯təʁə tɛsts ˈmaxn̩ zɔl]"], zh: "下午，Mia 和团队主管通了电话，讲述了这一异常结果。主管决定团队第二天做进一步测试。", verbs: ["hat … telefoniert（-ieren 无 ge-）", "hat … erzählt（er- 无 ge-）", "hat … entschieden（ent- 无 ge-）"] },
+      { title: "整理与下班", de: "Zum Schluss hat Mia ihren Arbeitsplatz aufgeräumt, die Geräte gereinigt und die Proben sicher weggeräumt. Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", ips: ["[t͡sʊm ʃlʊs hat ˈmiːa ˈʔiːʁən ˈʔaʁbaɪ̯t͡sˌplat͡s ˈʔaʊ̯fɡəˌʁɔʏ̯mt diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt ʊnt diː ˈpʁoːbn̩ ˈzɪçɐ ˈvɛkɡəˌʁɔʏ̯mt]", "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ɪst ziː mɪt deːm ˈfaːɐ̯ʁaːt naːx ˈhaʊ̯zə ɡəˈfaːʁən]"], zh: "最后，Mia 整理了工作台、清洗了仪器，并将样品安全归位。16:30 她骑自行车回家了。", verbs: ["hat … aufgeräumt（可分）", "hat … gereinigt", "hat … weggeräumt（可分）", "ist … gefahren（位移 → sein）"] },
+      { title: "总结与感受", de: "Am Abend war Mia müde. Trotzdem war sie zufrieden, denn sie hat an diesem Tag etwas Neues gelernt.", ips: ["[am ˈʔaːbn̩t vaːɐ̯ ˈmiːa ˈmyːdə]", "[ˈtʁɔt͡sdɛm vaːɐ̯ ziː t͡suˈfʁiːdn̩ dɛn ziː hat an ˈdiːzəm taːk ˈʔɛtvas ˈnɔʏ̯əs ɡəˈlɛʁnt]"], zh: "晚上 Mia 很累，但她依然很满足，因为这一天她学到了新东西。", verbs: ["war（sein 过去时，表状态）", "hat … gelernt"] }
     ]
   }
 ];

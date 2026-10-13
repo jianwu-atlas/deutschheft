@@ -274,3 +274,106 @@ const PRON = {
   "trotzdem / denn": { ipa: "[ˈtʁɔt͡sdɛm · dɛn]", zh: "特罗茨-代姆·登" },
   "zum Schluss": { ipa: "[t͡sʊm ʃlʊs]", zh: "楚姆·施卢斯" }
 };
+
+/* ============================================================
+   动词变位形式（PRON_FORMS）与裸词（PRON_BARE：功能词/颜色/月份/天气）
+   供全文音标标注器 annotate.js 使用
+   ============================================================ */
+const PRON_FORMS = {
+  /* haben / sein */
+  "habe": "[ˈhaːbə]", "hast": "[hast]", "hat": "[hat]", "haben": "[ˈhaːbn̩]", "habt": "[hapt]", "hätte": "[ˈhɛtə]", "hätten": "[ˈhɛtn̩]",
+  "bin": "[bɪn]", "bist": "[bɪst]", "ist": "[ɪst]", "sind": "[zɪnt]", "seid": "[zaɪ̯t]", "war": "[vaːɐ̯]", "waren": "[ˈvaːʁən]",
+  /* 规则动词 */
+  "lerne": "[ˈlɛʁnə]", "lernst": "[lɛʁnst]", "lernt": "[lɛʁnt]",
+  "studiere": "[ʃtuˈdiːʁə]", "studierst": "[ʃtuˈdiːɐ̯st]", "studiert": "[ʃtuˈdiːɐ̯t]",
+  "trinke": "[ˈtʁɪŋkə]", "trinkst": "[tʁɪŋkst]", "trinkt": "[tʁɪŋkt]",
+  "wohne": "[ˈvoːnə]", "wohnst": "[voːnst]", "wohnt": "[voːnt]",
+  "arbeite": "[ˈʔaʁbaɪ̯tə]", "arbeitest": "[ˈʔaʁbaɪ̯təst]", "arbeitet": "[ˈʔaʁbaɪ̯tət]",
+  "komme": "[ˈkɔmə]", "kommst": "[kɔmst]", "kommt": "[kɔmt]",
+  "schwimme": "[ˈʃvɪmə]", "schwimmst": "[ʃvɪmst]", "schwimmt": "[ʃvɪmt]",
+  "koche": "[ˈkɔxə]", "kochst": "[kɔxst]", "kocht": "[kɔxt]",
+  "singe": "[ˈzɪŋə]", "singst": "[zɪŋst]", "singt": "[zɪŋt]",
+  "reise": "[ˈʁaɪ̯zə]", "reist": "[ʁaɪ̯st]", "reisen": "[ˈʁaɪ̯zn̩]",
+  "tanze": "[ˈtant͡sə]", "tanzt": "[tant͡st]", "tanzen": "[ˈtant͡sn̩]",
+  "esse": "[ˈʔɛsə]", "esst": "[ʔɛst]", "isst": "[ʔɪst]",
+  "finde": "[ˈfɪndə]", "findest": "[ˈfɪndəst]", "findet": "[ˈfɪndət]", "finden": "[ˈfɪndn̩]",
+  "gehe": "[ˈɡeːə]", "gehst": "[ɡeːst]", "geht": "[ɡeːt]",
+  "stehe": "[ˈʃteːə]", "stehst": "[ʃteːst]", "steht": "[ʃteːt]", "stehen": "[ˈʃteːən]",
+  "gebe": "[ˈɡeːbə]", "gibst": "[ɡɪpst]", "gibt": "[ɡɪpt]", "geben": "[ˈɡeːbn̩]",
+  "sehe": "[ˈzeːə]", "siehst": "[ziːst]", "sieht": "[ziːt]",
+  "spreche": "[ˈʃpʁɛçə]", "sprichst": "[ʃpʁɪçst]", "spricht": "[ʃpʁɪçt]",
+  "helfe": "[ˈhɛlfə]", "hilfst": "[hɪlfst]", "hilft": "[hɪlft]",
+  "nehme": "[ˈneːmə]", "nimmst": "[nɪmst]", "nimmt": "[nɪmt]",
+  "lese": "[ˈleːzə]", "liest": "[liːst]", "lest": "[leːst]",
+  "fahre": "[ˈfaːʁə]", "fährst": "[fɛːɐ̯st]", "fährt": "[fɛːɐ̯t]",
+  "schwitze": null, /* placeholder removed below */
+  "schlafe": "[ˈʃlaːfə]", "schläfst": "[ʃlɛːft]", "schläft": "[ʃlɛːft]",
+  "trage": "[ˈtʁaːɡə]", "trägst": "[tʁɛːkst]", "trägt": "[tʁɛːkt]",
+  "treffe": "[ˈtʁɛfə]", "triffst": "[tʁɪfst]", "trifft": "[tʁɪft]",
+  "heiße": "[ˈhaɪ̯sə]", "heißt": "[haɪ̯st]"
+};
+delete PRON_FORMS["schwitze"];
+
+const PRON_BARE = {
+  /* 功能词 */
+  "an": "[an]", "in": "[ɪn]", "im": "[ɪm]", "am": "[am]", "um": "[ʊm]", "auf": "[aʊ̯f]", "mit": "[mɪt]",
+  "zu": "[t͡suː]", "zum": "[t͡sʊm]", "zur": "[t͡suːɐ̯]", "von": "[fɔn]", "vor": "[foːɐ̯]", "nach": "[naːx]",
+  "neben": "[ˈneːbn̩]", "zwischen": "[ˈt͡svɪʃn̩]", "gegenüber": "[ɡeːɡn̩ˈʔyːbɐ]", "für": "[fyːɐ̯]",
+  "durch": "[dʊʁç]", "über": "[ˈʔyːbɐ]", "unter": "[ˈʔʊntɐ]", "bis": "[bɪs]", "aus": "[aʊ̯s]", "bei": "[baɪ̯]",
+  "da": "[daː]", "dort": "[dɔʁt]", "hier": "[hiːɐ̯]", "sehr": "[zeːɐ̯]", "auch": "[aʊ̯x]", "nicht": "[nɪçt]",
+  "gern": "[ɡɛʁn]", "gerne": "[ˈɡɛʁnə]", "gestern": "[ˈɡɛstɐn]", "heute": "[ˈhɔʏ̯tə]", "morgen": "[ˈmɔʁɡn̩]",
+  "dann": "[dan]", "danach": "[daˈnaːx]", "zuerst": "[t͡suˈʔeːɐ̯st]", "oft": "[ʔɔft]", "immer": "[ˈʔɪmɐ]",
+  "meistens": "[ˈmaɪ̯stn̩s]", "manchmal": "[ˈmançmaːl]", "ja": "[jaː]", "nein": "[naɪ̯n]", "bitte": "[ˈbɪtə]",
+  "danke": "[ˈdaŋkə]", "ich": "[ʔɪç]", "du": "[duː]", "er": "[eːɐ̯]", "sie": "[ziː]", "es": "[ʔɛs]",
+  "wir": "[viːɐ̯]", "ihr": "[ʔiːɐ̯]", "und": "[ʔʊnt]", "oder": "[ˈʔoːdɐ]", "aber": "[ˈʔaːbɐ]",
+  "denn": "[dɛn]", "weil": "[vaɪ̯l]", "wenn": "[vɛn]", "bevor": "[bəˈfoːɐ̯]", "dass": "[das]", "ob": "[ʔɔp]",
+  "was": "[vas]", "wer": "[veːɐ̯]", "wo": "[voː]", "wann": "[van]", "wie": "[viː]", "womit": "[voˈmɪt]",
+  "worüber": "[voːˈʔyːbɐ]", "woher": "[voˈheːɐ̯]", "wohin": "[voˈhɪn]", "wieder": "[viːdɐ]", "noch": "[nɔx]",
+  "schon": "[ʃoːn]", "sehr": "[zeːɐ̯]", "wenig": "[ˈveːnɪç]", "viel": "[fiːl]", "etwas": "[ˈʔɛtvas]",
+  "alle": "[ˈʔalə]", "ein": "[aɪ̯n]", "eine": "[ˈʔaɪ̯nə]", "einen": "[ˈʔaɪ̯nən]", "einem": "[ˈʔaɪ̯nəm]",
+  "einer": "[ˈʔaɪ̯nɐ]", "das": "[das]", "der": "[deːɐ̯]", "die": "[diː]", "dem": "[deːm]", "den": "[deːn]",
+  "zusammen": "[t͡suˈzamən]", "kein": "[kaɪ̯n]", "keine": "[ˈkaɪ̯nə]", "mein": "[maɪ̯n]", "meine": "[ˈmaɪ̯nə]",
+  "dein": "[daɪ̯n]", "deine": "[ˈdaɪ̯nə]", "sein": "[zaɪ̯n]", "unser": "[ˈʔʊnzɐ]", "wohin": "[voˈhɪn]",
+  "also": "[ˈʔalzoː]", "so": "[zoː]", "nur": "[nuːɐ̯]", "schon": "[ʃoːn]", "genau": "[ɡəˈnaʊ̯]",
+  "dabei": "[daˈbaɪ̯]", "deshalb": "[dɛsˈhalp]", "trotzdem": "[ˈtʁɔt͡sdɛm]", "vielleicht": "[fiˈlaɪ̯çt]",
+  "natürlich": "[naˈtyːɐ̯lɪç]", "besonders": "[bəˈzɔndɐs]", "normalerweise": "[nɔʁmaˈlʔɛʁvaɪ̯zə]",
+  /* 颜色（裸词） */
+  "blau": "[blaʊ̯]", "rot": "[ʁoːt]", "gelb": "[ɡɛlp]", "grün": "[ɡʁyːn]", "weiß": "[vaɪ̯s]",
+  "schwarz": "[ʃvaʁt͡s]", "braun": "[bʁaʊ̯n]", "grau": "[ɡʁaʊ̯]", "orange": "[oˈʁaŋʒə]", "lila": "[ˈliːla]",
+  "rosa": "[ˈʁoːza]", "pink": "[pɪŋk]", "türkis": "[ˈtʏʁkiːs]", "violett": "[vi̯oˈlɛt]", "beige": "[bɛːʃ]",
+  "golden": "[ˈɡɔldn̩]", "silbern": "[ˈzɪlbɐn]", "bunt": "[bʊnt]",
+  /* 月份（裸词） */
+  "januar": "[ˈjanuaːɐ̯]", "februar": "[ˈfeːbʁuaːɐ̯]", "märz": "[mɛʁt͡s]", "april": "[aˈpʁɪl]", "mai": "[maɪ̯]",
+  "juni": "[ˈjuːni]", "juli": "[ˈjuːli]", "august": "[aʊ̯ˈɡʊst]", "september": "[zɛpˈtɛmbɐ]",
+  "oktober": "[ɔkˈtoːbɐ]", "november": "[noˈvɛmbɐ]", "dezember": "[deˈt͡sɛmbɐ]",
+  /* 星期（裸词） */
+  "montag": "[ˈmoːntaːk]", "dienstag": "[ˈdiːnstaːk]", "mittwoch": "[ˈmɪtvɔx]", "donnerstag": "[ˈdɔnɐstaːk]",
+  "freitag": "[ˈfʁaɪ̯taːk]", "samstag": "[ˈzamstaːk]", "sonnabend": "[ˈzɔnaːbn̩t]", "sonntag": "[ˈzɔntaːk]",
+  "wochenende": "[ˈvɔxn̩ˌʔɛndə]",
+  /* 天气（裸词） */
+  "sonnig": "[ˈzɔnɪç]", "wolkig": "[ˈvɔlkɪç]", "regnerisch": "[ˈʁeːɡnəʁɪʃ]", "windig": "[ˈvɪndɪç]",
+  "neblig": "[ˈneːblɪç]", "schneeig": "[ˈʃneːɪç]", "heiß": "[haɪ̯s]", "warm": "[vaʁm]", "kühl": "[kyːl]",
+  "kalt": "[kalt]", "mild": "[mɪlt]",
+  /* 数字（裸词，速查表网格用） */
+  "null": "[nʊl]", "eins": "[aɪns]", "zwei": "[t͡svaɪ̯]", "drei": "[dʁaɪ̯]", "vier": "[fiːɐ̯]", "fünf": "[fʏnf]",
+  "sechs": "[zɛks]", "sieben": "[ˈziːbn̩]", "acht": "[axt]", "neun": "[nɔʏn]", "zehn": "[t͡seːn]", "elf": "[ʔɛlf]",
+  "zwölf": "[t͡svœlf]", "zwanzig": "[ˈt͡svant͡sɪç]", "dreißig": "[ˈdʁaɪ̯sɪç]", "hundert": "[ˈhʊndɐt]",
+  /* 时间（裸词） */
+  "uhr": "[uːɐ̯]", "viertel": "[ˈfɪʁtl̩]", "halb": "[halp]", "morgens": "[ˈmɔʁɡn̩s]",
+  "vormittags": "[ˈfoːɐ̯mɪtaːks]", "mittags": "[ˈmɪtaːks]", "nachmittags": "[ˈnaːxmɪtaːks]",
+  "abends": "[ˈaːbn̩t͡s]", "nachts": "[naxts]", "früh": "[fʁyː]", "spät": "[ʃpɛːt]",
+  /* 常见名词裸词（Notion 笔记高频） */
+  "arbeit": "[ˈʔaʁbaɪ̯t]", "arbeite": "[ˈʔaʁbaɪ̯tə]", "hände": "[ˈhɛndə]", "hause": "[ˈhaʊ̯zə]",
+  "schule": "[ˈʃuːlə]", "unterricht": "[ˈʔʊntɐʁɪçt]", "hausaufgaben": "[ˈhaʊ̯sʔaʊ̯fˌɡaːbn̩]",
+  "wochenende": "[ˈvɔxn̩ˌʔɛndə]", "labor": "[laˈboːɐ̯]", "computer": "[kɔmˈpjuːtɐ]",
+  "proben": "[ˈpʁoːbn̩]", "ergebnisse": "[ʔɛɐ̯ˈɡeːbnɪsə]", "freunde": "[ˈfʁɔʏ̯ndə]",
+  "kleidung": "[ˈklaɪ̯dʊŋ]", "jacke": "[ˈjakə]", "hose": "[ˈhoːzə]", "schuhe": "[ˈʃuːə]",
+  "baum": "[baʊ̯m]", "bäume": "[ˈbɔʏ̯mə]", "blätter": "[ˈblɛtɐ]", "blumen": "[ˈbluːmən]",
+  "geschenke": "[ɡəˈʃɛŋkə]", "weihnachten": "[ˈvaɪ̯naxtn̩]", "glühwein": "[ˈɡlyːˌvaɪ̯n]",
+  "schneemann": "[ˈʃneːman]", "kantine": "[kanˈtiːnə]", "kollegen": "[kɔˈleːɡn̩]",
+  "besprechung": "[bəˈʃpʁɛçʊŋ]", "berichte": "[bəˈʁɪçtə]", "frühstück": "[ˈfʁyːʃtʏk]",
+  "abendessen": "[ˈʔaːbn̩tˌʔɛsn̩]", "mittagessen": "[ˈmɪtaːkˌʔɛsn̩]", "straße": "[ˈʃtʁaːsə]",
+  "ampel": "[ˈampl̩]", "bahnhof": "[ˈbaːnhoːf]", "supermarkt": "[ˈzuːpɐmaʁkt]",
+  "fahrrad": "[ˈfaːɐ̯ʁaːt]", "arztpraxis": "[ˈʔaːɐ̯tstpʁaksɪs]", "deckung": null
+};
+delete PRON_BARE["deckung"];

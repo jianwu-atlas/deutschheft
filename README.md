@@ -20,9 +20,11 @@
 │   ├── css/deutsch.css   设计系统（浅色/深色双主题）
 │   └── js/
 │       ├── data/deutsch-data.js    课程/词汇/语法/课文/测验数据
+│       ├── data/pron.js            发音库：PRON 256 + PRON_FORMS 94 变位 + PRON_BARE 221 裸词
 │       ├── data/notion-notes.js    Notion 笔记（脚本生成，请勿手改）
 │       ├── deutsch.js              页面渲染与交互核心
-│       └── notion-import.js        Markdown 渲染 + 导入 + 搜索
+│       ├── notion-import.js        Markdown 渲染 + 导入 + 搜索
+│       └── annotate.js             全文音标标注（ruby）+ 点击朗读
 ├── content-notion/        Notion 笔记源文件（.md，改这里 → 重跑脚本）
 └── scripts/notion_export_sync.py    Notion → 网站 同步脚本
 ```
@@ -30,7 +32,7 @@
 ## 本地预览
 
 ```bash
-cd website && python3 -m http.server 8631 --bind 127.0.0.1
+cd deutschheft && python3 -m http.server 8631 --bind 127.0.0.1
 # http://127.0.0.1:8631
 ```
 
