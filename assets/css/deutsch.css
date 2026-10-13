@@ -1080,3 +1080,6 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 /* 英文模式下隐藏德语副标签（英文菜单更长，避免溢出） */
 [data-lang="en"] .nav-links a span { display: none; }
 [data-lang="en"] .nav-links a { padding: 8px 11px; }
+
+/* 页脚不可点击的文字（如 Notion 笔记源） */
+.footer-plain { opacity: .72; }

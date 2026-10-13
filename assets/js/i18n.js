@@ -101,7 +101,7 @@
     "home.stats.grammar": "grammar topics",
     "home.stats.verbs": "verbs with full conjugation",
     /* 页脚 */
-    "foot.copyright": '© 2026 Jian Wu · Mein Deutschheft (A1 → A1.2) · Updated 2026-10-13 · <a href="https://github.com/jianwu-atlas" target="_blank" rel="noopener">GitHub</a> · <a href="https://jackng833.notion.site/38e20c5c739a80cb9445c9f080fc19d5" target="_blank" rel="noopener">Notion source</a>',
+    "foot.copyright": '© 2026 Jian Wu · Mein Deutschheft (A1 → A1.2) · Updated 2026-10-13 · <a href="https://github.com/jianwu-atlas" target="_blank" rel="noopener">GitHub</a> · <span class="footer-plain">Notion source</span>',
     /* 按钮 */
     "btn.theme": "Switch to dark mode",
     "btn.burger": "Menu",
