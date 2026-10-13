@@ -289,7 +289,18 @@ const PRON = {
   "das Flugzeug": { ipa: "[ˈfluːkt͡sɔʏ̯k]", zh: "夫鲁克-措伊克" },
   "das Schiff": { ipa: "[ʃɪf]", zh: "希夫" },
   "die Apotheke": { ipa: "[apoˈteːkə]", zh: "阿波-泰克" },
-  "das Krankenhaus": { ipa: "[ˈkʁaŋkn̩haʊ̯s]", zh: "克兰肯-豪斯" }
+  "das Krankenhaus": { ipa: "[ˈkʁaŋkn̩haʊ̯s]", zh: "克兰肯-豪斯" },
+  /* —— 教材新增（零基础德语速成） —— */
+  "die Fahrkarte": { ipa: "[ˈfaːɐ̯ˌkaʁtə]", zh: "法尔-卡特" },
+  "der Lokführer": { ipa: "[ˈloːkfyːʁɐ]", zh: "洛克-菲勒" },
+  "das Gleis": { ipa: "[ɡlaɪ̯s]", zh: "格莱斯" },
+  "die Durchsage": { ipa: "[ˈdʊʁçˌzaːɡə]", zh: "杜尔希-扎格" },
+  "der Speisewagen": { ipa: "[ˈʃpaɪ̯zəˌvaːɡn̩]", zh: "施派泽-瓦根" },
+  "voraussichtlich": { ipa: "[foˈʁaʊ̯sˌzɪçtlɪç]", zh: "福-劳斯-齐希特里希" },
+  "speisen": { ipa: "[ˈʃpaɪ̯zn̩]", zh: "施派森" },
+  "das Gesicht": { ipa: "[ɡəˈzɪçt]", zh: "格-齐希特" },
+  "gering": { ipa: "[ɡəˈʁɪŋ]", zh: "格-林" },
+  "hell": { ipa: "[hɛl]", zh: "黑尔" }
 };
 
 /* ============================================================

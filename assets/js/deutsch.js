@@ -94,6 +94,7 @@ const PAGES = {
    教材 Lehrbuch（PDF 在线阅读 + 结构化词汇/句型/语法）
    ============================================================ */
 const LHRB_SIZE = {
+  "00_lingjichu-sucheng.pdf": "14 MB",
   "06_wohnen-moebel.pdf": "394 KB",
   "09_kleidung-farben.pdf": "538 KB",
   "10_wetter-jahreszeiten.pdf": "413 KB",
@@ -106,7 +107,7 @@ function renderLehrbuch(app) {
       <div class="lbk-head">
         <span class="lbk-num">${b.num}</span>
         <div class="lbk-title">
-          <div class="lbk-zh">${b.zh} <span class="lbk-de">${b.de}</span></div>
+          <div class="lbk-zh">${b.star ? '<span class="lbk-star" title="综合入门教材">★</span> ' : ""}${b.zh} <span class="lbk-de">${b.de}</span></div>
           <div class="lbk-meta">${b.lesson} · ${b.pages} 页 · PDF ${LHRB_SIZE[b.file] || ""}</div>
         </div>
         <div class="lbk-actions">

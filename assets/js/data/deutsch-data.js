@@ -610,7 +610,18 @@ const VOCAB = [
   { de: "das Flugzeug", zh: "飞机", pos: "das", plural: "-e", topic: "交通问路" },
   { de: "das Schiff", zh: "船", pos: "das", plural: "-e", topic: "交通问路" },
   { de: "die Apotheke", zh: "药房", pos: "die", plural: "-n", topic: "交通问路" },
-  { de: "das Krankenhaus", zh: "医院", pos: "das", plural: "¨-er", topic: "交通问路" }
+  { de: "das Krankenhaus", zh: "医院", pos: "das", plural: "¨-er", topic: "交通问路" },
+  /* —— 教材新增词汇（零基础德语速成） —— */
+  { de: "die Fahrkarte", zh: "车票", pos: "die", plural: "-n", topic: "交通问路" },
+  { de: "der Lokführer", zh: "火车司机", pos: "der", plural: "-", topic: "交通问路" },
+  { de: "das Gleis", zh: "轨道", pos: "das", plural: "-e", topic: "交通问路" },
+  { de: "die Durchsage", zh: "（车站）广播通知", pos: "die", plural: "-n", topic: "交通问路" },
+  { de: "der Speisewagen", zh: "餐车", pos: "der", plural: "-", topic: "交通问路" },
+  { de: "voraussichtlich", zh: "预计；大概", pos: "adv", topic: "交通问路" },
+  { de: "speisen", zh: "用餐", pos: "verb", topic: "交通问路" },
+  { de: "das Gesicht", zh: "脸", pos: "das", plural: "-er", topic: "自我介绍" },
+  { de: "gering", zh: "少的；微小的", pos: "adj", topic: "自我介绍" },
+  { de: "hell", zh: "明亮的；（色）浅的", pos: "adj", topic: "自我介绍" }
 ];
 
 const VOCAB_TOPICS = ["基础与发音", "自我介绍", "数字", "食物饮料", "休闲活动", "房屋家具", "时间作息", "服装颜色", "天气四季", "交通问路", "办公通勤", "实验室", "完成时"];

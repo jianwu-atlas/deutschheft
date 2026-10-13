@@ -3,6 +3,133 @@
    PDF 原件：assets/lehrbuch/；原文由 pypdf 自动提取（text 字段）
    ============================================================ */
 const LEHRBUECHER = [
+  {
+   "id": "sucheng",
+   "num": "00",
+   "file": "00_lingjichu-sucheng.pdf",
+   "zh": "零基础德语速成",
+   "de": "Deutsch-Schnellkurs für Anfänger",
+   "lesson": "综合速成教材",
+   "pages": 338,
+   "star": true,
+   "words": [
+    [
+     "die Fahrkarte-n",
+     "车票"
+    ],
+    [
+     "die Station",
+     "车站"
+    ],
+    [
+     "der Speisewagen",
+     "餐车"
+    ],
+    [
+     "der Lokführer",
+     "火车司机"
+    ],
+    [
+     "die Lokomotive",
+     "火车头"
+    ],
+    [
+     "das Waggon",
+     "火车车厢"
+    ],
+    [
+     "das Gleis-e",
+     "轨道"
+    ],
+    [
+     "voraussichtlich",
+     "大约；大概率"
+    ],
+    [
+     "die Durchsage-n",
+     "广播通知"
+    ],
+    [
+     "speisen",
+     "用餐"
+    ],
+    [
+     "das Tempo",
+     "速度"
+    ],
+    [
+     "das Tal-er",
+     "山谷"
+    ],
+    [
+     "gering",
+     "少的"
+    ],
+    [
+     "das Gesicht",
+     "脸"
+    ],
+    [
+     "heiß",
+     "热的"
+    ],
+    [
+     "hell",
+     "明亮的"
+    ],
+    [
+     "ideal",
+     "理想的"
+    ],
+    [
+     "das Interesse",
+     "兴趣"
+    ],
+    [
+     "双元音 eu / äu",
+     "[ɔy] neu 新的 / Bäume 花朵"
+    ]
+   ],
+   "sentences": [
+    [
+     "Ich habe die Durchsage nicht gehört.",
+     "我没有听见广播。",
+     "[ɪç ˈhaːbə diː ˈdʊʁçˌzaːɡə nɪçt ɡəˈhøːʁt]"
+    ],
+    [
+     "Ich mag dich wirklich gern.",
+     "我真的喜欢你。",
+     "[ɪç maːk dɪç ˈvɪʁklɪç ɡɛʁn]"
+    ],
+    [
+     "Würdest du mit mir ausgehen?",
+     "你会和我一起约会吗？",
+     "[ˈvʏʁdəst duː mɪt miːɐ̯ ˈʔaʊ̯sɡeːən]"
+    ],
+    [
+     "Gehen wir doch einfach mal zusammen aus.",
+     "我们就在一起吧。",
+     "[ˈɡeːən viːɐ̯ dɔx ˈʔaɪ̯nfax maːl t͡suˈzamən aʊ̯s]"
+    ],
+    [
+     "Hast du Lust, mit mir auszugehen?",
+     "你有兴趣和我一起约会吗？",
+     "[hast duː lʊst mɪt miːɐ̯ ˈʔaʊ̯st͡suːɡeːən]"
+    ],
+    [
+     "Sind wir zusammen?",
+     "我们在一起吗？",
+     "[zɪnt viːɐ̯ t͡suˈzamən]"
+    ]
+   ],
+   "points": [
+    "结构：Einheit（单元）→ 场景 → 「单词（德/中/汉语谐音三列）+ 句子（逐词谐音）+ 会话」，口语导向",
+    "语音从字母与双元音（如 [ɔy] eu/äu）讲起，配外教视频讲解（原书附赠光盘）",
+    "覆盖「发音、单词、句子、会话」一本通，定位零基础入门；与本站课程/教材互补使用",
+    "原书 338 页扫描版（37MB）；站内为 80dpi 压缩版（14MB），清晰阅读无碍；原文件保留在本机"
+   ],
+   "text": "（本书为扫描版 PDF，无可提取文字层——以上词汇/句型取自样页 Einheit 3「坐火车出行」与 Einheit 7「情感世界」；完整内容请用在线阅读或下载 PDF。）"
+  },
  {
   "id": "wohnung",
   "num": "06",

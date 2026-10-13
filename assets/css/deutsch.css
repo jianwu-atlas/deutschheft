@@ -914,3 +914,5 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .nav-links a span { display: none; }
   .nav-brand-sub { display: none; }
 }
+
+.lbk-star { color: var(--gold); font-size: .8em; margin-right: 2px; }
