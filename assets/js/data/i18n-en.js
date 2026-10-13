@@ -335,3 +335,89 @@ window.EN_WORDS = {
 "zufall":"coincidence","zufällig":"by chance","zufrieden":"satisfied","zug":"train","zum":"to the (zu dem)","zur":"to the (zu der)","zurück":"back","zusammen":"together","zustandsbeschreibung":"describing a state",
 "zwanzig":"twenty","zwei":"two","zwiebel":"onion","zwiebelkuchen":"onion tart","zwischen":"between","zwölf":"twelve"
 };
+
+/* ============================================================
+   Part 3/5 · 课程 / 练习 / 课文 文案（并入 EN_UI）
+   ============================================================ */
+Object.assign(window.EN_UI, {
+/* —— 主题（词卡筛选 + 课程标签） —— */
+"基础与发音":"Basics & pronunciation","自我介绍":"Introducing yourself","数字":"Numbers","食物饮料":"Food & drink",
+"休闲活动":"Leisure","房屋家具":"Home & furniture","时间作息":"Time & daily routine","服装颜色":"Clothes & colours",
+"天气四季":"Weather & seasons","交通问路":"Transport & directions","办公通勤":"Office & commute","实验室":"The lab","完成时":"Perfect tense",
+/* —— 课程标题 —— */
+"课程大纲与字母发音":"Syllabus & the alphabet","时间与一日作息":"Time & the daily routine",
+"办公与通勤全天词汇":"A full day at the office","实验室的一天":"A day in the lab","现在完成时":"The perfect tense",
+/* —— 课程概述 —— */
+"15 个生存导向主题构成的 A1–A2 课程地图；德语 26 个基础字母 + Ä Ö Ü ß 的音名体系与发音规则。":"A map of the A1–A2 course built on 15 survival topics; the names and sounds of the 26 basic letters plus Ä Ö Ü ß.",
+"用德语介绍姓名、居住地、年龄、国籍、职业与爱好；A1 两大基石动词 sein / haben 及规则动词现在时变位框架。":"Introduce your name, where you live, age, nationality, job and hobbies in German; the two cornerstone verbs sein / haben and the present-tense pattern for regular verbs.",
+"0–100 数字系统：不规则基数词、「个位 + zehn」、「个位 + zig」，以及德语标志性的「个位先说」颠倒逻辑。":"The number system 0–100: irregular cardinals, “unit + zehn”, “unit + zig”, and the famously reversed German logic of saying the unit first.",
+"水果、蔬菜、肉类、饮料核心词汇；essen / trinken / nehmen 变位；餐厅点餐高频句与第四格 einen 的初次登场。":"Core vocabulary for fruit, vegetables, meat and drinks; the conjugation of essen / trinken / nehmen; ordering in a restaurant and the first appearance of the accusative einen.",
+"14 个高频业余活动动词；规则变位四大派系（规则 / s·z 词干 / 强变化 / 可分离）一次性打通；gern 句型表达喜好。":"14 high-frequency leisure verbs; all four conjugation families (regular / s·z stems / strong / separable) in one go; expressing likes with gern.",
+"房间与家具词汇（-zimmer 复合词全中性）；两大公式：Es gibt + 第四格、in + 第三格（im / in der）。":"Rooms and furniture (-zimmer compounds are all neuter); two key patterns: es gibt + accusative, and in + dative (im / in der).",
+"口语报时（整点 / 一刻 / 半点 / 三刻）；一日时间段副词；8 个作息核心动词与「动词第二位」黄金语序。":"Telling the time in speech (o'clock / quarter / half / three-quarters); adverbs of time of day; eight core routine verbs and the golden rule that the verb comes second.",
+"服装与颜色核心词汇；tragen / passen / kosten 三大动词的用法分工；购物对话与个人穿搭表达。":"Core clothing and colour vocabulary; how tragen / passen / kosten divide the work; shopping dialogues and talking about what you wear.",
+"春夏秋冬四大词汇网络（自然、穿搭、活动、节日）；天气句型的正装与倒装两种语序。":"Four vocabulary networks around the seasons (nature, clothing, activities, festivals); normal and inverted word order in weather sentences.",
+"问路指路全套表达；gehen 与 fahren 的分工；mit + 第三格表交通工具；zu → zum / zur 缩写规则；方位介词。":"The full set of asking-for and giving-directions expressions; gehen vs. fahren; mit + dative for means of transport; the contractions zu → zum / zur; prepositions of place.",
+"办公文具、科研日常、通勤场所的整合词汇包；fahren / gehen 强弱变位对比；第四格宾语与方位介词综合复习。":"An integrated vocabulary pack for office supplies, lab routine and commuting; strong vs. regular conjugation of fahren / gehen; a review of accusative objects and prepositions of place.",
+"以生物学家 Daniel 的一天为范文的 A1/A2 过渡课文；可分离动词集群、时间表达、W-疑问词（Womit / Worüber）与从句预热。":"A bridging A1/A2 text modelled on the day of the biologist Daniel; a cluster of separable verbs, time expressions, W-questions (womit / worüber) and a first taste of subordinate clauses.",
+"通过 Mia 在实验室的特殊一天，系统学习德语口语中表达过去最核心的时态：haben / sein + 第二分词的框架结构。":"Through Mia's special day in the lab you learn the most important past tense in spoken German: the haben / sein + past participle sentence bracket.",
+/* —— 课程焦点 —— */
+"字母音名用于拼读（buchstabieren），与字母在单词中的发音是两回事；V/W 发音「灵魂对调」是初学核心陷阱。":"Letter names are used for spelling aloud (buchstabieren) and are not the same as the sounds in words; the swapped V/W sounds are the classic beginner trap.",
+"规则动词变位口诀「e-st-t-en-t-en」可套用绝大多数动词；词干以 -t/-d 结尾时（arbeiten）du/er 形式插入 -e-。":"The “e-st-t-en-t-en” ending pattern fits the vast majority of verbs; with stems ending in -t/-d (arbeiten) an -e- is inserted in the du/er forms.",
+"三大陷阱：16/17 词干缩减（sechzehn / siebzehn）；30 是唯一用 ß 的整十数（dreißig）；21 以上个位 1 要脱 s（einundzwanzig）。":"Three traps: the shortened stems in 16/17 (sechzehn / siebzehn); 30 is the only round ten spelled with ß (dreißig); from 21 up the unit 1 drops its -s (einundzwanzig).",
+"点餐最礼貌的说法是 Ich hätte gern …（第二虚拟式）；点阳性名词时 ein 必须变 einen。":"The politest way to order is Ich hätte gern … (subjunctive II); with masculine nouns ein must become einen.",
+"强变化只在 du 和 er/sie/es 变身；词干以 s/z 结尾时 du 变位省 s 加 t（du tanzt / du reist / du liest）。":"Strong verbs only change in the du and er/sie/es forms; with stems ending in s/z the du form drops the s and keeps the t (du tanzt / du reist / du liest).",
+"问「哪里有什么」用 es gibt + Akkusativ；问「东西在哪个房间」用 in + Dativ：das → im，die → in der，绝不可写 im Küche。":"Ask “what is there” with es gibt + accusative; say where something is with in + dative: das → im, die → in der — never “im Küche”.",
+"德语半点看「未来」：halb neun = 8:30（通往 9 点的一半），不是 9:30！这是本课最大地雷。":"German halves look forward: halb neun = 8:30 (half way to nine), not 9:30 — the biggest trap of this lesson.",
+"tragen 主语是「人」且强变化（du trägst）；passen / kosten 主语是「物」，只看单复数。":"tragen takes a person as subject and is strong (du trägst); passen / kosten take a thing as subject and only care about singular or plural.",
+"天气句两套语序自由切换：Es ist im Sommer heiß. ⇄ Im Sommer ist es heiß. —— 动词永远第二位。":"Weather sentences switch freely between Es ist im Sommer heiß. ⇄ Im Sommer ist es heiß. — the verb always stays in second position.",
+"乘交通工具 = mit + Dativ（mit dem Bus / mit der U-Bahn）；步行特例 zu Fuß gehen；去某处 = zu + Dativ（zum / zur）。":"Means of transport = mit + dative (mit dem Bus / mit der U-Bahn); walking is the exception, zu Fuß gehen; going somewhere = zu + dative (zum / zur).",
+"brauchen / suchen / kaufen 后接第四格：阳性 der → den / einen；机器坏了说 Der Drucker funktioniert nicht.":"brauchen / suchen / kaufen take the accusative: masculine der → den / einen; a machine that does not work: Der Drucker funktioniert nicht.",
+"叙述日常流程的标准范式：时间状语开头 + 动词第二位 + 可分离动词前缀钉句尾。":"The standard pattern for narrating a routine: a time phrase first, the verb second, and the separable prefix pinned to the end.",
+"框架结构：助动词（第二位）+ … + Partizip II（句末）。sein 只配两类动词：位置移动（kommen, gehen, fahren）与状态改变（aufstehen, einschlafen），其余一律 haben。":"The sentence bracket: auxiliary in second position + … + past participle at the end. sein goes with only two groups — verbs of motion (kommen, gehen, fahren) and change of state (aufstehen, einschlafen); everything else takes haben."
+});
+
+/* Part 3b · 课程句型（按中文索引，DOM 层替换） */
+Object.assign(window.EN_UI, {
+"您叫什么名字？能请您拼读一下吗？":"What is your name? Could you spell it for me?",
+"用音名拼读名字 Jian":"Spelling the name Jian with letter names","用音名拼读姓氏 Wu":"Spelling the surname Wu with letter names",
+"我的名字是 Jian。":"My name is Jian.","我来自中国。":"I come from China.","我住在XX。":"I live in XX.","我今年 34 岁。":"I am 34 years old.",
+"我在 MPI 工作。":"I work for MPI.","我学习生物学。":"I study biology.","我的爱好是打网球和跑步。":"My hobbies are playing tennis and running.",
+"我是一名职员。":"I am an employee.","我有这栋房子。":"I have the house.",
+"4 + und + 30，先个位后十位":"4 + und + 30 — unit before ten","9 + und + 70":"9 + und + 70","5 + und + 40":"5 + und + 40",
+"我的电话号码是 0176……（逐位念）":"My phone number is 0176… (read digit by digit)","邮编 35390 逐位读出":"Postcode 35390, read digit by digit",
+"我喜欢吃沙拉。":"I like eating salad.","你喜欢喝什么？":"What do you like to drink?",
+"我想要一份比萨和一杯水。（最礼貌点餐式）":"I would like a pizza and a water. (the politest way to order)",
+"我要一杯咖啡。（阳性 → einen）":"I'll have a coffee. (masculine → einen)","这个多少钱？":"How much is this?","请买单。":"The bill, please.",
+"— 还要别的吗？— 不用了，谢谢。":"— Anything else? — No, thank you.",
+"我喜欢看书。":"I like reading.","我非常喜欢游泳。":"I really like swimming.","我不喜欢跳舞。":"I don't like dancing.",
+"你 / 您喜欢做什么？":"What do you like doing?","我周六购物。（ein 甩句尾）":"I shop on Saturdays. (ein goes to the end)",
+"他喜欢看电视。（换音 + 分离）":"He likes watching TV. (vowel change + separation)","我喜欢和朋友们一起做饭。（倒装）":"I like cooking with friends. (inversion)",
+"我骑自行车。/ 我踢足球。":"I ride a bike. / I play football.","Maria 有一套小公寓。":"Maria has a small flat.",
+"（公寓里）有一间客厅、一间卧室和一间厨房。":"There is a living room, a bedroom and a kitchen.","客厅里有一张沙发和一台电视机。":"In the living room there is a sofa and a television.",
+"桌子在厨房里。（die Küche → in der）":"The table is in the kitchen. (die Küche → in der)","床在卧室里。（das → im）":"The bed is in the bedroom. (das → im)",
+"烤肉架在阳台上。":"The grill is on the balcony.","8:15（8 点过了一刻）。":"8:15 (a quarter past eight).","8:30！（通往 9 点的一半）":"8:30! (half way to nine)",
+"8:45（差一刻到 9 点）。":"8:45 (a quarter to nine).","我 7:30 起床。":"I get up at 7:30.","我早上喝咖啡。（倒装：动词第二）":"In the morning I drink coffee. (inversion: verb second)",
+"我晚上看电视。":"In the evening I watch TV.","您几点起床？":"What time do you get up?","我 10:30 睡觉。":"I go to bed at 10:30.",
+"我喜欢穿牛仔裤。":"I like wearing jeans.","我最喜欢的颜色是蓝色。":"My favourite colour is blue.","我常在 H&M 买衣服。":"I often buy clothes at H&M.",
+"— 我能帮您吗？— 什么尺码？（店员用语）":"— Can I help you? — What size? (shop assistant)","这个多少钱？— 我要了。":"How much is this? — I'll take it.",
+"秋天，树叶是红色和黄色的。":"In autumn the leaves are red and yellow.","夏天热。（正装）":"It is hot in summer. (normal order)",
+"冬天冷。（倒装）":"In winter it is cold. (inverted)","秋天经常下雨。":"In autumn it often rains.","今天非常暖和。":"Today it is very warm.",
+"春天百花盛开。":"In spring the flowers bloom.","冬天孩子们堆雪人。":"In winter the children build a snowman.","草是绿色的。":"The grass is green.",
+"银行在哪里？（问静态位置）":"Where is the bank? (static position)","去火车站 / 诊所怎么走？（问动态路线）":"How do I get to the station / the doctor's practice? (route)",
+"请您直走。":"Go straight ahead.","请在红绿灯处左转。":"Turn left at the traffic lights.","我乘公交车。":"I take the bus.","我步行去。":"I walk.",
+"诊所在面包店旁边。":"The doctor's practice is next to the bakery.","沿街往下走，然后左转，面包店旁边就是诊所。":"Go down the street, then left next to the bakery — there is the practice.",
+"打印机坏了 / 不工作了。":"The printer isn't working.","我需要一个订书机。（阳性 einen）":"I need a stapler. (masculine einen)","我今天加班。":"I'm working overtime today.",
+"我多留一会儿。":"I'll stay a bit longer.","我快迟到了。":"I'm running late.","我们有个会议。":"We have a meeting.",
+"我在实验室担任生物学家。":"I work as a biologist in a laboratory.","早上我检查我的实验。（倒装）":"In the morning I check my experiments. (inversion)",
+"我到实验室时，先穿上实验服。":"When I come into the lab, I first put on my lab coat.","10 点半左右我短暂休息。":"Around 10:30 I take a short break.",
+"他用什么研究植物细胞？— 用显微镜。":"What does he use to examine plant cells? — A microscope.",
+"我的工作有时很难，但从不无聊。":"My work is sometimes difficult, but never boring.",
+"昨天她度过了特别有趣的一个工作日。":"Yesterday she had a particularly interesting working day.",
+"Mia 早上 7:15 就来到了实验室。（位移 → sein）":"Mia came to the lab at 7:15. (motion → sein)",
+"她首先打开了电脑。（可分：ein+ge+schaltet）":"She first switched on her computer. (separable: ein+ge+schaltet)",
+"她检查了所有容器并记录了编号。（-ieren 无 ge-）":"She checked all the containers and noted the numbers. (-ieren takes no ge-)",
+"在一份样品中她们发现了意外的结果。":"In one sample they found an unexpected result.",
+"16:30 她骑自行车回家了。（位移 → sein）":"At 16:30 she cycled home. (motion → sein)",
+"但她依然很满足，因为她学到了新东西。":"Nevertheless she was satisfied, because she had learned something new."
+});
