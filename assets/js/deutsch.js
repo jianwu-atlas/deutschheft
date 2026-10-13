@@ -77,6 +77,259 @@ const POS_META = {
 };
 
 /* ============================================================
+   词形变化 Formenlehre
+   动词变位 / 名词复数 / 形容词比较级 / 冠词·代词变格
+   ============================================================ */
+const PERSONEN = ["ich", "du", "er/sie/es", "wir", "ihr", "sie/Sie"];
+let formenState = { tab: "verben", q: "" };
+
+function umlaut(s) {
+  return s.replace(/au/g, "\u0001").replace(/a/g, "ä").replace(/o/g, "ö")
+    .replace(/u/g, "ü").replace(/\u0001/g, "äu");
+}
+
+/* 规则动词按词干 + 词尾类型生成六人称；强变化动词用显式 formen */
+function konjugiere(v) {
+  if (v.formen) return v.formen;
+  const st = v.stamm, a = v.art;
+  const duEnd = a === "s" ? "t" : (a === "t" ? "est" : "st");
+  const erEnd = a === "t" ? "et" : "t";
+  const wirEnd = a === "er" ? "n" : "en";
+  const ihrEnd = a === "t" ? "et" : "t";
+  return [st + "e", st + duEnd, st + erEnd, st + wirEnd, st + ihrEnd, st + wirEnd];
+}
+
+function pluralForm(de, marker) {
+  const base = de.replace(/^(der|die|das)\s+/, "");
+  const m = (marker || "").trim();
+  if (!m || m === "-") return base;
+  if (/[/]/.test(m)) return base + " ‹" + m + "›";
+  if (m === "¨-") return umlaut(base);
+  if (m.startsWith("¨-")) return umlaut(base) + m.slice(2);
+  if (m.startsWith("-")) return base + m.slice(1);
+  return base + " ‹" + m + "›";
+}
+
+const VERB_TYP_LABEL = {
+  reg: "规则", t: "规则（-t/-d 加 -e-）", s: "规则（-s/-ß/-z 只加 -t）",
+  er: "规则（-er/-el 加 -n）", stark: "强变化 / 不规则"
+};
+
+function renderFormen(app) {
+  const tabs = [
+    ["verben", "🔁 动词变位", "Konjugation"],
+    ["substantive", "📦 名词复数", "Plural"],
+    ["adjektive", "⚖️ 形容词比较级", "Komparation"],
+    ["deklination", "🧩 冠词·代词变格", "Deklination"]
+  ];
+  app.innerHTML = `
+    <div class="vocab-tabs">
+      ${tabs.map(([k, zh, de]) => `<button class="vtab ${formenState.tab === k ? "on" : ""}" data-tab="${k}">${zh} <span style="opacity:.55;font-size:12px">${de}</span></button>`).join("")}
+    </div>
+    <div id="formenBody"></div>`;
+  $$(".vtab", app).forEach(b => b.addEventListener("click", () => {
+    formenState.tab = b.dataset.tab; formenState.q = "";
+    renderFormen(app);
+  }));
+  const body = $("#formenBody");
+  if (formenState.tab === "verben") renderFormenVerben(body);
+  else if (formenState.tab === "substantive") renderFormenSubstantive(body);
+  else if (formenState.tab === "adjektive") renderFormenAdjektive(body);
+  else renderFormenDeklination(body);
+}
+
+/* ---------- ① 动词变位 ---------- */
+function renderFormenVerben(body) {
+  const BASE = ["sein", "haben", "werden"];
+  const MODAL = ["können", "müssen", "wollen", "sollen", "dürfen", "mögen", "möchten"];
+  const groups = [
+    ["基础动词", BASE],
+    ["情态动词", MODAL],
+    ["强变化动词", FORMEN_VERBEN.filter(v => v.art === "stark" && !v.trenn && !BASE.includes(v.de) && !MODAL.includes(v.de)).map(v => v.de)],
+    ["可分动词", FORMEN_VERBEN.filter(v => v.trenn).map(v => v.de)],
+    ["规则动词", FORMEN_VERBEN.filter(v => ["reg", "t", "s", "er"].includes(v.art) && !v.trenn).map(v => v.de)]
+  ];
+  const q = formenState.q.trim().toLowerCase();
+  const row = v => {
+    const f = konjugiere(v);
+    return `<tr>
+      <td class="fo-de">${esc(v.de)}<span class="fo-zh">${esc(v.zh)}</span></td>
+      ${f.map((x, i) => `<td class="fo-form${i === 1 || i === 2 ? " hot" : ""}">${esc(x)}</td>`).join("")}
+      <td class="fo-part">${esc(v.part || "—")}</td>
+      <td class="fo-praet">${esc(v.praet || "—")}</td>
+      <td class="fo-hilf">${esc(v.hilf || "—")}</td>
+      <td class="fo-typ">${esc(VERB_TYP_LABEL[v.art] || v.art)}${v.trenn ? ` · 可分（${esc(v.trenn)}-）` : ""}</td>
+    </tr>`;
+  };
+  body.innerHTML = `
+    <div class="fo-rules card">
+      <div class="fo-rules-title">变位规则速览</div>
+      <div class="fo-rule-grid">
+        <div><b>规则动词</b>词干 + <code>e / st / t / en / t / en</code><br><i>wohnen → wohne, wohnst, wohnt …</i></div>
+        <div><b>词干以 -t / -d 结尾</b>插 <code>-e-</code><br><i>arbeiten → arbeit<u>e</u>st, arbeit<u>e</u>t</i></div>
+        <div><b>词干以 -s / -ß / -z 结尾</b>du/er 只加 <code>-t</code><br><i>reisen → du reist（不是 reisst）</i></div>
+        <div><b>词干以 -er / -el 结尾</b>wir/sie 只加 <code>-n</code><br><i>wandern → wir wander<u>n</u></i></div>
+        <div><b>强变化</b>du / er 换音或变音<br><i>essen → du <u>isst</u> · fahren → du <u>fährst</u></i></div>
+        <div><b>可分动词</b>前缀甩到句尾<br><i>aufstehen → ich <u>stehe</u> um 7 <u>auf</u></i></div>
+        <div><b>情态动词</b>ich / er 无词尾<br><i>können → ich <u>kann</u> · er <u>kann</u></i></div>
+        <div><b>-ieren 动词</b>第二分词不带 ge-<br><i>studieren → <u>studiert</u></i></div>
+      </div>
+      <p class="fo-tip">💡 完成时 = <b>haben / sein</b>（第二位）+ <b>第二分词</b>（句尾）。表示移动或状态变化的动词用 <b>ist</b>（gehen / kommen / fahren / aufstehen …），其余用 <b>hat</b>。</p>
+    </div>
+    <div class="vocab-toolbar">
+      <input class="vocab-search" id="foSearch" type="search" placeholder="搜索动词（德语 / 中文）…" value="${esc(formenState.q)}">
+      <span class="fo-count" id="foCount"></span>
+    </div>
+    <div class="fo-table-wrap">
+      <table class="fo-table">
+        <thead><tr>
+          <th>原形</th>${PERSONEN.map(p => `<th>${p}</th>`).join("")}
+          <th>第二分词</th><th>过去时</th><th>助动词</th><th>变位类型</th>
+        </tr></thead>
+        <tbody id="foBody"></tbody>
+      </table>
+    </div>`;
+  function paint() {
+    const kw = formenState.q.trim().toLowerCase();
+    const hit = v => !kw || v.de.toLowerCase().includes(kw) || v.zh.includes(kw) ||
+      konjugiere(v).some(f => f.toLowerCase().includes(kw));
+    let html = "", n = 0;
+    groups.forEach(([title, names]) => {
+      const list = FORMEN_VERBEN.filter(v => names.includes(v.de) && hit(v));
+      if (!list.length) return;
+      n += list.length;
+      html += `<tr class="fo-group"><td colspan="11">${title} · ${list.length}</td></tr>` + list.map(row).join("");
+    });
+    $("#foBody").innerHTML = html || `<tr><td colspan="11" class="fo-empty">没有匹配的动词</td></tr>`;
+    $("#foCount").textContent = `${n} / ${FORMEN_VERBEN.length} 个动词`;
+  }
+  $("#foSearch").addEventListener("input", e => { formenState.q = e.target.value; paint(); });
+  paint();
+}
+
+/* ---------- ② 名词复数 ---------- */
+function renderFormenSubstantive(body) {
+  const nouns = VOCAB.filter(v => ["der", "die", "das"].includes(v.pos));
+  const ORDER = ["-e", "¨-e", "-en", "-n", "-er", "¨-er", "-s", "¨-", "-", "其他"];
+  const bucket = m => {
+    if (m === "-e") return "-e";
+    if (m === "¨-e") return "¨-e";
+    if (m === "-en") return "-en";
+    if (m === "-n") return "-n";
+    if (m === "-er") return "-er";
+    if (m === "¨-er") return "¨-er";
+    if (m === "-s") return "-s";
+    if (m === "¨-") return "¨-";
+    if (!m || m === "-") return "-";
+    return "其他";
+  };
+  const LABEL = {
+    "-e": "加 -e（常配变音）", "¨-e": "变音 + -e", "-en": "加 -en（多阴性）", "-n": "加 -n（多阴性）",
+    "-er": "加 -er（多中性）", "¨-er": "变音 + -er", "-s": "加 -s（外来词）",
+    "¨-": "只变音", "-": "复数同形", "其他": "特殊复数"
+  };
+  const map = {};
+  nouns.forEach(v => {
+    const b = bucket((v.plural || "").trim());
+    (map[b] = map[b] || []).push(v);
+  });
+  body.innerHTML = `
+    <div class="fo-rules card">
+      <div class="fo-rules-title">复数规则速览</div>
+      <div class="fo-rule-grid">
+        <div><b>加 -e</b>der Tisch → die Tisch<u>e</u>（常变音：der Stuhl → die St<u>ü</u>hle）</div>
+        <div><b>加 -en / -n</b>die Frau → die Frau<u>en</u> · die Küche → die Küche<u>n</u>（阴性最多）</div>
+        <div><b>加 -er</b>das Kind → die Kind<u>er</u>（常变音：das Haus → die H<u>äu</u>ser）</div>
+        <div><b>加 -s</b>das Auto → die Auto<u>s</u>（外来词）</div>
+        <div><b>不变</b>das Mädchen → die Mädchen（-chen/-er/-el/-en 结尾）</div>
+        <div><b>只变音</b>der Apfel → die <u>Ä</u>pfel</div>
+      </div>
+      <p class="fo-tip">💡 定冠词复数一律 <b>die</b>；复数第三格要再加 <b>-n</b>（mit den Kinder<u>n</u>）。</p>
+    </div>
+    <div class="fo-table-wrap">
+      <table class="fo-table fo-table-noun">
+        <thead><tr><th>单数（含冠词）</th><th>复数</th><th>中文</th><th>复数类型</th></tr></thead>
+        <tbody>
+          ${ORDER.filter(k => map[k] && map[k].length).map(k => `
+            <tr class="fo-group"><td colspan="4">${LABEL[k]} · ${map[k].length}</td></tr>
+            ${map[k].sort((a, b) => a.de.localeCompare(b.de, "de")).map(v => `
+              <tr>
+                <td class="fo-de">${esc(v.de)}</td>
+                <td class="fo-pl">${esc(pluralForm(v.de, v.plural))}</td>
+                <td class="fo-zh2">${esc(v.zh)}</td>
+                <td class="fo-typ">${esc(v.plural || "—")}</td>
+              </tr>`).join("")}`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+/* ---------- ③ 形容词比较级 ---------- */
+function renderFormenAdjektive(body) {
+  body.innerHTML = `
+    <div class="fo-rules card">
+      <div class="fo-rules-title">比较级 / 最高级规则</div>
+      <div class="fo-rule-grid">
+        <div><b>比较级</b>原级 + <code>-er</code><br><i>kalt → kält<u>er</u></i></div>
+        <div><b>最高级</b><code>am</code> + 原级 + <code>-sten</code><br><i>am kält<u>esten</u></i></div>
+        <div><b>变音</b>a/o/u → ä/ö/ü<br><i>krank → kränker · rot → röter</i></div>
+        <div><b>-t / -s / -ß 结尾</b>最高级加 <code>-esten</code><br><i>heiß → am heiß<u>esten</u></i></div>
+        <div><b>比较用 als</b>Ich bin jünger <u>als</u> du.</div>
+        <div><b>同级用 so … wie</b>Ich bin <u>so</u> groß <u>wie</u> du.</div>
+      </div>
+      <p class="fo-tip">💡 表语形容词不变格：Das Wetter ist <b>gut</b>. / Heute ist es <b>besser</b>. 作定语才加词尾。</p>
+    </div>
+    <div class="fo-table-wrap">
+      <table class="fo-table fo-table-adj">
+        <thead><tr><th>原级</th><th>中文</th><th>比较级</th><th>最高级</th><th>说明</th></tr></thead>
+        <tbody>
+          ${FORMEN_ADJ.map(([de, zh, komp, sup, note]) => `
+            <tr>
+              <td class="fo-de">${esc(de)}</td>
+              <td class="fo-zh2">${esc(zh)}</td>
+              <td class="fo-form">${esc(komp)}</td>
+              <td class="fo-form">${esc(sup)}</td>
+              <td class="fo-typ">${esc(note || "—")}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+/* ---------- ④ 冠词 / 代词变格 ---------- */
+function renderFormenDeklination(body) {
+  const D = FORMEN_DEKL;
+  const tbl = (head, rows) => `
+    <div class="fo-table-wrap">
+      <table class="fo-table fo-table-dekl">
+        <thead><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr></thead>
+        <tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td class="${i === 0 ? "fo-de" : "fo-form"}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table>
+    </div>`;
+  body.innerHTML = `
+    <div class="fo-rules card">
+      <div class="fo-rules-title">格（Kasus）速览</div>
+      <div class="fo-rule-grid">
+        <div><b>第一格 N</b>主语：<i><u>Der</u> Tisch ist neu.</i></div>
+        <div><b>第四格 A</b>直接宾语：<i>Ich habe <u>einen</u> Tisch.</i></div>
+        <div><b>第三格 D</b>间接宾语：<i>Ich helfe <u>dem</u> Mann.</i></div>
+        <div><b>第二格 G</b>所属：<i>das Auto <u>des</u> Mannes</i></div>
+      </div>
+      <p class="fo-tip">💡 只有<b>阳性</b>在第一格/第四格会变（der → den / ein → einen），阴性与中性几乎不变。</p>
+    </div>
+    <h3 class="fo-h3">定冠词 der / die / das</h3>
+    ${tbl(["格", "阳性", "阴性", "中性", "复数"], D.artikelBest)}
+    <h3 class="fo-h3">不定冠词 ein / eine / ein</h3>
+    ${tbl(["格", "阳性", "阴性", "中性", "复数"], D.artikelUnbest)}
+    <h3 class="fo-h3">人称代词（第一 / 第四 / 第三格）</h3>
+    ${tbl(["第一格 N", "第四格 A", "第三格 D"], D.pronomen)}
+    <h3 class="fo-h3">物主冠词</h3>
+    ${tbl(["人称", "阳性 / 中性", "阴性 / 复数"], D.possessiv)}
+    <h3 class="fo-h3">复数类型对照</h3>
+    ${tbl(["复数方式", "例", "说明"], D.pluralRegeln)}`;
+}
+
+/* ============================================================
    页面分发
    ============================================================ */
 const PAGES = {
@@ -86,6 +339,7 @@ const PAGES = {
   grammatik: renderGrammar,
   texte: renderTexts,
   lehrbuch: renderLehrbuch,
+  formen: renderFormen,
   uebungen: renderQuizHome,
   kursplan: renderKursplan
 };
@@ -238,12 +492,13 @@ function renderStart(app) {
     { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 2 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
-    { route: "texte.html", num: "04", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
-    { route: "lehrbuch.html", num: "05", de: "Lehrbuch", zh: "教材", desc: "4 份课程 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
-    { route: "referenz.html", num: "06", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
-    { route: "uebungen.html", num: "07", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
-    { route: "notion.html", num: "08", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
-    { route: "kursplan.html", num: "09", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
+    { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: FORMEN_VERBEN.length + " 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格。" },
+    { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
+    { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "5 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
+    { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
+    { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
+    { route: "notion.html", num: "09", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
+    { route: "kursplan.html", num: "10", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
   ];
 
   app.innerHTML = `

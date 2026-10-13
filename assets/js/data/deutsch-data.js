@@ -55,7 +55,7 @@ const LESSONS = [
       { de: "Ich komme aus China.", zh: "我来自中国。", ipa: "[ɪç ˈkɔmə aʊ̯s ˈçiːna]"  },
       { de: "Ich wohne in XX.", zh: "我住在XX。", ipa: "[ɪç ˈvoːnə ɪn ˈʔɪks ˈʔɪks]"  },
       { de: "Ich bin 34 Jahre alt.", zh: "我今年 34 岁。", ipa: "[ɪç bɪn ˈfiːɐ̯ʊntˈdʁaɪ̯sɪç ˈjaːʁə alt]"  },
-      { de: "Ich arbeite für Max Planck.", zh: "我在马克斯·普朗克研究所工作。", ipa: "[ɪç ˈʔaʁbaɪ̯tə fyːɐ̯ maks ˈplaŋk]"  },
+      { de: "Ich arbeite für MPI.", zh: "我在 MPI 工作。", ipa: "[ɪç ˈʔaʁbaɪ̯tə fyːɐ̯ ɛm peː ˈʔiː]"  },
       { de: "Ich studiere Biologie.", zh: "我学习生物学。", ipa: "[ɪç ʃtuˈdiːʁə bioloˈɡiː]"  },
       { de: "Meine Hobbys sind Tennis spielen und Laufen.", zh: "我的爱好是打网球和跑步。", ipa: "[ˈmaɪ̯nə ˈhɔbis zɪnt ˈtɛnɪs ˈʃpiːlən ʊnt ˈlaʊ̯fn̩]"  },
       { de: "Ich bin ein Angestellter.", zh: "我是一名职员。", ipa: "[ɪç bɪn aɪ̯n ˈanɡəʃtɛltɐ]"  },

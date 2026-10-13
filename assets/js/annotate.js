@@ -79,7 +79,7 @@
   /* 专有名词（人名/地名/品牌）不标注：Mia / Elena / Frankfurt … 会满屏出现 */
   const NAMES = new Set([
     "daniel", "elena", "mia", "maria", "marias", "jian", "malawi", "malawas",
-    "amerika", "frankfurt", "nauheim", "volkswagen", "max", "planck", "h&m"
+    "amerika", "frankfurt", "volkswagen", "h&m"
   ]);
 
   const WORD_RE = /[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'-]*/g;
