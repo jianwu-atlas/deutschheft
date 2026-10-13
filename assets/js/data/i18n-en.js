@@ -755,3 +755,121 @@ Object.assign(window.EN_UI, {
 "-ieren 结尾；不可分前缀 be-, er-, ent-, ver-, unter-, wieder-":"-ieren verbs; inseparable prefixes be-, er-, ent-, ver-, unter-, wieder-",
 "💡 描述状态时可用 sein 的过去时 war 代替完成时：Am Abend":"💡 For describing a state you can use the simple past war instead of the perfect: Am Abend"
 });
+
+/* Part 5b · 收尾：页脚/按钮/首页/练习/大纲/语法/课文/教材/词形/课程 残留 */
+Object.assign(window.EN_UI, {
+/* 页脚与按钮 */
+"Formen 词形变化":"Formen · Word Forms","Lehrbuch 教材":"Lehrbuch · Textbook","Referenz 速查表":"Referenz · Reference",
+"Notion 同步":"Notion sync","🔈 音标：关":"🔈 IPA: off","🔊 音标：开":"🔊 IPA: on",
+/* 首页 */
+"Jian 的德语学习手册 —— 整合你的 A1 课堂笔记、A1.2 实验室课文与 Notion 笔记库：词汇、语法、句型、课文、练习，一册在手，随时复习。":"Jian's German handbook — your A1 class notes, A1.2 lab texts and Notion notes gathered into one place: vocabulary, grammar, sentences, texts and exercises, ready for review anytime.",
+"大纲进度 · Kursplan":"Syllabus progress · Kursplan","已学课程 · Lektionen":"Lessons done · Lektionen",
+"核心生词 · Wörter":"Core vocabulary · Wörter","语法专题 · Grammatik":"Grammar topics · Grammatik","课文 · Texte":"Texts · Texte",
+"Notion 笔记 · Notizen":"Notion notes · Notizen","已复习标记 · Wiederholt":"Marked as reviewed · Wiederholt","学习板块 · Module":"Modules",
+"🎯 当前学习重点 · Aktueller Fokus":"🎯 Current focus","你刚进入":"You have just entered the","阶段，最近一课是":"stage; your latest lesson is",
+"现在完成时（Das Perfekt）":"the perfect tense (Das Perfekt)","：haben/sein + Partizip II 的框架结构。建议先读课文《Ein besonderer Tag im Labor》，再做「现在完成时」专项测验巩固助动词选择。大纲上":": the haben/sein + past participle bracket. Read the text “Ein besonderer Tag im Labor” first, then take the perfect-tense quiz to drill the choice of auxiliary. On the syllabus,",
+"Bürokratie（办事）":"Bürokratie (paperwork)","Arztbesuch（看病）":"Arztbesuch (seeing a doctor)",
+"是接下来最值得优先攻克的两个生存主题。":"are the two survival topics most worth tackling next.",
+/* 练习 */
+"SET 1 · 10 题":"SET 1 · 10 questions","SET 2 · 8 题":"SET 2 · 8 questions","SET 3 · 8 题":"SET 3 · 8 questions",
+"SET 4 · 10 题":"SET 4 · 10 questions","SET 5 · 10 题":"SET 5 · 10 questions",
+/* 大纲 */
+"已学":"learned","待学":"to come","部分涉及":"partly covered",
+/* 语法目录 */
+"01 · 动词第二位原则":"01 · The verb comes second","02 · sein 与 haben":"02 · sein and haben",
+"03 · 规则动词现在时变位":"03 · Regular verbs in the present","04 · 强变化动词（换音与变音）":"04 · Strong verbs (vowel change and umlaut)",
+"05 · 可分离动词":"05 · Separable verbs","06 · 名词词性 der / die / das":"06 · Noun gender: der / die / das",
+"07 · 第四格 Akkusativ":"07 · The accusative case","08 · 第三格与常用介词":"08 · The dative and common prepositions",
+"09 · 时间表达 Uhrzeit":"09 · Telling the time","10 · 喜好表达 gern":"10 · Expressing likes with gern",
+"11 · 疑问词与从句预热":"11 · Question words and clauses","12 · 现在完成时 Das Perfekt":"12 · The perfect tense",
+/* 课文 */
+"实验室里的一天 · A1 → A2 过渡 · 2026-08-31":"A day in the lab · A1 → A2 bridge · 2026-08-31",
+"实验室里特殊的一天 · A1.2 · Das Perfekt · 2026-10-07":"A special day in the lab · A1.2 · Das Perfekt · 2026-10-07",
+"🔊 朗读全段":"🔊 Read the whole text","hat … gehabt（haben 的完成时）":"hat … gehabt (perfect of haben)",
+"ist … gekommen（位移 → sein）":"ist … gekommen (motion → sein)","hat … eingeschaltet（可分）":"hat … eingeschaltet (separable)",
+"hat … angezogen（可分）":"hat … angezogen (separable)","hat … kontrolliert（-ieren 无 ge-）":"hat … kontrolliert (-ieren, no ge-)",
+"hat … notiert（-ieren 无 ge-）":"hat … notiert (-ieren, no ge-)","hat … vorbereitet（可分）":"hat … vorbereitet (separable)",
+"hat … benutzt（be- 无 ge-）":"hat … benutzt (be-, no ge-)","hat … geholfen（强变化 e→o）":"hat … geholfen (strong e→o)",
+"haben … untersucht（unter- 无 ge-）":"haben … untersucht (unter-, no ge-)","haben … wiederholt（wieder- 无 ge-）":"haben … wiederholt (wieder-, no ge-)",
+"sind … gegangen（位移 → sein）":"sind … gegangen (motion → sein)","hat … eingetragen（可分）":"hat … eingetragen (separable)",
+"hat … telefoniert（-ieren 无 ge-）":"hat … telefoniert (-ieren, no ge-)","hat … erzählt（er- 无 ge-）":"hat … erzählt (er-, no ge-)",
+"hat … entschieden（ent- 无 ge-）":"hat … entschieden (ent-, no ge-)","hat … aufgeräumt（可分）":"hat … aufgeräumt (separable)",
+"hat … weggeräumt（可分）":"hat … weggeräumt (separable)","ist … gefahren（位移 → sein）":"ist … gefahren (motion → sein)",
+"war（sein 过去时，表状态）":"war (simple past of sein, for states)",
+/* 教材 */
+"📚 词汇 Wortschatz · 19":"📚 Vocabulary · 19","📚 词汇 Wortschatz · 18":"📚 Vocabulary · 18","📚 词汇 Wortschatz · 17":"📚 Vocabulary · 17",
+"💬 核心句型 Sätze · 6":"💬 Core sentences · 6","💬 核心句型 Sätze · 7":"💬 Core sentences · 7",
+"💬 核心句型 Sätze · 9":"💬 Core sentences · 9","💬 核心句型 Sätze · 8":"💬 Core sentences · 8",
+"🧩 语法要点 Grammatik":"🧩 Grammar notes","📄 课件原文（自动提取自 PDF）":"📄 Raw handout text (auto-extracted)",
+"（本书为扫描版 PDF，无可提取文字层——以上词汇/句型取自样页 Einheit 3「坐火车出行」与 Einheit 7「情感世界」；完整内容请用在线阅读或下载 PDF。）":"(This book is a scanned PDF with no text layer — the vocabulary and sentences above are taken from sample pages of Einheit 3 “Travelling by train” and Einheit 7 “Emotions”. For the full content, read it online or download the PDF.)",
+"车票":"ticket","轨道":"track","广播通知":"announcement","山谷":"valley","[ɔy] neu 新的 / Bäume 花朵":"[ɔy] neu (new) / Bäume (trees)",
+"T 恤":"T-shirt","红 / 蓝 / 绿":"red / blue / green","黄 / 黑 / 白":"yellow / black / white",
+"灰 / 棕 / 粉":"grey / brown / pink","橙 / 紫":"orange / purple",
+"步行":"on foot","地铁":"underground","左 / 右":"left / right","旁边 / 对面":"next to / opposite",
+/* 词形变化 */
+"词干 +":"stem +","词干以 -t / -d 结尾":"stems ending in -t / -d","词干以 -s / -ß / -z 结尾":"stems ending in -s / -ß / -z",
+"du/er 只加":"du/er add only","reisen → du reist（不是 reisst）":"reisen → du reist (not “reisst”)",
+"词干以 -er / -el 结尾":"stems ending in -er / -el","wir/sie 只加":"wir/sie add only",
+"du / er 换音或变音":"du / er change the vowel or take an umlaut","前缀甩到句尾":"the prefix goes to the end of the sentence",
+"ich / er 无词尾":"ich / er take no ending","-ieren 动词":"-ieren verbs","第二分词不带 ge-":"the past participle takes no ge-",
+"💡 完成时 =":"💡 Perfect =","（第二位）+":"(second position) +","（句尾）。表示移动或状态变化的动词用":"(at the end). Verbs of motion or change of state take",
+"（gehen / kommen / fahren / aufstehen …），其余用":"(gehen / kommen / fahren / aufstehen …); everything else takes",
+"基础动词 · 3":"Basic verbs · 3","情态动词 · 7":"Modal verbs · 7","强变化动词 · 30":"Strong verbs · 30",
+"可分动词 · 17":"Separable verbs · 17","规则动词 · 54":"Regular verbs · 54",
+"想要":"would like","应该":"should","可以；允许":"may; to be allowed","拉；拖":"to pull; to drag","开始":"to begin",
+"切换；打开":"to switch; to turn on","准备":"to prepare","整理；搬":"to tidy; to move","错过":"to miss",
+"意味着":"to mean","结束":"to end","属于":"to belong to","持续":"to last",
+"强变化 / 不规则 · 可分（fern-）":"strong / irregular · separable (fern-)","强变化 / 不规则 · 可分（auf-）":"strong / irregular · separable (auf-)",
+"强变化 / 不规则 · 可分（an-）":"strong / irregular · separable (an-)","强变化 / 不规则 · 可分（ein-）":"strong / irregular · separable (ein-)",
+"强变化 / 不规则 · 可分（aus-）":"strong / irregular · separable (aus-)","强变化 / 不规则 · 可分（durch-）":"strong / irregular · separable (durch-)",
+"规则 · 可分（ein-）":"regular · separable (ein-)","规则 · 可分（auf-）":"regular · separable (auf-)",
+"规则 · 可分（weg-）":"regular · separable (weg-)","规则 · 可分（an-）":"regular · separable (an-)","规则 · 可分（aus-）":"regular · separable (aus-)",
+"规则（-t/-d 加 -e-） · 可分（ein-）":"regular (-t/-d adds -e-) · separable (ein-)","规则（-t/-d 加 -e-） · 可分（vor-）":"regular (-t/-d adds -e-) · separable (vor-)",
+/* 课程 */
+"2026-04 起":"from 2026-04","本课焦点：":"Focus of this lesson:",
+"食物与饮料":"Food & drink","房屋与家具":"Home & furniture","服装与颜色":"Clothes & colours","四季与天气":"Weather & seasons"
+});
+
+/* Part 5c · 速查表 + Notion 导入面板 */
+Object.assign(window.EN_UI, {
+/* 数字 */
+"0–12 不规则，逐个死记":"0–12 are irregular — learn them one by one","13–19 = 个位 + zehn":"13–19 = unit + zehn",
+"去 s · 17 sieb":"drops the s · 17 sieb","去 en":"drops -en","⚠️ 30 dreißig 唯一 ß 结尾":"⚠️ 30 dreißig is the only one ending in ß",
+"21+ = 个位 + und + 十位（先说个位！）":"21+ = unit + und + ten (unit first!)","电话号码/邮编逐位念最保险":"Phone numbers / postcodes: read digit by digit",
+"基础 0–100":"Basics 0–100","德语":"German","组合数字 21–99（个位 + und + 十位）":"Compound numbers 21–99 (unit + und + ten)",
+/* 时间 */
+"整点：Es ist … Uhr":"On the hour: Es ist … Uhr","过点：… nach":"Past: … nach","差点：… vor（小时 +1）":"To: … vor (hour +1)",
+"⚠️ halb neun = 8:30（看下一个钟头）":"⚠️ halb neun = 8:30 (it looks to the next hour)",
+"正式场合直接念数字：zehn Uhr dreißig":"In formal contexts just read the digits: zehn Uhr dreißig",
+"口语报时（以 8 点档为例）":"Telling the time aloud (the 8 o'clock hour)","要点":"Note","整点：数字 + Uhr":"On the hour: number + Uhr",
+"一刻 = Viertel nach":"Quarter past = Viertel nach","差 5 分到半点":"5 minutes to the half hour",
+"半小时看下一个钟头！= 8:30 不是 9:30":"The half hour looks to the next hour! = 8:30, not 9:30",
+"过了半点 5 分":"5 minutes past the half hour","三刻：小时 +1":"Quarter to: hour +1","官方/正式直接念数字":"Formal: just read the digits",
+"通往 1 点的一半":"Half way to one","一日时段与提问":"Times of day and asking the time","含义/时段":"Meaning / time of day",
+"在早上 06–09":"in the morning 06–09","在上午 09–12":"before noon 09–12","在中午 12–14":"at midday 12–14",
+"在下午 14–18":"in the afternoon 14–18","在晚上 18–22":"in the evening 18–22","在夜里 22–06":"at night 22–06",
+"今天早上/某个早上":"this morning / one morning","在上午":"in the morning","在中午":"at midday","在下午":"in the afternoon",
+"在晚上":"in the evening","在夜间":"during the night","现在几点？":"What time is it?","现在几点？（口语）":"What time is it? (colloquial)",
+"在几点……？":"At what time …?",
+/* 颜色 */
+"颜色":"Colours","颜色作表语小写：Meine Lieblingsfarbe ist":"Colours as predicates are lower-case: Meine Lieblingsfarbe ist",
+"（名词化作色名时大写）":"(capitalised when used as a noun)","蓝":"blue","红":"red","黄":"yellow","绿":"green","白":"white",
+"黑":"black","棕":"brown","灰":"grey","橙":"orange","淡紫":"light purple","粉红":"pink","粉（外来）":"pink (loanword)",
+"绿松石色":"turquoise","紫罗兰色":"violet","米色":"beige","金的":"golden","银的":"silver","五彩缤纷的":"colourful",
+/* 四季 */
+"四季":"Seasons","季节/月份全部 der 阳性":"All seasons and months are masculine (der)","在某个季节用 im；在某月用 im":"“In a season” and “in a month” both take im",
+"句型：Im Winter ist es kalt.":"Pattern: Im Winter ist es kalt.","季节":"Season","春 3–5 月":"spring, Mar–May",
+"夏 6–8 月":"summer, Jun–Aug","秋 9–11 月":"autumn, Sep–Nov","冬 12–2 月":"winter, Dec–Feb",
+"在春天":"in spring","在夏天":"in summer","在秋天":"in autumn","在冬天":"in winter",
+"十二个月 · Monate":"The twelve months","一星期 · Wochentage":"The week","星期":"Weekday",
+"周一":"Monday","周二":"Tuesday","周三":"Wednesday","周四":"Thursday","周五":"Friday","周六":"Saturday","周日":"Sunday","周末":"weekend",
+"天气 · Wetter":"Weather","天气":"Weather","晴朗的":"sunny","多云的":"cloudy","多雨的":"rainy","有风的":"windy",
+"有雾的":"foggy","下雪的":"snowy","炎热的":"hot","暖和的":"warm","凉爽的":"cool","寒冷的":"cold","温和的":"mild",
+"下雨了。":"It is raining.","下雪了。":"It is snowing.","阳光照耀。":"The sun is shining.",
+/* Notion 导入面板 */
+"从 Notion 导入 · Import":"Import from Notion","在 Notion 中「导出 → Markdown & CSV」（或复制文本粘贴），把":"In Notion choose “Export → Markdown & CSV” (or just copy the text), then",
+"拖到下方；解析后保存在本机浏览器，可随时搜索阅读。要永久内置进站点，请重跑":"below; the parsed notes are stored in this browser and can be searched anytime. To bundle them permanently into the site, re-run",
+"拖入 Notion 导出的 .md 或 .zip 文件":"Drop the .md or .zip exported from Notion here",
+"或点击选择文件 · 支持一次多个 · 仅在本机浏览器保存":"or click to choose files · multiple at once · stored only in this browser",
+"粘贴导入":"Import pasted text","清空导入":"Clear imported notes","搜索笔记":"Search notes","全部笔记":"All notes"
+});

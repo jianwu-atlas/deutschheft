@@ -1049,3 +1049,13 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 .fo-chip i { font-style: normal; font-size: 10px; color: var(--accent); margin-left: 4px; }
 .fo-num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); text-align: right; }
 .fo-table-idx td { vertical-align: middle; }
+
+/* 英文模式下隐藏「中文谐音」（中文专属记忆锚点） */
+[data-lang="en"] .wl-pron,
+[data-lang="en"] .v-pron,
+[data-lang="en"] .v-back-pron { display: none !important; }
+[data-lang="en"] .wl-table th:nth-child(4),
+[data-lang="en"] .wl-table td:nth-child(4) { display: none !important; }
+[data-lang="en"] .ref-table th:nth-child(4),
+[data-lang="en"] .ref-table td:nth-child(4) { display: none !important; }
+[data-lang="en"] .ref-numgrid .nc-zh { display: none !important; }

@@ -333,6 +333,12 @@
       if (!raw || !/[\u4e00-\u9fff]/.test(raw)) return;
       const key = raw.trim();
       if (EN_UI[key]) { n.nodeValue = raw.replace(key, EN_UI[key]); return; }
+      // 「… · 主题名」形式：只翻尾部主题
+      const mt = /^(.* · )([^ ·]+)$/.exec(key);
+      if (mt && EN_UI[mt[2]]) { n.nodeValue = raw.replace(key, mt[1] + EN_UI[mt[2]]); return; }
+      // 生词表主题链接
+      const ml = /^→ 在生词表中查看「(.+)」主题词汇$/.exec(key);
+      if (ml) { n.nodeValue = raw.replace(key, "→ See the \u201c" + (EN_UI[ml[1]] || ml[1]) + "\u201d topic in the vocabulary list"); return; }
       if (EN_UI_RULES.length) {
         for (let i = 0; i < EN_UI_RULES.length; i++) {
           const re = EN_UI_RULES[i][0];
