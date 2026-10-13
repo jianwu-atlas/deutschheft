@@ -49,16 +49,16 @@
     /* 导航 */
     "nav.start": 'Home <span style="opacity:.55;font-size:12px">Start</span>',
     "nav.lektionen": 'Lessons <span style="opacity:.55;font-size:12px">Lektionen</span>',
-    "nav.wortschatz": 'Vocabulary <span style="opacity:.55;font-size:12px">Wortschatz</span>',
+    "nav.wortschatz": 'Vocab <span style="opacity:.55;font-size:12px">Wortschatz</span>',
     "nav.grammatik": 'Grammar <span style="opacity:.55;font-size:12px">Grammatik</span>',
-    "nav.formen": 'Word Forms <span style="opacity:.55;font-size:12px">Formen</span>',
+    "nav.formen": 'Forms <span style="opacity:.55;font-size:12px">Formen</span>',
     "nav.texte": 'Texts <span style="opacity:.55;font-size:12px">Texte</span>',
     "nav.lehrbuch": 'Textbook <span style="opacity:.55;font-size:12px">Lehrbuch</span>',
     "nav.referenz": 'Reference <span style="opacity:.55;font-size:12px">Referenz</span>',
-    "nav.uebungen": 'Exercises <span style="opacity:.55;font-size:12px">Übungen</span>',
+    "nav.uebungen": 'Quiz <span style="opacity:.55;font-size:12px">Übungen</span>',
     "nav.notion": 'Notes <span style="opacity:.55;font-size:12px">Notizen</span>',
     "nav.kursplan": 'Syllabus <span style="opacity:.55;font-size:12px">Kursplan</span>',
-    "nav.tts": 'Text to MP3 <span style="opacity:.55;font-size:12px">Sprechen</span>',
+    "nav.tts": 'TTS <span style="opacity:.55;font-size:12px">Sprechen</span>',
     "brand.sub": "Jian · GERMAN A1–A1.2",
     "head.tts.kicker": "11 · Tool",
     "head.tts.title": "Text to <em>MP3</em>",
@@ -353,6 +353,20 @@
     scanning = false;
   }
 
+  /* 窄桌面英文模式：把当前 active 导航项滚入可见区（防止被 overflow 裁到看不见） */
+  function scrollActiveNav() {
+    const links = document.getElementById("navLinks");
+    if (!links) return;
+    const active = links.querySelector("a.active");
+    if (!active) return;
+    const lr = links.getBoundingClientRect().right;
+    const ll = links.getBoundingClientRect().left;
+    const ar = active.getBoundingClientRect().right;
+    const al = active.getBoundingClientRect().left;
+    if (ar > lr) links.scrollLeft += (ar - lr) + 6;
+    else if (al < ll) links.scrollLeft += (al - ll) - 6;
+  }
+
   /* 供渲染层调用：切换语言后重新绘制 */
   function reRender() {
     applyData();
@@ -360,7 +374,7 @@
       const app = document.getElementById("app");
       if (app) PAGES[document.body.dataset.page](app);
     }
-    setTimeout(() => translateDom(document.body), 0);
+    setTimeout(() => { translateDom(document.body); scrollActiveNav(); }, 0);
   }
 
   document.addEventListener("langchange", reRender);
@@ -369,8 +383,10 @@
     buildToggle();
     applyData();
     applyStatic();
-    if (LANG === "en") setTimeout(() => translateDom(document.body), 60);
+    setTimeout(() => { if (LANG === "en") translateDom(document.body); scrollActiveNav(); }, 60);
   });
+  let __rz;
+  window.addEventListener("resize", () => { clearTimeout(__rz); __rz = setTimeout(scrollActiveNav, 120); });
   /* 渲染后自动补翻（含动态内容：搜索、翻页、切页签） */
   document.addEventListener("DOMContentLoaded", () => {
     if (LANG !== "en") return;
