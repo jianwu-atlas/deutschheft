@@ -172,6 +172,7 @@ function renderWortliste(app) {
       <span class="wl-stat"><b>${all.length}</b> 个德语词形</span>
       <span class="wl-stat"><b>${withIpa}</b> 个有音标</span>
       <span class="wl-stat"><b>${all.filter(x => x.zh).length}</b> 个有中文释义</span>
+      <span class="wl-stat"><b>${all.filter(x => x.pron).length}</b> 个有中文谐音</span>
       <span class="wl-stat dim">词形含动词变位/分词（可通过「原形」回溯）</span>
     </div>
     <div class="vocab-toolbar">
@@ -185,7 +186,7 @@ function renderWortliste(app) {
     <div class="vocab-count" id="wlCount"></div>
     <div class="wl-table-wrap">
       <table class="wl-table">
-        <thead><tr><th>德语单词</th><th>国际音标 IPA</th><th>中文释义</th><th>来源</th><th>次数</th></tr></thead>
+        <thead><tr><th>德语单词</th><th>国际音标 IPA</th><th>中文释义</th><th>中文谐音</th><th>来源</th><th>次数</th></tr></thead>
         <tbody id="wlBody"></tbody>
       </table>
     </div>
@@ -208,14 +209,16 @@ function renderWortliste(app) {
     const list = all.filter(x =>
       (!WL_STATE.src || x.src.includes(WL_STATE.src)) &&
       (!WL_STATE.onlyIpa || x.ipa) &&
-      (!q || x.w.toLowerCase().includes(q) || (x.ipa || "").toLowerCase().includes(q) || (x.zh || "").toLowerCase().includes(q))
+      (!q || x.w.toLowerCase().includes(q) || (x.ipa || "").toLowerCase().includes(q)
+        || (x.zh || "").toLowerCase().includes(q) || (x.pron || "").toLowerCase().includes(q))
     );
     $("#wlCount").textContent = `${list.length} / ${all.length} 词形`;
     $("#wlBody").innerHTML = list.map(x => `
       <tr>
         <td class="wl-w"><button class="s-sp" data-de="${esc(x.w)}" title="朗读">🔊</button>${x.w}${x.base ? `<span class="wl-base">← ${x.base}</span>` : ""}</td>
         <td class="wl-ipa">${x.ipa || "—"}</td>
-        <td class="wl-zh">${x.zh ? esc(x.zh) : "—"}${x.pron ? `<span class="wl-pron">≈ ${esc(x.pron)}</span>` : ""}</td>
+        <td class="wl-zh">${x.zh ? esc(x.zh) : "—"}</td>
+        <td class="wl-pron">${x.pron ? "≈ " + esc(x.pron) : "—"}</td>
         <td class="wl-src">${x.src.map(s => `<span class="wl-src-chip">${s}</span>`).join("")}</td>
         <td class="wl-n">${x.n}</td>
       </tr>`).join("");

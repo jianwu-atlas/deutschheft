@@ -967,9 +967,12 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .vtab { flex: 1; text-align: center; padding: 10px 8px; font-size: 13px; }
 }
 
-/* 全站词表：释义 + 谐音副行 */
-.wl-pron {
-  display: block; font-size: 11px; color: var(--ink-3);
-  font-family: var(--font-mono); margin-top: 2px;
-}
-.wl-pron::first-letter { color: var(--accent); }
+/* 全站词表：中文谐音列 */
+.wl-pron { color: var(--c-adj); font-size: 12.5px; min-width: 92px; }
+.wl-zh { min-width: 120px; }
+.wl-table th:nth-child(1) { width: 15%; }
+.wl-table th:nth-child(2) { width: 19%; }
+.wl-table th:nth-child(3) { width: 20%; }
+.wl-table th:nth-child(4) { width: 18%; }
+.wl-table th:nth-child(6) { width: 6%; text-align: right; }
+.wl-table td:last-child { text-align: right; }
