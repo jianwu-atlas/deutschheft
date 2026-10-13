@@ -9,7 +9,7 @@
 ```
 ├── index.html            首页（学习地图 + 进度）
 ├── lektionen.html        分级课程（13 课）
-├── wortschatz.html       生词表（272 词卡：音标+中文谐音、筛选/搜索/翻面）
+├── wortschatz.html       生词表（双视图：272 词卡 + 全站词表 1056 词形，均带 IPA）
 ├── grammatik.html        语法十二讲
 ├── texte.html            课文精读（2 篇，逐段中德对照）
 ├── lehrbuch.html         教材：5 份 PDF（零基础速成 338 页 + 4 份课程课件）在线阅读/下载 + 结构化词汇/句型/语法
@@ -21,15 +21,29 @@
 │   ├── css/deutsch.css   设计系统（浅色/深色双主题）
 │   └── js/
 │       ├── data/deutsch-data.js    课程/词汇/语法/课文/测验数据
-│       ├── data/pron.js            发音库：PRON 256 + PRON_FORMS 94 变位 + PRON_BARE 221 裸词
+│       ├── data/pron.js            发音库：PRON 282 + 变位 94 + 裸词 221 + EXTRA/FUNC/MORE 补充
+│       ├── data/wortliste.js       全站词表（脚本生成，1056 词形，全部带 IPA）
 │       ├── data/notion-notes.js    Notion 笔记（脚本生成，请勿手改）
 │       ├── deutsch.js              页面渲染与交互核心
 │       ├── notion-import.js        Markdown 渲染 + 导入 + 搜索
 │       └── annotate.js             全文音标标注（ruby）+ 点击朗读
 ├── content-notion/        Notion 笔记源文件（.md，改这里 → 重跑脚本）
-├── assets/lehrbuch/       教材 PDF 原件（4 份 A1 课件，改内容先替换这里）
-└── scripts/notion_export_sync.py    Notion → 网站 同步脚本
+├── assets/lehrbuch/       教材 PDF 原件（5 份，改内容先替换这里）
+└── scripts/
+    ├── notion_export_sync.py        Notion → 网站 同步脚本
+    └── gen_wortliste.js             全站词表生成脚本（改词库后重跑）
 ```
+
+## 音标标注规则（annotate.js）
+
+右下角「🔊 音标」开关，打开后正文德语单词上方显示国际音标，点击单词即朗读（浏览器 de-DE 语音）。
+
+- **标注**：值得学的实词 —— 名词、动词（含变位/分词）、形容词、副词、数词（如 `heißen` [ˈhaɪ̯sn̩]、`buchstabieren` [ˈbuːxʃtabiːʁən]）
+- **不标注**：
+  - 最基础功能词（`ich / der / ist / kann / wie / bitte` … 见 `BASIC`）—— 纯语法脚手架
+  - 专有名词（`Mia / Elena / Frankfurt` … 见 `NAMES`）
+  - 已自带音标的位置：词卡、速查表、全站词表、句子级音标行、教材 PDF 原文
+  - 界面框架：页头、页脚、标签、工具栏
 
 ## 本地预览
 

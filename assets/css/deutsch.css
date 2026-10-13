@@ -908,11 +908,61 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .lbk-viewer iframe { height: 56vh; }
 }
 
-/* 导航项增多后的中等屏幕适配 */
-@media (max-width: 1180px) and (min-width: 901px) {
-  .nav-links a { padding: 8px 8px; font-size: 12.5px; }
+/* 导航项增多后的中等屏幕适配（10 项导航，1400px 以下收窄） */
+@media (max-width: 1400px) and (min-width: 901px) {
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 8px 9px; font-size: 12.5px; }
   .nav-links a span { display: none; }
   .nav-brand-sub { display: none; }
 }
 
 .lbk-star { color: var(--gold); font-size: .8em; margin-right: 2px; }
+
+/* ============================================================
+   生词表双 Tab + 全站词表
+   ============================================================ */
+.vocab-tabs { display: flex; gap: 8px; margin-bottom: 22px; }
+.vtab {
+  padding: 10px 18px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--paper-2);
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  cursor: pointer; color: var(--ink-2); transition: all .18s;
+}
+.vtab:hover { border-color: var(--ink-3); }
+.vtab.on { background: var(--ink); color: var(--paper-2); border-color: var(--ink); }
+
+.wl-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.wl-stat {
+  font-size: 12.5px; color: var(--ink-2);
+  background: var(--paper-2); border: 1px solid var(--line-soft);
+  padding: 7px 14px; border-radius: 99px;
+}
+.wl-stat b { font-family: var(--font-display); font-size: 16px; color: var(--ink); margin-right: 3px; }
+.wl-stat.dim { color: var(--ink-3); border-style: dashed; }
+
+.wl-table-wrap { overflow-x: auto; }
+.wl-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.wl-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: .06em; color: var(--ink-3);
+  font-weight: 600; padding: 8px 10px; border-bottom: 2px solid var(--line);
+  position: sticky; top: 0; background: var(--paper);
+}
+.wl-table td { padding: 7px 10px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+.wl-table tr:hover td { background: var(--paper-2); }
+.wl-w { font-weight: 650; color: var(--ink); white-space: nowrap; }
+.wl-w .s-sp { font-size: 11px; padding: 0 3px; }
+.wl-base { font-size: 11px; color: var(--ink-3); margin-left: 8px; font-weight: 400; font-family: var(--font-mono); }
+.wl-ipa { font-family: var(--font-mono); font-size: 12px; color: var(--accent); white-space: nowrap; }
+.wl-zh { color: var(--ink-2); min-width: 110px; }
+.wl-src { white-space: nowrap; }
+.wl-src-chip {
+  display: inline-block; font-size: 10.5px; padding: 1.5px 7px; margin-right: 3px;
+  border-radius: 99px; background: var(--paper-3); color: var(--ink-3); border: 1px solid var(--line-soft);
+}
+.wl-n { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); }
+
+@media (max-width: 900px) {
+  .wl-table { font-size: 12.5px; }
+  .wl-src { display: none; }
+  .vtab { flex: 1; text-align: center; padding: 10px 8px; font-size: 13px; }
+}

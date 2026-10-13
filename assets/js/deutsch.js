@@ -158,6 +158,71 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ============================================================
+   全站词表 Gesamtliste（wortliste.js 数据驱动）
+   ============================================================ */
+const WL_STATE = { q: "", src: null, onlyIpa: false };
+
+function renderWortliste(app) {
+  const all = WORTLISTE;
+  const withIpa = all.filter(x => x.ipa).length;
+  const srcs = ["词卡", "课程", "语法", "课文", "练习", "教材", "笔记"];
+  const body = $("#vocabBody");
+  body.innerHTML = `
+    <div class="wl-stats">
+      <span class="wl-stat"><b>${all.length}</b> 个德语词形</span>
+      <span class="wl-stat"><b>${withIpa}</b> 个有音标</span>
+      <span class="wl-stat"><b>${all.filter(x => x.zh).length}</b> 个有中文释义/谐音</span>
+      <span class="wl-stat dim">词形含动词变位/分词（可通过「原形」回溯）</span>
+    </div>
+    <div class="vocab-toolbar">
+      <input class="vocab-search" id="wlSearch" type="search" placeholder="搜索全站词表（德语/音标/中文）…" value="${esc(WL_STATE.q)}">
+      <button class="chip ${WL_STATE.onlyIpa ? "on" : ""}" id="wlOnlyIpa">仅看有音标</button>
+    </div>
+    <div class="chip-row" id="wlSrcChips">
+      <button class="chip ${!WL_STATE.src ? "on" : ""}" data-src="">全部来源</button>
+      ${srcs.map(s => `<button class="chip ${WL_STATE.src === s ? "on" : ""}" data-src="${s}">${s}</button>`).join("")}
+    </div>
+    <div class="vocab-count" id="wlCount"></div>
+    <div class="wl-table-wrap">
+      <table class="wl-table">
+        <thead><tr><th>词形</th><th>国际音标 IPA</th><th>中文释义 / 谐音</th><th>来源</th><th>次数</th></tr></thead>
+        <tbody id="wlBody"></tbody>
+      </table>
+    </div>
+  `;
+  $("#wlSearch").addEventListener("input", e => { WL_STATE.q = e.target.value; renderWLRows(); });
+  $("#wlOnlyIpa").addEventListener("click", () => {
+    WL_STATE.onlyIpa = !WL_STATE.onlyIpa;
+    $("#wlOnlyIpa").classList.toggle("on", WL_STATE.onlyIpa);
+    renderWLRows();
+  });
+  $$("#wlSrcChips .chip").forEach(c => c.addEventListener("click", () => {
+    WL_STATE.src = c.dataset.src || null;
+    $$("#wlSrcChips .chip").forEach(x => x.classList.toggle("on", x === c));
+    renderWLRows();
+  }));
+  renderWLRows();
+
+  function renderWLRows() {
+    const q = WL_STATE.q.trim().toLowerCase();
+    const list = all.filter(x =>
+      (!WL_STATE.src || x.src.includes(WL_STATE.src)) &&
+      (!WL_STATE.onlyIpa || x.ipa) &&
+      (!q || x.w.toLowerCase().includes(q) || (x.ipa || "").toLowerCase().includes(q) || (x.zh || "").toLowerCase().includes(q))
+    );
+    $("#wlCount").textContent = `${list.length} / ${all.length} 词形`;
+    $("#wlBody").innerHTML = list.map(x => `
+      <tr>
+        <td class="wl-w"><button class="s-sp" data-de="${esc(x.w)}" title="朗读">🔊</button>${x.w}${x.base ? `<span class="wl-base">← ${x.base}</span>` : ""}</td>
+        <td class="wl-ipa">${x.ipa || "—"}</td>
+        <td class="wl-zh">${x.zh ? esc(x.zh) : "—"}</td>
+        <td class="wl-src">${x.src.map(s => `<span class="wl-src-chip">${s}</span>`).join("")}</td>
+        <td class="wl-n">${x.n}</td>
+      </tr>`).join("");
+  }
+}
+
+/* ============================================================
    首页 Start
    ============================================================ */
 function renderStart(app) {
@@ -284,12 +349,29 @@ function lessonCardHTML(l) {
 }
 
 /* ============================================================
-   生词表 Wortschatz
+   生词表 Wortschatz（词卡 + 全站词表双视图）
    ============================================================ */
-let vocabState = { q: "", topic: null, pos: null };
+let vocabState = { q: "", topic: null, pos: null, tab: "cards" };
 
 function renderVocab(app) {
-  app.innerHTML = `
+  const tabBar = `
+    <div class="vocab-tabs">
+      <button class="vtab ${vocabState.tab === "cards" ? "on" : ""}" data-tab="cards">🃏 词卡 Wortkarten</button>
+      <button class="vtab ${vocabState.tab === "list" ? "on" : ""}" data-tab="list">📋 全站词表 Gesamtliste${typeof WORTLISTE !== "undefined" ? " · " + WORTLISTE.length : ""}</button>
+    </div>`;
+  app.innerHTML = tabBar + `<div id="vocabBody">${vocabState.tab === "cards" ? vocabCardsHTML() : ""}</div>`;
+
+  $$(".vtab", app).forEach(b => b.addEventListener("click", () => {
+    vocabState.tab = b.dataset.tab;
+    renderVocab(app);
+  }));
+
+  if (vocabState.tab === "cards") bindVocabCards(app);
+  else renderWortliste(app);
+}
+
+function vocabCardsHTML() {
+  return `
     <div class="vocab-toolbar">
       <input class="vocab-search" id="vSearch" type="search" placeholder="搜索德语或中文… (z.B. Labor / 实验)" value="${esc(vocabState.q)}">
       <button class="chip ${vocabState.pos === "der" ? "on" : ""}" data-pos="der">der</button>
@@ -304,9 +386,11 @@ function renderVocab(app) {
     <div class="vocab-count" id="vCount"></div>
     <div class="vocab-grid" id="vGrid"></div>
   `;
+}
 
+function bindVocabCards(app) {
   $("#vSearch").addEventListener("input", e => { vocabState.q = e.target.value; renderVocabGrid(); });
-  $$("#topicChips .chip").forEach(c => c.addEventListener("click", () => {
+  $$("#topicChips .chip", app).forEach(c => c.addEventListener("click", () => {
     vocabState.topic = c.dataset.topic || null;
     $$("#topicChips .chip").forEach(x => x.classList.toggle("on", x === c));
     renderVocabGrid();

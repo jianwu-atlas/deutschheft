@@ -8,7 +8,7 @@ summary: "2. Lesen: Ein besonderer Tag im Labor —— 现在完成时语法体�
 
 # 2. Lesen: Ein besonderer Tag im Labor
 
-[ˈleːzn̩: aɪ̯n bəˈzɔndəʁɐ taːk ɪm laˈboːɐ̯]
+[ˈleːzn̩] · [aɪ̯n bəˈzɔndəʁɐ taːk ɪm laˈboːɐ̯]
 2. 阅读：实验室里特殊的一天。
 
 ## 一、德语现在完成时（Das Perfekt）语法体系
