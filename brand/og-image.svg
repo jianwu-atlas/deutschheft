@@ -21,4 +21,8 @@
   <rect x="584" y="394" width="286" height="5" rx="2.5" fill="#C9A227"/>
   <text x="585" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#8A7D66" letter-spacing="4">JIAN &#183; GERMAN A1&#8211;A1.2</text>
   <text x="585" y="494" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#4A4234" letter-spacing="0.5">Lektionen &#183; Wortschatz &#183; Grammatik &#183; Texte</text>
+
+  <!-- jwlab 出品方署名（右下角，低调） -->
+  <circle cx="1082" cy="594" r="4" fill="#C9A227"/>
+  <text x="1150" y="601" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#8A7D66" text-anchor="end">jwlab</text>
 </svg>
