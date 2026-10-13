@@ -30,6 +30,8 @@
 | `assets/js/data/wortliste.js` | 全站词表（脚本生成，勿手改；zh=中文释义、pron=中文谐音） |
 | `assets/js/data/formen.js` | 词形变化数据：`FORMEN_VERBEN`（art: reg/t/s/er/stark）+ `FORMEN_ADJ` + `FORMEN_DEKL` |
 | `assets/js/data/notion-notes.js` | 脚本生成，勿手改 |
+| `brand/` | **品牌源文件**：`design-philosophy.md`（金印 Gilded Seal 设计哲学）+ `logo-mark.svg`（主标）+ `og-image.svg`（社交分享图） |
+| `assets/img/` | 由 brand/ 栅格化（`rsvg-convert`）：`favicon.svg` + `favicon-16/32/48.png` + `apple-touch-icon.png`(180) + `og-image.png`(1200×630) + `logo-mark-512.png`；改 logo 先改 brand/*.svg 再重新栅格化 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
 | `assets/js/notion-import.js` | Markdown 渲染器 + 导入 + 搜索 |
@@ -53,6 +55,7 @@
 
 ## 更新记录
 
+- 2026-10-13（品牌 logo · Gilded Seal 金印）：新增 `brand/`（设计哲学 + logo-mark.svg + og-image.svg）与 `assets/img/`（favicon.svg/16/32/48 + apple-touch-icon 180 + og-image 1200×630）。11 页 head 由内联 data-uri 图标改为正式 `<link>` icon + apple-touch-icon + og 元信息（修复 Safari 首字占位符）；导航 `.brand-mark` 由文字 D 改为新 logo 背景图；css `?v=31`。设计沿用 jwtools 的「monogram + 三点」语言：墨黑圆角印底 + 德金 Georgia D + 细金线 + der/die/das 三点（蓝 #2456A6 / 红 #B03048 / 绿 #2E7D5B）。已部署 edgeone + 同步 github.io。
 - 2026-10-13：从 SPA 重构为多页静态站（对齐 jianwu-atlas-private）；新增 notion.html 与导入/同步链路；暗色模式；发布到 GitHub Pages。同日追加：Gießen 全部替换为 XX（隐私）；新增 assets/js/data/pron.js（256 词条 IPA+中文谐音）；新增 referenz.html 速查表（数字/时间/颜色/四季）；新增 lehrbuch.html 教材库（5 份 PDF）；目录 website/ → deutschheft/。
 - 2026-10-13（语料变形索引 + 国内部署）：formen 页动词补至 **111**、新增「语料变形索引」页签；新增 `scripts/pack_site.py`；部署腾讯 EdgeOne Pages（国内可访问）→ https://deutschheft.edgeone.cool/；修复首页空白（模块卡误引用仅单页加载的 FORMEN_VERBEN）。
 - 2026-10-13（词形变化页 + 隐私替换）：新增 `formen.html`（导航第 5 位，11 项）+ `assets/js/data/formen.js`；隐私：Bad Nauheim → Deutschland、Max Planck / 马普所 → MPI（其余个人信息不动），重建词表 1051 词形。
