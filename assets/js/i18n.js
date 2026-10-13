@@ -58,7 +58,7 @@
     "nav.uebungen": 'Exercises <span style="opacity:.55;font-size:12px">Übungen</span>',
     "nav.notion": 'Notes <span style="opacity:.55;font-size:12px">Notizen</span>',
     "nav.kursplan": 'Syllabus <span style="opacity:.55;font-size:12px">Kursplan</span>',
-    "brand.sub": "jwlab · GERMAN A1–A1.2",
+    "brand.sub": "Jian · GERMAN A1–A1.2",
     /* 页头 */
     "head.lektionen.kicker": "01 · Lessons",
     "head.lektionen.title": "Lessons <em>Overview</em>",
