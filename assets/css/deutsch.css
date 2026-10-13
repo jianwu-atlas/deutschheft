@@ -68,10 +68,9 @@ body::before {
 .nav-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; gap: 20px; padding: 0 24px; }
 .nav-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
 .brand-mark {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--ink); color: var(--gold);
-  font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 20px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  background: url("../img/favicon.svg?v=31") center/100% 100% no-repeat;
+  color: transparent; overflow: hidden;
 }
 .nav-brand-text { display: flex; flex-direction: column; line-height: 1.05; }
 .nav-brand-title { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; letter-spacing: .02em; }
