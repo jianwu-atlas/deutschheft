@@ -2,7 +2,6 @@
 title: "2026-10-07 第2次 · 现在完成时（Das Perfekt）"
 date: 2026-10-07
 source: notion
-notion_url: "https://jackng833.notion.site/2026-10-07-2-2-Lesen-Ein-besonderer-Tag-im-Labor-Das-Perfekt-3f220c5c739a80aa8360d67aa476ca57"
 summary: "2. Lesen: Ein besonderer Tag im Labor —— 现在完成时语法体系（haben/sein + Partizip II）与十段课文原文。"
 ---
 
