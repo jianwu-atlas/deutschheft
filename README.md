@@ -9,9 +9,10 @@
 ```
 ├── index.html            首页（学习地图 + 进度）
 ├── lektionen.html        分级课程（13 课）
-├── wortschatz.html       生词表（256 词卡：音标+中文谐音、筛选/搜索/翻面）
+├── wortschatz.html       生词表（272 词卡：音标+中文谐音、筛选/搜索/翻面）
 ├── grammatik.html        语法十二讲
 ├── texte.html            课文精读（2 篇，逐段中德对照）
+├── lehrbuch.html         教材：4 份课程 PDF 在线阅读/下载 + 结构化词汇/句型/语法
 ├── referenz.html         速查表：数字 0–100 / 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音）
 ├── uebungen.html         互动练习（5 组测验）
 ├── notion.html           Notion 笔记库 + 导入/同步
@@ -26,6 +27,7 @@
 │       ├── notion-import.js        Markdown 渲染 + 导入 + 搜索
 │       └── annotate.js             全文音标标注（ruby）+ 点击朗读
 ├── content-notion/        Notion 笔记源文件（.md，改这里 → 重跑脚本）
+├── assets/lehrbuch/       教材 PDF 原件（4 份 A1 课件，改内容先替换这里）
 └── scripts/notion_export_sync.py    Notion → 网站 同步脚本
 ```
 

@@ -85,9 +85,64 @@ const PAGES = {
   wortschatz: renderVocab,
   grammatik: renderGrammar,
   texte: renderTexts,
+  lehrbuch: renderLehrbuch,
   uebungen: renderQuizHome,
   kursplan: renderKursplan
 };
+
+/* ============================================================
+   教材 Lehrbuch（PDF 在线阅读 + 结构化词汇/句型/语法）
+   ============================================================ */
+const LHRB_SIZE = {
+  "06_wohnen-moebel.pdf": "394 KB",
+  "09_kleidung-farben.pdf": "538 KB",
+  "10_wetter-jahreszeiten.pdf": "413 KB",
+  "11_verkehrsmittel.pdf": "1.0 MB"
+};
+
+function renderLehrbuch(app) {
+  app.innerHTML = LEHRBUECHER.map(b => `
+    <div class="lbk-card card" id="lbk-${b.id}">
+      <div class="lbk-head">
+        <span class="lbk-num">${b.num}</span>
+        <div class="lbk-title">
+          <div class="lbk-zh">${b.zh} <span class="lbk-de">${b.de}</span></div>
+          <div class="lbk-meta">${b.lesson} · ${b.pages} 页 · PDF ${LHRB_SIZE[b.file] || ""}</div>
+        </div>
+        <div class="lbk-actions">
+          <button class="btn primary lbk-view" data-id="${b.id}">📖 在线阅读</button>
+          <a class="btn" href="assets/lehrbuch/${b.file}" download>⬇ 下载 PDF</a>
+        </div>
+      </div>
+      <div class="lbk-viewer" id="viewer-${b.id}" hidden>
+        <iframe src="assets/lehrbuch/${b.file}" title="${b.zh}（教材 PDF）" loading="lazy"></iframe>
+      </div>
+      <div class="lbk-cols">
+        <div class="lbk-col">
+          <h4 class="lbk-h4">📚 词汇 Wortschatz · ${b.words.length}</h4>
+          <div class="lbk-words">${b.words.map(w => `<span class="lbk-word"><b>${w[0]}</b><i>${w[1]}</i></span>`).join("")}</div>
+        </div>
+        <div class="lbk-col">
+          <h4 class="lbk-h4">💬 核心句型 Sätze · ${b.sentences.length}</h4>
+          ${b.sentences.map(s => `<div class="s-line"><button class="s-sp" data-de="${esc(s[0])}" title="朗读">🔊</button><div class="s-main"><span class="s-text">${s[0]}</span><span class="s-zh-inline">${s[1]}</span><span class="s-ipa">${s[2]}</span></div></div>`).join("")}
+        </div>
+      </div>
+      <h4 class="lbk-h4">🧩 语法要点 Grammatik</h4>
+      <ul class="grammar-list">${b.points.map(p => `<li>${p}</li>`).join("")}</ul>
+      <details class="lbk-raw">
+        <summary>📄 课件原文（自动提取自 PDF）</summary>
+        <pre>${esc(b.text)}</pre>
+      </details>
+    </div>`).join("");
+
+  $$(".lbk-view", app).forEach(btn => btn.addEventListener("click", () => {
+    const v = $("#viewer-" + btn.dataset.id);
+    if (!v) return;
+    v.hidden = !v.hidden;
+    btn.textContent = v.hidden ? "📖 在线阅读" : "✕ 收起阅读器";
+    if (!v.hidden) v.scrollIntoView({ block: "start", behavior: "smooth" });
+  }));
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -115,10 +170,11 @@ function renderStart(app) {
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "texte.html", num: "04", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
-    { route: "referenz.html", num: "05", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
-    { route: "uebungen.html", num: "06", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
-    { route: "notion.html", num: "07", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
-    { route: "kursplan.html", num: "08", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
+    { route: "lehrbuch.html", num: "05", de: "Lehrbuch", zh: "教材", desc: "4 份课程 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
+    { route: "referenz.html", num: "06", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
+    { route: "uebungen.html", num: "07", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
+    { route: "notion.html", num: "08", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
+    { route: "kursplan.html", num: "09", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
   ];
 
   app.innerHTML = `

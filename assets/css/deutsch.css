@@ -865,3 +865,52 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .s-text { font-size: 16px; }
   .ipaToggle { bottom: 14px; right: 14px; }
 }
+
+/* ============================================================
+   教材页 Lehrbuch
+   ============================================================ */
+.lbk-card { padding: 26px 28px 22px; margin-bottom: 20px; }
+.lbk-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+.lbk-num { font-family: var(--font-display); font-style: italic; font-size: 30px; color: var(--accent); line-height: 1; }
+.lbk-title { flex: 1; }
+.lbk-zh { font-family: var(--font-display); font-size: 21px; font-weight: 640; }
+.lbk-de { font-size: 13px; color: var(--ink-3); font-weight: 400; font-style: italic; margin-left: 8px; }
+.lbk-meta { font-size: 12px; color: var(--ink-3); font-family: var(--font-mono); margin-top: 3px; }
+.lbk-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+.lbk-viewer { margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.lbk-viewer iframe { width: 100%; height: 72vh; border: none; display: block; background: var(--paper-3); }
+.lbk-cols { display: grid; grid-template-columns: 1fr 1.35fr; gap: 22px; margin: 6px 0 18px; }
+.lbk-h4 { font-family: var(--font-display); font-size: 15px; font-weight: 640; margin: 16px 0 10px; color: var(--ink); }
+.lbk-words { display: flex; flex-wrap: wrap; gap: 8px; }
+.lbk-word {
+  display: inline-flex; flex-direction: column; line-height: 1.25;
+  border: 1px solid var(--line-soft); border-radius: 9px;
+  background: var(--paper); padding: 6px 10px;
+}
+.lbk-word b { font-size: 13px; font-weight: 620; color: var(--ink); }
+.lbk-word i { font-size: 11px; color: var(--ink-3); font-style: normal; }
+.lbk-col .s-line { margin: 8px 0; }
+.lbk-col .s-text { font-size: 15.5px; }
+.s-zh-inline { font-size: 12.5px; color: var(--ink-3); display: block; }
+.lbk-raw { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
+.lbk-raw summary { cursor: pointer; font-size: 13px; color: var(--ink-2); user-select: none; }
+.lbk-raw pre {
+  margin-top: 12px; background: var(--paper); border: 1px solid var(--line-soft);
+  border-radius: 10px; padding: 16px 18px; overflow-x: auto;
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.75; color: var(--ink-2);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .lbk-card { padding: 20px 16px 16px; }
+  .lbk-head { flex-wrap: wrap; }
+  .lbk-cols { grid-template-columns: 1fr; gap: 6px; }
+  .lbk-viewer iframe { height: 56vh; }
+}
+
+/* 导航项增多后的中等屏幕适配 */
+@media (max-width: 1180px) and (min-width: 901px) {
+  .nav-links a { padding: 8px 8px; font-size: 12.5px; }
+  .nav-links a span { display: none; }
+  .nav-brand-sub { display: none; }
+}

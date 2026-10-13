@@ -593,7 +593,24 @@ const VOCAB = [
   { de: "unerwartet / ungewöhnlich", zh: "意外的 / 不寻常的", pos: "adj", topic: "完成时" },
   { de: "zufrieden", zh: "满意的；满足的", pos: "adj", topic: "完成时" },
   { de: "trotzdem / denn", zh: "尽管如此 / 因为", pos: "adv", topic: "完成时" },
-  { de: "zum Schluss", zh: "最后", pos: "phrase", topic: "完成时" }
+  { de: "zum Schluss", zh: "最后", pos: "phrase", topic: "完成时" },
+  /* —— 教材新增词汇（A1 课件：Wohnen / Kleidung / Wetter / Verkehr） —— */
+  { de: "die Bluse", zh: "女衬衫", pos: "die", plural: "-n", topic: "服装颜色" },
+  { de: "der Rock", zh: "裙子", pos: "der", plural: "¨-e", topic: "服装颜色" },
+  { de: "das Kleid", zh: "连衣裙", pos: "das", plural: "-er", topic: "服装颜色" },
+  { de: "die Socke", zh: "袜子", pos: "die", plural: "-n", topic: "服装颜色" },
+  { de: "der Gürtel", zh: "腰带", pos: "der", plural: "-", topic: "服装颜色" },
+  { de: "der Wind", zh: "风", pos: "der", plural: "-e", topic: "天气四季" },
+  { de: "die Wolke", zh: "云", pos: "die", plural: "-n", topic: "天气四季" },
+  { de: "der Himmel", zh: "天空", pos: "der", plural: "-", topic: "天气四季" },
+  { de: "bewölkt", zh: "多云的", pos: "adj", topic: "天气四季" },
+  { de: "das Grad", zh: "度（温度）", pos: "das", plural: "-e", topic: "天气四季" },
+  { de: "die Straßenbahn", zh: "有轨电车", pos: "die", plural: "-en", topic: "交通问路" },
+  { de: "das Taxi", zh: "出租车", pos: "das", plural: "-s", topic: "交通问路" },
+  { de: "das Flugzeug", zh: "飞机", pos: "das", plural: "-e", topic: "交通问路" },
+  { de: "das Schiff", zh: "船", pos: "das", plural: "-e", topic: "交通问路" },
+  { de: "die Apotheke", zh: "药房", pos: "die", plural: "-n", topic: "交通问路" },
+  { de: "das Krankenhaus", zh: "医院", pos: "das", plural: "¨-er", topic: "交通问路" }
 ];
 
 const VOCAB_TOPICS = ["基础与发音", "自我介绍", "数字", "食物饮料", "休闲活动", "房屋家具", "时间作息", "服装颜色", "天气四季", "交通问路", "办公通勤", "实验室", "完成时"];

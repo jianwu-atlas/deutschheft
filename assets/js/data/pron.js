@@ -272,7 +272,24 @@ const PRON = {
   "unerwartet / ungewöhnlich": { ipa: "[ʊnʔɛɐ̯ˈvaʁtət · ʊnɡəˈvøːnlɪç]", zh: "翁-艾尔-瓦尔特·翁-格-韦恩利希" },
   "zufrieden": { ipa: "[t͡suˈfʁiːdn̩]", zh: "楚-弗里登" },
   "trotzdem / denn": { ipa: "[ˈtʁɔt͡sdɛm · dɛn]", zh: "特罗茨-代姆·登" },
-  "zum Schluss": { ipa: "[t͡sʊm ʃlʊs]", zh: "楚姆·施卢斯" }
+  "zum Schluss": { ipa: "[t͡sʊm ʃlʊs]", zh: "楚姆·施卢斯" },
+  /* —— 教材新增（课件词汇） —— */
+  "die Bluse": { ipa: "[ˈbluːzə]", zh: "布露泽" },
+  "der Rock": { ipa: "[ʁɔk]", zh: "洛克" },
+  "das Kleid": { ipa: "[klaɪ̯t]", zh: "克莱特" },
+  "die Socke": { ipa: "[ˈzɔkə]", zh: "措克" },
+  "der Gürtel": { ipa: "[ˈɡʏʁtl̩]", zh: "居特尔" },
+  "der Wind": { ipa: "[vɪnt]", zh: "温特" },
+  "die Wolke": { ipa: "[ˈvɔlkə]", zh: "沃尔克" },
+  "der Himmel": { ipa: "[ˈhɪml̩]", zh: "希默尔" },
+  "bewölkt": { ipa: "[bəˈvœlkt]", zh: "贝-韦尔克特" },
+  "das Grad": { ipa: "[ɡʁaːt]", zh: "格拉特" },
+  "die Straßenbahn": { ipa: "[ˈʃtʁaːsn̩baːn]", zh: "施特拉斯-班" },
+  "das Taxi": { ipa: "[ˈtaksi]", zh: "塔克西" },
+  "das Flugzeug": { ipa: "[ˈfluːkt͡sɔʏ̯k]", zh: "夫鲁克-措伊克" },
+  "das Schiff": { ipa: "[ʃɪf]", zh: "希夫" },
+  "die Apotheke": { ipa: "[apoˈteːkə]", zh: "阿波-泰克" },
+  "das Krankenhaus": { ipa: "[ˈkʁaŋkn̩haʊ̯s]", zh: "克兰肯-豪斯" }
 };
 
 /* ============================================================
