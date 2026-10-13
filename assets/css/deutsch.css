@@ -1060,3 +1060,23 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 [data-lang="en"] .ref-table td:nth-child(4) { display: none !important; }
 [data-lang="en"] .ref-numgrid .nc-zh { display: none !important; }
 [data-lang="en"] .ref-table .ref-zh { display: none !important; }
+
+/* ============================================================
+   导航修复：11 项 + 工具按钮，防止右侧按钮被挤出屏幕
+   ============================================================ */
+.nav-links { min-width: 0; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-tools { flex-shrink: 0; }
+
+/* 语言切换按钮：加宽、等宽字体，更容易找到 */
+#langToggle {
+  width: auto; min-width: 42px; padding: 0 11px;
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 700;
+  letter-spacing: .06em;
+  background: var(--ink); color: var(--gold); border-color: var(--ink);
+}
+#langToggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* 英文模式下隐藏德语副标签（英文菜单更长，避免溢出） */
+[data-lang="en"] .nav-links a span { display: none; }
+[data-lang="en"] .nav-links a { padding: 8px 11px; }
