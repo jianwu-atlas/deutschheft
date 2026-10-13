@@ -9,13 +9,13 @@
    ============================================================ */
 
 window.EN_SRC = {
-  "词卡": "Cards",
-  "课程": "Lessons",
-  "语法": "Grammar",
-  "课文": "Texts",
-  "练习": "Exercises",
-  "教材": "Textbook",
-  "笔记": "Notes"
+  "Wortschatz": "Cards",
+  "Lektionen": "Lessons",
+  "Grammatik": "Grammar",
+  "Texte": "Texts",
+  "Übungen": "Exercises",
+  "Lehrbuch": "Textbook",
+  "Notiz": "Notes"
 };
 
 window.EN_UI = {
@@ -873,3 +873,15 @@ Object.assign(window.EN_UI, {
 "或点击选择文件 · 支持一次多个 · 仅在本机浏览器保存":"or click to choose files · multiple at once · stored only in this browser",
 "粘贴导入":"Import pasted text","清空导入":"Clear imported notes","搜索笔记":"Search notes","全部笔记":"All notes"
 });
+
+/* 收尾动态串 */
+EN_UI_RULES.push(
+  [/^(\d+) \/ (\d+) 主题 · 当前 (.+)$/, "$1 / $2 topics · currently $3"],
+  [/^(\d+) \/ (\d+) 已学$/, "$1 / $2 learned"],
+  [/^(\d+) 页 · PDF (.+)$/, "$1 pages · PDF $2"],
+  [/^(\d+) 页$/, "$1 pages"],
+  [/^(\d+) 题$/, "$1 questions"],
+  [/^(.+) · (\d+) 页 · PDF (.+)$/, "$1 · $2 pages · PDF $3"],
+  [/^📋 全站词表 Gesamtliste · (\d+)$/, "📋 Full word list · $1"],
+  [/^💡 正式场合（车站广播等）直接念数字：10:30 = zehn Uhr dreißig。「在几点」用介词 um：um 8 Uhr。$/, "💡 In formal contexts (station announcements etc.) just read the digits: 10:30 = zehn Uhr dreißig. “At” a time takes um: um 8 Uhr."]
+);
