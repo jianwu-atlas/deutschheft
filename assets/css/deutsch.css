@@ -1059,3 +1059,4 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 [data-lang="en"] .ref-table th:nth-child(4),
 [data-lang="en"] .ref-table td:nth-child(4) { display: none !important; }
 [data-lang="en"] .ref-numgrid .nc-zh { display: none !important; }
+[data-lang="en"] .ref-table .ref-zh { display: none !important; }

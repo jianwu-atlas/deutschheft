@@ -885,3 +885,19 @@ EN_UI_RULES.push(
   [/^📋 全站词表 Gesamtliste · (\d+)$/, "📋 Full word list · $1"],
   [/^💡 正式场合（车站广播等）直接念数字：10:30 = zehn Uhr dreißig。「在几点」用介词 um：um 8 Uhr。$/, "💡 In formal contexts (station announcements etc.) just read the digits: 10:30 = zehn Uhr dreißig. “At” a time takes um: um 8 Uhr."]
 );
+
+Object.assign(window.EN_UI, {
+  "中文谐音": " ",
+  "唯一 ß 结尾": "the only ß ending",
+  "Es ist zehn Uhr dreißig.（正式）": "Es ist zehn Uhr dreißig. (formal)",
+  "邮政编码": "postcode",
+  "清空已导入笔记": "Clear imported notes",
+  "Notion 页面右上「…」→": "In Notion, top right “…” →",
+  "导出": "Export",
+  "→ Markdown & CSV → 下载 zip": "→ Markdown & CSV → download the zip",
+  "导入的笔记": "Imported notes",
+  "内置笔记": "Bundled notes",
+  "笔记标题": "Note title",
+  "导入时间": "Imported",
+  "删除": "Delete"
+});
