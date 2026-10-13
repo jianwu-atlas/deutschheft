@@ -1083,3 +1083,24 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 
 /* 页脚不可点击的文字（如 Notion 笔记源） */
 .footer-plain { opacity: .72; }
+
+/* ============================================================
+   导航：中文在上、德语在下（竖排，避免横向拥挤）
+   ============================================================ */
+.nav-links a {
+  display: inline-flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1px; line-height: 1.12;
+  padding: 6px 12px;
+}
+.nav-links a .nl-de {
+  font-size: 10.5px; opacity: .55;
+  letter-spacing: .01em; font-weight: 400;
+}
+/* 品牌文字不换行 */
+.nav-brand-title, .nav-brand-sub { white-space: nowrap; }
+.nav-brand-title { font-size: 15px; }
+
+@media (max-width: 1400px) and (min-width: 901px) {
+  .nav-links a { padding: 8px 10px; }
+}
