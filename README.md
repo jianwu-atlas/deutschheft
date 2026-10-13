@@ -9,7 +9,7 @@
 ```
 ├── index.html            首页（学习地图 + 进度）
 ├── lektionen.html        分级课程（13 课）
-├── wortschatz.html       生词表（双视图：272 词卡 + 全站词表 1056 词形，均带 IPA）
+├── wortschatz.html       生词表（双视图：272 词卡 + 全站词表 1053 词形，均带 IPA 与中文释义）
 ├── grammatik.html        语法十二讲
 ├── texte.html            课文精读（2 篇，逐段中德对照）
 ├── lehrbuch.html         教材：5 份 PDF（零基础速成 338 页 + 4 份课程课件）在线阅读/下载 + 结构化词汇/句型/语法
@@ -21,8 +21,8 @@
 │   ├── css/deutsch.css   设计系统（浅色/深色双主题）
 │   └── js/
 │       ├── data/deutsch-data.js    课程/词汇/语法/课文/测验数据
-│       ├── data/pron.js            发音库：PRON 282 + 变位 94 + 裸词 221 + EXTRA/FUNC/MORE 补充
-│       ├── data/wortliste.js       全站词表（脚本生成，1056 词形，全部带 IPA）
+│       ├── data/pron.js            发音库：PRON 282 + 变位 94 + 裸词 221 + EXTRA/FUNC/MORE 补充 + PRON_ZH 中文释义
+│       ├── data/wortliste.js       全站词表（脚本生成，1053 词形：IPA + 中文释义 100% 覆盖）
 │       ├── data/notion-notes.js    Notion 笔记（脚本生成，请勿手改）
 │       ├── deutsch.js              页面渲染与交互核心
 │       ├── notion-import.js        Markdown 渲染 + 导入 + 搜索

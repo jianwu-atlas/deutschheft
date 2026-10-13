@@ -171,7 +171,7 @@ function renderWortliste(app) {
     <div class="wl-stats">
       <span class="wl-stat"><b>${all.length}</b> 个德语词形</span>
       <span class="wl-stat"><b>${withIpa}</b> 个有音标</span>
-      <span class="wl-stat"><b>${all.filter(x => x.zh).length}</b> 个有中文释义/谐音</span>
+      <span class="wl-stat"><b>${all.filter(x => x.zh).length}</b> 个有中文释义</span>
       <span class="wl-stat dim">词形含动词变位/分词（可通过「原形」回溯）</span>
     </div>
     <div class="vocab-toolbar">
@@ -185,7 +185,7 @@ function renderWortliste(app) {
     <div class="vocab-count" id="wlCount"></div>
     <div class="wl-table-wrap">
       <table class="wl-table">
-        <thead><tr><th>词形</th><th>国际音标 IPA</th><th>中文释义 / 谐音</th><th>来源</th><th>次数</th></tr></thead>
+        <thead><tr><th>德语单词</th><th>国际音标 IPA</th><th>中文释义</th><th>来源</th><th>次数</th></tr></thead>
         <tbody id="wlBody"></tbody>
       </table>
     </div>
@@ -215,7 +215,7 @@ function renderWortliste(app) {
       <tr>
         <td class="wl-w"><button class="s-sp" data-de="${esc(x.w)}" title="朗读">🔊</button>${x.w}${x.base ? `<span class="wl-base">← ${x.base}</span>` : ""}</td>
         <td class="wl-ipa">${x.ipa || "—"}</td>
-        <td class="wl-zh">${x.zh ? esc(x.zh) : "—"}</td>
+        <td class="wl-zh">${x.zh ? esc(x.zh) : "—"}${x.pron ? `<span class="wl-pron">≈ ${esc(x.pron)}</span>` : ""}</td>
         <td class="wl-src">${x.src.map(s => `<span class="wl-src-chip">${s}</span>`).join("")}</td>
         <td class="wl-n">${x.n}</td>
       </tr>`).join("");

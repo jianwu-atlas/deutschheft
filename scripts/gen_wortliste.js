@@ -39,10 +39,13 @@ if (typeof PRON_EXTRA !== "undefined") Object.entries(PRON_EXTRA).forEach(([k, v
 if (typeof PRON_FUNC !== "undefined") Object.entries(PRON_FUNC).forEach(([k, v]) => addLex(k, v));
 if (typeof PRON_MORE !== "undefined") Object.entries(PRON_MORE).forEach(([k, v]) => addLex(k, v));
 
+/* 中文释义来源优先级：词卡释义（VOCAB.zh，真义）> 全站释义（PRON_ZH）
+   注意：PRON[key].zh 是「中文谐音」发音提示，单独放在 pron 字段，不能当释义用。 */
 const ZH = {};
+const PRONAID = {};
 Object.entries(PRON).forEach(([k, v]) => {
   const key = k.toLowerCase().replace(/^(der|die|das)\\s+/, "");
-  if (v.zh && !ZH[key]) ZH[key] = v.zh;
+  if (v.zh && !PRONAID[key]) PRONAID[key] = v.zh;
 });
 VOCAB.forEach(v => {
   const key = v.de.toLowerCase().replace(/^(der|die|das)\\s+/, "");
@@ -50,6 +53,13 @@ VOCAB.forEach(v => {
   LEX.add(key);
 });
 LEHRBUECHER.forEach(b => b.words.forEach(w => LEX.add(w[0].toLowerCase().replace(/^(der|die|das)\\s+/, ""))));
+// 全站词表中文释义（覆盖词卡之外的词形）
+if (typeof PRON_ZH !== "undefined") {
+  Object.entries(PRON_ZH).forEach(([k, v]) => {
+    const key = k.toLowerCase().replace(/^(der|die|das)\\s+/, "");
+    if (!ZH[key]) ZH[key] = v;
+  });
+}
 
 /* ---------- 语料抽取 ---------- */
 const WORDS = new Map();
@@ -106,6 +116,8 @@ const JUNK = new Set([
   "oo","rei","sech","sieb","ßig","tan","tos","uu","wom","zer","zet",
   // 英文残留
   "beanie","boots","rubber","scarf","sweater","tips","train","etc","mpi",
+  // 变位切分残留
+  "arbeitst","arbeitt","keit",
   // 人名（非词汇）
   "max","planck"
 ]);
@@ -184,17 +196,17 @@ for (const y of merged.values()) {
     base = deriveBase(y.w);
     if (base) { ipa = LEXIPA[base] || ""; derived++; }
   }
-  list.push({ w: y.w, n: y.n, ipa: ipa, zh: ZH[y.w] || "", base: base, src: [...y.src].sort() });
+  list.push({ w: y.w, n: y.n, ipa: ipa, zh: ZH[y.w] || "", pron: PRONAID[y.w] || "", base: base, src: [...y.src].sort() });
 }
 list.sort((a, b) => a.w.localeCompare(b.w, "de"));
-list.forEach(x => { if (!x.base) delete x.base; });
+list.forEach(x => { if (!x.base) delete x.base; if (!x.pron) delete x.pron; });
 
 /* ---------- 输出 ---------- */
 const head = [
   "/* ============================================================",
   "   全站词表 · Gesamtliste（脚本生成，勿手改；见 scripts/gen_wortliste.js）",
   "   来源：LESSONS / VOCAB / GRAMMAR / TEXTS / QUIZZES / LEHRBUECHER / NOTION_NOTES",
-  "   字段：w 词形 · n 出现次数 · ipa 国际音标 · zh 中文释义/谐音 · base 推导原形 · src 来源",
+  "   字段：w 词形 · n 出现次数 · ipa 国际音标 · zh 中文释义 · pron 中文谐音 · base 推导原形 · src 来源",
   "   ============================================================ */",
   "const WORTLISTE = " + JSON.stringify(list) + ";",
   ""
