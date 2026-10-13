@@ -862,6 +862,7 @@ function renderTexts(app) {
     <div id="textBody" class="${textState.hideZh ? "hide-zh" : ""}">
       ${t.paragraphs.map((p, i) => {
         const sents = splitSentences(p.de);
+        const ex = (window.TEXTE_EXTRA && window.TEXTE_EXTRA[t.id] && window.TEXTE_EXTRA[t.id][i + 1]) || {};
         return `
         <div class="card para">
           <div class="para-head"><span class="para-no">${String(i + 1).padStart(2, "0")}</span><span class="para-title">${p.title || ""}</span><button class="para-mp3" data-i="${i}" title="听本段 MP3（微软神经语音；点击朗读）">🎧</button></div>
@@ -869,10 +870,14 @@ function renderTexts(app) {
             ${sents.map((s, si) => `
               <div class="s-line">
                 <button class="s-sp" data-de="${esc(s)}" title="朗读此句">🔊</button>
-                <div class="s-main"><span class="s-text">${s}</span>${p.ips && p.ips[si] ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}</div>
+                <div class="s-main">
+                  <span class="s-text">${s}</span>
+                  ${p.ips && p.ips[si] ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}
+                  ${ex.zhs && ex.zhs[si] ? `<span class="s-zh">${esc(ex.zhs[si])}</span>` : ""}
+                </div>
               </div>`).join("")}
           </div>
-          <div class="para-zh">${p.zh}</div>
+          ${ex.notes && ex.notes.length ? `<div class="para-notes"><span class="pn-title">💡 知识点</span><ul>${ex.notes.map(n => `<li><b>${esc(n.k)}</b>：${esc(n.v)}</li>`).join("")}</ul></div>` : ""}
           ${p.verbs ? `<div class="para-verbs">${p.verbs.map(v => `<span class="verb-chip">${v}</span>`).join("")}</div>` : ""}
         </div>`;
       }).join("")}

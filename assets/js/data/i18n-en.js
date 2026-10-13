@@ -785,7 +785,7 @@ Object.assign(window.EN_UI, {
 /* 课文 */
 "实验室里的一天 · A1 → A2 过渡 · 2026-08-31":"A day in the lab · A1 → A2 bridge · 2026-08-31",
 "实验室里特殊的一天 · A1.2 · Das Perfekt · 2026-10-07":"A special day in the lab · A1.2 · Das Perfekt · 2026-10-07",
-"🔊 朗读全段":"🔊 Read the whole text","📋 复制全文":"📋 Copy full text","✓ 已复制":"✓ Copied",
+"🔊 朗读全段":"🔊 Read the whole text","📋 复制全文":"📋 Copy full text","✓ 已复制":"✓ Copied","💡 知识点":"💡 Key points",
 "语速：慢":"Speed: slow","语速：正常":"Speed: normal","语速：快":"Speed: fast",
 "hat … gehabt（haben 的完成时）":"hat … gehabt (perfect of haben)",
 "ist … gekommen（位移 → sein）":"ist … gekommen (motion → sein)","hat … eingeschaltet（可分）":"hat … eingeschaltet (separable)",

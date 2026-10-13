@@ -526,7 +526,16 @@ body::before {
   padding: 3px 9px;
   border: 1px solid #E9CDB6;
 }
-.hide-zh .para-zh { display: none; }
+.para-notes {
+  margin: 12px 22px 4px 52px; padding: 11px 15px;
+  background: var(--paper-2); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+}
+.para-notes .pn-title { display: block; font-size: 12.5px; font-weight: 700; color: var(--accent); margin-bottom: 5px; letter-spacing: .04em; }
+.para-notes ul { margin: 0; padding-left: 18px; }
+.para-notes li { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 3px 0; }
+.para-notes li b { color: var(--ink); font-weight: 600; }
+.hide-zh .s-zh { display: none; }
 
 /* ---------------- 练习页 ---------------- */
 .quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 14px; }
@@ -686,7 +695,9 @@ body::before {
 [data-theme="dark"] .focus-box { background: #2A2118; }
 [data-theme="dark"] .verb-chip { background: #33261A; border-color: #4A3524; }
 [data-theme="dark"] .brand-mark { background: var(--ink); color: #17140F; }
-[data-theme="dark"] .para-zh { border-left-color: #8A6C2F; }
+[data-theme="dark"] .s-zh { border-left-color: #8A6C2F; }
+[data-theme="dark"] .s-ipa { background: #33261A; color: #E0A96D; }
+[data-theme="dark"] .para-notes { background: #2A2118; border-color: #4A3524; border-left-color: #C4652A; }
 
 /* ============================================================
    Notion 笔记页（prose 排版 + 导入面板）
@@ -842,7 +853,16 @@ body::before {
 .s-sp:hover { opacity: 1; transform: scale(1.15); }
 .s-main { flex: 1; }
 .s-text { font-family: var(--font-display); font-size: 17.5px; font-weight: 500; line-height: 1.75; color: var(--ink); }
-.s-ipa { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-top: 3px; letter-spacing: .01em; }
+.s-ipa {
+  display: block; width: fit-content; max-width: 100%;
+  font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+  margin-top: 5px; padding: 1px 9px; background: var(--accent-soft);
+  border-radius: 5px; letter-spacing: .01em;
+}
+.s-zh {
+  display: block; font-size: 13.5px; color: var(--ink-2);
+  margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--gold);
+}
 .sentence-table .s-ipa { display: block; }
 .sentence-table .s-de { width: 58%; }
 .sentence-table .s-sp { font-size: 11px; padding: 0 2px; }

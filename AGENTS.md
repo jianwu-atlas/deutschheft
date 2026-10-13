@@ -60,6 +60,12 @@
 
 ## 更新记录
 
+- 2026-10-13（课文精读版式重构：三行堆叠 + 逐句中文 + 段末知识点）：
+  - **版式**：每句改「三行堆叠」——德文行 / **音标行**（`s-ipa` 由小字改**浅色胶囊块**：`--accent-soft` 底 + `--accent` 字，与德文明确区分）/ **中文行**（`s-zh`，金色左条）。段末新增 **「💡 知识点」框**（`para-notes`：accent 左边条 + 圆角 + `{k,v}` 要点列表）。「隐藏中文翻译（自测）」由隐藏 `para-zh` 改为隐藏 `s-zh`；暗色主题已适配。
+  - **数据**：新建 `assets/js/data/texte-extra.js`（`window.TEXTE_EXTRA[textId][段号] = { zhs:[逐句中文], notes:[{k,v}] }`）——**不动大文件 `deutsch-data.js`**。2 篇 × 10 段；逐句中文与 `splitSentences(p.de)` 一一对齐（5 段原文中文与德文句数不一致，按语义手工对齐）。
+  - **渲染**：`deutsch.js` 的 `renderTexts` 读取 `TEXTE_EXTRA`，每句加 `s-zh`、段末加 `para-notes`；移除原整段 `para-zh`。
+  - `i18n-en.js` 加「💡 知识点 → 💡 Key points」。**EN 模式下逐句中文/知识点保留中文**（与 Notion 笔记行为一致）。
+  - 版本号：deutsch.css→v35、deutsch.js→v33、i18n-en.js→v33；`texte.html` 新增 `texte-extra.js?v=1`。
 - 2026-10-13（Notion 按上课日期排序 + 站点改名 Jian (Jack) Wu）：
   - **Notion 排序**：`notion_export_sync.py` 新增 `CLASSDATE_OVERRIDES`（前缀映射，仿 `TITLE_OVERRIDES`）+ `class_date()`（优先映射，否则从 front-matter title 解析 `YYYYMMDD`/`YYYY-MM-DD`），输出对象加 `classDate` 字段；`notion-import.js` 的 `renderNotionPage` 对 `all` 按 `(classDate||date)` 升序（无日期排最后、同日期按 id），列表 meta 与阅读器头部改显示上课日期。重跑后 14 篇按上课顺序 `0→1→2→3→5→6→7→9→10→11→12→08-10→13→14`。
   - 注：`date` 字段是「笔记导出日」（14 条里 11 条都是 2026-08-06），无区分度；真·上课时间散在正文/题注且格式乱（`2026-04-10`/`20260615`/`2026-04-XX`），故用映射补全 0/3/5/6/7/13（**估算**，见脚本注释）。
