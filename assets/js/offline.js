@@ -70,7 +70,7 @@
 
   /* 没有 SW 控制器时的降级：页面自己抓全站 */
   async function selfCacheAll(btn) {
-    const files = window.__DH_SW_FILES || [];
+    const files = collectUrls();
     let n = 0;
     for (const f of files) {
       try { await fetch(f, { cache: "reload" }); } catch (e) { /* ignore */ }
@@ -78,6 +78,25 @@
     }
     btn.textContent = "✓ 已可离线使用";
     btn.classList.add("done");
+  }
+
+  /* 收集要缓存的 URL：
+     优先用打包时注入的全量清单（dist/ 场景，含音频与 PDF）；
+     若清单为空（如 Cloudflare 直接部署仓库根目录），则从当前 DOM 收集。 */
+  function collectUrls() {
+    const set = new Set(window.__DH_SW_FILES || []);
+    if (set.size) return [...set];
+    const add = u => {
+      if (!u) return;
+      if (/^[a-z]+:/i.test(u) || u.startsWith("//") || u.startsWith("#")) return;
+      u = u.split("?")[0].split("#")[0];
+      if (u) set.add(u);
+    };
+    document.querySelectorAll("a[href]").forEach(a => add(a.getAttribute("href")));
+    document.querySelectorAll("script[src]").forEach(e => add(e.getAttribute("src")));
+    document.querySelectorAll("link[href]").forEach(e => add(e.getAttribute("href")));
+    document.querySelectorAll("img[src]").forEach(e => add(e.getAttribute("src")));
+    return [...set];
   }
 
   /* ---------- 添加到主屏幕提示 ---------- */
