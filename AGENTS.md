@@ -58,10 +58,18 @@
 
 ## 部署
 
-- **国内可访问（首选，2026-10-13 起）**：Cloudflare Pages → **https://deutschheft.pages.dev/**；更新：`python3 scripts/pack_site.py` 重建 dist/ → `wrangler pages deploy dist --project-name=deutschheft --branch=main`（凭据在 `~/.wrangler`，OAuth 登录 jian.wu@mpi-bn.mpg.de，**免手机号**；国内可达性待实测确认）
-- 腾讯 EdgeOne Pages → **https://deutschheft.edgeone.cool/**（⚠️ 当前登录 Global=新加坡边缘，**国内不可达**；要国内需切中国站 + ICP 备案域名，见 memory 2026-10-13）
-- GitHub Pages：push main 即发布 → https://jianwu-atlas.github.io/deutschheft/（`*.github.io` 国内常不可达）
-- Cloudflare Workers（可选，需 secrets）：wrangler.toml（name=deutschheft）+ .github/workflows/deploy.yml
+> ⚠️ **2026-10-15 发现**：`.github/workflows/deploy.yml` 里 Cloudflare 那步因仓库**未配 `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` 密钥而被跳过**（日志显示 `- Deploy to Cloudflare Workers`，5 秒跑完）→ **`pages.dev` 不会随 push 自动更新**。手动部署可用（token 在 `~/Library/Preferences/.wrangler`，会自动刷新）：
+> ```bash
+> export WRANGLER_HOME="$HOME/Library/Preferences/.wrangler"
+> <isolated-node>/node_modules/.bin/wrangler pages deploy dist --project-name=deutschheft --branch=main
+> ```
+> 要恢复自动部署：到仓库 Settings → Secrets 配 `CLOUDFLARE_API_TOKEN`（Pages:Edit 权限）+ `CLOUDFLARE_ACCOUNT_ID`。
+
+- **GitHub Pages**（push 即发布，实测可用）：push main → https://jianwu-atlas.github.io/deutschheft/（`*.github.io` 国内常不可达）
+- **Cloudflare Pages**（海外首选）：https://deutschheft.pages.dev/ —— `python3 scripts/pack_site.py` 重建 dist/ → `wrangler pages deploy dist --project-name=deutschheft --branch=main`（见上方 ⚠️）
+- **腾讯 EdgeOne Pages**：https://deutschheft.edgeone.cool/（⚠️ `*.edgeone.cool` 被 SNI 丢包，**国内不可达**；要国内需切中国站 + ICP 备案域名）
+- **国内方案（推荐）**：腾讯云 COS 静态网站托管（默认域名国内可达、免备案）→ 见 `DEPLOY-CN.md` + `scripts/cos_upload.py`（待开通）
+- Cloudflare Workers（可选，需 secrets）：wrangler.toml（name=deutschheft）
 - 仓库：https://github.com/jianwu-atlas/deutschheft （描述用中文）
 
 ## 更新记录
