@@ -437,7 +437,8 @@ const PAGES = {
   lehrbuch: renderLehrbuch,
   formen: renderFormen,
   uebungen: renderQuizHome,
-  kursplan: renderKursplan
+  kursplan: renderKursplan,
+  sucheng: renderSucheng
 };
 
 /* ============================================================
@@ -461,7 +462,8 @@ function renderLehrbuch(app) {
           <div class="lbk-meta">${b.lesson} · ${b.pages} 页 · PDF ${LHRB_SIZE[b.file] || ""}</div>
         </div>
         <div class="lbk-actions">
-          <button class="btn primary lbk-view" data-id="${b.id}">📖 在线阅读</button>
+          ${b.id === "sucheng" ? `<a class="btn primary" href="sucheng.html">📖 场景精读</a>` : ""}
+          <button class="btn ${b.id === "sucheng" ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
           <a class="btn" href="assets/lehrbuch/${b.file}" download>⬇ 下载 PDF</a>
         </div>
       </div>
@@ -1042,5 +1044,78 @@ function renderKursplan(app) {
     </div>`).join("");
   $$(".kp-item[data-lesson]", app).forEach(el => el.addEventListener("click", () => {
     location.href = "lektionen.html#" + el.dataset.lesson;
+  }));
+}
+
+/* ============================================================
+   教材精读 · 零基础德语速成（三行格式：德文 / 中文 / 中文谐音）
+   数据：assets/js/data/sucheng.js（脚本生成，勿手改）
+   ⚠️ 课外教材：词汇不计入 VOCAB / wortliste.js（见项目 MEMORY.md）
+   ============================================================ */
+const SC_STATE = { einheit: 0, hideZh: false };
+
+function renderSucheng(app) {
+  if (typeof SUCHENG === "undefined" || !SUCHENG.parts) {
+    app.innerHTML = `<div class="card"><p>教材精读数据未加载（assets/js/data/sucheng.js）。</p></div>`;
+    return;
+  }
+  const parts = SUCHENG.parts;
+  if (SC_STATE.einheit >= parts.length) SC_STATE.einheit = 0;
+  const p = parts[SC_STATE.einheit];
+  const nScenes = parts.reduce((a, x) => a + x.scenes.length, 0);
+  const nSent = parts.reduce((a, x) => a + x.scenes.reduce((b, s) => b + s.sentences.length, 0), 0);
+
+  app.innerHTML = `
+    <div class="sc-bar">
+      <div class="chip-row sc-einheiten">
+        ${parts.map((x, i) => `<button class="chip ${i === SC_STATE.einheit ? "on" : ""}" data-i="${i}">${x.einheit}<span class="sc-cnt">${x.scenes.length}</span></button>`).join("")}
+      </div>
+      <div class="sc-tools">
+        <button class="chip ${SC_STATE.hideZh ? "on" : ""}" id="scHideZh">${SC_STATE.hideZh ? "👁 显示中文" : "🙈 隐藏中文自测"}</button>
+        <button class="chip" id="scCopy">📋 复制本单元纯德文</button>
+        <span class="sc-stat">全库 ${nScenes} 场景 · ${nSent} 句</span>
+      </div>
+    </div>
+    ${p.scenes.map(s => `
+      <section class="sc-scene card">
+        <h2 class="sc-title"><span class="sc-num">${s.scene}</span>${esc(s.zh || "场景 " + s.scene)}
+          <span class="sc-badge">${s.sentences.length} 句</span></h2>
+        <div class="sc-sents">
+          ${s.sentences.map(x => `
+            <div class="sc-sent">
+              <p class="s-de">${esc(x.de)}<button class="s-speak" data-t="${esc(x.de)}" title="朗读这句德语">🔊</button></p>
+              <p class="s-zh">${esc(x.zh)}</p>
+              ${x.pron ? `<p class="s-pron">${esc(x.pron)}</p>` : ""}
+            </div>`).join("")}
+        </div>
+      </section>`).join("")}
+  `;
+
+  app.classList.toggle("hide-zh", SC_STATE.hideZh);
+  $$(".sc-einheiten .chip", app).forEach(b => b.addEventListener("click", () => {
+    SC_STATE.einheit = +b.dataset.i;
+    renderSucheng(app);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  $("#scHideZh", app).addEventListener("click", () => {
+    SC_STATE.hideZh = !SC_STATE.hideZh;
+    renderSucheng(app);
+  });
+  $("#scCopy", app).addEventListener("click", e => {
+    const txt = p.scenes.map(s =>
+      `【${s.zh}】\n` + s.sentences.map(x => x.de).join("\n")).join("\n\n");
+    const btn = e.currentTarget;
+    const done = () => { const o = btn.textContent; btn.textContent = "✓ 已复制"; setTimeout(() => { btn.textContent = o; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done).catch(done);
+    else {
+      const ta = document.createElement("textarea");
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (err) { /* ignore */ }
+      ta.remove(); done();
+    }
+  });
+  $$(".s-speak", app).forEach(b => b.addEventListener("click", ev => {
+    ev.stopPropagation();
+    if (window.__dhSpeak) window.__dhSpeak(b.dataset.t);
   }));
 }

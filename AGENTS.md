@@ -16,7 +16,10 @@
 | `grammatik.html` | 12 语法专题（手风琴 + 变位表） |
 | `formen.html` | 词形变化总表（5 页签）：**111 动词**（六人称变位 / 过去时 / 第二分词 / 助动词 / 类型）+ 185 名词复数分组 + 30 形容词比较级 + 冠词·人称代词·物主冠词变格 + **语料变形索引**（网页正文里真实出现过的每个变形） |
 | `texte.html` | 2 篇课文逐段中德对照（可隐藏中文自测） |
-| `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点 |
+| `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点；「零基础德语速成」卡片带 **📖 场景精读** 入口 |
+| `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，**三行格式**（德文 / 中文 / 中文近似发音）+ 逐句 🔊 + 隐藏中文自测 + 复制纯德文 |
+| `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，三行格式（德文/中文/中文谐音）+ 逐句朗读 + 隐藏中文自测；入口在教材页「场景精读」按钮 |
+| `scripts/build_sucheng.py` | OCR 全文 → `assets/js/data/sucheng.js`（抽取「德文/中文/谐音」三元组 + OCR 清洗 + 规范标题覆盖） |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
 | `uebungen.html` | 6 组测验（54 题），即时解析 + 成绩页 |
 | `notion.html` | Notion 笔记库：14 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
@@ -34,6 +37,11 @@
 | `assets/js/data/wortliste.js` | 全站词表（脚本生成，勿手改；zh=中文释义、pron=中文谐音） |
 | `assets/js/data/formen.js` | 词形变化数据：`FORMEN_VERBEN`（art: reg/t/s/er/stark）+ `FORMEN_ADJ` + `FORMEN_DEKL` |
 | `assets/js/data/notion-notes.js` | 脚本生成，勿手改 |
+| `assets/js/data/sucheng.js` | 脚本生成（`build_sucheng.py`），勿手改；**课外教材，词汇不计入生词表** |
+| `scripts/build_sucheng.py` | OCR 全文 → `sucheng.js`（抽「德文/中文/谐音」三元组 + OCR 清洗 + 规范场景标题覆盖 + 词表自检） |
+| `docs/` | 方案与设计文档（`pack_site.py` 不打包 → 不公开） |
+| `assets/js/data/sucheng.js` | 脚本生成（build_sucheng.py），勿手改；课外教材，词汇不计入生词表 |
+| `docs/` | 方案与设计文档（`pack_site.py` 不打包，不公开） |
 | `brand/` | **品牌源文件**：`design-philosophy.md`（金印 Gilded Seal 设计哲学）+ `logo-mark.svg`（主标）+ `og-image.svg`（社交分享图） |
 | `assets/img/` | 由 brand/ 栅格化（`rsvg-convert`）：`favicon.svg` + `favicon-16/32/48.png` + `apple-touch-icon.png`(180) + `og-image.png`(1200×630) + `logo-mark-512.png`；改 logo 先改 brand/*.svg 再重新栅格化 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
@@ -74,6 +82,13 @@
 
 ## 更新记录
 
+- 2026-10-15（P0 教材精读：方案 C 落地 · 三行格式）：
+  - **新增 `sucheng.html`**（导航不新增项，入口＝教材页「零基础德语速成」卡片的 **📖 场景精读** 按钮）：12 个 Einheit 切换 chip + 场景卡片 + **三行格式**（`.s-de` 德文 16px / `.s-zh` 中文 13.5px 金色左条 / `.s-pron` 中文谐音 12.5px 浅胶囊块）+ 逐句 🔊（`__dhSpeak`）+ **隐藏中文自测**（`#app.hide-zh` 同时收掉中文与谐音）+ 📋 复制本单元纯德文。
+  - **新增 `scripts/build_sucheng.py`**：从 `~/.workbuddy/wiki-knowledge/raw/lingjichu-sucheng-ocr.txt` 抽「德文/中文/谐音」三元组 → `assets/js/data/sucheng.js`（115 KB）。关键实现：① 以「经典德语瞬间就学会」段为切分依据（不依赖标题行，规避 OCR 写坏 `场罻S`/`场景萹`）；② `classify()` 按「首字符是否中文」判行类型，德文折行/德中混行分别处理；③ OCR 清洗表（`ii→ü`、`B→ß`、行首残留题号、`在了tin` 类杂字）；④ **规范场景标题表** `SCENE_TITLES` 覆盖 OCR 噪声标题（如 `向路`→问路）；⑤ 末尾自检 `gen_wortliste.js` 的 `!b.extra` 过滤仍在（2 处 ✅）。
+  - **产出规模**：**70/70 场景 · 606 句型**，缺谐音仅 1 句、德文含中文残留 0。
+  - **课外约束**：`SUCHENG.meta.extra = true`；教材词不进 `VOCAB` / `wortliste.js`，页内不提供「加入生词表」入口。
+  - **验证**：Playwright 12 项断言全过（12 chips / 8 场景 / 72 句块 / 三行齐全 / 切单元 / 隐藏中文 / 🔊 真触发 `speechSynthesis.speak` / 音标开关共存 / **无 JS 错误**）。
+  - 版本号：deutsch.js→v37、deutsch.css→v39、新增 `sucheng.js?v=1`。方案文档见 `docs/整合方案-零基础德语速成.md`。
 - 2026-10-15（音标三态 + 点词发音 + PWA 离线 + 第2次课笔记扩充 + 第6组测验）：
   - **音标开关改三态**：`annotate.js` 的 localStorage `deutschheft_annotate` 由 `1/0` 改为 `off / smart / all`；循环顺序 **关 → 常用 → 全部 → 关**。「常用」= 原策略（`BASIC` 功能词不标）；「全部」= 词典命中的词全标（含 ich / der / ist 等简单词）。按钮文案 `音标：关/常用/全部`，`全部` 挡用金色 `#ipaToggle.on.all` 区分；切换后 `location.reload()` 并用 `sessionStorage.dh_scroll` 记住滚动位置。旧值 `"1"` 自动映射为 `smart`（向后兼容）。
   - **点击 / 双击任意单词即朗读**（Jian 2026-10-15）：新增 `wordAtPoint()`（`caretPositionFromPoint` + 边界扩展），`click` / `dblclick` 监听 + 节流 `mousemove`（悬停德语单词时 `cursor:pointer` 反馈）。**不依赖音标开关**；链接 / 按钮 / 输入框 / `<ruby>` 不干预；划词时 click 不触发（避免冲突）；`Ctrl+Space` 朗读选中、`Esc` 停止保留。
