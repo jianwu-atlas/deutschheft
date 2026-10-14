@@ -598,7 +598,7 @@ function renderStart(app) {
     { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
     { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
     { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
-    { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性。" },
+    { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性、句子改写。" },
     { route: "notion.html", num: "09", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
     { route: "kursplan.html", num: "10", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
   ];

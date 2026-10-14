@@ -922,6 +922,19 @@ const QUIZZES = [
       { de: "die Besprechung", q: "die Besprechung 是？", options: ["报告", "会议/讨论会", "休息", "决定"], answer: 1, explain: "eine Besprechung haben 开会" },
       { de: "das Viertel", q: "das Viertel 在时间表达中是？", options: ["半小时", "一刻钟（15 分钟）", "十分钟", "四分之一小时（45 分钟）"], answer: 1, explain: "Viertel nach/vor … 一刻钟" }
     ]
+  },
+  {
+    id: "q6", title: "完成时句子改写", de: "Perfekt im Satz", desc: "把现在时句子改写为现在完成时（句位 + 助动词 + Partizip II）",
+    questions: [
+      { q: "Mia liest ihre E-Mails. →", options: ["Mia liest ihre E-Mails gelesen.", "Mia hat ihre E-Mails gelesen.", "Mia ist ihre E-Mails gelesen.", "Mia habe ihre E-Mails gelesen."], answer: 1, explain: "lesen 及物 → hat；第二分词 gelesen 置句末。Mia hat ihre E-Mails gelesen." },
+      { q: "Sie kontrolliert die Proben. →", options: ["Sie kontrolliert die Proben kontrolliert.", "Sie hat die Proben kontrolliert.", "Sie ist die Proben kontrolliert.", "Sie hat die Proben gekontrolliert."], answer: 1, explain: "-ieren 结尾不加 ge-；及物 → hat。Sie hat die Proben kontrolliert." },
+      { q: "Elena kommt ins Labor. →", options: ["Elena hat ins Labor gekommen.", "Elena ist ins Labor gekommen.", "Elena ist ins Labor gekommt.", "Elena komm ins Labor gekommen."], answer: 1, explain: "kommen 位置移动 → ist。Elena ist ins Labor gekommen." },
+      { q: "Die Kolleginnen machen Pause. →", options: ["Die Kolleginnen hat Pause gemacht.", "Die Kolleginnen haben Pause gemacht.", "Die Kolleginnen sind Pause gemacht.", "Die Kolleginnen haben Pause machen."], answer: 1, explain: "复数主语 → haben；第二分词 gemacht 句末。" },
+      { q: "Sie gehen in die Kantine. →", options: ["Sie haben in die Kantine gegangen.", "Sie sind in die Kantine gegangen.", "Sie sind in die Kantine gegeht.", "Sie geht in die Kantine gegangen."], answer: 1, explain: "gehen 位置移动 → sein；复数主语 → sind。" },
+      { q: "Mia telefoniert mit der Teamleiterin. →", options: ["Mia hat mit der Teamleiterin telefoniert.", "Mia ist mit der Teamleiterin telefoniert.", "Mia hat mit der Teamleiterin getelefoniert.", "Mia telefoniert mit der Teamleiterin telefoniert."], answer: 0, explain: "telefonieren 无位移 → hat；-ieren 不加 ge-。" },
+      { q: "Sie räumt ihren Arbeitsplatz auf. →", options: ["Sie hat ihren Arbeitsplatz aufgeräumt.", "Sie hat ihren Arbeitsplatz geräumt auf.", "Sie ist ihren Arbeitsplatz aufgeräumt.", "Sie hat ihren Arbeitsplatz aufgeraümt."], answer: 0, explain: "可分动词 aufräumen：前缀与词干之间插 ge- → aufgeräumt。" },
+      { q: "Mia fährt nach Hause. →", options: ["Mia hat nach Hause gefahren.", "Mia ist nach Hause gefahren.", "Mia ist nach Hause gefährt.", "Mia fährt nach Hause gefahren."], answer: 1, explain: "fahren 方向性位移 → sein；单数主语 → ist。" }
+    ]
   }
 ];
 

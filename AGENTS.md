@@ -18,7 +18,7 @@
 | `texte.html` | 2 篇课文逐段中德对照（可隐藏中文自测） |
 | `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点 |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
-| `uebungen.html` | 5 组测验（48 题），即时解析 + 成绩页 |
+| `uebungen.html` | 6 组测验（54 题），即时解析 + 成绩页 |
 | `notion.html` | Notion 笔记库：14 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
 | `kursplan.html` | 15 主题大纲（9 已学 / 1 部分 / 5 待学） |
 | `tts.html` | 文本转 MP3 工具页（B：实时，调 edge-fn；未部署函数时显示提示、按钮禁用） |
@@ -39,7 +39,13 @@
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
 | `assets/js/notion-import.js` | Markdown 渲染器 + 导入 + 搜索 |
-| `assets/js/annotate.js` | 全文音标标注 + 朗读；`BASIC`（基础功能词不标）/ `NAMES`（专名不标）/ `SKIP_SEL`（界面与自带音标区不标） |
+| `assets/js/annotate.js` | 全文音标标注 + 朗读；三态开关 `off/smart/all`；`BASIC`（常用挡不标）/ `NAMES`（专名不标）/ `SKIP_SEL`（界面与自带音标区不标）；点击/双击任意单词即朗读 |
+| `assets/js/offline.js` | PWA：注册 SW + 「📥 离线缓存」按钮 + iOS「添加到主屏幕」提示 |
+| `sw.js` | Service Worker：预缓存外壳、同源缓存优先、导航失败回退 index；`__ALL__` 打包时注入全量清单 |
+| `manifest.webmanifest` | PWA 清单（standalone、3 图标、3 shortcuts） |
+| `assets/js/offline.js` | PWA：注册 SW + 「离线缓存」按钮 + iOS 添加主屏幕提示 |
+| `sw.js` | Service Worker：预缓存外壳、缓存优先、导航回退；`__ALL__` 打包时注入全量清单 |
+| `manifest.webmanifest` | PWA 清单（standalone、3 图标、3 shortcuts） |
 
 ## 常用操作
 
@@ -60,6 +66,14 @@
 
 ## 更新记录
 
+- 2026-10-15（音标三态 + 点词发音 + PWA 离线 + 第2次课笔记扩充 + 第6组测验）：
+  - **音标开关改三态**：`annotate.js` 的 localStorage `deutschheft_annotate` 由 `1/0` 改为 `off / smart / all`；循环顺序 **关 → 常用 → 全部 → 关**。「常用」= 原策略（`BASIC` 功能词不标）；「全部」= 词典命中的词全标（含 ich / der / ist 等简单词）。按钮文案 `音标：关/常用/全部`，`全部` 挡用金色 `#ipaToggle.on.all` 区分；切换后 `location.reload()` 并用 `sessionStorage.dh_scroll` 记住滚动位置。旧值 `"1"` 自动映射为 `smart`（向后兼容）。
+  - **点击 / 双击任意单词即朗读**（Jian 2026-10-15）：新增 `wordAtPoint()`（`caretPositionFromPoint` + 边界扩展），`click` / `dblclick` 监听 + 节流 `mousemove`（悬停德语单词时 `cursor:pointer` 反馈）。**不依赖音标开关**；链接 / 按钮 / 输入框 / `<ruby>` 不干预；划词时 click 不触发（避免冲突）；`Ctrl+Space` 朗读选中、`Esc` 停止保留。
+  - **PWA / 离线版**（iPad 可用）：新增 `manifest.webmanifest`（`display:standalone`、3 图标、3 个 shortcuts）+ `sw.js`（预缓存应用外壳、同源 GET 缓存优先、导航失败回退 index）+ `assets/js/offline.js`（注册 SW、左下角「📥 离线缓存」按钮一次性下载全站、iOS「添加到主屏幕」提示）。`pack_site.py` 打包时把**全量文件清单**注入 `sw.js` 的 `ALL_FILES` 与 `offline.js` 的 `window.__DH_SW_FILES`；打包清单新增 `sw.js` / `manifest.webmanifest`；12 页 head 加 `<link rel="manifest">`、body 加 `offline.js`（`tts.html` 也加）。本地已用 Playwright 实测：SW `activated`、三态循环、点/双击发音均生效、无 JS 错误。**iPad 用法**：Safari 打开 → 点「📥 离线缓存」→ 分享 → 添加到主屏幕 → 之后离线可看。
+  - **第 2 次课笔记扩充**：`content-notion/14_现在完成时DasPerfekt（A1.2-第2次）.md` 由 6.5K → 约 24K，按 2026-10-07&10-14 的 update 版 Notion 导出补齐「四、逐段解析 / 五、新增动词分词表 / 六、阅读理解 22 题（含答案）/ 七、人称代词与全人称变位 / 八～十一、四组练习 / 十二、写作任务与范文」；重跑 `notion_export_sync.py`（14 篇，182 KB）。
+  - **新增第 6 组测验**：`QUIZZES` 加 `q6 完成时句子改写`（8 题，把现在时句改写为完成时，句位+助动词+Partizip II）→ **6 组 54 题**。同步更新 `deutsch.js` PAGES 描述、`i18n-en.js`（key 与正则两处）、`uebungen.html` meta、AGENTS.md。
+  - 版本号：annotate.js→v32、deutsch.css→v38、deutsch.js→v36、deutsch-data.js→v33、i18n-en.js→v36、notion-notes.js→v31；新增 `offline.js?v=1`。
+  - ⚠️ 注：原书笔误 `Klavier`（钢琴）在课件里被译作「小提琴」，站点 `concepts/` 与笔记均已按「钢琴」呈现。
 - 2026-10-13（课外教材分类 + 零基础标课外 + 课外词汇不计入词表）：
   - **教材库分组**：`deutsch.js` 的 `renderLehrbuch` 重构为两组——「📘 课内教材 · Kursbuch」（4 份 Lektion 课件）+「📗 课外教材资料 · Extra」；课外书加「课外」徽章（`.lbk-extra`，替换原 ★）。空 `words/sentences/points/text` 段落自动隐藏。
   - **零基础德语速成标为课外**：`lehrbuch.js` 的 `sucheng` 由 `star:true` 改 `extra:true`。

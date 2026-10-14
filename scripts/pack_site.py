@@ -13,6 +13,7 @@
 不含 .git / content-notion / scripts / AGENTS.md 等开发文件。
 """
 from pathlib import Path
+import json
 import shutil
 import sys
 
@@ -28,7 +29,7 @@ def main() -> int:
     pages = sorted(ROOT.glob("*.html"))
     for p in pages:
         shutil.copy2(p, DIST / p.name)
-    for name in ("robots.txt", "sitemap.xml"):
+    for name in ("robots.txt", "sitemap.xml", "sw.js", "manifest.webmanifest"):
         f = ROOT / name
         if f.exists():
             shutil.copy2(f, DIST / name)
@@ -37,6 +38,24 @@ def main() -> int:
     # 清理系统垃圾文件
     for junk in DIST.rglob(".DS_Store"):
         junk.unlink()
+
+    # PWA：把全量文件清单注入 sw.js / offline.js，供「离线缓存」按钮一次性下载全站
+    all_files = sorted(
+        "./" + str(p.relative_to(DIST)).replace("\\", "/")
+        for p in DIST.rglob("*") if p.is_file()
+    )
+    sw = DIST / "sw.js"
+    if sw.exists():
+        txt = sw.read_text(encoding="utf-8").replace('"__ALL__"', json.dumps(all_files, ensure_ascii=False))
+        sw.write_text(txt, encoding="utf-8")
+    oj = DIST / "assets" / "js" / "offline.js"
+    if oj.exists():
+        txt = oj.read_text(encoding="utf-8")
+        txt = txt.replace(
+            "(function () {",
+            "(function () {\n  window.__DH_SW_FILES = " + json.dumps(all_files, ensure_ascii=False) + ";",
+            1)
+        oj.write_text(txt, encoding="utf-8")
 
     size = sum(f.stat().st_size for f in DIST.rglob("*") if f.is_file())
     print(f"[✓] 已打包到 {DIST}")

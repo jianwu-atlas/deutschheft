@@ -887,6 +887,7 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 #speedToggle { bottom: 74px; }
 #ipaToggle:hover, #speedToggle:hover { transform: translateY(-2px); }
 #ipaToggle.on { background: var(--accent); border-color: var(--accent); }
+#ipaToggle.on.all { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 
 @media (max-width: 900px) {
   .s-text { font-size: 16px; }
@@ -1162,3 +1163,35 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 .tts-status { margin: 12px 0 0; font-size: 14px; color: var(--ink-2); min-height: 20px; }
 .tts-result { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,.08); display: flex; flex-direction: column; gap: 12px; }
 .tts-result audio { width: 100%; max-width: 620px; }
+
+/* ---------- PWA：离线缓存按钮 + iOS 添加主屏幕提示 ---------- */
+#offlineBtn {
+  position: fixed; left: 18px; bottom: 18px; z-index: 70;
+  padding: 10px 16px; border-radius: 99px;
+  background: var(--ink); color: var(--paper-2);
+  border: 1px solid var(--ink);
+  font-family: var(--font-body); font-size: 12.5px; font-weight: 600;
+  cursor: pointer; box-shadow: 0 8px 24px rgba(32,27,20,.28);
+  transition: transform .18s, background .18s;
+}
+#offlineBtn:hover { transform: translateY(-2px); }
+#offlineBtn:disabled { opacity: .75; cursor: default; transform: none; }
+#offlineBtn.done { background: var(--accent); border-color: var(--accent); }
+
+#iosHint {
+  position: fixed; left: 18px; bottom: 72px; z-index: 71; max-width: 300px;
+  padding: 12px 14px; border-radius: 14px;
+  background: var(--gold-soft, #f6ecd6); color: var(--ink, #1c1a16);
+  border: 1px solid var(--gold, #b08d3f);
+  font-family: var(--font-body); font-size: 12.5px; line-height: 1.55;
+  box-shadow: 0 10px 28px rgba(32,27,20,.24);
+}
+#iosHint b { display: block; margin-bottom: 4px; }
+#iosHintClose {
+  display: inline-block; margin-top: 8px; padding: 3px 12px; border-radius: 99px;
+  background: var(--ink, #1c1a16); color: var(--paper-2, #fff); cursor: pointer; font-weight: 600;
+}
+@media (max-width: 900px) {
+  #offlineBtn { bottom: 14px; left: 14px; padding: 9px 13px; font-size: 12px; }
+  #iosHint { bottom: 66px; left: 14px; right: 14px; max-width: none; }
+}

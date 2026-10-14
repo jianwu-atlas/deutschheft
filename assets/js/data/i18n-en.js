@@ -54,7 +54,7 @@ window.EN_UI = {
   "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。": "Two lab texts with paragraph-by-paragraph translation and the key perfect-tense verbs highlighted.",
   "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。": "Six textbook PDFs to read online or download, each with structured vocabulary, core sentences (IPA included) and grammar notes.",
   "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。": "Look it up instantly: numbers 0–100, telling the time, 18 colours, seasons / months / weekdays / weather — all with IPA.",
-  "组测验：变位、数字、时间、完成时、词性。": " quiz sets: conjugation, numbers, time, perfect tense and gender.",
+  "组测验：变位、数字、时间、完成时、词性、句子改写。": " quiz sets: conjugation, numbers, time, perfect tense, gender and sentence rewriting.",
   "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。": "All your Notion notes bundled offline, with file import/export, paste-to-sync and full-text search.",
   "15 主题生存德语地图，标注已学 / 待学进度。": "A 15-topic survival-German map, showing what you have learned and what is still ahead.",
   /* —— 生词表 —— */
@@ -203,7 +203,7 @@ window.EN_UI_RULES = [
   [/^(\d+) 个有中文谐音$/, "$1 with a pronunciation hint"],
   [/^(\d+) 个语法专题：从动词第二位到现在完成时。$/, "$1 grammar topics, from verb-in-second-position to the perfect tense."],
   [/^(\d+) 张词汇卡：每张含国际音标 \+ 中文谐音，按主题与词性筛选，点卡片翻面看释义。$/, "$1 vocabulary cards: IPA on every card, filter by topic and part of speech, click to flip for the meaning."],
-  [/^(\d+) 组测验：变位、数字、时间、完成时、词性。$/, "$1 quiz sets: conjugation, numbers, time, perfect tense and gender."],
+  [/^(\d+) 组测验：变位、数字、时间、完成时、词性、句子改写。$/, "$1 quiz sets: conjugation, numbers, time, perfect tense, gender and sentence rewriting."],
   [/^(\d+) 个语法专题$/, "$1 grammar topics"],
   [/^(\d+) 页 · PDF (.+)$/, "$1 pages · PDF $2"],
   [/^(\d+) 个词条$/, "$1 entries"],
