@@ -674,5 +674,19 @@ const LEHRBUECHER = [
   "sentences": [],
   "points": [],
   "text": ""
+ },
+ {
+  "id": "w6000",
+  "num": "D1",
+  "file": "D1_6000-de-words.pdf",
+  "zh": "德国 6000 中级词汇",
+  "de": "6000 deutsche Wörter (Mittelstufe)",
+  "lesson": "德语课外参考",
+  "pages": 96,
+  "extra": true,
+  "words": [],
+  "sentences": [],
+  "points": [],
+  "text": ""
  }
 ];

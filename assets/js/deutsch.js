@@ -439,7 +439,8 @@ const PAGES = {
   uebungen: renderQuizHome,
   kursplan: renderKursplan,
   sucheng: renderSucheng,
-  english: renderEnglish
+  english: renderEnglish,
+  w6000: renderW6000
 };
 
 /* ============================================================
@@ -465,7 +466,8 @@ function renderLehrbuch(app) {
         <div class="lbk-actions">
           ${b.id === "sucheng" ? `<a class="btn primary" href="sucheng.html">📖 场景精读</a>` : ""}
           ${b.id === "enwords" ? `<a class="btn primary" href="https://englishheft.pages.dev/" target="_blank" rel="noopener">📖 单词精读 ↗</a>` : ""}
-          <button class="btn ${(b.id === "sucheng" || b.id === "enwords") ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
+          ${b.id === "w6000" ? `<a class="btn primary" href="w6000.html">📖 词汇速查</a>` : ""}
+          <button class="btn ${(b.id === "sucheng" || b.id === "enwords" || b.id === "w6000") ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
           <a class="btn" href="assets/lehrbuch/${b.file}" download>⬇ 下载 PDF</a>
         </div>
       </div>
@@ -1276,6 +1278,84 @@ function renderEnglish(app) {
     }
   });
   $$(".s-speak", app).forEach(b => b.addEventListener("click", ev => {
+    ev.stopPropagation();
+    if (window.__dhSpeak) window.__dhSpeak(b.dataset.t);
+  }));
+}
+
+/* ============================================================
+   德国 6000 中级词汇（课外参考书 · extra:true，不进生词表）
+   ============================================================ */
+const W6_STATE = { q: "", t: "all", limit: 400 };
+const W6_TYPES = [
+  ["all", "全部"], ["noun", "名词"], ["verb", "动词"], ["adj", "形容词"],
+  ["adv", "副词"], ["place", "地名"], ["phrase", "短语"], ["mixed", "其他"]
+];
+const W6_TLABEL = { noun: "名", verb: "动", adj: "形", adv: "副", place: "地名", phrase: "短语", mixed: "其他" };
+
+function w6Filter() {
+  if (!window.W6000 || !window.W6000.words) return [];
+  const q = W6_STATE.q.trim().toLowerCase();
+  const t = W6_STATE.t;
+  return window.W6000.words.filter(w => {
+    if (t !== "all" && w.t !== t) return false;
+    if (q && !w.w.toLowerCase().includes(q) && !w.zh.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function renderW6000(app) {
+  if (typeof W6000 === "undefined" || !W6000.words) {
+    app.innerHTML = `<div class="card"><p>6000 词数据未加载（assets/js/data/w6000.js）。</p></div>`;
+    return;
+  }
+  const meta = W6000.meta;
+  const list = w6Filter();
+  const show = list.slice(0, W6_STATE.limit);
+  const total = W6000.words.length;
+
+  app.innerHTML = `
+    <div class="w6-note">
+      <span class="lbk-extra">课外参考 · Extra</span>
+      <span class="sc-note">词汇不计入生词表 · 全文检索（德文 / 中文）</span>
+    </div>
+    <div class="vocab-toolbar w6-toolbar">
+      <input class="vocab-search" id="w6Search" type="search" placeholder="搜索德文或中文，如：Abenteuer / 冒险 / verlieren …" value="${esc(W6_STATE.q)}">
+      <span class="vocab-count" id="w6Count">共 ${total} 词 · 当前 ${list.length}</span>
+    </div>
+    <div class="chip-row w6-types">
+      ${W6_TYPES.map(([k, lbl]) => `<button class="chip ${W6_STATE.t === k ? "on" : ""}" data-t="${k}">${lbl}<span class="w6-cnt">${k === "all" ? total : (meta.types[k] || 0)}</span></button>`).join("")}
+    </div>
+    <div class="w6-list">
+      ${show.map(w => `
+        <div class="w6-row">
+          <span class="w6-w">${esc(w.w)}<button class="s-speak w6-speak" data-t="${esc(w.w).replace(/"/g, "&quot;")}" title="朗读">🔊</button></span>
+          <span class="w6-t t-${w.t}">${W6_TLABEL[w.t] || "其他"}</span>
+          ${w.inf ? `<span class="w6-inf">${esc(w.inf)}</span>` : ""}
+          <span class="w6-zh">${esc(w.zh)}</span>
+        </div>`).join("") || `<div class="w6-empty">没有匹配的词。换个关键词试试。</div>`}
+    </div>
+    ${list.length > W6_STATE.limit ? `<button class="chip w6-more" id="w6More">显示更多（还剩 ${list.length - W6_STATE.limit} 条）</button>` : ""}
+  `;
+
+  const search = $("#w6Search", app);
+  let deb;
+  search.addEventListener("input", e => {
+    clearTimeout(deb);
+    deb = setTimeout(() => {
+      W6_STATE.q = e.target.value; W6_STATE.limit = 400;
+      renderW6000(app);
+      const el = $("#w6Search", app);
+      el.focus(); el.setSelectionRange(el.value.length, el.value.length);
+    }, 160);
+  });
+  $$(".w6-types .chip", app).forEach(b => b.addEventListener("click", () => {
+    W6_STATE.t = b.dataset.t; W6_STATE.limit = 400;
+    renderW6000(app); window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  const more = $("#w6More", app);
+  if (more) more.addEventListener("click", () => { W6_STATE.limit += 400; renderW6000(app); });
+  $$(".w6-speak", app).forEach(b => b.addEventListener("click", ev => {
     ev.stopPropagation();
     if (window.__dhSpeak) window.__dhSpeak(b.dataset.t);
   }));

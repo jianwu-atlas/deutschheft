@@ -1289,3 +1289,38 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 .en-word .s-speak:hover { background: var(--accent-soft); }
 #app.hide-zh .en-word .en-zh { display: none; }
 @media (max-width: 900px) { .en-words { grid-template-columns: 1fr 1fr; gap: 10px 14px; } .en-word .en-en { font-size: 15px; } }
+
+/* ---------------- 德国 6000 中级词汇（课外参考 · extra） ---------------- */
+.w6-note { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 18px; }
+.w6-toolbar { align-items: center; }
+.w6-toolbar .vocab-count { margin-bottom: 0; white-space: nowrap; }
+.w6-cnt { font-family: var(--font-mono); font-size: 10.5px; opacity: .7; margin-left: 5px; }
+.w6-list { margin-top: 4px; border-top: 1px solid var(--line); }
+.w6-row {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 8px 6px; border-bottom: 1px solid var(--line);
+  transition: background .12s;
+}
+.w6-row:hover { background: var(--paper-2); }
+.w6-w { font-family: var(--font-display); font-size: 15.5px; font-weight: 600; color: var(--ink); min-width: 150px; }
+.w6-speak { margin-left: 6px; padding: 0 6px; border-radius: 99px; cursor: pointer; border: 1px solid var(--line); background: transparent; font-size: 10.5px; vertical-align: middle; }
+.w6-speak:hover { background: var(--accent-soft); }
+.w6-t {
+  flex-shrink: 0; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 99px;
+  border: 1px solid var(--line); color: var(--ink-2); background: var(--paper-2);
+}
+.w6-t.t-noun  { color: #2456A6; border-color: rgba(36,86,166,.35); background: rgba(36,86,166,.10); }
+.w6-t.t-verb  { color: #7B3FA0; border-color: rgba(123,63,160,.35); background: rgba(123,63,160,.10); }
+.w6-t.t-adj   { color: #B03048; border-color: rgba(176,48,72,.35);  background: rgba(176,48,72,.10); }
+.w6-t.t-adv   { color: #2E7D5B; border-color: rgba(46,125,91,.35);  background: rgba(46,125,91,.10); }
+.w6-t.t-place { color: #8A6C2F; border-color: rgba(138,108,47,.4);  background: rgba(201,162,39,.12); }
+.w6-t.t-phrase{ color: #C4652A; border-color: rgba(196,101,42,.4);  background: rgba(196,101,42,.10); }
+.w6-inf { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); flex-shrink: 0; }
+.w6-zh { font-size: 13.5px; color: var(--ink-2); flex: 1; line-height: 1.4; }
+.w6-more { display: block; margin: 18px auto 4px; }
+.w6-empty { padding: 30px 10px; text-align: center; color: var(--ink-3); font-size: 14px; }
+[data-theme="dark"] .w6-t.t-noun  { color: #7FA8E6; }
+[data-theme="dark"] .w6-t.t-verb  { color: #C9A0E0; }
+[data-theme="dark"] .w6-t.t-adj   { color: #E08A9A; }
+[data-theme="dark"] .w6-t.t-adv   { color: #7FC9A6; }
+@media (max-width: 640px) { .w6-w { min-width: 108px; font-size: 14.5px; } .w6-inf { display: none; } }

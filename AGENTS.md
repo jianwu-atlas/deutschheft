@@ -21,6 +21,10 @@
 | `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
 | `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
 | `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，三行格式（德文/中文/中文谐音）+ 逐句朗读 + 隐藏中文自测；入口在教材页「场景精读」按钮 |
+| `w6000.html` | **中级词汇速查**：《德国 6000 中级词汇》**6609 条**（名词 3758 / 动词 1202 / 形容词 848 / 副词 136 / 地名 180 / 短语 231 / 其他 404），德文/中文全文检索 + 词性筛选 chips + 逐词 🔊 + 分页「显示更多」；**课外参考书 extra:true，词汇不计入生词表**；入口在教材页「词汇速查」按钮 |
+| `scripts/build_w6000.py` | PDF 文本层 → `assets/js/data/w6000.js`（96 页，**有文本层无需 OCR**；异构条目分类 noun/verb/adj/adv/place/phrase/mixed + 质量过滤：主词≥2 字、zh 必含中文）。源 PDF 在 `/Volumes/jianwu/…/德语_硬盘备份/中级常用德语词汇6000词 PDF版本可打印.pdf`，已复制到 `assets/lehrbuch/D1_6000-de-words.pdf`（1.0M） |
+| `assets/js/data/w6000.js` | 脚本生成，勿手改；`window.W6000 = {meta:{extra:true,count,types}, words:[{w,t,inf,zh}]}` |
+| `scripts/_test_w6000.py` | w6000 冒烟测试（16 断言：渲染 400 行 / 德文搜索 / 中文搜索 / 词性筛选 / 显示更多 / 教材页入口）；先 pack 再跑 |
 | `scripts/build_sucheng.py` | OCR 全文 → `assets/js/data/sucheng.js`（抽取「德文/中文/谐音」三元组 + OCR 清洗 + 规范标题覆盖） |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
 | `uebungen.html` | 6 组测验（54 题），即时解析 + 成绩页 |
@@ -89,6 +93,14 @@
 
 ## 更新记录
 
+- 2026-10-15（**新增《德国 6000 中级词汇》速查页**，Jian「从书本蒸馏核心知识点整合进站」）：
+  - **前提**：源 PDF（96 页，`/Volumes/jianwu/…/德语_硬盘备份/中级常用德语词汇6000词 PDF版本可打印.pdf`）**有完整文本层，无需 OCR**（同英语口袋书）。已复制入 `assets/lehrbuch/D1_6000-de-words.pdf`（1.0M）。
+  - **蒸馏** `scripts/build_w6000.py` → `assets/js/data/w6000.js`（**6609 条**，512KB）。异构条目按词性分类：名词 3758 / 动词 1202 / 形容词 848 / 副词 136 / 地名 180 / 短语 231 / 其他 404。分条规则＝拉丁字母开头=新条目（动词释义折行并入上一条）；质量过滤＝主词≥2 字 + zh 必含中文（丢 98 条无中文 / 单字母碎片）。数据 `{w,t,inf,zh}`。
+  - **整合** `w6000.html`（导航不加项，入口＝教材页「词汇速查」按钮）：德文/中文**全文检索**（防抖 160ms）+ 词性筛选 chips（带各词性计数）+ 逐词 🔊（`__dhSpeak`）+ 分页「显示更多」（400/批）。`renderW6000`/`W6_STATE` 追加进 `deutsch.js` PAGES。
+  - **课外约束**：`W6000.meta.extra=true`；`LEHRBUECHER` 加 `w6000`（`extra:true`）；词汇**不进** `VOCAB`/`wortliste.js`，页内无「加入生词表」入口（同 sucheng/english）。
+  - **验证**：`scripts/_test_w6000.py` **16 断言全过**（渲染 400 / 德文搜索 verlieren / 中文搜索 冒险 / 动词筛选 / 显示更多→800 / 教材页入口 / 无 JS 错误）。
+  - **已知**：源书异构噪声 → ~10% 条目 inf/主词有轻微黏连（如 `erste` 误判短语、`seurin` 碎片），参考书性质可接受，与 sucheng/english 的 OCR 瑕疵同级。
+  - 版本号：新增 `w6000.js?v=1`、deutsch.js→v43、deutsch.css→v48、lehrbuch.js→v32（13 页 css/js 同步 bump）。
 - 2026-10-15（**内容区左边距加宽**，Jian「左边太挤，留点空间」）：`.page-wrap` 水平 padding 桌面 **24→44px**（97/131 两处重复定义一并改）、小屏 media（≤?）**18→28px**、print 保持 0。宽屏本就被 max-width 1180 居中，主要改善 iPad/窄屏贴边观感。`deutsch.css` v46→**v47**（13 页）。
 - 2026-10-15（**logo 回退金印 D 版**，Jian「算了，换回原来的 logo」，英语站不变）：水墨天鹅线稿被判定太细/太小，回退到 Gilded Seal 金印版（`ac3d8e7` 的 favicon.svg/og-image.svg）。① 恢复两 SVG 为金印 D（#201B14 方块 + 金 #C9A227 D + 三点 + jwlab），删除 `favicon-mark.svg`；② `.brand-mark` 46→**34px**（圆角 11→9），指向 `favicon.svg?v=34`；暗色 override 恢复 `background: var(--ink); color: #17140F;`（金印不透明底版，深浅主题均直接可见，无需垫纸底）；③ `gen_logos.py` 9 位图全用 `favicon.svg`；④ `_check_logo.py` 重写为 **14 项金印断言**（全过）；⑤ `deutsch.css` v45→**v46**、logo 组 ?v=33→**?v=34**。注：`brand/` 金印源文件仍是权威源（存档升回为主用）。
 - 2026-10-15（水墨 logo 小尺寸修复：mark 加粗版 + 放大，commit `6424185`）：水墨线稿（400 viewBox 上笔画 2-3px）在 34px 导航 mark 上被抗锯齿稀释，几乎只剩一团灰绿（Jian 反馈「太小，快看不到」）。① 新增 `assets/img/favicon-mark.svg`：同构图加粗版（山水线 9、天鹅 6-8、三横 7、圆 r46、删 De Yu 与冠羽），46px 下笔画 ≥1px；② `.brand-mark` 34→46px（圆角 9→11），深浅主题均指向 mark 版；③ favicon-16/32/48 改用 mark 版栅格化（大尺寸位图与 og 仍用主版）；④ `_check_logo.py` 11→17 断言（mark 指向加粗版 / 46px / 墨线像素可见 / 加粗版无冠羽）；⑤ `deutsch.css` v44→v45。
