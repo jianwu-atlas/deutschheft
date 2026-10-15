@@ -18,10 +18,7 @@
 | `texte.html` | 2 篇课文逐段中德对照（可隐藏中文自测） |
 | `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点；「零基础德语速成」卡片带 **📖 场景精读** 入口 |
 | `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，**三行格式**（德文 / 中文 / 中文近似发音）+ 逐句 🔊 + 隐藏中文自测 + 复制纯德文 |
-| `english.html` | **英语单词**：《15000英语单词口袋书》17 大类 / 493 场景 / 7052 词条，三行格式（英文/音标/中文+词性）+ Top10 场景句；入口在教材页「单词精读」按钮 |
-| `scripts/build_english.py` | PDF 文本层 → `english.js`（三层结构 + CJK 空格清洗 + 目录页抽 Section/Part 名） |
-| `assets/js/data/english.js` | 脚本生成，勿手改；课外教材，词汇不计入生词表 |
-| `scripts/_test_english.py` | 英语单词页 Playwright 冒烟测试 |
+| `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
 | `english.html` | **英语单词**：《15000英语单词口袋书》17 大类 / 493 场景 / 7052 词条，三行格式（英文/音标/中文+词性）+ Top10 场景句；入口在教材页「单词精读」按钮 |
 | `scripts/build_english.py` | PDF 文本层 → `english.js`（三层结构 + CJK 空格清洗 + 目录页抽 Section/Part 名） |
 | `assets/js/data/english.js` | 脚本生成，勿手改；课外教材，词汇不计入生词表 |
