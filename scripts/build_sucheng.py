@@ -89,6 +89,99 @@ def split_de_zh(s: str) -> tuple[str, str]:
     return s[:m.start()].strip(), s[m.start():].strip()
 
 
+# ---------- 会话（两行制：A/B 德文行 + 谐音行；中文翻译另列） ----------
+# 说话人标记 OCR 会写成 ⑧ / ④ / a / b / 数字 / & ；统一归一化
+SPK_FIX = {"⑧": "B", "④": "A", "&": "B", "b": "B", "a": "A", "®": "B", "©": "A", "®": "B"}
+DE_SPK_RE = re.compile(r"^\s*([ABab1-9⑧④&®©])\s+(?=[A-Za-zÄÖÜäöüß])")
+ZH_SPK_RE = re.compile(r"^\s*([ABab1-9⑧④&®©])\s*(?=[\u4e00-\u9fff])")
+SESS_RE = re.compile(r"^会话\s*([一二三四五六七八九])\s*$")
+DIALOG_END = ("词汇", "小贴士", "合话", "会话")
+
+
+def is_latin_dominant(s: str) -> bool:
+    """该行是否为「德语行」：拉丁为主、且不以中文开头"""
+    s = s.strip()
+    if not s or CJK_RE.match(s[0]):
+        return False
+    nl = len(LATIN_RE.findall(s))
+    nc = len(CJK_RE.findall(s))
+    return nl > 0 and nl >= nc
+
+
+def norm_spk(s: str) -> str:
+    s = s.strip()
+    return SPK_FIX.get(s, s)
+
+
+def parse_dialog(block: list[str]) -> list[dict]:
+    """解析一个场景的「迷你会话」段 → [{title, turns:[{spk,de,pron,zh}]}]
+    只取从首个「会话一」起的部分，避免把前面的单词表/小贴士误当对话。"""
+    first = next((i for i, l in enumerate(block) if SESS_RE.match(l.strip())), None)
+    if first is None:
+        return []
+    block = block[first:]
+    # 按 会话一/二/三… 切分
+    idx = [(i, SESS_RE.match(l.strip()).group(1)) for i, l in enumerate(block)
+           if SESS_RE.match(l.strip())]
+    if not idx:
+        return []
+    idx.append((len(block), ""))
+    out = []
+    for k in range(len(idx) - 1):
+        a, name = idx[k]
+        b = idx[k + 1][0]
+        turns, zhs = [], []
+        i = a + 1
+        while i < b:
+            s = block[i].strip()
+            if is_noise(s):
+                i += 1
+                continue
+            if (s in DIALOG_END or s.startswith(("词汇", "小贴士", "合话"))
+                    or "小贴士" in s or "词汇" in s
+                    or re.match(r"^(场景|Einheit)\s*\d*", s)):
+                break
+            # 中文翻译（带说话人标记）
+            mz = ZH_SPK_RE.match(s)
+            if mz:
+                zhs.append({"spk": norm_spk(mz.group(1)), "zh": s[mz.end():].strip()})
+                i += 1
+                continue
+            # 德语轮（拉丁为主）
+            if not is_latin_dominant(s):
+                i += 1
+                continue
+            spk, body = "", s
+            md = DE_SPK_RE.match(s)
+            if md:
+                spk = norm_spk(md.group(1))
+                body = s[md.end():].strip()
+            body, zh_inline = split_de_zh(body)      # 德中混行 → 拆开
+            body = clean_de(body)
+            if zh_inline:
+                zhs.append({"spk": spk, "zh": zh_inline})
+            pron = ""
+            if i + 1 < b:
+                nxt = block[i + 1].strip()
+                # 谐音行 = 非拉丁为主的下一行（多以中文开头，如「古藤 塔克」）
+                if nxt and not is_noise(nxt) and not is_latin_dominant(nxt) and not ZH_SPK_RE.match(nxt):
+                    pron = nxt
+                    i += 1
+            turns.append({"spk": spk, "de": clean_de(body), "pron": pron})
+            i += 1
+        # 德语轮与中文翻译按顺序对齐
+        for j, t in enumerate(turns):
+            t["zh"] = zhs[j]["zh"] if j < len(zhs) else ""
+            if not t["spk"] and j < len(zhs):
+                t["spk"] = zhs[j]["spk"]
+        # 过滤噪声：真实对话轮至少两个词，且有说话人标记 / 中文 / 谐音 之一
+        turns = [t for t in turns
+                 if len(t["de"].split()) >= 2 and (t["spk"] or t["zh"] or t["pron"])]
+        if turns:
+            out.append({"title": f"会话{name}", "turns": turns})
+    return out
+
+
 def is_noise(line: str) -> bool:
     s = line.strip()
     if not s:
@@ -123,7 +216,7 @@ def classify(line: str) -> str:
 
 
 def parse_sentences(lines: list[str]) -> list[dict]:
-    """按「德文 → 中文 → 谐音」三元组解析"""
+    """按「德文 → 中文 → 谐音」三元组解析（句型段用）"""
     out: list[dict] = []
     cur: dict | None = None
     last_kind = None
@@ -182,6 +275,7 @@ def main() -> int:
 
     parts = []
     total = 0
+    total_dlg = 0
     for k in range(len(marks) - 1):
         i0, name = marks[k]
         i1 = marks[k + 1][0]
@@ -191,11 +285,15 @@ def main() -> int:
         # 如 `场罻S` / `场景萹`，故不依赖标题行）。场景序号 = 段序。
         SCEN_RE = re.compile(r"^场[景罻萹篇]\s*([0-9S])\s*(.*)$")
         markers = [i for i, l in enumerate(seg) if "经典德语瞬间就学会" in l]
+        markers.append(len(seg))
         scenes = []
-        for k, mi in enumerate(markers):
-            # 句子：本段之后直到终止标记
+        for k in range(len(markers) - 1):
+            mi = markers[k]
+            blk_end = markers[k + 1]
+            blk = seg[mi:blk_end]
+            # 句子：块首之后直到终止标记
             sents: list[str] = []
-            for m2 in seg[mi + 1:]:
+            for m2 in blk[1:]:
                 ms = m2.strip()
                 if (ms in ("小贴士", "合话", "会话", "迷你会话加深记忆", "词汇")
                         or "迷你会话加深记忆" in ms
@@ -204,7 +302,8 @@ def main() -> int:
                     break
                 sents.append(m2)
             parsed = parse_sentences(sents)
-            if not parsed:
+            dialog = parse_dialog(blk)
+            if not parsed and not dialog:
                 continue
             # 标题：优先用规范表（按段序），OCR 标题仅作兜底
             canon = SCENE_TITLES.get(name, [])
@@ -226,8 +325,10 @@ def main() -> int:
                     break
             scenes.append({"scene": num, "zh": title or ocr_title,
                            "zhOcr": ocr_title if ocr_title != title else "",
-                           "sentences": parsed})
+                           "sentences": parsed,
+                           "dialog": dialog})
             total += len(parsed)
+            total_dlg += sum(len(d["turns"]) for d in dialog)
         if scenes:
             parts.append({"einheit": name, "scenes": scenes})
 
@@ -244,6 +345,7 @@ def main() -> int:
 
     print(f"[✓] 已生成 {OUT.relative_to(ROOT)}")
     print(f"    Einheit {len(parts)} 个 | 场景 {sum(len(p['scenes']) for p in parts)} 个 | 句型 {total} 句")
+    print(f"    会话轮次合计：{total_dlg}")
     for p in parts:
         print(f"      {p['einheit']}: {len(p['scenes'])} 场景 / "
               f"{sum(len(s['sentences']) for s in p['scenes'])} 句")

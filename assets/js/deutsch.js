@@ -1052,7 +1052,7 @@ function renderKursplan(app) {
    数据：assets/js/data/sucheng.js（脚本生成，勿手改）
    ⚠️ 课外教材：词汇不计入 VOCAB / wortliste.js（见项目 MEMORY.md）
    ============================================================ */
-const SC_STATE = { einheit: 0, hideZh: false };
+const SC_STATE = { tab: "scene", einheit: 0, hideZh: false };
 
 function renderSucheng(app) {
   if (typeof SUCHENG === "undefined" || !SUCHENG.parts) {
@@ -1060,12 +1060,38 @@ function renderSucheng(app) {
     return;
   }
   const parts = SUCHENG.parts;
-  if (SC_STATE.einheit >= parts.length) SC_STATE.einheit = 0;
-  const p = parts[SC_STATE.einheit];
   const nScenes = parts.reduce((a, x) => a + x.scenes.length, 0);
   const nSent = parts.reduce((a, x) => a + x.scenes.reduce((b, s) => b + s.sentences.length, 0), 0);
+  const nTurns = parts.reduce((a, x) => a + x.scenes.reduce((b, s) =>
+    b + (s.dialog || []).reduce((c, d) => c + d.turns.length, 0), 0), 0);
+  const ex = (typeof SUCHENG_EXTRAS !== "undefined") ? SUCHENG_EXTRAS : null;
+  const tabs = [
+    ["scene", "🗣 场景精读", `${nScenes} 场景 · ${nSent} 句 · ${nTurns} 会话轮`],
+    ["pron", "🔤 发音篇", ex ? `${ex.pronunciation.length} 讲` : "—"],
+    ["gram", "📐 语法篇", ex ? `${ex.grammar.length} 讲` : "—"]
+  ];
+  const tabBar = `<div class="chip-row sc-tabs">
+    ${tabs.map(([k, label, cnt]) => `<button class="chip ${SC_STATE.tab === k ? "on" : ""}" data-tab="${k}">${label}<span class="sc-cnt">${cnt}</span></button>`).join("")}
+  </div>`;
 
-  app.innerHTML = `
+  if (SC_STATE.tab !== "scene" && ex) {
+    const list = SC_STATE.tab === "pron" ? ex.pronunciation : ex.grammar;
+    app.innerHTML = tabBar + `
+      <div class="sc-bar"><div class="sc-tools">
+        <button class="chip ${SC_STATE.hideZh ? "on" : ""}" id="scHideZh">${SC_STATE.hideZh ? "👁 显示中文" : "🙈 隐藏中文自测"}</button>
+        <span class="sc-stat">${SC_STATE.tab === "pron" ? "发音篇 · 音素 → 例词 → 中文谐音" : "语法篇 · 13 个专题（含变格与变位表）"}</span>
+      </div></div>
+      ${list.map((t, i) => `
+        <section class="sc-scene card sc-extra">
+          <h2 class="sc-title"><span class="sc-num">${i + 1}</span>${esc(t.zh)}</h2>
+          <div class="sc-md">${t.html}</div>
+        </section>`).join("")}`;
+    bindSuchengCommon(app);
+    return;
+  }
+
+  const p = parts[SC_STATE.einheit] || parts[0];
+  app.innerHTML = tabBar + `
     <div class="sc-bar">
       <div class="chip-row sc-einheiten">
         ${parts.map((x, i) => `<button class="chip ${i === SC_STATE.einheit ? "on" : ""}" data-i="${i}">${x.einheit}<span class="sc-cnt">${x.scenes.length}</span></button>`).join("")}
@@ -1073,7 +1099,7 @@ function renderSucheng(app) {
       <div class="sc-tools">
         <button class="chip ${SC_STATE.hideZh ? "on" : ""}" id="scHideZh">${SC_STATE.hideZh ? "👁 显示中文" : "🙈 隐藏中文自测"}</button>
         <button class="chip" id="scCopy">📋 复制本单元纯德文</button>
-        <span class="sc-stat">全库 ${nScenes} 场景 · ${nSent} 句</span>
+        <span class="sc-stat">全库 ${nScenes} 场景 · ${nSent} 句 · ${nTurns} 会话轮</span>
       </div>
     </div>
     ${p.scenes.map(s => `
@@ -1088,20 +1114,34 @@ function renderSucheng(app) {
               ${x.pron ? `<p class="s-pron">${esc(x.pron)}</p>` : ""}
             </div>`).join("")}
         </div>
+        ${(s.dialog && s.dialog.length) ? `
+        <div class="sc-dialog">
+          <h3 class="sc-dialog-h">💬 迷你会话 <em>Mini-Dialoge</em></h3>
+          ${s.dialog.map(dg => `
+            <div class="sc-dg">
+              <div class="sc-dg-title">${esc(dg.title)}</div>
+              ${dg.turns.map(t => `
+                <div class="sc-turn">
+                  <span class="sc-spk">${esc(t.spk || "·")}</span>
+                  <div class="sc-turn-body">
+                    <p class="s-de">${esc(t.de)}<button class="s-speak" data-t="${esc(t.de)}" title="朗读">🔊</button></p>
+                    ${t.zh ? `<p class="s-zh">${esc(t.zh)}</p>` : ""}
+                    ${t.pron ? `<p class="s-pron">${esc(t.pron)}</p>` : ""}
+                  </div>
+                </div>`).join("")}
+            </div>`).join("")}
+        </div>` : ""}
       </section>`).join("")}
   `;
 
-  app.classList.toggle("hide-zh", SC_STATE.hideZh);
+  bindSuchengCommon(app);
   $$(".sc-einheiten .chip", app).forEach(b => b.addEventListener("click", () => {
     SC_STATE.einheit = +b.dataset.i;
     renderSucheng(app);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }));
-  $("#scHideZh", app).addEventListener("click", () => {
-    SC_STATE.hideZh = !SC_STATE.hideZh;
-    renderSucheng(app);
-  });
-  $("#scCopy", app).addEventListener("click", e => {
+  const copyBtn = $("#scCopy", app);
+  if (copyBtn) copyBtn.addEventListener("click", e => {
     const txt = p.scenes.map(s =>
       `【${s.zh}】\n` + s.sentences.map(x => x.de).join("\n")).join("\n\n");
     const btn = e.currentTarget;
@@ -1113,6 +1153,21 @@ function renderSucheng(app) {
       try { document.execCommand("copy"); } catch (err) { /* ignore */ }
       ta.remove(); done();
     }
+  });
+}
+
+/* 精读页各页签共用的绑定：页签切换 / 隐藏中文 / 逐句朗读 */
+function bindSuchengCommon(app) {
+  app.classList.toggle("hide-zh", SC_STATE.hideZh);
+  $$(".sc-tabs .chip", app).forEach(b => b.addEventListener("click", () => {
+    SC_STATE.tab = b.dataset.tab;
+    renderSucheng(app);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  const hz = $("#scHideZh", app);
+  if (hz) hz.addEventListener("click", () => {
+    SC_STATE.hideZh = !SC_STATE.hideZh;
+    renderSucheng(app);
   });
   $$(".s-speak", app).forEach(b => b.addEventListener("click", ev => {
     ev.stopPropagation();

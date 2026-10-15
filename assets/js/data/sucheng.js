@@ -58,6 +58,48 @@ const SUCHENG = {
        "zh": "您介绍一下自己。",
        "pron": "贼使太 len 贼西 for"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Guten morgen, Frau Li！",
+         "pron": "孤 ten 猫跟 佛耗李",
+         "zh": "你好，张先生！"
+        },
+        {
+         "spk": "B",
+         "de": "Guten tag, Herr zhang！",
+         "pron": "孤 ten 踏可黑额 张",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Tag, Leon, wie geht's？",
+         "pron": "踏可累哦嗯为给词",
+         "zh": "你好Leon，最近怎么样？"
+        },
+        {
+         "spk": "B",
+         "de": "Es geht gut. Und dir？",
+         "pron": "艾斯 给特 古特乌嗯特地额",
+         "zh": "挺好的，你呢？"
+        },
+        {
+         "spk": "",
+         "de": "wie geht's/Wie geht es Ihnen？",
+         "pron": "场景2",
+         "zh": "是德国人见面比较常用的打招"
+        }
+       ]
+      }
      ]
     },
     {
@@ -115,6 +157,36 @@ const SUCHENG = {
        "zh": "仍然再次感谢你！",
        "pron": "闹喝骂了斯单课"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Herzlich Danke! Du weit, dass du etwas bei mir gut hast.",
+         "pron": "黑额词里西 单课 杜 外斯特 大斯杜 艾特瓦斯 拜 密额 古特",
+         "zh": "太感谢你了！我知道你已经为我做了很多了。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Tut mir Leid, dass ich schon wieder Probleme mache.",
+         "pron": "图特密额 赖特大斯一西瘦恩为的 婆好波了m吗喝",
+         "zh": "太不好意思了，我又做错了。"
+        },
+        {
+         "spk": "B",
+         "de": "Nicht so schlimm.",
+         "pron": "尼希特揍使力 m",
+         "zh": "不算太糟糕。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -166,6 +238,42 @@ const SUCHENG = {
        "de": "Das ist eine super Idee！",
        "zh": "这个主意太好了！",
        "pron": "大斯 伊斯特 诶呢 租婆-die"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Kommst du zu meiner Einheity？",
+         "pron": "靠母斯特杜促迈呢趴踢",
+         "zh": "你去参加我的聚会吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja gern.",
+         "pron": "压给恩",
+         "zh": "当然，乐意之至。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Hallo Julia, Ich habe deine Einladung zur Einheity",
+         "pron": "",
+         "zh": "太好了，你去吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Gut! Und kommst du？",
+         "pron": "顾特乌恩特 靠m斯特杜",
+         "zh": ""
+        }
+       ]
       }
      ]
     },
@@ -219,6 +327,42 @@ const SUCHENG = {
        "zh": "我可以帮助你。",
        "pron": "一西看弟西嗨偶分"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was denn los？",
+         "pron": "娃斯 den 娄思",
+         "zh": "发生什么了？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich glaube nicht, dass es funktioniert.",
+         "pron": "一西哥老波 逆西特大斯艾斯 风从逆额特",
+         "zh": "我觉得这事不会成功的。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Keine angst. Ich kann dich helfen.",
+         "pron": "开呢 昂斯特一西看第西 嗨偶分",
+         "zh": "别担心，我可以帮助你。"
+        },
+        {
+         "spk": "B",
+         "de": "Danke sehr！",
+         "pron": "单课 贼尔",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -270,6 +414,42 @@ const SUCHENG = {
        "de": "Ich habe die Sachen heute bekommen.",
        "zh": "我今天收到东西。",
        "pron": "一西 哈勃第杂合 好额特博靠们"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was hast du am Wochenende gemacht？",
+         "pron": "瓦斯 哈斯特杜啊m喔很恩德哥骂喝特",
+         "zh": "你周末做什么了？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich bin an die Ostsee gefahren.",
+         "pron": "一西 宾啊恩 第欧斯特贼 哥发 hen",
+         "zh": "我去波罗的海了。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie war es？",
+         "pron": "汐哇艾斯",
+         "zh": "玩得怎么样？"
+        },
+        {
+         "spk": "B",
+         "de": "Ganz gut！",
+         "pron": "甘词古特",
+         "zh": "非常好！"
+        }
+       ]
       }
      ]
     },
@@ -323,6 +503,48 @@ const SUCHENG = {
        "zh": "不好意思打扰您了！",
        "pron": "恩特叔偶第跟贼逼特第使特e烘"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich glaube, sie haben sich verwahlt.",
+         "pron": "一西哥捞博贼哈奔贼西 费额歪偶特",
+         "zh": "我想您是打错电话了。"
+        },
+        {
+         "spk": "B",
+         "de": "Ohh! Entschuldigen Sie bitte, das ist mir",
+         "pron": "",
+         "zh": "哦哦，真不好意思，这是我的疏忽。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "B",
+         "de": "⑥ Hallo！",
+         "pron": "哈喽",
+         "zh": "你好！"
+        },
+        {
+         "spk": "A",
+         "de": "Wer ist da？",
+         "pron": "为额伊斯特达",
+         "zh": "你是哪位？"
+        },
+        {
+         "spk": "B",
+         "de": "Hier ist Katharina. Ist Anna da？",
+         "pron": "黑恶伊斯特卡踏黑娜 伊斯特 安娜达",
+         "zh": "我是Katharina. 是 Anna吗？"
+        }
+       ]
+      }
      ]
     },
     {
@@ -375,6 +597,42 @@ const SUCHENG = {
        "zh": "真心希望天气预报是对的。",
        "pron": "后分特里西 哈特 第 歪特 for 黑恶咋个嗨西特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Es wird kalt.",
+         "pron": "艾斯 额特卡了特",
+         "zh": "天气真冷。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich habe gehort, am Wochenende soll es schoner werden.",
+         "pron": "一西哈巴哥黑额特啊m喔很恩的揍偶艾斯舒呢",
+         "zh": "我听说，周末的天气很好。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Und nachste Woche regnet es wieder？",
+         "pron": "乌恩特耐西斯特喔喝嗨个呢特艾斯 为的",
+         "zh": "那下周还会下雨吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Soviel ich gehort habe ja, und es soll sogar schneien.",
+         "pron": "揍飞偶一西哥黑额特哈勃压 乌恩特艾斯揍了 揍噶使耐恩",
+         "zh": "我听说了很多，说有可能下雪。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -426,6 +684,36 @@ const SUCHENG = {
        "de": "Danke für den Hinweis.",
        "zh": "感谢您的告知。",
        "pron": "但课 夫鱼额 den hin 歪斯"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Welches Tag ist heute？",
+         "pron": "歪偶西斯 踏克 伊斯特 好唉特",
+         "zh": "今天星期几？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie spaet ist es？",
+         "pron": "史百特伊斯特艾斯",
+         "zh": "现在是几点了。"
+        },
+        {
+         "spk": "B",
+         "de": "Es ist Fuefzehn nach vier.",
+         "pron": "艾斯 伊斯特 夫鱼夫岑 那和费额",
+         "zh": "现在四点十五。"
+        }
+       ]
       }
      ]
     }
@@ -484,6 +772,42 @@ const SUCHENG = {
        "zh": "用餐愉快！",
        "pron": "孤 ten 啊呸替特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Hi, willst du immer noch zum Essen gehen？",
+         "pron": "嗨 喂偶斯特杜一么 闹和促m 艾森给恩",
+         "zh": "当然！你去哪里？"
+        },
+        {
+         "spk": "B",
+         "de": "Sicher! Wo willst du hin？",
+         "pron": "贼西额 喔微偶斯特 杜 hin",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Was möchten Sie gern trinken? Bier oder Wein？",
+         "pron": "瓦斯摸鱼西 ten贼给恩替黑恩肯比额偶的歪恩",
+         "zh": "您更想喝什么？啤酒还是红酒？"
+        },
+        {
+         "spk": "B",
+         "de": "⑥ Lieber Wein.",
+         "pron": "里博歪恩",
+         "zh": "红酒。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -500,6 +824,42 @@ const SUCHENG = {
        "de": "Das riecht ausgezeichnet.",
        "zh": "这气味真不错。",
        "pron": "大斯 黑西特 奥斯个猜西呢特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Haben Sie noch einen Tisch frei？",
+         "pron": "哈奔贼 闹和 爱嫩 替使 夫嗨",
+         "zh": "您这里还有空位子吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, gleich dort.",
+         "pron": "压个菜西 到特",
+         "zh": "有，在那里。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Zum Abendessen komme ich am liebsten hier.",
+         "pron": "促母啊本特艾森 考么一西啊么里博斯腾 黑额",
+         "zh": "晚餐我最喜欢来这里了。"
+        },
+        {
+         "spk": "B",
+         "de": "Das kann ich verstehen. Ich komme auch gern hier.",
+         "pron": "大斯看一西飞蛾使地恩一西考么 奧喝给恩黑额",
+         "zh": "理解，我也是。"
+        }
+       ]
       }
      ]
     },
@@ -552,6 +912,42 @@ const SUCHENG = {
        "de": "Ich möchte einen Liter Milch kaufen.",
        "zh": "我想买一升牛奶。",
        "pron": "一西摸鱼西特爱呢 利特米偶西 考分"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Kann Ich Ihnen helfen？",
+         "pron": "看一西一嫩 海鸥分",
+         "zh": "您需要什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja Ich möchte eine Kaffee.",
+         "pron": "呀一西 摸鱼西特唉呢卡费",
+         "zh": "好的。我需要咖啡。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag gern starken Kaffee.",
+         "pron": "依稀马克给恩 湿大肯卡费",
+         "zh": "哇 ten贼比特"
+        },
+        {
+         "spk": "B",
+         "de": "Ok, warten Sie Bitte.",
+         "pron": "",
+         "zh": "我比较喜欢喝苦一点的咖啡。"
+        }
+       ]
       }
      ]
     },
@@ -610,6 +1006,42 @@ const SUCHENG = {
        "zh": "请打包，我要带走。",
        "pron": "比特怕肯依稀为哦促母米特内门"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich moechte einen Hamburger.",
+         "pron": "一席陌月希特 爱嫩 汉母拨格",
+         "zh": "比特"
+        },
+        {
+         "spk": "B",
+         "de": "Ok. Bitte.",
+         "pron": "",
+         "zh": "我想要一个汉堡包。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was moechst du essen？",
+         "pron": "瓦斯 陌月希斯特杜 艾森",
+         "zh": "你想吃什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Salat, und Hamburger.",
+         "pron": "咋啦特乌恩特汉母拨格",
+         "zh": "沙拉和汉堡。"
+        }
+       ]
+      }
      ]
     }
    ]
@@ -667,6 +1099,48 @@ const SUCHENG = {
        "zh": "让我们看看地图。",
        "pron": "绍恩 力额 骂了奥夫第蓝的卡特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wo ist die nachste Bushaltestelle？",
+         "pron": "",
+         "zh": "最近的公交站在哪里？"
+        },
+        {
+         "spk": "B",
+         "de": "Dort druben, aber der nachste Bus fahrt erst in 15 Minuten",
+         "pron": "",
+         "zh": "在那里，但是需要步行15分钟。"
+        },
+        {
+         "spk": "",
+         "de": "in diese Richtung.",
+         "pron": "到特 大湖鱼奔 啊博 得额 耐西斯特 不思飞爱特诶而斯特因",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ist hier etwas interessantes zu sehen？",
+         "pron": "伊斯特黑额 艾特瓦斯 因特嗨散特斯促贼恩",
+         "zh": "这附近有有趣的地方吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Nicht viel, ehrlich gesagt.",
+         "pron": "尼希特飞偶 诶额利息个咋个特",
+         "zh": "老实说，没有。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -688,6 +1162,36 @@ const SUCHENG = {
        "de": "Brauche ich dafur ein Visum？",
        "zh": "我是否需要签证？",
        "pron": "博好和一西大夫鱼额 爱恩为租么"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wo die Deutsche Botschaft ist？",
+         "pron": "喔第独爱吃 饱特啥福特 伊斯特",
+         "zh": "您知道大使馆在哪里吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich weiß nicht.",
+         "pron": "一西 歪斯 尼希特",
+         "zh": "我不知道。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Für Spanien brauche ich kein Visum, oder？",
+         "pron": "夫鱼额 使吧你恩博好和一西 开恩为租么偶的",
+         "zh": "去西班牙不用签证呢还是？"
+        }
+       ]
       }
      ]
     },
@@ -756,6 +1260,36 @@ const SUCHENG = {
        "zh": "这辆车经过桥吗？",
        "pron": "伊斯特低则 不思第 博湖鱼课 杜尔西老分"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Nimmst du bei Bus？",
+         "pron": "你么斯特杜拜布斯",
+         "zh": "你出行搭公交车吗？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Kannst du Bus farhen？",
+         "pron": "看斯特杜布斯发狠",
+         "zh": "你会开公交车吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, ganz einfach.",
+         "pron": "压甘词 爱恩发喝",
+         "zh": "会，很简单。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -792,6 +1326,42 @@ const SUCHENG = {
        "de": "Ich möchte bitte einen Direktflug.",
        "zh": "我想要直飞航班。",
        "pron": "一西摸鱼西特逼特爱嫩 第嗨课特夫路课"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Guten Tag! Lufthansa, was kann ich für Sie tun？",
+         "pron": "孤 ten 踏可 路福特汉撒瓦斯看一西夫鱼额 贼图恩",
+         "zh": "你好！汉莎航空，有什么为您做的吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich möchte bitte für morgen Vormittag einen Fiug nach New",
+         "pron": "",
+         "zh": "我想预定明天中午飞往纽约的航班。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Q Muss ich meine Uhr abnehmen？",
+         "pron": "慕斯一西买呢乌额 啊婆内们",
+         "zh": "我必须把表摘下来吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja! Und legen Sie bitte ihre Tasche auf das Band.",
+         "pron": "呀乌嗯特累跟贼逼特一和她蛇奥夫大斯办特",
+         "zh": "是的，并且把您的包放在传送带上"
+        }
+       ]
       }
      ]
     },
@@ -860,6 +1430,42 @@ const SUCHENG = {
        "zh": "出租车的价格很贵。",
        "pron": "低则 泼海思 戴斯 塔克斯 伊斯特甘词 图爱尔"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag bei Taxi nach Spanien.",
+         "pron": "一西马克拜踏可斯那和使拔你恩",
+         "zh": "我喜欢乘出租车去西班牙。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奥喝",
+         "zh": "我也是。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Hier Taxizentrale. Guten Tag.",
+         "pron": "黑额 踏可斯岑特哈了 孤 ten 踏可",
+         "zh": "出租车调度中心。您好。"
+        },
+        {
+         "spk": "B",
+         "de": "Guten Tag. Ich möchte ein Taxi in die RomerstraBe 23",
+         "pron": "",
+         "zh": "您好。我要订一辆出租车到罗马街23号。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -901,6 +1507,42 @@ const SUCHENG = {
        "de": "Bahn gilt als ein Wunder.",
        "zh": "火车是一个奇迹。",
        "pron": "巴恩给欧特啊了斯 爱恩乌嗯的"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich habe das Fahrkarte schon bekommen.",
+         "pron": "一西哈勃 大斯 发额卡阿特瘦嗯 博靠们",
+         "zh": "一位"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奥喝",
+         "zh": "我也是。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Ich hatte gern ein Ticket nach Stuttgart.",
+         "pron": "一西 哈特给恩 爱恩 替kei特 那喝 使图噶特",
+         "zh": "我想买一张去斯图加特的火车票。"
+        },
+        {
+         "spk": "B",
+         "de": "Für wann？",
+         "pron": "夫鱼额万",
+         "zh": "什么时间的？"
+        }
+       ]
       }
      ]
     },
@@ -948,6 +1590,36 @@ const SUCHENG = {
        "de": "Michtest du U-Bahn nehmen？",
        "zh": "你喜欢乘坐地铁吗？",
        "pron": "摸鱼西特斯特杜乌巴恩内们"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich will bei U-Bahn fahren. Und du？",
+         "pron": "一西为欧拜鸟巴恩发狠鸟恩特杜",
+         "zh": "我要坐地铁去。你呢？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich nehme U-Bahn nach wudaokou. Und du？",
+         "pron": "一西内么乌巴恩那和五道口乌恩特杜",
+         "zh": "我坐地铁去五道口。你呢？"
+        },
+        {
+         "spk": "B",
+         "de": "Nach zhongguancun.",
+         "pron": "那和中关村",
+         "zh": "中关村。"
+        }
+       ]
       }
      ]
     },
@@ -1000,6 +1672,42 @@ const SUCHENG = {
        "de": "Ich möchte das Auto waschen.",
        "zh": "我要洗车。",
        "pron": "一西 摸鱼希特达斯凹投哇神"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Entschuldigung! Wissen Sie, wo der Mareinplatz ist？",
+         "pron": "恩特书偶第孤嗯 为森贼喔得额嘛嗨恩婆啦词伊斯特",
+         "zh": ""
+        },
+        {
+         "spk": "B",
+         "de": "Die StraBe runter, ungefahr einen Kilometer.",
+         "pron": "第使特哈色 混恩特乌恩个飞额 爱嫩 尅楼没特",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Wie war ist deines Auto？",
+         "pron": "为哇伊斯特 呆呢斯凹凸",
+         "zh": "你的车怎么样呀？"
+        },
+        {
+         "spk": "B",
+         "de": "⑥ Gut.",
+         "pron": "顾特",
+         "zh": "不错。"
+        }
+       ]
       }
      ]
     }
@@ -1058,6 +1766,42 @@ const SUCHENG = {
        "zh": "您有关于德国大学的信息吗？",
        "pron": "哈奔贼 第 因否嘛词嗯嫩 鱼博 独爱吃"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Es ist schon ein komisches Gefuihl, jetzt an der Uni.",
+         "pron": "艾斯 伊斯特瘦恩 爱恩 考米舌 个夫鱼偶也词特安得额 乌你",
+         "zh": "现在在大学有一种奇怪的感觉。"
+        },
+        {
+         "spk": "B",
+         "de": "Was meinst du？",
+         "pron": "瓦斯买恩斯特杜",
+         "zh": "你是什么意思？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Der Lehrplan ist ziemlich voll.",
+         "pron": "得额 累额婆蓝恩 伊斯特 词么利息 否偶",
+         "zh": "学习计划很完整。"
+        },
+        {
+         "spk": "B",
+         "de": "Jal Ich hoffe, es ist nicht zu stressig.",
+         "pron": "压一西 后飞额艾斯 伊斯特尼希特促使特嗨 sei西",
+         "zh": "是呀，希望不要有压力。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1109,6 +1853,42 @@ const SUCHENG = {
        "de": "Wo kann man hier etwas zu essen bekommen？",
        "zh": "人们还可以在哪里吃？",
        "pron": "喔看慢黑额 艾特瓦斯促艾森 博靠们"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Du hast ein Zimmer in einem Studentenwohnheim gefunden？",
+         "pron": "杜哈斯特 爱恩 词么因 爱呢么 使图 den 腾喔嗨母个夫恩den",
+         "zh": "在学生宿舍楼找到你的房间了吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, ich hatte groBes Gluick！",
+         "pron": "压一西哈特个后色 个率课",
+         "zh": "找到了，我真幸运！"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Du kannst mich ja besuchen？",
+         "pron": "杜看斯特密西压博租很",
+         "zh": "这里住着男同学和女同学。"
+        },
+        {
+         "spk": "B",
+         "de": "Im Studentenwohnheim？",
+         "pron": "一么 使图den 腾喔恩嗨母",
+         "zh": "太好了，下周我来。"
+        }
+       ]
       }
      ]
     },
@@ -1162,6 +1942,48 @@ const SUCHENG = {
        "zh": "我也不清楚。",
        "pron": "一西 歪斯 尼希特个闹"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Könnten Sie mir bitte sagen, woher ich hier ein Buch",
+         "pron": "",
+         "zh": "我可以在哪里借书呢？"
+        },
+        {
+         "spk": "B",
+         "de": "ausleihen kann？",
+         "pron": "课约腾贼密额 逼特 咋跟 我黑尔 一西黑额 爱恩不喝",
+         "zh": "您去图书架那里可以借书。"
+        },
+        {
+         "spk": "B",
+         "de": "Gehen Sie einfach mit dem Buch zum Schalter dort.",
+         "pron": "给恩贼 爱恩发喝 密特得m 不喝 促么啥了特到特",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was muss ich machen, damit ich das Buch ausliehen kann？",
+         "pron": "瓦斯 慕斯一西吗很大密特一西大斯不喝奧斯力恩看",
+         "zh": "我需要做什么，才可以借书呢？"
+        },
+        {
+         "spk": "B",
+         "de": "Deine Id card.",
+         "pron": "呆呢 爱第卡的",
+         "zh": "需要你的证件。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1213,6 +2035,42 @@ const SUCHENG = {
        "de": "Nachsten Donnerstag.",
        "zh": "下周四。",
        "pron": "耐西斯腾 到呢斯塔克"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich glaube, diese Vorlesung mag ich nicht.",
+         "pron": "一西个老波，低则 否累租嗯马克一西尼希特",
+         "zh": "我觉得我不喜欢这节课。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西 奥喝",
+         "zh": "我也是。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wann ist die Prufung？",
+         "pron": "玩伊斯特 第婆呼吁风",
+         "zh": "考试什么时候开始？"
+        },
+        {
+         "spk": "B",
+         "de": "Um 10 Uhr.",
+         "pron": "乌么岑乌额",
+         "zh": "十点考试。"
+        }
+       ]
       }
      ]
     },
@@ -1266,6 +2124,36 @@ const SUCHENG = {
        "zh": "太无聊了，我都睡着了。",
        "pron": "贼哇揍狼歪利息 大斯一西 爱恩个使啦分 宾"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die Vorlesung hat wieder Stunden gedauert.",
+         "pron": "第否累租恩哈特 为的 使图恩den 个到额特",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich finde der Unterricht ganz schwer. Und du？",
+         "pron": "一西飞嗯的 得额 乌嗯特黑吸特甘词 使歪额 乌恩特杜",
+         "zh": "我也是。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奧喝",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -1318,6 +2206,36 @@ const SUCHENG = {
        "zh": "我觉得我也考不好。",
        "pron": "一西个老波 尼希特大斯一西 博使嗯 看"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "B",
+         "de": "Q Die Prufung war wirklich schwer.",
+         "pron": "第婆湖鱼风哇为额可利息使歪额",
+         "zh": "是的。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich glaube, ich habe die Prufung nicht bestanden.",
+         "pron": "一西哥老波一西 哈博第婆湖鱼夫恩尼希特博使谈 den",
+         "zh": "我觉得我考试没过。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch nicht! Sie war so schwer.",
+         "pron": "一西 奧喝 尼希特贼哇揍使为额",
+         "zh": "我也没过！考试太难了。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1369,6 +2287,48 @@ const SUCHENG = {
        "de": "Was muss man zu der Einheity anziehen？",
        "zh": "去参加聚会得穿什么衣服呢？",
        "pron": "瓦斯慕斯慢促得额 怕踢 安词恩"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Endlich geschafft！",
+         "pron": "思德利息个啥夫特",
+         "zh": "终于来了！"
+        },
+        {
+         "spk": "B",
+         "de": "Jal WeiBt du deine Noten schon？",
+         "pron": "压外斯特杜 呆呢 no疼瘦恩",
+         "zh": "是的，你知道你的成绩吗？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Aber wichtig ist, dass ich alle Prufungen bestanden habe",
+         "pron": "",
+         "zh": "你说得对。"
+        },
+        {
+         "spk": "",
+         "de": "und meine Bachelore habe.",
+         "pron": "啊博为西替西 伊斯特大斯一西啊了 婆湖鱼弗恩博使谈den",
+         "zh": ""
+        },
+        {
+         "spk": "B",
+         "de": "Da gebe ich dir recht.",
+         "pron": "大给博一西 第额 嗨西特",
+         "zh": ""
+        }
+       ]
       }
      ]
     }
@@ -1442,6 +2402,42 @@ const SUCHENG = {
        "zh": "学习很重要。",
        "pron": "累恩嫩 伊斯特维西替西。"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Hast du dich für ein Stipendium beworben？",
+         "pron": "哈斯特杜弟西 夫鱼额 爱恩使替盆地游么 博我饿奔",
+         "zh": "你申请奖学金了吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Noch nicht.",
+         "pron": "闹喝 尼希特",
+         "zh": "还没有。"
+        },
+        {
+         "spk": "",
+         "de": "sich bewerben",
+         "pron": "申请",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich kann nachstes Semester im Ausland studieren.",
+         "pron": "一西 看耐西特斯责买斯特一么 奧斯蓝的 使图第很",
+         "zh": "我下学期要出国学习了。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1493,6 +2489,36 @@ const SUCHENG = {
        "de": "Ich fahre mehr mit dem Fahrrad.",
        "zh": "我更愿意骑自行车。",
        "pron": "一西 发喝没饿 密特得m发哈特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die Luft ist ganz schlimm.",
+         "pron": "第路福特伊斯特甘词 使里么",
+         "zh": "空气很不好。"
+        },
+        {
+         "spk": "B",
+         "de": "⑥ Ja. Ich hasse dieser Klima.",
+         "pron": "压一西嗨色 低则课里嘛",
+         "zh": "是的，我讨厌这个天气。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die Luft ist ganz schleicht.",
+         "pron": "第路福特伊斯特甘词 使来袭特",
+         "zh": "空气太不好了。"
+        }
+       ]
       }
      ]
     },
@@ -1546,6 +2572,42 @@ const SUCHENG = {
        "zh": "也许要下雨。",
        "pron": "艾斯 沟额特飞赖袭特嗨跟嫩"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie wird das Wetter？",
+         "pron": "为为额特大斯 歪特",
+         "zh": "今天天气怎么样？"
+        },
+        {
+         "spk": "B",
+         "de": "Ganz gut.",
+         "pron": "» 147",
+         "zh": "很好。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich sitze gerne in der Sonne. Und du？",
+         "pron": "一西在册给额呢 因 得额 揍呢 乌恩特杜",
+         "zh": "我喜欢晒太阳。你呢？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奥喝",
+         "zh": "我也是。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1593,6 +2655,36 @@ const SUCHENG = {
        "zh": "我能晚点来吗？",
        "pron": "答复一西使拜特靠们"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie viel Uhr ist jetzt？",
+         "pron": "为飞偶乌额 伊斯特 也词特",
+         "zh": "现在几点了？"
+        },
+        {
+         "spk": "B",
+         "de": "Neun zwanzig.",
+         "pron": "怒爱恩 词玩次席",
+         "zh": "九点二十。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wann ist deinen Geburstag？",
+         "pron": "万伊斯特带嫩 哥不饿词踏可",
+         "zh": "什么时候是你的生日？"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1634,6 +2726,42 @@ const SUCHENG = {
        "de": "Mein Hobby ist Schwimmen.",
        "zh": "我的爱好是游泳。",
        "pron": "买恩 好逼伊斯特使为们"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Ich will schon langer mal wieder in den Urlaub fahren.",
+         "pron": "一西偶瘦嗯狼额嘛了为的因den乌额老婆发很",
+         "zh": "我想再度一次假。"
+        },
+        {
+         "spk": "B",
+         "de": "Ja? Wohin denn？",
+         "pron": "压 喔黑恩等",
+         "zh": "是吗？那去哪里呢？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag Fussball.",
+         "pron": "一西 马克 弗斯罢了",
+         "zh": "我喜欢足球。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奧喝",
+         "zh": "我也是。"
+        }
+       ]
       }
      ]
     },
@@ -1681,6 +2809,42 @@ const SUCHENG = {
        "de": "Ich muss weniger arbeiten, damit ich mehr Zeit für die Uni habe.",
        "zh": "我必须得少工作，为了有更多的时间",
        "pron": "学习。"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was willst du denn arbeiten？",
+         "pron": "瓦斯 欧斯特杜等啊拜疼",
+         "zh": "你想做什么工作？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich weiß nicht.",
+         "pron": "一西 歪斯 尼希特",
+         "zh": "我不知道。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich möchte einen Job finden.",
+         "pron": "一西 摸鱼西特 爱嫩 找博飞恩den",
+         "zh": "我想找份工作。"
+        },
+        {
+         "spk": "B",
+         "de": "Welche Job？",
+         "pron": "歪偶歇 找博",
+         "zh": "哪种工作？"
+        }
+       ]
       }
      ]
     }
@@ -1734,6 +2898,42 @@ const SUCHENG = {
        "zh": "我更喜欢买品牌货。",
        "pron": "一西 博擦冷给恩没饿 夫鱼额 嘛肯啊替课了"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Hier ist das Hemd für Sie.",
+         "pron": "黑额 伊斯特 大斯嗨么特 夫鱼额 贼",
+         "zh": "这是您要的衬衫。"
+        },
+        {
+         "spk": "B",
+         "de": "Vielen Dank. Kann ich es anprobieren？",
+         "pron": "飞冷单课看一西艾斯 安婆后逼很",
+         "zh": "谢谢！我可以试穿一下吗？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Darf ich fragen, wo die Kabine ist？",
+         "pron": "大夫一西夫哈跟 喔第卡比呢 伊斯特",
+         "zh": "请问试衣间在哪里？"
+        },
+        {
+         "spk": "B",
+         "de": "Kommen Sie bitte mit mir.",
+         "pron": "考们贼逼特密特密额",
+         "zh": "请跟我来。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1786,6 +2986,48 @@ const SUCHENG = {
        "zh": "您这里有什么尺码的？",
        "pron": "歪偶新 个湖鱼色 哈奔 贼"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Noch etwas？",
+         "pron": "闹和艾特瓦斯",
+         "zh": "您还要别的什么吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich nehme das alles.",
+         "pron": "164<",
+         "zh": "这些我都买了。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich gebe Ihnen 3 Yuan heraus.",
+         "pron": "一西给博一嫩的还元黑额奧斯",
+         "zh": "找您三元。"
+        },
+        {
+         "spk": "B",
+         "de": "Danke, aber der Rest ist für Sie.",
+         "pron": "单课 啊博 得额 海斯特 伊斯特 夫鱼额 贼",
+         "zh": "谢谢，不用找了。"
+        },
+        {
+         "spk": "",
+         "de": "der Buchkatalog",
+         "pron": "中文意思",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -1837,6 +3079,48 @@ const SUCHENG = {
        "de": "Das ist dein Buch.",
        "zh": "这是你的书。",
        "pron": "大斯 伊斯特 呆恩 不喝"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was wiischen Sie？",
+         "pron": "瓦斯乌恩神贼",
+         "zh": "请问您要买什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich möchte mich nur umschauen.",
+         "pron": "一西摸鱼西特密西怒额 鸟么少嗯",
+         "zh": "只是随便看看。"
+        },
+        {
+         "spk": "",
+         "de": "sich umschauen/umsehen",
+         "pron": "",
+         "zh": "是反身动词。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was michten Sie kanfen？",
+         "pron": "哇斯 摸鱼西 ten贼 考分",
+         "zh": "请问您要买什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ein Buch.",
+         "pron": "爱恩不喝",
+         "zh": "一本书。"
+        }
+       ]
       }
      ]
     },
@@ -1910,6 +3194,42 @@ const SUCHENG = {
        "zh": "你还要买件衬衫吗？",
        "pron": "摸鱼西特斯特杜 闹和 爱呢 不路泽 哈奔"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Wollen Sie diesen Mantel anprobieren？",
+         "pron": "喔冷贼 地怎慢特了 安婆猴逼很",
+         "zh": "你想试一下这件大衣吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, ich trage sie gern.",
+         "pron": "压一西 特哈格 贼 给恩",
+         "zh": "是的，我很想试一下。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Gibt es irgendwas Neues？",
+         "pron": "给波特艾斯一额跟特瓦斯怒爱斯",
+         "zh": "这里有什么新东西吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, es gibt etwas Neues.",
+         "pron": "压艾斯 给波特艾特瓦斯 怒爱斯",
+         "zh": "是的，这里有一些新东西。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -1951,6 +3271,36 @@ const SUCHENG = {
        "de": "Ich möchte die Schuhe anziehen.",
        "zh": "我想试一下这个鞋。",
        "pron": "依稀 摸鱼希特地数额 安次因"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die passen gut. Wie viel kosten sie ？",
+         "pron": "大斯 帕森 顾特 为飞偶 靠斯腾 贼",
+         "zh": "这双合适，多少钱？"
+        },
+        {
+         "spk": "B",
+         "de": "Sie kosten 50 Euro.",
+         "pron": "贼 靠斯腾 弗恩夫cei西 奧诶欧",
+         "zh": "总共50欧元。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Welche Farbe wiinschen Sie？",
+         "pron": "外偶西 发博 乌嗯神 贼",
+         "zh": "您想要什么颜色的？"
+        }
+       ]
       }
      ]
     },
@@ -2004,6 +3354,36 @@ const SUCHENG = {
        "zh": "100欧元。",
        "pron": "混的特凹爱欧"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Welche Farbe möchten Sie？",
+         "pron": "歪偶歇额 发博摸鱼西 ten贼",
+         "zh": "您想要什么颜色的？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Was moechten sie brauchen？",
+         "pron": "瓦斯 摸鱼西腾 贼拨号很",
+         "zh": "您需要什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich brauche einen Kühlschrank.",
+         "pron": "一西拨号和唉嫩苦鱼了使航课",
+         "zh": "我需要一台冰箱。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2055,6 +3435,42 @@ const SUCHENG = {
        "de": "Haben Sie Mantel？",
        "zh": "您这里有大衣吗？",
        "pron": "哈奔贼慢特了"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "B",
+         "de": "A 300 Yuan.",
+         "pron": "的嗨混嗯的特元",
+         "zh": "太贵了。"
+        },
+        {
+         "spk": "B",
+         "de": "Das ist zu teuer.",
+         "pron": "大斯 伊斯特促图爱额",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie viel muss ich bezahlen？",
+         "pron": "为飞偶 慕斯一西 博擦冷",
+         "zh": "我该付多少钱？"
+        },
+        {
+         "spk": "",
+         "de": "B 200 Yuan.",
+         "pron": "词歪混的特元",
+         "zh": "元。"
+        }
+       ]
       }
      ]
     }
@@ -2113,6 +3529,42 @@ const SUCHENG = {
        "zh": "这真是一个美好的夜晚。",
        "pron": "瓦斯 伊斯特 爱恩问的舒呢啊笨特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Danke für das Abendessen. Das Restaurant ist wirklich",
+         "pron": "",
+         "zh": "感谢您的晚餐，这个饭店太好了！"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wir konnten ins Kino gehen, oder einfach in der FuBgangerzone",
+         "pron": "",
+         "zh": "我可以去电影院，或者去散步"
+        },
+        {
+         "spk": "B",
+         "de": "spazieren gehen.",
+         "pron": "巍峨 课约恩ten 音斯 ki no 给恩偶的 爱恩发喝音得额 弗斯",
+         "zh": "我也不清楚。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich weiß nicht.",
+         "pron": "一西 歪斯 尼希特",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -2164,6 +3616,54 @@ const SUCHENG = {
        "de": "Du bringst Sonnenschein in mein Leben.",
        "zh": "你给我的生活带来了阳光。",
        "pron": "杜博和音斯特 走嫩晒恩 音迈恩 累奔"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "ich muss mit dir sprechen.",
+         "pron": "一西慕斯密特第额 使婆嗨新",
+         "zh": "我得和你说点事情。"
+        },
+        {
+         "spk": "B",
+         "de": "Was gibt's？",
+         "pron": "瓦斯 给博词",
+         "zh": "什么？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Ich mag dich wirklich! Du bist einfach super！",
+         "pron": "一西马克弟西 为额可利息杜 比斯特按法和租婆",
+         "zh": "我真的喜欢你。你太棒了！"
+        },
+        {
+         "spk": "B",
+         "de": "Danke fiir die Blumen！",
+         "pron": "但课 夫鱼额 第博卢们",
+         "zh": "这是固定表达，表示感谢。"
+        },
+        {
+         "spk": "",
+         "de": "Danke fir die Blumen",
+         "pron": "场景3",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Arger",
+         "pron": "核心人物",
+         "zh": ""
+        }
+       ]
       }
      ]
     },
@@ -2217,6 +3717,42 @@ const SUCHENG = {
        "zh": "我首先得和我的父母说。",
        "pron": "一西 慕斯 大斯促爱尔斯特 买嫩唉了 ten 咋跟"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich wollte, dass das heute ein ganz besonderer Abend ist.",
+         "pron": "一西 喔偶特 大斯 大斯 好埃特 唉恩甘词 博宗恩的喝 啊笨特",
+         "zh": "我觉得今天是特殊的一晚。"
+        },
+        {
+         "spk": "B",
+         "de": "Der Abend war wirklich schon！",
+         "pron": "",
+         "zh": "夜晚太漂亮了！"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Hat die der Abend gefallen？",
+         "pron": "哈特第 得额 啊笨特 个发len",
+         "zh": "喜欢今晚吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Das war der schonste Abend seit ewigen Zeiten.",
+         "pron": "大斯哇得额 使约呢斯特 啊笨特 在特唉维根 猜 ten",
+         "zh": "这是这一段时间最美好的夜晚。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2268,6 +3804,42 @@ const SUCHENG = {
        "de": "Können wir trotzdem Freunde sein？",
        "zh": "我们能做朋友吗？",
        "pron": "课约嫩 为额 特后词得m 夫坏的在恩"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wir miissen reden！",
+         "pron": "为额么与森黑den",
+         "zh": "我们得谈一谈"
+        },
+        {
+         "spk": "B",
+         "de": "Was gibt's？",
+         "pron": "瓦斯给波词",
+         "zh": "怎么了？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Das ist wirklich so schade！",
+         "pron": "大斯 伊斯特 汐额可利息揍啥的",
+         "zh": "这一初真的很抱歉！"
+        },
+        {
+         "spk": "B",
+         "de": "Irgendwann geht alles zu Ende! Tschdss！",
+         "pron": "一而根特瓦恩给特啊了斯促恩德出于斯",
+         "zh": "无论如何一切都结束了！再见！"
+        }
+       ]
       }
      ]
     },
@@ -2321,6 +3893,42 @@ const SUCHENG = {
        "zh": "她是我的妈妈。",
        "pron": "贼伊斯特买呢 穆特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Trinken eure Eltern gern Tee？",
+         "pron": "特黑恩肯 奥诶喝 埃了 tin 给恩忒",
+         "zh": "足的，他们更喜欢喝茶"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, sie trinken gern Tee.",
+         "pron": "压 贼特黑恩肯 给恩忒",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Bist du Student ？",
+         "pron": "比斯特杜 使图的恩特",
+         "zh": "你是学生吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, ich studiere Chemie.",
+         "pron": "压一西 使图第和摄米",
+         "zh": "是的，我学习化学。"
+        }
+       ]
+      }
      ]
     }
    ]
@@ -2368,6 +3976,36 @@ const SUCHENG = {
        "zh": "我需要一个新的住所。",
        "pron": "一西博好和爱呢 怒爱 博赖博"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag gross Hause.",
+         "pron": "一西骂克个后斯好斯",
+         "zh": "我喜欢大房子。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奧喝",
+         "zh": "我也是。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wo wohnst du？",
+         "pron": "渥喔恩斯特杜",
+         "zh": "你住在哪里？"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2389,6 +4027,36 @@ const SUCHENG = {
        "de": "Haben Sie reserviert？",
        "zh": "您预定过了吗？",
        "pron": "哈奔贼黑则为额特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Haben Sie eine Reservierung？",
+         "pron": "哈本贼安呢 黑则为额 ong",
+         "zh": "你有预定吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, Faru Liu.",
+         "pron": "呀符号刘",
+         "zh": "是的，刘女士。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Das ist dein Hausschluissel.",
+         "pron": "",
+         "zh": "这是您的房间钥匙。"
+        }
+       ]
       }
      ]
     },
@@ -2442,6 +4110,36 @@ const SUCHENG = {
        "zh": "你喜欢哪种房间？",
        "pron": "歪偶希尔 词么马克斯特杜"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Welcher Zimmer magst du？",
+         "pron": "歪偶希尔词么马克斯特杜",
+         "zh": "你喜欢哪种房间？"
+        },
+        {
+         "spk": "B",
+         "de": "Keines Zimmer.",
+         "pron": "开呢斯词么",
+         "zh": "没有喜欢的房间。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Das Zimmer ist ganz gross.",
+         "pron": "大斯 词么 伊斯特甘词个后斯",
+         "zh": "房间很大。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2493,6 +4191,42 @@ const SUCHENG = {
        "de": "Heir ist keine Heizung und kalt.",
        "zh": "这里没有暖气有点冷。",
        "pron": "嘿额 伊斯特 开呢 嗨囱鸟恩特卡了特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die klima ist warm.",
+         "pron": "第课里嘛 伊斯特哇m",
+         "zh": "天气比较暖和。"
+        },
+        {
+         "spk": "B",
+         "de": "Ganz gut.",
+         "pron": "甘词 顾特",
+         "zh": "太好了。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Das Zimmer ist heiB, drauBen ist viel besser.",
+         "pron": "达斯次么伊斯特海斯，打奥森伊斯特飞偶拜色",
+         "zh": "这间屋子真热啊。外面也没有这么热啊。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich schlate die Klimaanlage ein.",
+         "pron": "依稀 沙利特地可立马安拉哥 爱恩",
+         "zh": "我开下空调吧。"
+        }
+       ]
       }
      ]
     }
@@ -2551,6 +4285,42 @@ const SUCHENG = {
        "zh": "你能陪我去医院吗？",
        "pron": "课鱼嫩贼 密西 促么 啊词特博个赖腾"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Welche Beschwerden haben Sie？",
+         "pron": "歪偶歇 博使为额 den 哈奔贼",
+         "zh": "您有什么病痛？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich habe Fieber.",
+         "pron": "一西 哈博飞博",
+         "zh": "我发热。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Sie mussen keinen Termin ausmachen. Kommen Sie bitte",
+         "pron": "",
+         "zh": "不需要预约，您直接来吧。"
+        },
+        {
+         "spk": "B",
+         "de": "Danke sehr！",
+         "pron": "但可 贼额",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -2603,7 +4373,8 @@ const SUCHENG = {
        "zh": "您现在就可以进去看医生了。",
        "pron": "贼课鱼嫩 个菜西杜额西给恩促么 到克头额"
       }
-     ]
+     ],
+     "dialog": []
     },
     {
      "scene": "3",
@@ -2649,6 +4420,36 @@ const SUCHENG = {
        "de": "Was macht der Artzt？",
        "zh": "医生做什么？",
        "pron": "瓦斯吗和特得额 啊词特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Tag, Herr Doktor.",
+         "pron": "踏可 黑额 到克头",
+         "zh": "嗯，您哪里不舒服？"
+        },
+        {
+         "spk": "B",
+         "de": "Na, was fehlt Ihnen denn？",
+         "pron": "那哇斯飞偶特一嫩等",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Herr Dockor, Hier ist meine Versichertenkarte.",
+         "pron": "黑恶到克特黑额 伊斯特买呢 飞额贼额西额 ten 卡特",
+         "zh": "医生先生，这是我的医保卡。"
+        }
+       ]
       }
      ]
     }
@@ -2702,6 +4503,42 @@ const SUCHENG = {
        "zh": "我需要一张信用卡。",
        "pron": "一西 博好喝特逼特爱呢使课卡特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Guten Tag! Ich möchte bitte ein Girokonto eroffnen und 50",
+         "pron": "",
+         "zh": "你好，我想用我的账户支付50欧元。"
+        },
+        {
+         "spk": "B",
+         "de": "Kein Problem.",
+         "pron": "开恩婆好博了么",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "1",
+         "de": "Ich brauche viel Geld！",
+         "pron": "一西博好和飞偶 盖了特",
+         "zh": "我需要很多钱。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奥和",
+         "zh": "我也是。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2753,6 +4590,42 @@ const SUCHENG = {
        "de": "Dort im Regal finden Sie alle GroBen.",
        "zh": "在架子上你可以找到所有的信封。",
        "pron": "到特一么黑噶了飞恩den贼啊了个和鱼森"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Hallo, ich muss zur Post. Kommst du mit？",
+         "pron": "哈喽一西 慕斯促额 剖斯特 考么斯特杜 密特",
+         "zh": "你好，我必须去邮局，你去吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich habe keine Zeit.",
+         "pron": "一西 哈博 开呢 蔡特",
+         "zh": "我没有时间。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was willst du schicken？",
+         "pron": "瓦斯 为偶斯特杜神肯",
+         "zh": "你要邮寄什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ein Buch.",
+         "pron": "爱恩不喝",
+         "zh": "一本书。"
+        }
+       ]
       }
      ]
     },
@@ -2806,6 +4679,42 @@ const SUCHENG = {
        "zh": "我怎样做才能保持发型呢？",
        "pron": "瓦斯看一西吗很大斯第夫黑足额走不赖奔"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie möchten Sie die Haare？",
+         "pron": "摸鱼西 ten贼第哈和",
+         "zh": "只需要短一些，大概两厘米左右吧。"
+        },
+        {
+         "spk": "B",
+         "de": "Nur etwas kurzer, vielleicht ein oder zwei Zentimeter.",
+         "pron": "怒额 艾特瓦斯 苦厄册飞来袭特爱恩 哦的 词歪 岑替没特",
+         "zh": ""
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Könnten Sie die Haare ein bisschen kurzer schneiden？",
+         "pron": "课约ten 贼第哈和 爱恩比斯新 苦儿册使耐 den",
+         "zh": "您可以把我的头发稍微剪短一点吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Sicher, kein Problem.",
+         "pron": "字西儿 开恩 婆好博累么",
+         "zh": "好的，没问题。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2858,6 +4767,36 @@ const SUCHENG = {
        "zh": "我目前在博世公司工作。",
        "pron": "一西啊拜特促额 蔡特拜得额飞额吗 博使"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wurden Sie mir bitte Ihren Pass zeigen？",
+         "pron": "乌鱼den贼密额逼特一很怕斯才跟",
+         "zh": "请您给我看看您的护照好吗？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "ich muss die Genehmigung verlaengern lassen.",
+         "pron": "一西慕斯第个内米共飞额狼给恩 拉森",
+         "zh": "我想延长居留期。"
+        },
+        {
+         "spk": "B",
+         "de": "⑥ Warum？",
+         "pron": "哇湖么",
+         "zh": "什么？"
+        }
+       ]
+      }
      ]
     },
     {
@@ -2909,6 +4848,42 @@ const SUCHENG = {
        "de": "Hier ist das Formular.",
        "zh": "这是表格。",
        "pron": "黑额 伊斯特 大斯 否木啦"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Haben Sie lhren Pass dabei？",
+         "pron": "哈奔贼一很帕斯大拜",
+         "zh": "您把护照带来了吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, hier bitte.",
+         "pron": "压黑额逼特",
+         "zh": "带来了，在这儿。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Aus welchem Grund möchten Sie dorthin？",
+         "pron": "奧斯 歪偶西么 个湖嗯特摸鱼西 ten贼 到特黑恩",
+         "zh": "您为什么要去那里？"
+        },
+        {
+         "spk": "B",
+         "de": "⑥ Ich mache dort ein Praktikum.",
+         "pron": "一西吗和 到特爱恩 婆哈课题库么",
+         "zh": "我要在那儿实习。"
+        }
+       ]
       }
      ]
     }
@@ -2967,6 +4942,36 @@ const SUCHENG = {
        "zh": "节日快乐！",
        "pron": "夫后额斯 飞额斯特！"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was isst man an diesem Tag？",
+         "pron": "瓦斯 伊斯特慢安第则么踏可",
+         "zh": "人们在这一天吃什么？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Magst du Ersten Advent？",
+         "pron": "马课斯特杜 埃尔斯ten 阿德温特？",
+         "zh": "你喜欢基督降临节吗？"
+        },
+        {
+         "spk": "",
+         "de": "⑥ Naturlich.",
+         "pron": "那图约额利息",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -3018,6 +5023,30 @@ const SUCHENG = {
        "de": "Danke! Gleichfalls！",
        "zh": "谢谢，你也是！",
        "pron": "单课 个赖西发了斯"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Einen schonen Tag.",
+         "pron": "唉嫩使鱼嫩踏可",
+         "zh": "节日愉快。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was machst du am Kaneval？",
+         "pron": "瓦斯马赫斯特杜啊么卡么哇了",
+         "zh": "你狂欢节做什么呢？"
+        }
+       ]
       }
      ]
     },
@@ -3071,6 +5100,42 @@ const SUCHENG = {
        "zh": "在十月啤酒节她穿了穿巴伐利亚服饰。",
        "pron": "贼 凑个因母 奥磕头波飞唉斯特因 拜亚嘿设 特哈赫特 安"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag Oktoberfest. Und du？",
+         "pron": "一西马克 奧口透薄飞唉斯特乌嗯特杜",
+         "zh": "我喜欢啤酒节，你呢？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奧喝",
+         "zh": "我也是。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "ich mag gern Dunkels Bier? Und du？",
+         "pron": "依稀 马克 给额恩 顿克了斯币额 乌恩特杜",
+         "zh": "我喜欢黑啤酒，你呢？"
+        },
+        {
+         "spk": "B",
+         "de": "Nein, ich mag Helles Bier.",
+         "pron": "耐恩，依稀马克嘿乐斯币额",
+         "zh": "不，我喜欢轻啤。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -3097,6 +5162,54 @@ const SUCHENG = {
        "de": "Das Kind zindet Knaller an.",
        "zh": "孩子放鞭炮。",
        "pron": "大斯 看唉嗯特村的特卡那了安"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Was machen Sie in Ostern？",
+         "pron": "瓦斯吗很贼音奧斯疼",
+         "zh": "你狂欢节做什么？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich bin in Festzug.",
+         "pron": "一西 宾因反思特醋可",
+         "zh": "我参加节日游行。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich verkleide als Prinz.",
+         "pron": "一西飞饿课菜登啊偶斯 婆黑恩词",
+         "zh": "我乔装成王子。"
+        },
+        {
+         "spk": "B",
+         "de": "Ganz gut.",
+         "pron": "甘词顾特",
+         "zh": "非常好。"
+        },
+        {
+         "spk": "",
+         "de": "der Karfritag",
+         "pron": "中文意思",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "die Auseinandersetzung",
+         "pron": "连接",
+         "zh": ""
+        }
+       ]
       }
      ]
     },
@@ -3149,6 +5262,42 @@ const SUCHENG = {
        "de": "Ich glaube nicht an Geister.",
        "zh": "我不相信鬼怪。",
        "pron": "一西 哥老波 尼希特安 盖斯特"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "GenieBen Sie solch ein Fest？",
+         "pron": "个你森 贼走偶西 爱恩飞爱思特",
+         "zh": "你乐意参加这种节日吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja gerne.",
+         "pron": "压 给额呢",
+         "zh": "当然乐意。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Erist Prinz.",
+         "pron": "诶额伊斯特 婆黑恩词",
+         "zh": "他是王子。"
+        },
+        {
+         "spk": "B",
+         "de": "Wow, ganz schon.",
+         "pron": "哇甘词使鱼恩",
+         "zh": "哇，太棒了。"
+        }
+       ]
       }
      ]
     },
@@ -3217,6 +5366,42 @@ const SUCHENG = {
        "zh": "怎么庆祝圣诞节？",
        "pron": "为飞唉儿慢 歪那和 ten"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "War das Fest sehr lustig？",
+         "pron": "哇 大斯 飞额斯特 贼额 露丝替西",
+         "zh": "节日有趣吗？"
+        },
+        {
+         "spk": "6",
+         "de": "Sehr lusitig.",
+         "pron": "» 259",
+         "zh": "非常有趣。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wie feiert man Weinachtenfest？",
+         "pron": "为飞唉儿慢 歪那和 ten飞额思特",
+         "zh": "怎么庆祝圣诞节呢？"
+        },
+        {
+         "spk": "B",
+         "de": "So viele Sache zu tun？",
+         "pron": "揍飞飞了咋和促图恩",
+         "zh": ""
+        }
+       ]
+      }
      ]
     }
    ]
@@ -3274,6 +5459,36 @@ const SUCHENG = {
        "zh": "这首民谣格调清新。",
        "pron": "达斯 否了科斯利特 伊斯特贼额 夫嘿设"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Kannst du Klavier spielen？",
+         "pron": "看斯特杜卡拉为尔 使皮冷",
+         "zh": "你会弹奏小提琴吗？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ist der Eintritt frei？",
+         "pron": "≥> 263",
+         "zh": "免费入场吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, der Eintritt ist frei.",
+         "pron": "压 得额 爱恩特黑特伊斯特 夫嗨",
+         "zh": "是的，免费入场。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -3325,6 +5540,36 @@ const SUCHENG = {
        "de": "Das Konzert ist einmalig.",
        "zh": "这个音乐会是独一无二的。",
        "pron": "达斯 空词额特伊斯特 唉嗯骂利息"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Wo kann man die Karten kaufen？",
+         "pron": "喔看慢第卡疼 考分",
+         "zh": "我们在哪里买音乐会门票？"
+        },
+        {
+         "spk": "B",
+         "de": "Dort druben ist der Schalter.",
+         "pron": "到特大黑鱼笨伊斯特得额 啥了特",
+         "zh": "在那里的柜台上。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Kannst du dieser Lied singen？",
+         "pron": "看斯特杜第则利特字嗯",
+         "zh": "你会唱这首歌吗？"
+        }
+       ]
       }
      ]
     },
@@ -3378,6 +5623,36 @@ const SUCHENG = {
        "zh": "你的学生票。",
        "pron": "一很使图den 腾奧斯歪斯逼特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "C Ich schlage vor ,wir gehen ins Kino.",
+         "pron": "一西 使拉个 夫额 儿给恩因斯kino",
+         "zh": "我建议我们去电影院吧。"
+        },
+        {
+         "spk": "B",
+         "de": "Ja gern. Um wie viel Uhr？",
+         "pron": "压给恩乌么为飞偶乌额",
+         "zh": "好的，我喜欢。几点呢？"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Ich möchte ein Spieler zu sein.und du？",
+         "pron": "一西摸鱼西特爱恩 使比了促在恩乌嗯特杜",
+         "zh": "我想成为演员。你呢？"
+        }
+       ]
+      }
      ]
     },
     {
@@ -3429,6 +5704,36 @@ const SUCHENG = {
        "de": "Ist irgendwas gutes im Fernsehen？",
        "zh": "电视上有好节目吗？",
        "pron": "伊斯特 一额跟特瓦斯 孤特斯一么飞嗯贼恩"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Mochtst du Fernsehen sehen？",
+         "pron": "么约特斯特 杜 费恩贼恩 贼恩",
+         "zh": "你喜欢看电视剧吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, ich mag Fernsehen.",
+         "pron": "呀一西马克飞嗯贼恩",
+         "zh": "是的，我喜欢电视剧。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "WeiBt du Schelden？",
+         "pron": "外斯特杜晒偶 den",
+         "zh": "我不知道。"
+        }
+       ]
       }
      ]
     },
@@ -3482,6 +5787,42 @@ const SUCHENG = {
        "zh": "你知道歌德吗？",
        "pron": "外斯特杜 孤鱼特"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "4",
+         "de": "Was sind Sie von Beruf？",
+         "pron": "哇斯贼恩特贼夫嗯 博湖夫",
+         "zh": "你是做什么的？"
+        },
+        {
+         "spk": "B",
+         "de": "Ich bin Autor.",
+         "pron": "一西宾恩奥头",
+         "zh": "我是作家。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich habe eine Idee. Wir schreiben einen Text？",
+         "pron": "一西哈勃诶呢一得 儿使嗨奔 诶嫩 太科斯特",
+         "zh": "不，我不喜欢。"
+        },
+        {
+         "spk": "B",
+         "de": "Nein. Ich mag nicht.",
+         "pron": "耐恩一西马克尼希特",
+         "zh": ""
+        }
+       ]
+      }
      ]
     },
     {
@@ -3534,6 +5875,42 @@ const SUCHENG = {
        "zh": "这看起来真的很棒！",
        "pron": "大斯 贼特 为额可利息头了 奥斯"
       }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Das Bild ist wirklich wunderschon. Kann man es kaufen？",
+         "pron": "大斯 碧欧特伊斯特为额可利息乌嗯的是鱼嗯看慢艾斯考分",
+         "zh": "这张画太漂亮了，卖吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Nein, das kann man nicht kaufen.",
+         "pron": "耐恩大斯看慢尼希特考分",
+         "zh": "不能卖，人们买不了。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Ich mag reichnen.",
+         "pron": "一西马克海信嫩",
+         "zh": "我喜欢画画。"
+        },
+        {
+         "spk": "B",
+         "de": "Ich auch.",
+         "pron": "一西奥喝",
+         "zh": "我也是。"
+        }
+       ]
+      }
      ]
     },
     {
@@ -3585,6 +5962,996 @@ const SUCHENG = {
        "de": "Kinder kicken gern auf der StraBe.",
        "zh": "孩子们更喜欢在街道踢球。",
        "pron": "课嗯的ki 肯给恩 奥夫 得额 使特哈色"
+      }
+     ],
+     "dialog": [
+      {
+       "title": "会话一",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Magst du FC Bayern Muichen AG？",
+         "pron": "马科斯特杜 诶夫sei吧呀嗯 木约新啊给",
+         "zh": "你喜欢德国拜仁慕尼黑俱乐部吗？"
+        },
+        {
+         "spk": "B",
+         "de": "Ja, sehr mag.",
+         "pron": "呀贼额 马克",
+         "zh": "当然，非常喜欢。"
+        }
+       ]
+      },
+      {
+       "title": "会话二",
+       "turns": [
+        {
+         "spk": "A",
+         "de": "Die Deutschland gewann die Weltmeisterschaft 2014.",
+         "pron": "第独爱吃蓝特个瓦恩第 欧特麦斯特啥福特因",
+         "zh": "德国赢得了2014年世界杯足球比赛。"
+        },
+        {
+         "spk": "B",
+         "de": "Ganz gut.",
+         "pron": "干词 顾特",
+         "zh": "太好了。"
+        },
+        {
+         "spk": "",
+         "de": "der Vater",
+         "pron": "",
+         "zh": "以-and， -ant， -ent 结尾的阳性名词。"
+        },
+        {
+         "spk": "",
+         "de": "den Vater",
+         "pron": "",
+         "zh": "树是一种植物。"
+        },
+        {
+         "spk": "",
+         "de": "dem Vater",
+         "pron": "",
+         "zh": "车是交通工具。"
+        },
+        {
+         "spk": "",
+         "de": "des Vaters",
+         "pron": "阴性",
+         "zh": "年轻人"
+        },
+        {
+         "spk": "",
+         "de": "die Mutter",
+         "pron": "",
+         "zh": "新中国"
+        },
+        {
+         "spk": "",
+         "de": "die Mutter",
+         "pron": "",
+         "zh": "伊拉克；die Schweiz 瑞士"
+        },
+        {
+         "spk": "",
+         "de": "der Mutter",
+         "pron": "",
+         "zh": "桌子上的书"
+        },
+        {
+         "spk": "",
+         "de": "der Mutter",
+         "pron": "阳性和中性的单数名词的第二格结尾如下。",
+         "zh": "书的内容"
+        },
+        {
+         "spk": "",
+         "de": "des Lehrers, des Fensters, des Kaufimanns",
+         "pron": "b.单音节名词多数以-es结尾。",
+         "zh": "最高的建筑"
+        },
+        {
+         "spk": "",
+         "de": "des Mannes, des Volkes, des Arztes",
+         "pron": "",
+         "zh": "第三层楼"
+        },
+        {
+         "spk": "",
+         "de": "das Glas - des Glases",
+         "pron": "",
+         "zh": "地球；"
+        },
+        {
+         "spk": "",
+         "de": "der Fluss - des Flusses",
+         "pron": "",
+         "zh": "世界"
+        },
+        {
+         "spk": "",
+         "de": "der FuB - des Fubes",
+         "pron": "",
+         "zh": "春天；in dem 1990在1990年"
+        },
+        {
+         "spk": "",
+         "de": "der Komplex - des Komplexes",
+         "pron": "",
+         "zh": "十月；in der Nacht 在夜间"
+        },
+        {
+         "spk": "",
+         "de": "der Schmerz - des Schmerzes",
+         "pron": "",
+         "zh": "月亮"
+        },
+        {
+         "spk": "",
+         "de": "das Gesetz -des Gesetzes",
+         "pron": "2.带定冠词的复数名词的变格",
+         "zh": "他买了一件大衣。"
+        },
+        {
+         "spk": "",
+         "de": "die Vater",
+         "pron": "",
+         "zh": "在 haben 或 es gibt 后的单数名词前。"
+        },
+        {
+         "spk": "",
+         "de": "die Viter",
+         "pron": "阴性",
+         "zh": "他有一只钢笔。"
+        },
+        {
+         "spk": "",
+         "de": "die Mitter",
+         "pron": "",
+         "zh": "屋里有幅画。"
+        },
+        {
+         "spk": "",
+         "de": "die Mitter",
+         "pron": "中性",
+         "zh": "与 solch, welch, was fuer 连用的单数名词前。"
+        },
+        {
+         "spk": "",
+         "de": "das Kind",
+         "pron": "",
+         "zh": "您还有问题吗？"
+        },
+        {
+         "spk": "",
+         "de": "das Kind",
+         "pron": "",
+         "zh": "他们出售旧汽车。"
+        },
+        {
+         "spk": "",
+         "de": "dem Kind",
+         "pron": "",
+         "zh": "她是学生。"
+        },
+        {
+         "spk": "",
+         "de": "des Kindes",
+         "pron": "中性",
+         "zh": "我是一名教师。"
+        },
+        {
+         "spk": "",
+         "de": "die Kinder",
+         "pron": "",
+         "zh": "我们的试验做完了。"
+        },
+        {
+         "spk": "",
+         "de": "die Kinder",
+         "pron": "» 285",
+         "zh": "彼德的母亲是售货员。"
+        },
+        {
+         "spk": "",
+         "de": "den Vater",
+         "pron": "",
+         "zh": "谁的车放在门前？"
+        },
+        {
+         "spk": "",
+         "de": "der Vater",
+         "pron": "",
+         "zh": "金是一种金属。"
+        },
+        {
+         "spk": "",
+         "de": "den Mittem",
+         "pron": "",
+         "zh": "他们有耐心。"
+        },
+        {
+         "spk": "",
+         "de": "der Mitter",
+         "pron": "（1）复数名词的第三格以-n结尾。",
+         "zh": "米勒先生"
+        },
+        {
+         "spk": "",
+         "de": "die Baume - auf den Baumen",
+         "pron": "",
+         "zh": "施密特博士"
+        },
+        {
+         "spk": "",
+         "de": "die Frauen - mit den Frauen",
+         "pron": "例外：以-s结尾的复数名词如下。",
+         "zh": "火车晚点了。"
+        },
+        {
+         "spk": "",
+         "de": "das Auto - die Autos - in den Autos",
+         "pron": "",
+         "zh": "他高兴地跳起来。"
+        },
+        {
+         "spk": "",
+         "de": "das Biro - die Biros - in den Biiros",
+         "pron": "（2）名词复数构成的八种可能性。",
+         "zh": "强度"
+        },
+        {
+         "spk": "",
+         "de": "a. der Birger -die Birger",
+         "pron": "",
+         "zh": "招收学徒"
+        },
+        {
+         "spk": "",
+         "de": "b. der Garten -die Garten",
+         "pron": "",
+         "zh": "他今晚给我打电话。"
+        },
+        {
+         "spk": "",
+         "de": "c.der Film -die Filme",
+         "pron": "",
+         "zh": "昨天她外出了。"
+        },
+        {
+         "spk": "",
+         "de": "d. die Stadt - die Stadte",
+         "pron": "",
+         "zh": "她将许多钱花费在旅"
+        },
+        {
+         "spk": "",
+         "de": "e. das Bild-die Bilder",
+         "pron": "",
+         "zh": "您只需要带上您的"
+        },
+        {
+         "spk": "",
+         "de": "f. der Amt -die Amter",
+         "pron": "",
+         "zh": "您想要赶上"
+        },
+        {
+         "spk": "",
+         "de": "g. der Student -die Studenten",
+         "pron": "",
+         "zh": "发生，sich erholen 休息，复元，sich erkalten 感冒，sich"
+        },
+        {
+         "spk": "",
+         "de": "die Akademie - die Akademien",
+         "pron": "",
+         "zh": "鞠躬，sich verirren 迷路，sich verspaten 延迟，sich"
+        },
+        {
+         "spk": "",
+         "de": "h. das Auto - die Autos",
+         "pron": "说明：",
+         "zh": "感觉"
+        },
+        {
+         "spk": "",
+         "de": "das Ergebnis - die Ergebnisse",
+         "pron": "b.以-in结尾的阴性名词的复数以-innen 结尾。",
+         "zh": "我掌握了一门外语。"
+        },
+        {
+         "spk": "",
+         "de": "die Freundin - die Freundinnen",
+         "pron": "",
+         "zh": "不容许"
+        },
+        {
+         "spk": "",
+         "de": "die Franzosin -die Franzosinnen",
+         "pron": "3.带不定冠词的名词的变格",
+         "zh": "孩子洗自己。"
+        },
+        {
+         "spk": "",
+         "de": "den Kindem",
+         "pron": "",
+         "zh": "我洗（自己的）手"
+        },
+        {
+         "spk": "",
+         "de": "der Kinder",
+         "pron": "中性",
+         "zh": "我（给自己）穿衣服。"
+        },
+        {
+         "spk": "",
+         "de": "der Student, des Studenten",
+         "pron": "（3）以-ist结尾的阳性名词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Terrorist, des Terroristen",
+         "pron": "288〈",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Das Auto ist ein Verkehrsmittel.",
+         "pron": "（2）再次提到前面已提过的人或物时。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ich sehe einen Baum. Der Baum blueht.",
+         "pron": "我看一棵树。这棵树在开花。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "das neue China",
+         "pron": "（4）非中性的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Irak",
+         "pron": "（5）有介词短语，名词第二格等作定语的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Inhalt des Buches",
+         "pron": "（6）带有序数词或形容词最高级定语的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der dritte Stock",
+         "pron": "（7）表示世界上独一无二的事物的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "die Welt",
+         "pron": "（8）四季、年、月、周、日等名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Mond",
+         "pron": "» 289",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Wir arbeiten in einer Fabrik.",
+         "pron": "我们在一个工厂里工作。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Solch eine Freude haben wir jetzt.",
+         "pron": "我们现在是如此的快活。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Welch eine Begeisterung ist es！",
+         "pron": "这是一种多么高的热情！",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "kein Mann",
+         "pron": "第四格",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "keinen Mann",
+         "pron": "第三格",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "keinem Mann",
+         "pron": "第二格",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "keines Mannes",
+         "pron": "复数",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "keine Manner / Frauen / Kinder",
+         "pron": "中性",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "keines Kindes",
+         "pron": "290«",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie verkaufen Gebrauchtwagen.",
+         "pron": "（2）表示身份，职业等的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie ist Studentin.",
+         "pron": "（3）在介词 als后的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ich bin als Lehrer taetig.",
+         "pron": "（4）名词前有物主代词、指示代词、基数词或第二格定语时，该名",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Zwei Schueler machen einen Ausflug.",
+         "pron": "两个学生去郊游了。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Wessen Fahrrad liegt vor der Tuer？",
+         "pron": "（5）物质名词、抽象名词前一般不用冠词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie haben Geduld.",
+         "pron": "（6）表示称呼、头衔的名词前。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Doktor Schmidt",
+         "pron": "（7）在某些介词短语或固定的动宾搭配中，不用冠词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Vor Freude springt er in die Luft.",
+         "pron": "（8）文章的标题、广告中的词常不用冠词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Lehrling Gesucht",
+         "pron": "（9）国家名、洲名前一般不用冠词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Afrika und Asien sind Kontienente.",
+         "pron": "≥> 291",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "（der） Jemen",
+         "pron": "阴性",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "die Antarktis",
+         "pron": "复数",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "die Niederlande",
+         "pron": "四、人称代词的变格",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ihrer / Ihrer",
+         "pron": "*人称代词的第二格如今已不再使用。只能在过去的文学作品中和宗教仪式中",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ist das Ihre Tasche？ - Ja, sie gehort uns.",
+         "pron": "≥ 293",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "meines Freundes",
+         "pron": "六、动词的变位",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "meiner Freundin",
+         "pron": "中性",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "meines Hauses",
+         "pron": "阳性/阴性/中性",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "meiner Freunde / Freundinnen / Hauser",
+         "pron": "现在时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie lachten",
+         "pron": "将来时1",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie werden lachen",
+         "pron": "现在时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie folgten",
+         "pron": "将来时1",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sic werden gelacht haben",
+         "pron": "现在完成时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie waren gefolgt",
+         "pron": "将来时2",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie werden gefolgt sein",
+         "pron": "（1）弱变化动词变位时它的元音不变。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ich bin gegangen",
+         "pron": "单",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie sind gegangen",
+         "pron": "过去完成时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie waren gegangen",
+         "pron": "（1）强变化动词的过去式一般会有元音的变化，其过去分词大部分",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "tragen, trug, getragen",
+         "pron": "有些动词变位时它们的基本形式甚至都会发生变化。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sein, war, gewesen",
+         "pron": "（2）强变化动词的第一和第三人称单数的过去时没有词尾。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ich /er trug; ich / er ging",
+         "pron": "（3）有一些强变化动词变位时，它们的第二和第三人称单数的现在",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ich stoledu stoBt, er stolst",
+         "pron": "（4）强变化动词的过去分词以 -en 结尾。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "du antwortest",
+         "pron": "数",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "er antwortet",
+         "pron": "复",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ihr antwortet",
+         "pron": "数",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie antworten",
+         "pron": "过去时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie antworteten",
+         "pron": "现在完成时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie haben geantwortet",
+         "pron": "强变化动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie bieten",
+         "pron": "过去时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie haben geboten",
+         "pron": "（1）当动词的词根以-d-或- 结尾时，它们变位后需在-st，-te， -t",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie denken",
+         "pron": "过去时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie dachten",
+         "pron": "现在完成时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie haben gedacht",
+         "pron": "5.变位的特殊规则",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ras-en: du rast lass-en: du laisst",
+         "pron": "（2）以-eln 和 -ern 结尾的弱变化动词变位时，其第一和第三人称复",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "rudern: wir rudern, sie rudern",
+         "pron": "（3）动词 wissen 的单数现在时的变化较特殊。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ich weib, du weiBt, er weiß, wir wissen, ihr wisst, sie wissen",
+         "pron": "七、可分动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie ging gestern aus.",
+         "pron": "2. 在动词现在/ 过去完成时的应用中将可分前缀与第二分词连写，",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie hat viel Geld fir die Reise ausgegeben.",
+         "pron": "行上。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie brauchen nur Ihren Pass mitzunehmen.",
+         "pron": "护照。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ich versuche, ich versuchte; ich become, ich bekam",
+         "pron": "3. 在构成过去分词时没有通常情况下的ge-（以-ieren 结尾的动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "er hat berichtet, er hat erklart, er hat verstanden",
+         "pron": "九、反身动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sie, Sie",
+         "pron": "第四格",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Sie müssen sich beeilen, um den Zug noch zu erreichen.",
+         "pron": "火车的话，动作得快。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ich habe mir eine fremde Sprache angeeignet.",
+         "pron": "这类动词还有 sich etw. einbilden 自负，sich etw. vorstellen 想象，",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "sich etw. verbitten",
+         "pron": "2.假反身动词或反身结构",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Das Kind waescht sich.",
+         "pron": "这类动词还有 sich rasieren 刮胡子，sich toeten",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Du schadest dir mit dem Rauchen.",
+         "pron": "其他如 sich etw. abgewoehnen 戒除某物",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "an sich zweifeln",
+         "pron": "（4）自由的第三格反身代词。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ich habe （mir/ für mich） ein Buch gekauft.",
+         "pron": "本书。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Ich ziehe （mir） den Mantel an.",
+         "pron": "十、祈使句",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Werd（e） nur nicht bose！",
+         "pron": "2.以“你们”称呼对方",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Seien Sie so freundlich！",
+         "pron": "4.过去第二人称单数的祈使句中动词有-e作为结尾",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Komme bald! Lache nicht！",
+         "pron": "书面语中也很少使用。只有当动词的词干已-d，-t，-i结尾时和动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Rechne alles zusammen！",
+         "pron": "十、用“haben”或 “sein”构成现在完成时",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "gefallen, glauben, nitzen, schaden, vertrauen",
+         "pron": "c. 表示一个固定的起始点和结束点的动词。如 anfangen, aufhiren，",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "1. legen / liegen, stellen / stehen",
+         "pron": "弱变化的及物动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Der Brief hat in der Tasche gesteckt.",
+         "pron": "（1）及物动词（带第四格宾语的动词）表示某一行为，如某人（主",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Der Sohn hat das Geld verschwendet.",
+         "pron": "强变化的不及物动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Das Geld ist verschwunden.",
+         "pron": "（1）及物动词表示某一行为。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Es macht mich froh （traurig, fertig）， dass..",
+         "pron": "（3）大多数不可分动词，尤其是带前缀be-，ver-， zer- 的动词要求第",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Der Sturm zerbrach die Fenster.",
+         "pron": "（4）固定结构 es gibt 以及作为实义动词的 haben 要求第四格宾语。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Wir haben einen Garten.",
+         "pron": "2.要求第三格宾语的动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "zuhoren, zureden, zuschen, zustimmen, zuwenden",
+         "pron": "3.同时要求第三格宾语和第四格宾语的动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Er beantwortet dem Sohn die Frage.",
+         "pron": "他回答儿子的问题。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Er beantwortet die Frage.",
+         "pron": "最常用的可同时要求第二格宾语和第四格宾语的动词有 anvertrauen，",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "erlauben, erzahlen, gqeben, leihen, liefer, mitteilen, rauben, reichen, sagen，",
+         "pron": "»> 307",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "verschweigen, versprechen, verweigern, wegnehmen, zeigen",
+         "pron": "4. 要求两个第四格宾语的动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Er lehrt mich das Lesen.",
+         "pron": "5.同时要求第四格和第二格的动词",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "Mein Sohn wird spater Arzt.",
+         "pron": "说明：动词 sein 和 werden 不能单独使用，而是需要一个补足语。",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "eine Entscheidung treffen",
+         "pron": "308《",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "der Mentng",
+         "pron": "星期一",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "dea Diensting",
+         "pron": "星期二",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "dea Mttvech",
+         "pron": "星期三",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Lonmeastag",
+         "pron": "星期四",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Zreitng",
+         "pron": "星期五",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Samatag",
+         "pron": "星期六",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Serrabend",
+         "pron": "星期六",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Serntag",
+         "pron": "星期日",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "nea Blloekenerak； -n",
+         "pron": "周末",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "am Mlechenende",
+         "pron": "在周末",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "den Semmer",
+         "pron": "322《",
+         "zh": ""
+        },
+        {
+         "spk": "",
+         "de": "ISBN 978-7-122-27283-6",
+         "pron": "本书音频手机直扫",
+         "zh": ""
+        }
+       ]
       }
      ]
     }

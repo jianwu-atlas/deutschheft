@@ -39,6 +39,9 @@
 | `assets/js/data/notion-notes.js` | 脚本生成，勿手改 |
 | `assets/js/data/sucheng.js` | 脚本生成（`build_sucheng.py`），勿手改；**课外教材，词汇不计入生词表** |
 | `scripts/build_sucheng.py` | OCR 全文 → `sucheng.js`（抽「德文/中文/谐音」三元组 + OCR 清洗 + 规范场景标题覆盖 + 词表自检） |
+| `scripts/build_sucheng_extras.py` | wiki `concepts/` → `sucheng-extras.js`（发音篇 7 讲 + 语法篇 9 讲，md→HTML） |
+| `assets/js/data/sucheng-extras.js` | 脚本生成，勿手改；课外教材 |
+| `scripts/_test_sucheng_full.py` | 精读页 Playwright 冒烟测试（页签/会话/发音/语法/隐藏中文/朗读） |
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包 → 不公开） |
 | `assets/js/data/sucheng.js` | 脚本生成（build_sucheng.py），勿手改；课外教材，词汇不计入生词表 |
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包，不公开） |
@@ -82,6 +85,12 @@
 
 ## 更新记录
 
+- 2026-10-15（P1 教材精读：会话段 + 发音篇 + 语法篇）：
+  - **会话段（423 轮次）**：新增 `parse_dialog()`。OCR 是「A/B 德文行 + 谐音行」**两行制**，中文翻译另列且带说话人标记（`1`/`2`/`A`/`B` 混用）。关键处理：① 说话人标记归一化（`⑧`/`®`→B、`④`→A）；② **谐音行 = 非拉丁为主的下一行**（谐音多以中文开头，故不能要求「不以中文开头」）；③ 中文翻译用 `^标记+中文` 识别，德语轮用 `^标记+空格+拉丁`；④ 德语轮与中文按**顺序 zip 对齐**；⑤ 只取从首个「会话一」起、到 `小贴士`/`词汇`/`场景N` 止的片段（否则会把**单词表**当对话——第一版误得 2231 轮）；⑥ 噪声过滤：至少两个词且有「标记/中文/谐音」之一。
+  - **发音篇 7 讲 + 语法篇 9 讲**：新增 `scripts/build_sucheng_extras.py`，把知识库 `~/.workbuddy/wiki-knowledge/wiki/concepts/*.md` 转成 HTML（自带极简 md→HTML：标题/表格/列表/引用/加粗/代码）→ `assets/js/data/sucheng-extras.js`（33 KB）。精读页加**顶层三页签**：🗣 场景精读 / 🔤 发音篇 / 📐 语法篇。
+  - **数据**：`sucheng.js` 加 `dialog` 字段；页面加会话渲染（`.sc-turn` + 圆形说话人徽章 A/B 交替配色）、会话 🔊、会话也受「隐藏中文自测」控制。
+  - **验证**：`scripts/_test_sucheng_full.py`（Playwright）12 项断言全过：3 页签 / 8 场景 / 8 会话块 / 32 轮 / 32 徽章 / 发音篇 7 讲 / 语法篇 9 讲 14 表 / 隐藏中文对会话生效 / 会话 🔊 真触发 / **无 JS 错误**。
+  - 版本号：deutsch.js→v39、deutsch.css→v41、sucheng.js→v2、新增 `sucheng-extras.js?v=1`。
 - 2026-10-15（P0 教材精读：方案 C 落地 · 三行格式）：
   - **新增 `sucheng.html`**（导航不新增项，入口＝教材页「零基础德语速成」卡片的 **📖 场景精读** 按钮）：12 个 Einheit 切换 chip + 场景卡片 + **三行格式**（`.s-de` 德文 16px / `.s-zh` 中文 13.5px 金色左条 / `.s-pron` 中文谐音 12.5px 浅胶囊块）+ 逐句 🔊（`__dhSpeak`）+ **隐藏中文自测**（`#app.hide-zh` 同时收掉中文与谐音）+ 📋 复制本单元纯德文。
   - **新增 `scripts/build_sucheng.py`**：从 `~/.workbuddy/wiki-knowledge/raw/lingjichu-sucheng-ocr.txt` 抽「德文/中文/谐音」三元组 → `assets/js/data/sucheng.js`（115 KB）。关键实现：① 以「经典德语瞬间就学会」段为切分依据（不依赖标题行，规避 OCR 写坏 `场罻S`/`场景萹`）；② `classify()` 按「首字符是否中文」判行类型，德文折行/德中混行分别处理；③ OCR 清洗表（`ii→ü`、`B→ß`、行首残留题号、`在了tin` 类杂字）；④ **规范场景标题表** `SCENE_TITLES` 覆盖 OCR 噪声标题（如 `向路`→问路）；⑤ 末尾自检 `gen_wortliste.js` 的 `!b.extra` 过滤仍在（2 处 ✅）。
