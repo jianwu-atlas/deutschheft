@@ -465,7 +465,7 @@ function renderLehrbuch(app) {
         </div>
         <div class="lbk-actions">
           ${b.id === "sucheng" ? `<a class="btn primary" href="sucheng.html">📖 场景精读</a>` : ""}
-          ${b.id === "enwords" ? `<a class="btn primary" href="https://englishheft.pages.dev/" target="_blank" rel="noopener">📖 单词精读 ↗</a>` : ""}
+          ${b.id === "enwords" ? `<a class="btn primary" href="https://jianwu-atlas.github.io/englishheft/" target="_blank" rel="noopener">📖 单词精读 ↗</a>` : ""}
           ${b.id === "w6000" ? `<a class="btn primary" href="w6000.html">📖 词汇速查</a>` : ""}
           <button class="btn ${(b.id === "sucheng" || b.id === "enwords" || b.id === "w6000") ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
           <a class="btn" href="assets/lehrbuch/${b.file}" download>⬇ 下载 PDF</a>

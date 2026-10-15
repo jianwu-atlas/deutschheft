@@ -93,6 +93,17 @@
 
 ## 更新记录
 
+- 2026-10-15（**教材页链接指向 GitHub + 场景精读卡片内边距**，Jian 5 项改动中的 #1 链接、#3 左太挤）：
+  - **教材页「单词精读」外链改用 GitHub**（`assets/js/deutsch.js` 第 468 行 `renderLehrbuch` 的 `enwords` 卡按钮）：`https://englishheft.pages.dev/` → `https://jianwu-atlas.github.io/englishheft/`（英语站 GitHub Pages 子路径，已 curl 确认 200）。
+  - **场景精读卡片内边距**（`assets/css/deutsch.css` `.sc-scene`）：原 `.sc-scene{margin-bottom:18px}` 无内边距（`.card` 基类亦无 padding），标题 + 句子紧贴卡片左右边框（Playwright 实测 gapL/gapR 均 1px）。改为 `.sc-scene{margin-bottom:18px; padding:18px 22px;}`，标题/句子/会话/小贴士统一内缩（遵循站点 18–24px 卡片边距惯例）。场景精读 + 发音篇 + 语法篇三标签共用此样式，桌面/移动均生效。
+  - **版本**：`deutsch.js` v43→**v44**（13 页 html）+ `deutsch.css` v49→**v50**（14 页 html）同步 bump 破缓存。
+  - ⚠️ **部署规则变更（Jian 拍板，长期有效）**：**以后不再部署到 EdgeOne Makers**（`deutschheft.edgeone.cool` 国内 `*.edgeone.cool` SNI 不可达）。本仓库后续仅 GitHub Pages（push 即发）+ Cloudflare（`deutschheft.pages.dev`，wrangler，需 token）；EdgeOne 现有站点保留不动，仅停止更新。
+- 2026-10-15（**移动端导航修复**：手机上看不到导航入口，Jian 报 bug，截图为手机视图）：
+  - **根因**：390px 下品牌区长副标题 `Jian (Jack) Wu · DEUTSCH A1–A1.2` 过宽，`.nav-inner` 内容溢出把 `.nav-tools`（含 ☰ 汉堡）推出右缘（Playwright 实测 burger `right=422 > 390`），手机上看不到导航入口。**汉堡点击逻辑（`initBurger`，`deutsch.js`）本身正常**。
+  - **修复**（`deutsch.css` `@media (max-width:900px)` 块内，**桌面 ≥901px 完全不受影响**）：`.nav-brand{flex-shrink:1;min-width:0}` + `.nav-brand-text{min-width:0}` + `.nav-brand-sub{display:none}`（隐藏长副标题）+ `.nav-brand-title{font-size:15px;white-space:nowrap}` + `.nav-tools{flex-shrink:0;margin-left:auto}`（固定右侧）+ `.nav-inner{padding:0 12px;gap:10px}` + `.nav-tools button{34×34px}`。
+  - **验证**（Playwright）：390px 汉堡 `right=378` 入视口、点击展开 12 链接；360/320px 亦入视口；桌面 1280/1500px 12 链接正常、无汉堡（副标题 1500px 显示、1280px 走既有 901–1400 中屏规则隐藏，均与本修复无关）。
+  - **版本**：`deutsch.css` v48→**v49**（14 页 html 同步 bump）。commit `312249d`，已 push（GitHub Pages）+ 手动 Cloudflare（`deutschheft.pages.dev`，curl 确认 v49 生效）+ EdgeOne（`deutschheft.edgeone.cool`）。
+  - ⚠️ **连带发现（未改，待 Jian 拍板）**：英语站 `englishheft/` 移动端是**另一类 bug**——其 HTML `nav-tools` 只有主题按钮、**根本没有 ☰ 汉堡**，但 CSS 在小屏 `.nav-links{display:none}`，致 6 个导航链接在手机上**彻底消失且无入口唤出**（Playwright 390px：0/6 链接可见，仅主题按钮在视口 `right=357`）。修复需给 6 页 HTML 加汉堡按钮 + `site.js` 加切换逻辑，属**结构性改动**（非纯 CSS 同步），故暂缓待确认。
 - 2026-10-15（**新增《德国 6000 中级词汇》速查页**，Jian「从书本蒸馏核心知识点整合进站」）：
   - **前提**：源 PDF（96 页，`/Volumes/jianwu/…/德语_硬盘备份/中级常用德语词汇6000词 PDF版本可打印.pdf`）**有完整文本层，无需 OCR**（同英语口袋书）。已复制入 `assets/lehrbuch/D1_6000-de-words.pdf`（1.0M）。
   - **蒸馏** `scripts/build_w6000.py` → `assets/js/data/w6000.js`（**6609 条**，512KB）。异构条目按词性分类：名词 3758 / 动词 1202 / 形容词 848 / 副词 136 / 地名 180 / 短语 231 / 其他 404。分条规则＝拉丁字母开头=新条目（动词释义折行并入上一条）；质量过滤＝主词≥2 字 + zh 必含中文（丢 98 条无中文 / 单字母碎片）。数据 `{w,t,inf,zh}`。
