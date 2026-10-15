@@ -113,6 +113,53 @@ def norm_spk(s: str) -> str:
     return SPK_FIX.get(s, s)
 
 
+def parse_tips(block: list[str]) -> list[str]:
+    """解析场景内的「小贴士」段 → 逐条要点文本（可能有多段）"""
+    out: list[str] = []
+    i = 0
+    while i < len(block):
+        if block[i].strip() == "小贴士":
+            i += 1
+            while i < len(block):
+                s = block[i].strip()
+                if (not s or s in ("小贴士", "合话", "会话", "迷你会话加深记忆", "词汇")
+                        or re.match(r"^会话[一二三四五]", s)
+                        or re.match(r"^(场景|Einheit)\s*\d*", s)
+                        or PAGE_RE.match(s)
+                        or s.startswith(NOISE_PREFIX)):
+                    break
+                if not PUNCT_ONLY_RE.match(s):
+                    out.append(s)
+                i += 1
+            continue
+        i += 1
+    return merge_tips(out)
+
+
+def merge_tips(raw: list[str]) -> list[str]:
+    """合并 OCR 折行：上一行未以句末标点结尾 → 与当前行接续；
+    以「句N:」开头的行一律视为新条目。"""
+    out: list[str] = []
+    for s in raw:
+        if not out or re.match(r"^句\s*\d+\s*[:：]", s):
+            out.append(s)
+            continue
+        if re.search(r"[。！？；]$", out[-1]):
+            out.append(s)
+        else:
+            out[-1] = out[-1] + s          # 中文折行：行内不加空格
+    # 去重（OCR 偶有重复）并丢弃超短残片（OCR 折行错位产生的孤字），保留原顺序
+    seen, uniq = set(), []
+    for s in out:
+        if s in seen:
+            continue
+        if len(s) < 8 and not re.match(r"^句\s*\d+\s*[:：]", s):
+            continue
+        seen.add(s)
+        uniq.append(s)
+    return uniq
+
+
 def parse_dialog(block: list[str]) -> list[dict]:
     """解析一个场景的「迷你会话」段 → [{title, turns:[{spk,de,pron,zh}]}]
     只取从首个「会话一」起的部分，避免把前面的单词表/小贴士误当对话。"""
@@ -276,6 +323,7 @@ def main() -> int:
     parts = []
     total = 0
     total_dlg = 0
+    total_tip = 0
     for k in range(len(marks) - 1):
         i0, name = marks[k]
         i1 = marks[k + 1][0]
@@ -303,6 +351,7 @@ def main() -> int:
                 sents.append(m2)
             parsed = parse_sentences(sents)
             dialog = parse_dialog(blk)
+            tips = parse_tips(blk)
             if not parsed and not dialog:
                 continue
             # 标题：优先用规范表（按段序），OCR 标题仅作兜底
@@ -326,9 +375,11 @@ def main() -> int:
             scenes.append({"scene": num, "zh": title or ocr_title,
                            "zhOcr": ocr_title if ocr_title != title else "",
                            "sentences": parsed,
-                           "dialog": dialog})
+                           "dialog": dialog,
+                           "tips": tips})
             total += len(parsed)
             total_dlg += sum(len(d["turns"]) for d in dialog)
+            total_tip += len(tips)
         if scenes:
             parts.append({"einheit": name, "scenes": scenes})
 
@@ -346,6 +397,7 @@ def main() -> int:
     print(f"[✓] 已生成 {OUT.relative_to(ROOT)}")
     print(f"    Einheit {len(parts)} 个 | 场景 {sum(len(p['scenes']) for p in parts)} 个 | 句型 {total} 句")
     print(f"    会话轮次合计：{total_dlg}")
+    print(f"    小贴士合计：{total_tip} 条")
     for p in parts:
         print(f"      {p['einheit']}: {len(p['scenes'])} 场景 / "
               f"{sum(len(s['sentences']) for s in p['scenes'])} 句")

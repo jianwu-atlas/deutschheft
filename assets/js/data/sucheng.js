@@ -100,6 +100,12 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "sie 在德语中大写是“您/您们（尊称）”的意思，小写有可能是“她”或者“人们”的意思。",
+      "在德语中，所有名词首字母都需要大写。",
+      "wie 的中文意思是“怎么样”，后面常接动词，表示，么样？",
+      "wie geht's/Wie geht es Ihnen？是德国人见面比较常用的打招"
      ]
     },
     {
@@ -187,6 +193,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句2:Tut mir Leid 在德语中是表达遗憾的固定搭配。",
+      "句 4：Vergib mir 是表示歉意的固定搭配。"
      ]
     },
     {
@@ -275,7 +285,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -363,6 +374,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "德语中，一般询问“发生什么”，用 Was denn los，这是一个固定搭配。",
+      "funktionierion的意思是“运转”，这里是“顺利”的意思。"
      ]
     },
     {
@@ -451,6 +466,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "在海边用介词 an。",
+      "war 表示事情发生在过去。"
      ]
     },
     {
@@ -545,7 +564,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "7",
@@ -633,6 +653,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句5：在天气中，liegen 表示“下”的意思。",
+      "句 6:es regent 是固定搭配，表示下雨。"
      ]
     },
     {
@@ -715,6 +739,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 6:Meine uhr ist immer genau.是标准的德语口语用语。",
+      "句8：表走得快用介词 vor, vor 的意思是“在⋯⋯前”，也就是时间提前，走得慢用介词 nach, nach 是“.•之后”的意思，表示时间延后。"
      ]
     }
    ]
@@ -808,6 +836,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句7：点菜的时候可以问服务生 Was gibt es denn heute？",
+      "句9：一般用餐前大家会说Guten Appetit！"
      ]
     },
     {
@@ -861,7 +893,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -949,7 +982,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -1042,7 +1076,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -1141,6 +1176,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句8:nehmen 在这里是“乘坐”的意思。",
+      "句9:die Landkarte 地图"
      ]
     },
     {
@@ -1193,7 +1232,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "3",
@@ -1290,7 +1330,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -1363,7 +1404,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "5",
@@ -1466,6 +1508,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "表示“去哪里”，用介词 nach。"
      ]
     },
     {
@@ -1544,7 +1589,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "7",
@@ -1621,6 +1667,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句1：“坐地铁”用介词bei。",
+      "句2:wirde wirklich gern表示更喜欢。"
      ]
     },
     {
@@ -1709,7 +1759,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -1802,7 +1853,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -1890,6 +1942,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句4:Konnten 第二虚拟式，表示礼貌用语。",
+      "句9:Wo引导地点从句。"
      ]
     },
     {
@@ -1984,7 +2040,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -2072,7 +2129,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -2154,6 +2212,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句9:war 是动词 sein 的过去式。"
      ]
     },
     {
@@ -2236,6 +2297,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句6：这里用gar 强调一点也不会。"
      ]
     },
     {
@@ -2330,6 +2394,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句3:wahrsinnig 疯狂的",
+      "句4:Gratuliere zum Bachelore！是一个固定搭配。"
      ]
     }
    ]
@@ -2438,7 +2506,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -2520,6 +2589,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句8:da 是语气词。",
+      "句9：表示“骑自行车”，用介词mit。"
      ]
     },
     {
@@ -2608,7 +2681,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -2685,7 +2759,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "5",
@@ -2763,7 +2838,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "6",
@@ -2846,7 +2922,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -2934,7 +3011,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -3028,6 +3106,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "jdm.etw.heraus/geben 找还（零钱）。"
      ]
     },
     {
@@ -3122,6 +3203,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "sich umschauen/umsehen 是反身动词。"
      ]
     },
     {
@@ -3230,6 +3314,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句1：穿衣服用动词 “tragen”",
+      "句8:nicht表示否定的时候，放在所修饰的词语前面，或者简单句的后面。"
      ]
     },
     {
@@ -3302,6 +3390,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 5:anderes 表示其他的产品。"
      ]
     },
     {
@@ -3384,6 +3475,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 4:nehmen 是“买”的意思。",
+      "178Farbe 是阴性名词，所以 welche 的词尾是e。"
      ]
     },
     {
@@ -3472,6 +3567,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "询问价钱我们可以说 Wie viel kostet es？和 Was kostet es ？但是没有 wie kostet es 的用法哦！"
      ]
     }
    ]
@@ -3565,6 +3663,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句3：表示强调的时候，我们可以把动词放在前面。",
+      "句8：表示整点的时间用介词 um。"
      ]
     },
     {
@@ -3665,6 +3767,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "Danke fir die Blumen 这是固定表达，表示感谢。"
      ]
     },
     {
@@ -3753,6 +3858,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句1:Ich mochte dich etwas fragen. 在句子中如果有情态动词，词尾的动词必须是原形。"
      ]
     },
     {
@@ -3841,6 +3949,12 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "复数代词后面的动词是原形。",
+      "句6：可分动词 an/denken：想。gedacht为denken的变位。",
+      "句8:mochte也表示“喜欢”的意思。",
+      "句9：动词提前表示询问。"
      ]
     },
     {
@@ -3929,6 +4043,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句5：在德国，异性可以一起同居很多年，不结婚，但是受德语的动词是在第二位的。",
+      "表达“更⋯•样”可以在所要修饰的词前加gern。"
      ]
     }
    ]
@@ -4006,7 +4124,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -4058,7 +4177,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "3",
@@ -4140,7 +4260,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "3",
@@ -4228,7 +4349,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -4321,6 +4443,11 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句1:sich fihlen 感觉。",
+      "句4:sich ausruhen 是反身动词，意思是“休息”。",
+      "Gesundheit 是德国人在有人打喷嚏的时候一定说的习语。"
      ]
     },
     {
@@ -4374,7 +4501,10 @@ const SUCHENG = {
        "pron": "贼课鱼嫩 个菜西杜额西给恩促么 到克头额"
       }
      ],
-     "dialog": []
+     "dialog": [],
+     "tips": [
+      "句3:es geht ihnen gut 是固定搭配，意思是“感觉不错。”在德国看病要预约。"
+     ]
     },
     {
      "scene": "3",
@@ -4451,6 +4581,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "um sorgen 表示担心。"
      ]
     }
    ]
@@ -4539,7 +4672,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -4627,6 +4761,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句3：表示“在••上”，用aufo"
      ]
     },
     {
@@ -4715,6 +4852,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 4:konnten 是礼貌用语。",
+      "句5：表示否定的时候，名词用kein。"
      ]
     },
     {
@@ -4797,7 +4938,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "5",
@@ -4885,7 +5027,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -4972,7 +5115,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -5048,7 +5192,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "3",
@@ -5136,7 +5281,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "4",
@@ -5211,6 +5357,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "十月节就是德国慕尼黑啤酒节。"
      ]
     },
     {
@@ -5299,7 +5448,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "6",
@@ -5402,7 +5552,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     }
    ]
   },
@@ -5489,7 +5640,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -5571,7 +5723,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "2",
@@ -5653,6 +5806,13 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句3：",
+      "句5：",
+      "句7：表示“与某人在一起”，用介词 “mit”。",
+      "aber 表示“但是”。",
+      "der Kassenschlager，- =der Kassenhit,s 卖座。"
      ]
     },
     {
@@ -5735,6 +5895,10 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 6:um/schalten 可分动词，关掉。",
+      "句 8:laufen gerade = werden im Fernsehen gezeigt 被电"
      ]
     },
     {
@@ -5823,7 +5987,8 @@ const SUCHENG = {
         }
        ]
       }
-     ]
+     ],
+     "tips": []
     },
     {
      "scene": "6",
@@ -5911,6 +6076,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句4：提问时间用Wann。"
      ]
     },
     {
@@ -6953,6 +7121,9 @@ const SUCHENG = {
         }
        ]
       }
+     ],
+     "tips": [
+      "句 4:B这个字特殊字母可以用相应的字母代替，即B=SS，德语中另外三个特字母也可以用相应的字母代替，即：6=0e a=ae i=ueo282"
      ]
     }
    ]

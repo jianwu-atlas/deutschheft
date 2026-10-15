@@ -1079,8 +1079,10 @@ function renderSucheng(app) {
     app.innerHTML = tabBar + `
       <div class="sc-bar"><div class="sc-tools">
         <button class="chip ${SC_STATE.hideZh ? "on" : ""}" id="scHideZh">${SC_STATE.hideZh ? "👁 显示中文" : "🙈 隐藏中文自测"}</button>
-        <span class="sc-stat">${SC_STATE.tab === "pron" ? "发音篇 · 音素 → 例词 → 中文谐音" : "语法篇 · 13 个专题（含变格与变位表）"}</span>
+        <span class="sc-stat">${SC_STATE.tab === "pron" ? "发音篇 · 字母/组合 → 单词 → 中文意思 → 汉语谐音" : "语法篇 · 教材语法专题（含变格与变位表）"}</span>
+        ${SC_STATE.tab === "gram" ? `<a class="chip" href="grammatik.html">↗ 对照课内语法专题</a>` : ""}
       </div></div>
+      ${SC_STATE.tab === "gram" ? `<p class="sc-cross">📌 本页语法篇来自<b>课外教材</b>《零基础德语速成》，与课内 <a href="grammatik.html">语法专题</a> 是两条独立脉络：课内按你的上课进度编排，这里按教材章节系统铺开，<b>互为补充</b>；若两边表述有差异，以课内为准。</p>` : ""}
       ${list.map((t, i) => `
         <section class="sc-scene card sc-extra">
           <h2 class="sc-title"><span class="sc-num">${i + 1}</span>${esc(t.zh)}</h2>
@@ -1130,6 +1132,11 @@ function renderSucheng(app) {
                   </div>
                 </div>`).join("")}
             </div>`).join("")}
+        </div>` : ""}
+        ${(s.tips && s.tips.length) ? `
+        <div class="sc-tips">
+          <h3 class="sc-tips-h">💡 小贴士 <em>Tipps</em></h3>
+          <ul>${s.tips.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
         </div>` : ""}
       </section>`).join("")}
   `;

@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 WIKI = Path.home() / ".workbuddy/wiki-knowledge/wiki/concepts"
+RAW = Path.home() / ".workbuddy/wiki-knowledge/raw/lingjichu-sucheng-ocr.txt"
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/js/data/sucheng-extras.js"
 
@@ -50,8 +51,78 @@ def inline(s: str) -> str:
     return s
 
 
+# ---------- 发音篇：从 OCR 抽「字母及字母组合 / 单词 / 中文意思 / 汉语谐音」四列 ----------
+PRON_SECS = [
+    ("单元音1", ["单元音1", "单元音 1"]),
+    ("单元音2", ["单元音2", "单元音 2"]),
+    ("辅音1", ["辅音1", "辅音 1"]),
+    ("辅音2", ["辅音2", "辅音 2"]),
+    ("辅音3", ["辅音3", "辅音 3"]),
+    ("辅音组合", ["辅音组合发音", "辅音组合"]),
+    ("双元音", ["双元音"]),
+]
+P_COLS = ["字母及字母组合", "单词", "中文意思", "汉语谐音"]
+P_PAGE = re.compile(r"^=+\s*PAGE\s*\d+\s*/\s*\d+\s*=+$")
+P_NOISE = ("发音篇", "友音篇", "音标", "字母", "单词", "中文意思", "汉语谐音", "发音方法", "标准德语")
+P_IPA = re.compile(r"^[［\[(（][^］\])）]{1,12}[］\])）]?$")
+
+
+def _clean_cell(s: str) -> bool:
+    s = s.strip()
+    if not s or P_PAGE.match(s) or P_IPA.match(s):
+        return False
+    if s.startswith(P_NOISE) or re.match(r"^\d{1,3}$", s):
+        return False
+    if re.match(r"^[^\w\u4e00-\u9fff]*$", s):
+        return False
+    return True
+
+
+def parse_pron_tables() -> dict[str, list[list[str]]]:
+    """→ {section: [[字母组合, 单词, 中文意思, 汉语谐音], ...]}"""
+    lines = RAW.read_text(encoding="utf-8", errors="ignore").split("\n")
+    starts = {}
+    for key, names in PRON_SECS:
+        hits = [i for i, l in enumerate(lines) if i > 700 and l.strip() in names]
+        if hits:
+            starts[key] = hits[0]
+    order = sorted(starts, key=lambda k: starts[k])
+    tables: dict[str, list[list[str]]] = {}
+    for n, key in enumerate(order):
+        a = starts[key]
+        b = starts[order[n + 1]] if n + 1 < len(order) else len(lines)
+        seg = lines[a:b]
+        cols: dict[str, list[str]] = {}
+        cur = None
+        for l in seg:
+            s = l.strip()
+            if s in P_COLS:
+                cur = s
+                cols.setdefault(cur, [])
+                continue
+            if cur and _clean_cell(s):
+                cols[cur].append(s)
+        combo, words = cols.get("字母及字母组合", []), cols.get("单词", [])
+        zh, pron = cols.get("中文意思", []), cols.get("汉语谐音", [])
+        nrow = min(len(combo), len(words), len(zh), len(pron))
+        tables[key] = [[combo[i], words[i], zh[i], pron[i]] for i in range(nrow)]
+    return tables
+
+
+def pron_table_html(rows: list[list[str]]) -> str:
+    if not rows:
+        return ""
+    body = "".join(
+        "<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in rows)
+    return ("<table class='sc-md-table'><thead><tr>"
+            + "".join(f"<th>{c}</th>" for c in P_COLS)
+            + f"</tr></thead><tbody>{body}</tbody></table>")
+    s = re.sub(r"`(.+?)`", r"<code>\1</code>", s)
+    s = re.sub(r"\[(.+?)\]\((.+?)\)", r"<a href='\2'>\1</a>", s)
+    return s
+
+
 def md_to_html(md: str) -> str:
-    """极简 Markdown → HTML（只处理本知识库用到的子集）"""
     lines = md.split("\n")
     out, i = [], 0
     # 跳过 front-matter
@@ -128,9 +199,19 @@ def collect(pages, kind: str) -> list[dict]:
 def main() -> int:
     pron = collect(PRON_PAGES, "pron")
     gram = collect(GRAM_PAGES, "gram")
+    # 发音篇：把 OCR 抽出的「字母组合 / 单词 / 中文意思 / 汉语谐音」四列表插到每讲最前
+    tables = parse_pron_tables()
+    hit = 0
+    for item in pron:
+        rows = tables.get(item["id"], [])
+        tbl = pron_table_html(rows)
+        if tbl:
+            item["html"] = tbl + item["html"]
+            item["rows"] = len(rows)
+            hit += 1
     payload = {
         "meta": {"extra": True, "note": "课外教材；词汇不计入生词表",
-                 "source": "~/.workbuddy/wiki-knowledge/wiki/concepts"},
+                 "source": "~/.workbuddy/wiki-knowledge/wiki/concepts + OCR 发音篇"},
         "pronunciation": pron,
         "grammar": gram,
     }
@@ -140,7 +221,7 @@ def main() -> int:
         "const SUCHENG_EXTRAS = " + json.dumps(payload, ensure_ascii=False, indent=1) + ";\n",
         encoding="utf-8")
     print(f"[✓] 已生成 {OUT.relative_to(ROOT)}")
-    print(f"    发音篇 {len(pron)} 讲 | 语法篇 {len(gram)} 讲 | 共 {OUT.stat().st_size // 1024} KB")
+    print(f"    发音篇 {len(pron)} 讲（{hit} 讲含谐音表）| 语法篇 {len(gram)} 讲 | 共 {OUT.stat().st_size // 1024} KB")
     return 0
 
 
