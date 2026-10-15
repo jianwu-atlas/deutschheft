@@ -438,7 +438,8 @@ const PAGES = {
   formen: renderFormen,
   uebungen: renderQuizHome,
   kursplan: renderKursplan,
-  sucheng: renderSucheng
+  sucheng: renderSucheng,
+  english: renderEnglish
 };
 
 /* ============================================================
@@ -463,7 +464,8 @@ function renderLehrbuch(app) {
         </div>
         <div class="lbk-actions">
           ${b.id === "sucheng" ? `<a class="btn primary" href="sucheng.html">📖 场景精读</a>` : ""}
-          <button class="btn ${b.id === "sucheng" ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
+          ${b.id === "enwords" ? `<a class="btn primary" href="english.html">📖 单词精读</a>` : ""}
+          <button class="btn ${(b.id === "sucheng" || b.id === "enwords") ? "" : "primary"} lbk-view" data-id="${b.id}">📖 在线阅读</button>
           <a class="btn" href="assets/lehrbuch/${b.file}" download>⬇ 下载 PDF</a>
         </div>
       </div>
@@ -1175,6 +1177,103 @@ function bindSuchengCommon(app) {
   if (hz) hz.addEventListener("click", () => {
     SC_STATE.hideZh = !SC_STATE.hideZh;
     renderSucheng(app);
+  });
+  $$(".s-speak", app).forEach(b => b.addEventListener("click", ev => {
+    ev.stopPropagation();
+    if (window.__dhSpeak) window.__dhSpeak(b.dataset.t);
+  }));
+}
+
+/* ============================================================
+   英语单词 · 15000 英语单词口袋书（三行：英文 / 音标 / 中文+词性）
+   数据：assets/js/data/english.js（脚本生成，勿手改）
+   ⚠️ 课外教材：词汇不计入 VOCAB / wortliste.js（见项目 MEMORY.md）
+   ============================================================ */
+const EN_STATE = { section: 0, part: 0, hideZh: false };
+
+function renderEnglish(app) {
+  if (typeof ENGLISH === "undefined" || !ENGLISH.sections) {
+    app.innerHTML = `<div class="card"><p>英语单词数据未加载（assets/js/data/english.js）。</p></div>`;
+    return;
+  }
+  const A = s => esc(s).replace(/"/g, "&quot;");       // 属性转义（英文含引号）
+  const secs = ENGLISH.sections;
+  if (EN_STATE.section >= secs.length) EN_STATE.section = 0;
+  const sec = secs[EN_STATE.section];
+  if (EN_STATE.part >= sec.parts.length) EN_STATE.part = 0;
+  const part = sec.parts[EN_STATE.part];
+  const nScenes = secs.reduce((a, s) => a + s.parts.reduce((b, p) => b + p.scenes.length, 0), 0);
+  const nWords = secs.reduce((a, s) => a + s.parts.reduce((b, p) =>
+    b + p.scenes.reduce((c, sc) => c + sc.words.length, 0), 0), 0);
+  const nSent = secs.reduce((a, s) => a + s.parts.reduce((b, p) =>
+    b + p.scenes.reduce((c, sc) => c + sc.sentences.length, 0), 0), 0);
+
+  app.innerHTML = `
+    <div class="chip-row sc-tabs en-sections">
+      ${secs.map((s, i) => `<button class="chip ${i === EN_STATE.section ? "on" : ""}" data-s="${i}">${s.no}. ${esc(s.zh)}<span class="sc-cnt">${s.parts.reduce((a, p) => a + p.scenes.length, 0)}</span></button>`).join("")}
+    </div>
+    <div class="sc-bar">
+      <div class="chip-row sc-einheiten">
+        ${sec.parts.map((p, i) => `<button class="chip ${i === EN_STATE.part ? "on" : ""}" data-p="${i}">${esc(p.zh)}<span class="sc-cnt">${p.scenes.length}</span></button>`).join("")}
+      </div>
+      <div class="sc-tools">
+        <button class="chip ${EN_STATE.hideZh ? "on" : ""}" id="enHideZh">${EN_STATE.hideZh ? "👁 显示中文" : "🙈 隐藏中文自测"}</button>
+        <button class="chip" id="enCopy">📋 复制本 Part 纯英文</button>
+        <span class="sc-stat">全书 ${nScenes} 场景 · ${nWords} 词 · ${nSent} 句</span>
+      </div>
+    </div>
+    ${part.scenes.map(sc => `
+      <section class="sc-scene card">
+        <h2 class="sc-title"><span class="sc-num">${esc(sc.no.split(".").pop())}</span>${esc(sc.zh)}
+          <span class="sc-badge">${sc.words.length} 词 · ${sc.sentences.length} 句</span></h2>
+        <div class="en-words">
+          ${sc.words.map(w => `
+            <div class="en-word">
+              <p class="en-en">${esc(w.en)}<button class="s-speak" data-t="${A(w.en)}" title="朗读">🔊</button></p>
+              <p class="s-pron">${esc(w.ipa)}</p>
+              <p class="en-zh">${esc(w.zh)}<span class="en-pos">${esc(w.pos)}</span></p>
+            </div>`).join("")}
+        </div>
+        ${sc.sentences.length ? `
+        <div class="sc-dialog">
+          <h3 class="sc-dialog-h">💬 Top10 场景句 <em>Key Sentences</em></h3>
+          ${sc.sentences.map((s, i) => `
+            <div class="sc-turn">
+              <span class="sc-spk">${i + 1}</span>
+              <div class="sc-turn-body">
+                <p class="s-de">${esc(s.en)}<button class="s-speak" data-t="${A(s.en)}" title="朗读">🔊</button></p>
+                <p class="s-zh">${esc(s.zh)}</p>
+              </div>
+            </div>`).join("")}
+        </div>` : ""}
+      </section>`).join("")}
+  `;
+
+  app.classList.toggle("hide-zh", EN_STATE.hideZh);
+  $$(".en-sections .chip", app).forEach(b => b.addEventListener("click", () => {
+    EN_STATE.section = +b.dataset.s; EN_STATE.part = 0;
+    renderEnglish(app); window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  $$(".sc-einheiten .chip", app).forEach(b => b.addEventListener("click", () => {
+    EN_STATE.part = +b.dataset.p;
+    renderEnglish(app); window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  const hz = $("#enHideZh", app);
+  if (hz) hz.addEventListener("click", () => { EN_STATE.hideZh = !EN_STATE.hideZh; renderEnglish(app); });
+  const cp = $("#enCopy", app);
+  if (cp) cp.addEventListener("click", e => {
+    const txt = part.scenes.map(sc =>
+      `【${sc.zh}】\n` + sc.words.map(w => w.en).join("\n") +
+      (sc.sentences.length ? "\n\n" + sc.sentences.map(s => s.en).join("\n") : "")).join("\n\n");
+    const btn = e.currentTarget;
+    const done = () => { const o = btn.textContent; btn.textContent = "✓ 已复制"; setTimeout(() => { btn.textContent = o; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done).catch(done);
+    else {
+      const ta = document.createElement("textarea");
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (err) { /* ignore */ }
+      ta.remove(); done();
+    }
   });
   $$(".s-speak", app).forEach(b => b.addEventListener("click", ev => {
     ev.stopPropagation();

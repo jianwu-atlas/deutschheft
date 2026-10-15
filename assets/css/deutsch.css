@@ -1277,3 +1277,15 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 .sc-tips li { font-size: 13px; line-height: 1.7; color: var(--ink-2); margin: 4px 0; }
 .sc-cross { font-size: 12.5px; line-height: 1.7; color: var(--ink-2); background: var(--accent-soft); border-radius: 10px; padding: 10px 13px; margin: 0 0 16px; }
 .sc-cross a { color: var(--accent); font-weight: 600; }
+
+/* ---------- 英语单词页（三行：英文 / 音标 / 中文+词性） ---------- */
+.en-words { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px 18px; }
+.en-word { padding: 8px 0 9px; border-bottom: 1px dashed var(--line, rgba(0,0,0,.09)); }
+.en-word .en-en { margin: 0 0 5px; font-size: 15.5px; font-weight: 600; line-height: 1.45; color: var(--ink); }
+.en-word .s-pron { display: inline-block; margin: 0 0 5px; padding: 1px 9px; border-radius: 99px; font-size: 12px; line-height: 1.7; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono, monospace); }
+.en-word .en-zh { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.en-word .en-pos { margin-left: 6px; font-size: 11px; font-style: italic; color: var(--ink-3); }
+.en-word .s-speak { margin-left: 6px; padding: 0 6px; border-radius: 99px; cursor: pointer; border: 1px solid var(--line, rgba(0,0,0,.12)); background: transparent; font-size: 11px; vertical-align: middle; }
+.en-word .s-speak:hover { background: var(--accent-soft); }
+#app.hide-zh .en-word .en-zh { display: none; }
+@media (max-width: 900px) { .en-words { grid-template-columns: 1fr 1fr; gap: 10px 14px; } .en-word .en-en { font-size: 15px; } }
