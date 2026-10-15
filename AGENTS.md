@@ -25,6 +25,9 @@
 | `scripts/build_w6000.py` | PDF 文本层 → `assets/js/data/w6000.js`（96 页，**有文本层无需 OCR**；异构条目分类 noun/verb/adj/adv/place/phrase/mixed + 质量过滤：主词≥2 字、zh 必含中文）。源 PDF 在 `/Volumes/jianwu/…/德语_硬盘备份/中级常用德语词汇6000词 PDF版本可打印.pdf`，已复制到 `assets/lehrbuch/D1_6000-de-words.pdf`（1.0M） |
 | `assets/js/data/w6000.js` | 脚本生成，勿手改；`window.W6000 = {meta:{extra:true,count,types}, words:[{w,t,inf,zh}]}` |
 | `scripts/_test_w6000.py` | w6000 冒烟测试（16 断言：渲染 400 行 / 德文搜索 / 中文搜索 / 词性筛选 / 显示更多 / 教材页入口）；先 pack 再跑 |
+| `assets/js/data/w6000-ipa.js` | 脚本生成，勿手改；`const PRON_W6000 = {"原词":"[ipa]"}`，**6061 条**（espeak-ng 德语 G2P，**近似/示意音标**）；供全站「音标」开关标注 w6000 词（`put()` 自动 toLowerCase、去 der/die/das 前缀） |
+| `scripts/build_w6000_ipa.py` | espeak-ng 批量生成 w6000 IPA（**可断点续跑**：`CHUNK`/`WORKERS` 环境变量，进度存 `data/w6000_ipa_progress.json`）→ 产出 `assets/js/data/w6000-ipa.js` |
+| `scripts/_test_w6000_ipa.py` | w6000 IPA 验证（Playwright，**4 断言**：全部模式 w6 词带 `ruby.dh-ipa` / IPA 形如 `[..]` / 关闭模式 0 / 无 JS 报错）；先 pack 再跑，需 anaconda 解释器 |
 | `scripts/build_sucheng.py` | OCR 全文 → `assets/js/data/sucheng.js`（抽取「德文/中文/谐音」三元组 + OCR 清洗 + 规范标题覆盖） |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
 | `uebungen.html` | 6 组测验（54 题），即时解析 + 成绩页 |
@@ -93,6 +96,14 @@
 
 ## 更新记录
 
+- 2026-10-15（**w6000 全站德语音标 IPA 补齐**，Jian「选了全部德语音标，但只有一小部分有国际音标」）：
+  - **根因**：w6000 的 6609 词自身无 IPA；全站「音标：全部」浮动开关（`annotate.js`）只标能命中课程词典（`pron.js` 合并，仅 A1/A1.2）的词，实测仅覆盖 **405/6609 ≈ 6%**，其余 94% 空白。
+  - **方案**（Jian 拍板「装 espeak-ng 批量生成」）：`scripts/build_w6000_ipa.py` 用 **espeak-ng 德语 G2P**（`-v de --ipa`，8 线程并行，可断点续跑，进度 `data/w6000_ipa_progress.json`）为全部 **6061 个去重词**生成 IPA → 新数据文件 `assets/js/data/w6000-ipa.js`（`const PRON_W6000 = {"原词":"[ipa]"}`，**216KB / 6061 条 / 100% 非空 / 无 (en)(de) 标签残留**）。**近似/示意音标**（espeak 非人工校音，仅供发音参考，非权威 IPA）。
+  - **接线**：`annotate.js` 词典构建处加 `if (typeof PRON_W6000!=="undefined") Object.entries(PRON_W6000).forEach(([k,v])=>put(k,v))`（与现有 PRON_* 同路径，`put()` 自动 toLowerCase + 去 der/die/das 前缀）；`w6000.html` 在 `annotate.js` 前加 `<script src="assets/js/data/w6000-ipa.js?v=1">`。`PRON_W6000` 只在 w6000.html 加载，其他页不受影响。
+  - **验证**：`scripts/_test_w6000_ipa.py`（Playwright，需 anaconda）**4 断言全过**——「全部」模式 400 行中 ≥50 个 w6 词带 `ruby.dh-ipa`、IPA 形如 `[..]`、关闭模式 0、无 JS 报错。截图确认 Abenteuer / Abitur / Arbeitsamt / Asthma 等头顶 IPA。
+  - **版本**：`annotate.js` v32→**v33**（13 页 html 同步 bump）+ 新增 `w6000-ipa.js?v=1`。
+  - ⚠️ **espeak-ng 手动安装**（Homebrew 嵌套 sandbox 在本环境被拒 `sandbox_apply: EPERM`）：ghcr.io bottle 手动解压 + `install_name_tool` 修 `@@HOMEBREW_*@@` 占位 + 补 `pcaudiolib` 依赖 → `/opt/homebrew/bin/espeak-ng`。每次调用 ~1.1s（3% CPU，阻塞在子进程 spawn），8 线程并行实测 8 词 1.38s（完全重叠）。
+  - ⚠️ **踩坑**：初版脚本缺 `os.makedirs(data/)`，每次跑到首个进度点即 `FileNotFoundError` 崩（后台 26 轮全跑空、无产出，极易误判为看门狗）；补 `os.makedirs(...,exist_ok=True)` + 「空 IPA 也标记完成（防失败词无限重试）」后，前台验证通过，后台 14m 跑完 6061/6061。
 - 2026-10-15（**教材页链接指向 GitHub + 场景精读卡片内边距**，Jian 5 项改动中的 #1 链接、#3 左太挤）：
   - **教材页「单词精读」外链改用 GitHub**（`assets/js/deutsch.js` 第 468 行 `renderLehrbuch` 的 `enwords` 卡按钮）：`https://englishheft.pages.dev/` → `https://jianwu-atlas.github.io/englishheft/`（英语站 GitHub Pages 子路径，已 curl 确认 200）。
   - **场景精读卡片内边距**（`assets/css/deutsch.css` `.sc-scene`）：原 `.sc-scene{margin-bottom:18px}` 无内边距（`.card` 基类亦无 padding），标题 + 句子紧贴卡片左右边框（Playwright 实测 gapL/gapR 均 1px）。改为 `.sc-scene{margin-bottom:18px; padding:18px 22px;}`，标题/句子/会话/小贴士统一内缩（遵循站点 18–24px 卡片边距惯例）。场景精读 + 发音篇 + 语法篇三标签共用此样式，桌面/移动均生效。

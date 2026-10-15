@@ -83,6 +83,7 @@
   if (typeof PRON_EXTRA !== "undefined") Object.entries(PRON_EXTRA).forEach(([k, v]) => put(k, v));
   if (typeof PRON_FUNC !== "undefined") Object.entries(PRON_FUNC).forEach(([k, v]) => put(k, v));
   if (typeof PRON_MORE !== "undefined") Object.entries(PRON_MORE).forEach(([k, v]) => put(k, v));
+  if (typeof PRON_W6000 !== "undefined") Object.entries(PRON_W6000).forEach(([k, v]) => put(k, v));
 
   /* 专有名词（人名/地名/品牌）不标注：Mia / Elena / Frankfurt … 会满屏出现 */
   const NAMES = new Set([
