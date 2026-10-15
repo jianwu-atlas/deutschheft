@@ -47,8 +47,10 @@
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包 → 不公开） |
 | `assets/js/data/sucheng.js` | 脚本生成（build_sucheng.py），勿手改；课外教材，词汇不计入生词表 |
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包，不公开） |
-| `brand/` | **品牌源文件**：`design-philosophy.md`（金印 Gilded Seal 设计哲学）+ `logo-mark.svg`（主标）+ `og-image.svg`（社交分享图） |
-| `assets/img/` | 由 brand/ 栅格化（`rsvg-convert`）：`favicon.svg` + `favicon-16/32/48.png` + `apple-touch-icon.png`(180) + `og-image.png`(1200×630) + `logo-mark-512.png`；改 logo 先改 brand/*.svg 再重新栅格化 |
+| `brand/` | 旧品牌源文件（Gilded Seal 金印，**已被水墨天鹅 logo 取代，仅存档**） |
+| `assets/img/` | **Logo 源**：`favicon.svg`（水墨天鹅，400 viewBox 透明底，2026-10-15 完全参考 Jian 指定图）+ `og-image.svg`（纸底金带 + MEIN DEUTSCHEHEFT wordmark + logo 内联）；改 logo 只改这两个 SVG，再跑 `scripts/gen_logos.py` 栅格化 |
+| `scripts/gen_logos.py` | SVG → 9 位图（Playwright Chromium 高保真）：favicon-16/32/48、apple-touch-icon(180)、icon-192/512/512-maskable、logo-mark-512、og-image(1200×630)；**需 anaconda 解释器**（受管 python 无 playwright） |
+| `scripts/_check_logo.py` | logo 本地验证（11 项断言：SVG 内容 / 无 D 印章残留 / 引用版本号 / mark 渲染像素）；先 pack 出 dist 再跑 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
 | `assets/js/notion-import.js` | Markdown 渲染器 + 导入 + 搜索 |
@@ -87,6 +89,13 @@
 
 ## 更新记录
 
+- 2026-10-15（**水墨天鹅 logo，完全参考 Jian 指定图**，替换 Gilded Seal 金印版，commit `d9aaef3`）：
+  - 参考图（`~/Documents/5_CPI/0_1-德语/德语logo.png`，500×500 白底）PIL 采样配色：**灰绿 #BEC09D**（水墨圆）/ **墨色 #222222** / De Yu 卡其灰绿 **#A9AA88**（参考图**无红印章**）。
+  - 元素（`favicon.svg`，400 viewBox 透明底）：水墨灰绿圆（径向渐变 + 0.6 高斯模糊模拟墨韵）+ 圆内左侧天鹅线稿（圆头/短喙/4 道冠羽/S 颈身/4 道扇形翅）+ 圆内右半「德」+ 山水线（穿过圆下缘、左端下卷云、右端上翘小勾）+ 线下三横小装饰 + 右下「语」+ 左下两行 De Yu。五轮 measure→draw→compare（Playwright 渲染与参考图并排）修正几何。
+  - `og-image.svg`：保留纸底 #F6F1E7 + 金带 + MEIN DEUTSCHEHEFT wordmark + jwlab 署名，左侧 logo 内联（`scale(2.4)`）。
+  - 流程对齐英语站：新增 `scripts/gen_logos.py`（栅格化 9 位图）+ `scripts/_check_logo.py`（11 项断言全过）。`brand/` 金印源文件降为存档。
+  - **暗色主题**：`.brand-mark` 垫纸色底卡（`background: var(--paper) url(...)`）——透明底墨线稿在暗底会消失，不能像英语站那样直接移除 override。
+  - 版本号：favicon 组 / `manifest.webmanifest` **?v=33**、`deutsch.css` **?v=44**（13 页）。
 - 2026-10-15（英语单词页：蒸馏《15000英语单词口袋书》+ 整合）：
   - **关键前提**：该 PDF **有完整文本层**（1370 页 / 6.5 MB），**无需 OCR** —— 与德语速成（扫描件需 OCR）不同，抽文本仅 17 秒。
   - **蒸馏**：新增 `scripts/build_english.py` → `assets/js/data/english.js`（887 KB）。三层结构 `sections[] → parts[] → scenes[]`；产出 **17 Section / 61 Part / 493 场景 / 7052 词条 / 4644 场景句**。
