@@ -16,9 +16,10 @@ ROOT = Path(__file__).resolve().parent.parent
 IMG = ROOT / "assets" / "img"
 
 JOBS = [
-    ("favicon.svg", "favicon-16.png", 16),
-    ("favicon.svg", "favicon-32.png", 32),
-    ("favicon.svg", "favicon-48.png", 48),
+    # 小尺寸 favicon 用加粗版（mark 版），大尺寸用原版
+    ("favicon-mark.svg", "favicon-16.png", 16),
+    ("favicon-mark.svg", "favicon-32.png", 32),
+    ("favicon-mark.svg", "favicon-48.png", 48),
     ("favicon.svg", "apple-touch-icon.png", 180),
     ("favicon.svg", "icon-192.png", 192),
     ("favicon.svg", "icon-512.png", 512),

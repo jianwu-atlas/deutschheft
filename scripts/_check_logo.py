@@ -36,6 +36,13 @@ def main() -> int:
     check("favicon.svg 无旧 D 印章残留（#201B14/#C9A227 印章 rect/jwlab）",
           not any(t in svg_text for t in ("#201B14", "rx=\"118\"", "jwlab")))
 
+    mk = (DIST / "assets" / "img" / "favicon-mark.svg").read_text(encoding="utf-8")
+    check("favicon-mark.svg 加粗版存在且笔画 ≥6（山水线 9）",
+          "</svg>" in mk and 'stroke-width="9"' in mk
+          and all(f'stroke-width="{i}"' not in mk for i in (1, 2, 3)), mk[:80])
+    check("favicon-mark.svg 小尺寸版省略不可辨元素（无 De Yu / 无冠羽）",
+          ">De</text>" not in mk and "L132 134" not in mk)
+
     og_text = (DIST / "assets" / "img" / "og-image.svg").read_text(encoding="utf-8")
     check("og-image.svg 换成水墨天鹅 + 保留 MEIN DEUTSCHEHEFT wordmark",
           "ogink" in og_text and ">德</text>" in og_text and "DEUTSCHHEFT" in og_text)
@@ -54,7 +61,11 @@ def main() -> int:
 
             bg = pg.eval_on_selector(
                 ".brand-mark", "el => getComputedStyle(el).backgroundImage")
-            check(f"{page}: 导航品牌 mark 指向新 svg（?v=33）", "favicon.svg?v=33" in bg, bg)
+            check(f"{page}: 导航品牌 mark 指向加粗版（favicon-mark.svg?v=33）",
+                  "favicon-mark.svg?v=33" in bg, bg)
+            mw = pg.eval_on_selector(
+                ".brand-mark", "el => Math.round(el.getBoundingClientRect().width)")
+            check(f"{page}: mark 已放大到 46px", mw == 46, f"{mw}px")
 
             box = pg.eval_on_selector(
                 ".brand-mark",
@@ -63,12 +74,15 @@ def main() -> int:
             shot = pg.screenshot(clip=box)
             im = Image.open(io.BytesIO(shot)).convert("RGBA")
             W, H = im.size
-            # mark 34px ≈ svg 400 → px = svg/400*W
+            # mark 46px ≈ svg 400 → px = svg/400*W
             def px_at(sx, sy):
                 return im.getpixel((int(sx / 400 * W), int(sy / 400 * H)))
-            sage = px_at(184, 140)   # 灰绿圆内
+            sage = px_at(160, 120)   # 灰绿圆内左上（避开「德」左缘笔画）
             check(f"{page}: mark 内灰绿圆像素正确",
-                  140 < sage[0] < 230 and abs(sage[0] - sage[1]) < 25 and sage[2] < sage[1] - 15, str(sage))
+                  150 < sage[0] < 235 and abs(sage[0] - sage[1]) < 25 and sage[2] < sage[1] - 15, str(sage))
+            ink = px_at(276, 197)    # 山水线（加粗版 46px 下 ≈1px，应可辨）
+            check(f"{page}: mark 内山水线墨色可见",
+                  0 < ink[0] < 170 and ink[0] < sage[0] - 30, str(ink))
 
         pg.goto((DIST / "index.html").as_uri())
         pg.wait_for_timeout(500)

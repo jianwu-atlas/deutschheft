@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- 品牌 mark 专用加粗版（favicon-mark.svg）：
+       与 favicon.svg 同构图，但笔画全部加粗（≥6，mark 46px 下 ≥1px）；
+       小尺寸不可辨的元素（De Yu 小字 / 冠羽）省略；导航 mark 与小尺寸 favicon 用它 -->
+  <defs>
+    <radialGradient id="ink" cx="45%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#CBD0AC"/>
+      <stop offset="62%" stop-color="#BEC09D"/>
+      <stop offset="100%" stop-color="#A9AC85"/>
+    </radialGradient>
+  </defs>
+  <!-- 水墨灰绿圆（略放大，增强存在感） -->
+  <circle cx="184" cy="152" r="46" fill="url(#ink)"/>
+  <!-- 山水线（加粗）：左端下卷 / 右端上翘小勾 -->
+  <g fill="none" stroke="#222222" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 202 C 170 198, 240 197, 276 199" stroke-width="9"/>
+    <path d="M276 199 C 283 199, 288 194, 282 189" stroke-width="7"/>
+    <path d="M128 202 C 121 202, 117 209, 123 212 C 128 214, 131 211, 128 207" stroke-width="7"/>
+  </g>
+  <!-- 天鹅（加粗，删冠羽，翅膀两道） -->
+  <g fill="none" stroke="#222222" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="146" cy="157" r="9" stroke-width="8"/>
+    <path d="M137 150 L128 141" stroke-width="8"/>
+    <path d="M155 165 C 166 170, 174 180, 176 190 C 175 199, 167 204, 158 201" stroke-width="7"/>
+    <path d="M159 183 C 150 174, 141 169, 132 167" stroke-width="6"/>
+    <path d="M162 190 C 152 183, 143 180, 134 179" stroke-width="6"/>
+  </g>
+  <!-- 竖排「德 / 语」 -->
+  <text x="201" y="150" font-size="46" font-weight="900" fill="#222222" text-anchor="middle"
+        font-family="'Kaiti SC','STKaiti','KaiTi','Noto Serif SC','Songti SC','SimSun',serif">德</text>
+  <text x="236" y="226" font-size="44" font-weight="900" fill="#222222" text-anchor="middle"
+        font-family="'Kaiti SC','STKaiti','KaiTi','Noto Serif SC','Songti SC','SimSun',serif">语</text>
+  <!-- 线下三横小装饰（加粗） -->
+  <g fill="none" stroke="#222222" stroke-linecap="round">
+    <path d="M194 208 H218" stroke-width="7"/>
+    <path d="M190 216 H222" stroke-width="7"/>
+    <path d="M195 224 H217" stroke-width="7"/>
+  </g>
+</svg>
