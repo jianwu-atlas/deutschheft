@@ -68,8 +68,8 @@ body::before {
 .nav-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; gap: 20px; padding: 0 24px; }
 .nav-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
 .brand-mark {
-  width: 46px; height: 46px; border-radius: 11px; flex-shrink: 0;
-  background: url("../img/favicon-mark.svg?v=33") center/100% 100% no-repeat;
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  background: url("../img/favicon.svg?v=34") center/100% 100% no-repeat;
   color: transparent; overflow: hidden;
 }
 .nav-brand-text { display: flex; flex-direction: column; line-height: 1.05; }
@@ -694,8 +694,7 @@ body::before {
 [data-theme="dark"] .hero { background: radial-gradient(120% 160% at 88% -10%, rgba(201,162,39,.18), transparent 55%), radial-gradient(100% 140% at -8% 110%, rgba(180,85,29,.16), transparent 50%), #0F0D0A; }
 [data-theme="dark"] .focus-box { background: #2A2118; }
 [data-theme="dark"] .verb-chip { background: #33261A; border-color: #4A3524; }
-/* 水墨天鹅 logo 为透明底 + 墨色线稿：暗色主题下垫纸色底卡，保证墨线可见 */
-[data-theme="dark"] .brand-mark { background: var(--paper) url("../img/favicon-mark.svg?v=33") center/100% 100% no-repeat; }
+[data-theme="dark"] .brand-mark { background: var(--ink); color: #17140F; }
 [data-theme="dark"] .s-zh { border-left-color: #8A6C2F; }
 [data-theme="dark"] .s-ipa { background: #33261A; color: #E0A96D; }
 [data-theme="dark"] .para-notes { background: #2A2118; border-color: #4A3524; border-left-color: #C4652A; }

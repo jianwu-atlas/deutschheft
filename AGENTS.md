@@ -47,10 +47,10 @@
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包 → 不公开） |
 | `assets/js/data/sucheng.js` | 脚本生成（build_sucheng.py），勿手改；课外教材，词汇不计入生词表 |
 | `docs/` | 方案与设计文档（`pack_site.py` 不打包，不公开） |
-| `brand/` | 旧品牌源文件（Gilded Seal 金印，**已被水墨天鹅 logo 取代，仅存档**） |
-| `assets/img/` | **Logo 源**：`favicon.svg`（水墨天鹅主版，400 viewBox 透明底，2026-10-15 完全参考 Jian 指定图）+ `favicon-mark.svg`（**mark/小尺寸加粗版**：同构图、笔画 6-9、圆 r46、删 De Yu 与冠羽——细线稿在 34px mark 上会被抗锯齿稀释成糊）+ `og-image.svg`（纸底金带 + MEIN DEUTSCHEFT wordmark + logo 内联）；改 logo 要两个 SVG 一起改，再跑 `scripts/gen_logos.py` 栅格化 |
-| `scripts/gen_logos.py` | SVG → 9 位图（Playwright Chromium 高保真）：favicon-16/32/48 用 **favicon-mark.svg**（小尺寸加粗版），apple-touch-icon(180)/icon-192/512/maskable/logo-mark-512 用 `favicon.svg`，og-image 用 `og-image.svg`；**需 anaconda 解释器**（受管 python 无 playwright） |
-| `scripts/_check_logo.py` | logo 本地验证（17 项断言：SVG 内容 / mark 加粗版 / 引用版本号 / mark 46px / 渲染像素）；先 pack 出 dist 再跑 |
+| `brand/` | **品牌源文件（Gilded Seal 金印，当前主用）**：`design-philosophy.md` + `logo-mark.svg` + `og-image.svg` |
+| `assets/img/` | **Logo 源**：`favicon.svg`（**金印 D 版**，512 viewBox：#201B14 墨黑圆角方块 + 金 #C9A227 Georgia D + 细金线 + der/die/das 三点蓝/红/绿 + jwlab 斜体署名）+ `og-image.svg`（纸底金带 + 金印 D 内联 + MEIN DEUTSCHEFT wordmark）；改 logo 要两个 SVG 一起改，再跑 `scripts/gen_logos.py` 栅格化 |
+| `scripts/gen_logos.py` | SVG → 9 位图（Playwright Chromium 高保真）：favicon-16/32/48、apple-touch-icon(180)、icon-192/512/maskable、logo-mark-512 全用 `favicon.svg`（金印不透明底版，小尺寸无需加粗），og-image 用 `og-image.svg`；**需 anaconda 解释器**（受管 python 无 playwright） |
+| `scripts/_check_logo.py` | logo 本地验证（14 项断言：SVG 金印内容 / 无水墨残留 / favicon-mark 已删 / 引用 ?v=34 / mark 34px / 渲染金+暗像素 / 9 位图齐全）；先 pack 出 dist 再跑 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
 | `assets/js/notion-import.js` | Markdown 渲染器 + 导入 + 搜索 |
@@ -89,6 +89,7 @@
 
 ## 更新记录
 
+- 2026-10-15（**logo 回退金印 D 版**，Jian「算了，换回原来的 logo」，英语站不变）：水墨天鹅线稿被判定太细/太小，回退到 Gilded Seal 金印版（`ac3d8e7` 的 favicon.svg/og-image.svg）。① 恢复两 SVG 为金印 D（#201B14 方块 + 金 #C9A227 D + 三点 + jwlab），删除 `favicon-mark.svg`；② `.brand-mark` 46→**34px**（圆角 11→9），指向 `favicon.svg?v=34`；暗色 override 恢复 `background: var(--ink); color: #17140F;`（金印不透明底版，深浅主题均直接可见，无需垫纸底）；③ `gen_logos.py` 9 位图全用 `favicon.svg`；④ `_check_logo.py` 重写为 **14 项金印断言**（全过）；⑤ `deutsch.css` v45→**v46**、logo 组 ?v=33→**?v=34**。注：`brand/` 金印源文件仍是权威源（存档升回为主用）。
 - 2026-10-15（水墨 logo 小尺寸修复：mark 加粗版 + 放大，commit `6424185`）：水墨线稿（400 viewBox 上笔画 2-3px）在 34px 导航 mark 上被抗锯齿稀释，几乎只剩一团灰绿（Jian 反馈「太小，快看不到」）。① 新增 `assets/img/favicon-mark.svg`：同构图加粗版（山水线 9、天鹅 6-8、三横 7、圆 r46、删 De Yu 与冠羽），46px 下笔画 ≥1px；② `.brand-mark` 34→46px（圆角 9→11），深浅主题均指向 mark 版；③ favicon-16/32/48 改用 mark 版栅格化（大尺寸位图与 og 仍用主版）；④ `_check_logo.py` 11→17 断言（mark 指向加粗版 / 46px / 墨线像素可见 / 加粗版无冠羽）；⑤ `deutsch.css` v44→v45。
 - 2026-10-15（**水墨天鹅 logo，完全参考 Jian 指定图**，替换 Gilded Seal 金印版，commit `d9aaef3`）：
   - 参考图（`~/Documents/5_CPI/0_1-德语/德语logo.png`，500×500 白底）PIL 采样配色：**灰绿 #BEC09D**（水墨圆）/ **墨色 #222222** / De Yu 卡其灰绿 **#A9AA88**（参考图**无红印章**）。
