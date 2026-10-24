@@ -962,6 +962,10 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .lbk-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lbk-actions .btn { flex: none; min-width: 0; padding: 9px 10px; white-space: nowrap; }
   .lbk-actions .btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* 英文/德文书名改独占一行：此前与中文标题同行，窄屏下把中文挤断（「书」单独落行） */
+  .lbk-de { display: block; margin-left: 0; margin-top: 3px; }
+  /* 标题字号略收，让「15000 英语单词口袋书」这类长名在 390px 下保持一行 */
+  .lbk-zh { font-size: 19px; }
 }
 
 /* 导航项增多后的中等屏幕适配（10 项导航，1400px 以下收窄） */
