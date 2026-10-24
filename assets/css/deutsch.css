@@ -807,8 +807,13 @@ body::before {
 .sync-steps code { font-family: var(--font-mono); font-size: 12px; background: var(--paper-3); padding: 2px 7px; border-radius: 5px; color: var(--ink); }
 
 @media (max-width: 900px) {
-  .notes-layout { grid-template-columns: 1fr; }
+  /* minmax(0,1fr)：默认 1fr 的最小值是 min-content，prose 里的宽表格会把整列撑到 660px */
+  .notes-layout { grid-template-columns: minmax(0, 1fr); }
   .note-list { position: static; max-height: 300px; }
+  /* anywhere：笔记里有 $\rightarrow$ 这类不可断的长 token，正常断行规则下会把 ul/li 撑到 575px */
+  .prose { min-width: 0; overflow-wrap: anywhere; }
+  /* 表格 min-content 可达 600px+，窄屏改为块级 + 横向滚动，自身左右滑动而不顶破布局 */
+  .prose table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
 /* ============================================================
@@ -848,6 +853,22 @@ body::before {
   .ref-table { font-size: 12.5px; }
   .ref-ipa { white-space: normal; }
   .ref-numgrid td { width: 50%; }
+  /* einundzwanzig / IPA 串这类不可断行内容会撑破单元格，允许必要时断词，避免整页横向溢出 */
+  .ref-table td, .ref-table th,
+  .nc-de, .nc-ipa, .nc-zh { overflow-wrap: anywhere; }
+}
+
+@media (max-width: 600px) {
+  /* 页签去掉德文副标题（与导航同一处理），formen 5 个页签才能两两一行 */
+  .vtab span { display: none; }
+  /* 数字/月份网格原本 4 列，390px 下每格仅 ~80px，德语长词与 IPA 被断成 3 行。
+     改两列（每格 ~164px）后整词可容纳，配合上面的 anywhere 兜底不溢出。 */
+  .ref-numgrid, .ref-numgrid tbody { display: block; }
+  .ref-numgrid tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 6px; }
+  .ref-numgrid td { display: block; width: auto; }
+  /* 两列后格内宽约 140px：字号各收 1–0.5px，「siebenundzwanzig」16 字符与 IPA 才能整行放下 */
+  .nc-de { font-size: 13px; }
+  .nc-ipa { font-size: 11px; }
 }
 
 /* ============================================================
@@ -981,12 +1002,15 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 /* ============================================================
    生词表双 Tab + 全站词表
    ============================================================ */
-.vocab-tabs { display: flex; gap: 8px; margin-bottom: 22px; }
+/* flex-wrap：formen 页 5 个页签在 390px 下总宽 428px，不换行会把最后一个页签挤出视口 */
+.vocab-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .vtab {
   padding: 10px 18px; border-radius: 12px;
   border: 1px solid var(--line); background: var(--paper-2);
   font-family: var(--font-body); font-size: 14px; font-weight: 600;
   cursor: pointer; color: var(--ink-2); transition: all .18s;
+  /* 保持内容宽度，放不下时整块换行（否则 5 个页签会被压成窄条、文字竖排） */
+  flex: 0 0 auto; white-space: nowrap;
 }
 .vtab:hover { border-color: var(--ink-3); }
 .vtab.on { background: var(--ink); color: var(--paper-2); border-color: var(--ink); }
