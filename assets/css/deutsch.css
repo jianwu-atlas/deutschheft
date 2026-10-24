@@ -944,9 +944,24 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 
 @media (max-width: 900px) {
   .lbk-card { padding: 20px 16px 16px; }
-  .lbk-head { flex-wrap: wrap; }
+  /* 换行后行距收紧，按钮行贴近标题 */
+  .lbk-head { flex-wrap: wrap; row-gap: 12px; }
+  .lbk-title { min-width: 0; }
+  /* 按钮行独占整行并允许收缩：此前 .lbk-actions 是 flex-shrink:0 且宽度取 max-content，
+     390px 视口下「场景精读 + 在线阅读 + 下载 PDF」总宽超出卡片 → 「下载」被挤出卡片外。
+     改为 flex:1 1 100% 独占一行，内部按钮等分并在放不下时换行。 */
+  .lbk-actions { flex: 1 1 100%; width: 100%; flex-shrink: 1; }
+  .lbk-actions .btn { flex: 1 1 0; text-align: center; }
   .lbk-cols { grid-template-columns: 1fr; gap: 6px; }
   .lbk-viewer iframe { height: 56vh; }
+}
+
+/* 窄屏（iPhone）按钮改两列网格：三按钮等分到 108px 会让文字折成两行、按钮高度不齐；
+   两列后每格 ~163px 文字单行，第三个按钮（奇数末位）独占整行。 */
+@media (max-width: 600px) {
+  .lbk-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lbk-actions .btn { flex: none; min-width: 0; padding: 9px 10px; white-space: nowrap; }
+  .lbk-actions .btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* 导航项增多后的中等屏幕适配（10 项导航，1400px 以下收窄） */
