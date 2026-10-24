@@ -865,10 +865,17 @@ body::before {
      改两列（每格 ~164px）后整词可容纳，配合上面的 anywhere 兜底不溢出。 */
   .ref-numgrid, .ref-numgrid tbody { display: block; }
   .ref-numgrid tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 6px; }
-  .ref-numgrid td { display: block; width: auto; }
-  /* 两列后格内宽约 140px：字号各收 1–0.5px，「siebenundzwanzig」16 字符与 IPA 才能整行放下 */
+  .ref-numgrid td { display: block; width: auto; padding: 9px 6px; }
+  /* 两列后格内宽约 126–134px（390/375）：最长 IPA [[t͡svaɪ̯ʊnt͡svant͡sɪç]] 在 10px + -.02em 下为 123.5px，
+     配 nowrap 保证音标整行显示（11px 需 139px，会折行） */
   .nc-de { font-size: 13px; }
-  .nc-ipa { font-size: 11px; }
+  .nc-ipa { font-size: 10px; letter-spacing: -.02em; white-space: nowrap; }
+}
+
+@media (max-width: 365px) {
+  /* 360px 级小屏格内仅约 119px，最长的 IPA 仍差 5px → 放开换行，
+     宁可折两行也不压到相邻格子（页面本身不会横向溢出） */
+  .nc-ipa { white-space: normal; }
 }
 
 /* ============================================================
