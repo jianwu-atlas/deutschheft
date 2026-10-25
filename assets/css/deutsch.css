@@ -1383,3 +1383,16 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 [data-theme="dark"] .w6-t.t-adj   { color: #E08A9A; }
 [data-theme="dark"] .w6-t.t-adv   { color: #7FC9A6; }
 @media (max-width: 640px) { .w6-w { min-width: 108px; font-size: 14.5px; } .w6-inf { display: none; } }
+
+/* ---------------- 页脚外链（jwlab / 个人网站 / LinkedIn） ---------------- */
+.footer-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin-bottom: 14px; }
+.footer-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 11.5px;
+  padding: 4px 13px 4px 9px; border-radius: 99px;
+  border: 1px solid var(--line); color: var(--ink-2);
+  text-decoration: none; transition: all .18s;
+}
+.footer-link:hover { border-color: var(--accent); color: var(--accent); }
+.footer-link img { width: 18px; height: 18px; border-radius: 4px; flex: none; }
+.footer-link svg { width: 15px; height: 15px; flex: none; }
