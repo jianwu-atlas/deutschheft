@@ -510,10 +510,22 @@ function renderLehrbuch(app) {
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initBurger();
-  // 朗读按钮（句型表 / 课文逐句）
+  // 朗读按钮（句型表 / 课文逐句）：课文页的句🔊 = 从本句连读到本段结束
   document.addEventListener("click", e => {
     const sp = e.target.closest(".s-sp");
-    if (sp && window.__dhSpeak) window.__dhSpeak(sp.dataset.de);
+    if (!sp) return;
+    if (window.DhPlayer && window.__textItems && sp.dataset.p !== undefined) {
+      const p = +sp.dataset.p, s = +sp.dataset.s;
+      const all = window.__textItems;
+      const from = all.findIndex(x => x.p === p && x.s === s);
+      if (from >= 0) {
+        let end = from;
+        while (end + 1 < all.length && all[end + 1].p === p) end++;
+        DhPlayer.playTTS(all.slice(from, end + 1));
+        return;
+      }
+    }
+    if (window.__dhSpeak) window.__dhSpeak(sp.dataset.de);
   });
   const page = document.body.dataset.page;
   if (PAGES[page]) PAGES[page]($("#app"));
@@ -829,16 +841,16 @@ function renderGrammar(app, openId) {
 /* ============================================================
    课文 Texte
    ============================================================ */
-let textState = { id: "t2", hideZh: false };
+let textState = { id: "t3", hideZh: false };
 
-/* ---- 课文 MP3 播放（B' 预生成·微软神经语音）；文件缺失 → 回退在线 Web Speech（C）---- */
-let __mp3 = null;
-function playTextMp3(src, fallbackText) {
-  if (!__mp3) { __mp3 = new Audio(); __mp3.preload = "none"; }
-  const fallback = () => { if (window.__dhSpeak && fallbackText) window.__dhSpeak(fallbackText); };
-  __mp3.onerror = fallback;
-  __mp3.src = src;
-  __mp3.play().catch(fallback);
+/* ---- 句子切分（与播放器共用：句队列按 [段-句] 坐标寻址，不依赖 DOM 引用）---- */
+function splitSentences(str) {
+  return (String(str).match(/[^.!?]+[.!?]+[""'\)\]]*\s*/g) || [str]).map(s => s.trim()).filter(Boolean);
+}
+/* 秒 → mm:ss */
+function fmtTime(sec) {
+  sec = Math.max(0, Math.floor(sec || 0));
+  return String(Math.floor(sec / 60)).padStart(2, "0") + ":" + String(sec % 60).padStart(2, "0");
 }
 /* 复制文本到剪贴板（navigator.clipboard 优先，execCommand 兜底） */
 async function copyToClipboard(text) {
@@ -853,9 +865,20 @@ async function copyToClipboard(text) {
   document.body.removeChild(ta);
 }
 
+/* ---- 播放器：订阅只注册一次，避免重渲染累积 ---- */
+let __playerBound = false;
+let __textRefresh = null;
+
 function renderTexts(app) {
   const t = TEXTS.find(x => x.id === textState.id) || TEXTS[0];
-  const splitSentences = str => (str.match(/[^.!?]+[.!?]+[""'\)\]]*\s*/g) || [str]).map(s => s.trim()).filter(Boolean);
+  const paras = t.paragraphs.map(p => splitSentences(p.de));
+  /* 全篇句队列：[{text, p, s}]，供播放器按坐标寻址（重渲染后仍可定位） */
+  const items = [];
+  paras.forEach((sents, pi) => sents.forEach((s, si) => items.push({ text: s, p: pi, s: si })));
+  window.__textItems = items;
+  const fullText = t.paragraphs.map(p => p.de).join(" ");
+  const mp3Full = "assets/audio/textes/" + t.id + "_full.mp3";
+
   app.innerHTML = `
     <div class="text-tabs">
       ${TEXTS.map(x => `
@@ -866,22 +889,25 @@ function renderTexts(app) {
     </div>
     <p class="text-intro">${t.intro}</p>
     <div class="text-controls">
+      <button class="btn primary" id="btnPlay" title="在线朗读（浏览器语音）：暂停后从本句继续">🔊 朗读全段</button>
+      <button class="btn" id="btnMp3" title="听整篇 MP3（微软神经语音）：暂停后从中断处继续">🎧 全文 MP3</button>
+      <button class="btn" id="btnStop" title="停止并回到开头" disabled>⏹ 停止</button>
       <button class="btn primary" id="toggleZh">${textState.hideZh ? "显示中文翻译" : "隐藏中文翻译（自测）"}</button>
-      <button class="btn" id="speakAll" title="在线朗读（浏览器语音，无需文件）">🔊 朗读全段</button>
-      <button class="btn" id="mp3All" title="听整篇 MP3（微软神经语音，同 Speecher）">🎧 全文 MP3</button>
       <button class="btn" id="copyFull" title="复制整篇课文德语全文（可直接粘贴到「文本转MP3」生成/收听）">📋 复制全文</button>
+      <span class="player-status" id="pStatus" aria-live="polite"></span>
     </div>
+    <div class="player-bar" id="pBar" hidden><div class="player-fill" id="pFill"></div></div>
     <div id="textBody" class="${textState.hideZh ? "hide-zh" : ""}">
       ${t.paragraphs.map((p, i) => {
-        const sents = splitSentences(p.de);
+        const sents = paras[i];
         const ex = (window.TEXTE_EXTRA && window.TEXTE_EXTRA[t.id] && window.TEXTE_EXTRA[t.id][i + 1]) || {};
         return `
-        <div class="card para">
+        <div class="card para" data-para="${i}">
           <div class="para-head"><span class="para-no">${String(i + 1).padStart(2, "0")}</span><span class="para-title">${p.title || ""}</span><button class="para-mp3" data-i="${i}" title="听本段 MP3（微软神经语音；点击朗读）">🎧</button></div>
           <div class="para-body no-ipa">
             ${sents.map((s, si) => `
-              <div class="s-line">
-                <button class="s-sp" data-de="${esc(s)}" title="朗读此句">🔊</button>
+              <div class="s-line" data-p="${i}" data-s="${si}">
+                <button class="s-sp" data-de="${esc(s)}" data-p="${i}" data-s="${si}" title="从本句开始连读到本段结束">🔊</button>
                 <div class="s-main">
                   <span class="s-text">${s}</span>
                   ${p.ips && p.ips[si] ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}
@@ -895,12 +921,47 @@ function renderTexts(app) {
       }).join("")}
     </div>
   `;
-  $$(".text-tab", app).forEach(b => b.addEventListener("click", () => { textState.id = b.dataset.id; renderTexts(app); }));
-  $("#toggleZh").addEventListener("click", () => { textState.hideZh = !textState.hideZh; renderTexts(app); });
-  $("#speakAll").addEventListener("click", () => {
-    if (window.__dhSpeak) window.__dhSpeak(t.paragraphs.map(p => p.de).join(" "));
+
+  /* ---- 播放器 UI：状态 + 进度（TTS 为句进度，MP3 为时间进度） ---- */
+  const refreshUI = s => {
+    const playing = s.mode === "playing", active = playing || s.mode === "paused";
+    const isMp3 = s.source === "mp3";
+    $("#btnPlay").textContent = playing ? "⏸ 暂停" : s.mode === "paused" ? "▶ 继续" : "🔊 朗读全段";
+    $("#btnMp3").textContent = (isMp3 && playing) ? "⏸ 暂停 MP3" : (isMp3 && s.mode === "paused") ? "▶ 继续 MP3" : "🎧 全文 MP3";
+    $("#btnStop").disabled = !active;
+    $("#pBar").hidden = !active;
+    let txt = "";
+    if (s.source === "tts") {
+      txt = (playing ? "朗读中" : s.mode === "paused" ? "已暂停" : "") +
+            (s.item ? ` · 第 ${s.item.p + 1} 段 第 ${s.item.s + 1} 句` : "") + (s.total ? ` / 共 ${s.total} 句` : "");
+    } else if (isMp3) {
+      txt = (playing ? "播放中" : s.mode === "paused" ? "已暂停" : "") + ` · ${fmtTime(s.time)} / ${fmtTime(s.dur)}`;
+    }
+    $("#pStatus").textContent = txt;
+    const pct = isMp3 && s.dur ? (s.time / s.dur * 100)
+              : (s.source === "tts" && s.total) ? ((s.i + (active ? 1 : 0)) / s.total * 100) : 0;
+    $("#pFill").style.width = Math.min(100, Math.max(0, pct)) + "%";
+  };
+
+  /* ---- 事件绑定 ---- */
+  const stopAll = () => { if (window.DhPlayer) DhPlayer.stop(); };
+  $$(".text-tab", app).forEach(b => b.addEventListener("click", () => { stopAll(); textState.id = b.dataset.id; renderTexts(app); }));
+  $("#toggleZh").addEventListener("click", () => { stopAll(); textState.hideZh = !textState.hideZh; renderTexts(app); });
+
+  $("#btnPlay").addEventListener("click", () => {
+    if (!window.DhPlayer) return;
+    const s = DhPlayer.state();
+    if (s.mode === "playing" || s.mode === "paused") DhPlayer.toggle();
+    else DhPlayer.playTTS(items);
   });
-  $("#mp3All").addEventListener("click", () => playTextMp3("assets/audio/textes/" + t.id + "_full.mp3", t.paragraphs.map(p => p.de).join(" ")));
+  $("#btnMp3").addEventListener("click", () => {
+    if (!window.DhPlayer) return;
+    const s = DhPlayer.state();
+    if (s.source === "mp3" && (s.mode === "playing" || s.mode === "paused")) DhPlayer.toggle();
+    else DhPlayer.playMp3(mp3Full, { fallbackText: fullText });
+  });
+  $("#btnStop").addEventListener("click", stopAll);
+
   $("#copyFull").addEventListener("click", async () => {
     const full = t.paragraphs.map(p => p.de).join("\n");
     await copyToClipboard(full);
@@ -912,8 +973,15 @@ function renderTexts(app) {
   $$(".para-mp3", app).forEach(b => b.addEventListener("click", e => {
     e.stopPropagation();
     const i = +b.dataset.i;
-    playTextMp3("assets/audio/textes/" + t.id + "_p" + (i + 1) + ".mp3", t.paragraphs[i].de);
+    if (window.DhPlayer) DhPlayer.playMp3("assets/audio/textes/" + t.id + "_p" + (i + 1) + ".mp3", { fallbackText: t.paragraphs[i].de, para: i });
   }));
+
+  /* 订阅只注册一次，避免重渲染累积 */
+  if (window.DhPlayer) {
+    if (!__playerBound) { DhPlayer.onChange(s => { if (__textRefresh) __textRefresh(s); }); __playerBound = true; }
+    __textRefresh = refreshUI;
+    refreshUI(DhPlayer.state());
+  }
 }
 
 /* ============================================================

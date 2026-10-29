@@ -137,7 +137,11 @@
   document.addEventListener("keydown", e => {
     const t = e.target;
     if (t && (t.nodeName === "INPUT" || t.nodeName === "TEXTAREA" || t.isContentEditable)) return;
-    if (e.key === "Escape") { speechSynthesis.cancel(); return; }
+    if (e.key === "Escape") {
+      if (window.DhPlayer) window.DhPlayer.stop();   // 同时停 TTS 队列与 MP3
+      speechSynthesis.cancel();
+      return;
+    }
     if (e.ctrlKey && e.code === "Space") {
       e.preventDefault();
       const sel = String(window.getSelection()).trim();
@@ -314,6 +318,7 @@
       const next = SPEEDS[(idx + 1) % SPEEDS.length];
       localStorage.setItem(SRATE_KEY, String(next.r));
       b.textContent = next.label;
+      if (window.DhPlayer) window.DhPlayer.setRate(next.r);   // MP3 立即生效；TTS 下一句生效
     });
     document.body.appendChild(b);
   }

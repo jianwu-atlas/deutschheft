@@ -38,6 +38,7 @@
 | `scripts/notion_export_sync.py` | content-notion/ → assets/js/data/notion-notes.js |
 | `scripts/gen_wortliste.js` | 全站语料 → assets/js/data/wortliste.js（改词库后重跑） |
 | `scripts/pack_site.py` | 打包 `dist/`（站点资源，用于 EdgeOne Pages 等静态托管） |
+| `scripts/_test_player.py` | 朗读播放器冒烟测试（Playwright + 系统 Chrome，34 断言：播放/暂停/继续/停止、高亮与滚动、MP3 断点、切页签停止、Esc、移动端） |
 | `scripts/gen_text_audio.py` | 用微软 Edge TTS 预生成课文德语 MP3（B'）→ `assets/audio/textes/{id}_p{n}.mp3` + `{id}_full.mp3` + `manifest.json`；音色 `TTS_VOICE`（默认 de-DE-KatjaNeural≈Lena）、语速 `TTS_RATE`（默认 -5%） |
 | `assets/audio/textes/` | 预生成课文 MP3（2 篇 × 10 段 + 2 全文 = 22 个，共 ~3.7M）；改课文后需重跑 gen_text_audio.py |
 | `edge-fn/` | 文本转 MP3 云函数（B）：`server.js`（Node + msedge-tts，POST /tts）+ `package.json` + `README.md`；需部署到 FaaS 后把地址填入 `tts.html` 的 `TTS_ENDPOINT` |
@@ -60,6 +61,7 @@
 | `scripts/_check_logo.py` | logo 本地验证（14 项断言：SVG 金印内容 / 无水墨残留 / favicon-mark 已删 / 引用 ?v=34 / mark 34px / 渲染金+暗像素 / 9 位图齐全）；先 pack 出 dist 再跑 |
 | `assets/css/deutsch.css` | 设计系统：浅/深双主题、词性三色（der 蓝/die 红/das 绿/动词紫） |
 | `assets/js/deutsch.js` | 页面渲染交互核心（body[data-page] 分发） |
+| `assets/js/player.js` | **朗读播放器 `DhPlayer`**：状态机 + 句队列 + 高亮调度（TTS 句队列 / MP3 双声源，暂停/继续/停止，句级高亮 + 自动滚动） |
 | `assets/js/notion-import.js` | Markdown 渲染器 + 导入 + 搜索 |
 | `assets/js/annotate.js` | 全文音标标注 + 朗读；三态开关 `off/smart/all`；`BASIC`（常用挡不标）/ `NAMES`（专名不标）/ `SKIP_SEL`（界面与自带音标区不标）；点击/双击任意单词即朗读 |
 | `assets/js/offline.js` | PWA：注册 SW + 「📥 离线缓存」按钮 + iOS「添加到主屏幕」提示 |
@@ -96,6 +98,15 @@
 
 ## 更新记录
 
+- 2026-10-29（**朗读播放器 DhPlayer（P0）**，Jian「两个入口都要暂停/继续/停止 + 实时高亮当前句并自动滚动」；方案见 `docs/朗读播放器方案.md`）：
+  - **断点策略（关键取舍）**：**不用** `speechSynthesis.pause()`（Chrome 桌面 resume 失效、iOS Safari 不可靠），改为**句级队列**——逐句 `speak()` 并维护句索引；暂停 = cancel 当前句并保留索引，继续 = **从本句重读**（最多回退 2–4 秒）。顺带规避 iOS 单条 utterance 约 200–300 字符的静默截断。
+  - **新增 `assets/js/player.js`**：`DhPlayer` 状态机（`idle/playing/paused`）+ 两种声源（TTS 句队列 / MP3 `<audio>`）+ 高亮调度；对外 `playTTS(items)` / `playMp3(src, opts)` / `pause()` / `resume()` / `toggle()` / `stop()` / `setRate()` / `onChange()` / `audioEl()`。寻址用 **[段-句] 坐标**（`data-para` / `data-p` / `data-s`），不持 DOM 引用，重渲染后仍可定位。
+  - **UI**：`deutsch.js` 的 `renderTexts` 用一条播放器条替代原 `speakAll/mp3All` 两个裸按钮：`🔊 朗读全段`（↔ `⏸ 暂停`/`▶ 继续`）+ `🎧 全文 MP3` + `⏹ 停止` + 状态文字（「朗读中 · 第 1 段 第 3 句 / 共 29 句」或 MP3「01:12 / 03:20」）+ 进度条（TTS 为句进度，MP3 为时间进度）。
+  - **高亮与滚动**：`.s-reading`（句级，浅/深双主题）+ `.para-reading`（段落 MP3）；仅当目标不在视口内才 `scrollIntoView({block:"center"})`，尊重 `prefers-reduced-motion`。
+  - **联动**：句 🔊 升级为「从本句连读到本段结束」；段落 🎧 走 MP3 源并高亮整段；语速按钮（`annotate.js`）改调 `DhPlayer.setRate()`（MP3 立即生效、TTS 下一句生效，映射 0.66/0.88/1.10 → 0.8/1.0/1.2）；Esc 改为同时停 TTS 与 MP3。
+  - **边界**：切课文页签 / 隐藏中文重渲染 → `stop()`；`pagehide` → `stop()`；`visibilitychange` 隐藏时 **TTS 暂停、MP3 继续**（Jian 拍板）。
+  - **未做（P1/P2）**：字幕驱动的 MP3 句级高亮与 seek（需 `edge-tts --write-subtitles`）、词级高亮（仅 Chromium `onboundary` 可靠）、Media Session、跨会话断点续听。
+  - **验证**：`scripts/_test_player.py`（Playwright + 系统 Chrome）**34 条断言全过、零 JS 报错**，另含 t3 内容回归（9 段 / 29 音标 / 29 中文）。
 - 2026-10-29（**新增 A1.2 第 3 次课《Ein Problem mit den Laborproben》**，Jian 提供 Notion 课程页 + Gemini 笔记分享链接）：
   - **来源核实**：Notion 页 `40820c5c…`（父页「德语-最重要」）内容为 Gemini 会话（`share.gemini.google/2703fcf9f1b7`，Playwright 抓取 45KB 正文）的**超集**——课文原文、逐段解析、16 题阅读理解含答案、8 题 haben/sein 填空、语法小结均已包含，故以 Notion 为准、Gemini 补 IPA/谐音细节。
   - **课程**：`LESSONS` 新增 `a2t3`（2026-10-28，A2-3，topic 实验室）——7 条语法要点 + 8 条核心句型（每条带 IPA）。
