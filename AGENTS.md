@@ -98,6 +98,13 @@
 
 ## 更新记录
 
+- 2026-10-29（**Notion 笔记列表改为「最新在上」**，Jian「第 3 次课的内置笔记呢？」）：
+  - **根因**：`notion-import.js` 的列表按上课日期**升序**、`activeId` 默认取 `list[0]`（最早一篇），
+    于是 2026-10-28 的新笔记沉在列表最底部、右侧默认打开的还是最早那篇；`notion-notes.js` 又是
+    Service Worker 的**缓存优先**资源，内容更新后若不同步升 `?v=` 版本号，老访客会一直拿到旧的 14 篇。
+  - **修复**：① 排序改**降序**（最新在上），② 列表首项加「**最新**」徽章（`.ni-new`），③ 打开页面即默认展开最新一篇，
+    ④ `notion-notes.js` / `notion-import.js` 升版 `?v=32`、`deutsch.css` → `?v=55`。
+  - **验证**：15 篇笔记，首条 `15 · Ein Problem mit den Laborproben（A1.2 第 3 次）· 2026-10-28 · 11k 字`，右侧默认打开它且正文含 16 题阅读与 haben/sein 填空；13 条断言全过、零 JS 报错。
 - 2026-10-29（**朗读播放器 DhPlayer（P0）**，Jian「两个入口都要暂停/继续/停止 + 实时高亮当前句并自动滚动」；方案见 `docs/朗读播放器方案.md`）：
   - **断点策略（关键取舍）**：**不用** `speechSynthesis.pause()`（Chrome 桌面 resume 失效、iOS Safari 不可靠），改为**句级队列**——逐句 `speak()` 并维护句索引；暂停 = cancel 当前句并保留索引，继续 = **从本句重读**（最多回退 2–4 秒）。顺带规避 iOS 单条 utterance 约 200–300 字符的静默截断。
   - **新增 `assets/js/player.js`**：`DhPlayer` 状态机（`idle/playing/paused`）+ 两种声源（TTS 句队列 / MP3 `<audio>`）+ 高亮调度；对外 `playTTS(items)` / `playMp3(src, opts)` / `pause()` / `resume()` / `toggle()` / `stop()` / `setRate()` / `onChange()` / `audioEl()`。寻址用 **[段-句] 坐标**（`data-para` / `data-p` / `data-s`），不持 DOM 引用，重渲染后仍可定位。

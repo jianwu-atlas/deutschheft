@@ -134,14 +134,14 @@ function renderNotionPage(app) {
     ...NOTION_NOTES.map(n => ({ ...n, kind: "builtin" })),
     ...importedStore.list().map(n => ({ ...n, kind: "imported" }))
   ];
-  // 按上课日期升序（缺则用笔记日期，仍无则排最后；同日期按 id）
+  // 按上课日期降序（最新在上，打开即见最近一次课；缺日期的排最后；同日期按 id）
   const dkey = n => n.classDate || n.date || "";
   all.sort((a, b) => {
     const ka = dkey(a), kb = dkey(b);
     if (!ka && !kb) return 0;
     if (!ka) return 1;
     if (!kb) return -1;
-    return ka === kb ? String(a.id).localeCompare(String(b.id)) : ka.localeCompare(kb);
+    return ka === kb ? String(a.id).localeCompare(String(b.id)) : kb.localeCompare(ka);
   });
   const q = noteState.q.trim().toLowerCase();
   const list = q
@@ -180,10 +180,10 @@ function renderNotionPage(app) {
 
     <div class="notes-layout">
       <aside class="note-list" id="noteList">
-        ${list.map(n => `
+        ${list.map((n, i) => `
           <button class="note-item ${active && n.id === active.id ? "on" : ""}" data-id="${n.id}">
             <span class="ni-title">${n.title}</span>
-            <span class="ni-meta"><span class="ni-badge ${n.kind}">${n.kind === "builtin" ? "内置" : "导入"}</span>${n.classDate || n.date || ""} ${n.text.length > 1000 ? Math.round(n.text.length / 1000) + "k 字" : n.text.length + " 字"}</span>
+            <span class="ni-meta">${i === 0 ? '<span class="ni-new">最新</span>' : ""}<span class="ni-badge ${n.kind}">${n.kind === "builtin" ? "内置" : "导入"}</span>${n.classDate || n.date || ""} ${n.text.length > 1000 ? Math.round(n.text.length / 1000) + "k 字" : n.text.length + " 字"}</span>
           </button>`).join("")}
       </aside>
       <section class="note-reader card" id="noteReader" style="padding:30px 32px">

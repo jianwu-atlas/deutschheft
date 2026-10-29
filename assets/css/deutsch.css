@@ -1424,3 +1424,10 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .text-controls .btn { padding: 7px 12px; font-size: 12.5px; }
   .player-status { flex-basis: 100%; text-align: center; }
 }
+
+/* Notion 笔记列表：最新一篇的标记（列表按上课日期降序，最新在上） */
+.ni-new {
+  display: inline-block; margin-right: 5px; padding: 0 6px; border-radius: 99px;
+  background: var(--accent); color: #fff; font-size: 10.5px; line-height: 16px;
+}
+[data-theme="dark"] .ni-new { background: var(--gold); color: #201B14; }
