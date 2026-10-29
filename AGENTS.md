@@ -11,11 +11,11 @@
 | 路径 | 用途 |
 |---|---|
 | `index.html` | 首页（学习地图、统计、当前重点） |
-| `lektionen.html` | 13 课（A1 × 11 + A1.2 × 2），手风琴 + 已复习标记 |
+| `lektionen.html` | 14 课（A1 × 11 + A1.2 × 3），手风琴 + 已复习标记 |
 | `wortschatz.html` | 双视图：272 词卡（筛选/搜索/翻面）+ **全站词表 1053 词形**（德语单词 / IPA / **中文释义** / 来源 / 次数，IPA 与释义 100% 覆盖，支持中文搜索） |
-| `grammatik.html` | 12 语法专题（手风琴 + 变位表） |
+| `grammatik.html` | 13 语法专题（手风琴 + 变位表） |
 | `formen.html` | 词形变化总表（5 页签）：**111 动词**（六人称变位 / 过去时 / 第二分词 / 助动词 / 类型）+ 185 名词复数分组 + 30 形容词比较级 + 冠词·人称代词·物主冠词变格 + **语料变形索引**（网页正文里真实出现过的每个变形） |
-| `texte.html` | 2 篇课文逐段中德对照（可隐藏中文自测） |
+| `texte.html` | 3 篇课文逐段中德对照（可隐藏中文自测） |
 | `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点；「零基础德语速成」卡片带 **📖 场景精读** 入口 |
 | `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，**三行格式**（德文 / 中文 / 中文近似发音）+ 逐句 🔊 + 隐藏中文自测 + 复制纯德文 |
 | `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
@@ -96,6 +96,17 @@
 
 ## 更新记录
 
+- 2026-10-29（**新增 A1.2 第 3 次课《Ein Problem mit den Laborproben》**，Jian 提供 Notion 课程页 + Gemini 笔记分享链接）：
+  - **来源核实**：Notion 页 `40820c5c…`（父页「德语-最重要」）内容为 Gemini 会话（`share.gemini.google/2703fcf9f1b7`，Playwright 抓取 45KB 正文）的**超集**——课文原文、逐段解析、16 题阅读理解含答案、8 题 haben/sein 填空、语法小结均已包含，故以 Notion 为准、Gemini 补 IPA/谐音细节。
+  - **课程**：`LESSONS` 新增 `a2t3`（2026-10-28，A2-3，topic 实验室）——7 条语法要点 + 8 条核心句型（每条带 IPA）。
+  - **课文**：`TEXTS` 新增 `t3`（9 段 / **29 句**，逐句 IPA 全覆盖）；`texte-extra.js` 新增 `t3` 的 29 条逐句中文（`zhs`）+ 9 段知识点（`notes`），保持「德文 / 音标 / 中文」三行 + 段末 💡知识点 版式。
+  - **语法**：`GRAMMAR` 新增 `g13 可分动词的完成时`（焦点 `vorbereiten → vorbereitet`：vor- 可分但 be- 压制 ge-），共 13 讲。
+  - **练习**：新增 `q7 haben 还是 sein？`（12 题）与 `q8 课文理解`（12 题）→ 8 组 / 78 题；`deutsch.js` 题目区改为 `${set.hint || "选择正确的德语形式"}` 以支持阅读理解的提示语。
+  - **生词**：`VOCAB` 新增 30 词（topic 实验室：Bodenprobe / Lieferliste / Lager / Raumnummer / fehlen / ausziehen / anrufen / schaffen … 均带 IPA）→ 302 张词卡。
+  - **笔记**：`content-notion/15_Ein-Problem-mit-den-Laborproben（A1.2-第3次）.md`（7 节：原文 / 逐段翻译 / 语法体系 / 词汇表 / 16 题阅读 / 8 题填空 / 小结）；`notion_export_sync.py` 补 `15_` 标题与日期映射 → 15 篇笔记。
+  - **音频**：`gen_text_audio.py` 支持 `python3 scripts/gen_text_audio.py t3` 只生成指定课文（清单保留旧条目）；已产出 `t3_p1..p9` + `t3_full`（10 个 MP3，manifest 32 条）。
+  - **文案与版本**：lektionen（14 课）/ texte（三篇）/ notion（15 篇）/ uebungen（8 组）/ grammatik / 首页模块卡与 `focus-box` 全部改为本课；`?v=` 升版（deutsch-data 34、deutsch.js 45、texte-extra 2）。
+  - **验证**：`node --check` 全通过；Playwright 32 条断言全过（14 课 / t3 九段 29 音标 29 中文 / 隐藏中文 / 13 讲 / 8 组测验 / q8 题目与提示 / 首页四项统计 / 生词搜索 / 15 篇笔记 / 零 JS 报错），`pack_site.py` 重建 dist（15 页 30.5 MB）。
 - 2026-10-15（**w6000 全站德语音标 IPA 补齐**，Jian「选了全部德语音标，但只有一小部分有国际音标」）：
   - **根因**：w6000 的 6609 词自身无 IPA；全站「音标：全部」浮动开关（`annotate.js`）只标能命中课程词典（`pron.js` 合并，仅 A1/A1.2）的词，实测仅覆盖 **405/6609 ≈ 6%**，其余 94% 空白。
   - **方案**（Jian 拍板「装 espeak-ng 批量生成」）：`scripts/build_w6000_ipa.py` 用 **espeak-ng 德语 G2P**（`-v de --ipa`，8 线程并行，可断点续跑，进度 `data/w6000_ipa_progress.json`）为全部 **6061 个去重词**生成 IPA → 新数据文件 `assets/js/data/w6000-ipa.js`（`const PRON_W6000 = {"原词":"[ipa]"}`，**216KB / 6061 条 / 100% 非空 / 无 (en)(de) 标签残留**）。**近似/示意音标**（espeak 非人工校音，仅供发音参考，非权威 IPA）。

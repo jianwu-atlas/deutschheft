@@ -597,14 +597,14 @@ function renderStart(app) {
   const pct = Math.round((doneTopics / totalTopics) * 100);
 
   const modules = [
-    { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 2 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
+    { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 3 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: "112 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格，以及「语料变形索引」。" },
-    { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
+    { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "三篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
     { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
     { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
-    { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性、句子改写。" },
+    { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性、句子改写、haben/sein 与课文理解。" },
     { route: "notion.html", num: "09", de: "Notion 同步", zh: "笔记库", desc: "Notion 全部笔记离线内置，支持导入导出文件、粘贴同步、全文搜索。" },
     { route: "kursplan.html", num: "10", de: "Kursplan", zh: "课程大纲", desc: "15 主题生存德语地图，标注已学 / 待学进度。" }
   ];
@@ -642,7 +642,7 @@ function renderStart(app) {
 
     <div class="focus-box">
       <h3>🎯 当前学习重点 · Aktueller Fokus</h3>
-      <p>你刚进入 <strong>A1.2</strong> 阶段，最近一课是 <strong>现在完成时（Das Perfekt）</strong>：haben/sein + Partizip II 的框架结构。建议先读课文《Ein besonderer Tag im Labor》，再做「现在完成时」专项测验巩固助动词选择。大纲上 <strong>Bürokratie（办事）</strong>与 <strong>Arztbesuch（看病）</strong>是接下来最值得优先攻克的两个生存主题。</p>
+      <p>你正在 <strong>A1.2</strong> 阶段，最近一课是 <strong>Ein Problem mit den Laborproben</strong>（2026-10-28）：一篇全用现在完成时写成的实验室叙事课文——12 份样本只到了 9 份。建议先读课文《Ein Problem mit den Laborproben》并隐藏中文自测，再做「haben 还是 sein？」与「课文理解」两组测验，最后用语法专题《可分动词的完成时》收口。大纲上 <strong>Bürokratie（办事）</strong>与 <strong>Arztbesuch（看病）</strong>仍是接下来最值得优先攻克的两个生存主题。</p>
     </div>
   `;
   requestAnimationFrame(() => { const f = $("#hpFill"); if (f) f.style.width = pct + "%"; });
@@ -965,7 +965,7 @@ function renderQuizQuestion(app) {
         <span class="quiz-score-label">${set.de} · ${idx + 1}/${set.questions.length}</span>
       </div>
       <div class="card quiz-qcard">
-        <div class="quiz-q">${q.q}<small>选择正确的德语形式</small></div>
+        <div class="quiz-q">${q.q}<small>${set.hint || "选择正确的德语形式"}</small></div>
         <div class="quiz-opts">
           ${q.options.map((o, i) => `
             <button class="opt" data-i="${i}"><span class="opt-key">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}

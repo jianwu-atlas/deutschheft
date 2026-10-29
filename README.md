@@ -8,14 +8,14 @@
 
 ```
 ├── index.html            首页（学习地图 + 进度）
-├── lektionen.html        分级课程（13 课）
+├── lektionen.html        分级课程（14 课：A1 × 11 + A1.2 × 3）
 ├── wortschatz.html       生词表（双视图：272 词卡 + 全站词表 1053 词形，均带 IPA 与中文释义）
-├── grammatik.html        语法十二讲
+├── grammatik.html        语法十三讲
 ├── formen.html           词形变化：76 动词变位 / 185 名词复数 / 30 形容词比较级 / 冠词·代词变格
-├── texte.html            课文精读（2 篇，逐段中德对照）
+├── texte.html            课文精读（3 篇，逐段中德对照）
 ├── lehrbuch.html         教材：5 份 PDF（零基础速成 338 页 + 4 份课程课件）在线阅读/下载 + 结构化词汇/句型/语法
 ├── referenz.html         速查表：数字 0–100 / 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音）
-├── uebungen.html         互动练习（5 组测验）
+├── uebungen.html         互动练习（8 组测验 / 78 题）
 ├── notion.html           Notion 笔记库 + 导入/同步
 ├── kursplan.html         课程大纲（15 主题进度）
 ├── assets/

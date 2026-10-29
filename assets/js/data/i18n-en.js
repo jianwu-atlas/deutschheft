@@ -51,7 +51,7 @@ window.EN_UI = {
   "张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。": " vocabulary cards: IPA on every card, filter by topic and part of speech, click to flip for the meaning.",
   "个语法专题：从动词第二位到现在完成时。": " grammar topics, from verb-in-second-position to the perfect tense.",
   "112 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格，以及「语料变形索引」。": "Conjugation of 112 verbs in six persons plus past tense and past participle, noun plurals, adjective comparison, article and pronoun declension, and a corpus index of every inflected form.",
-  "两篇实验室课文逐段中德对照，完成时重点动词逐一标注。": "Two lab texts with paragraph-by-paragraph translation and the key perfect-tense verbs highlighted.",
+  "三篇实验室课文逐段中德对照，完成时重点动词逐一标注。": "Three lab texts with paragraph-by-paragraph translation and the key perfect-tense verbs highlighted.",
   "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。": "Six textbook PDFs to read online or download, each with structured vocabulary, core sentences (IPA included) and grammar notes.",
   "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。": "Look it up instantly: numbers 0–100, telling the time, 18 colours, seasons / months / weekdays / weather — all with IPA.",
   "组测验：变位、数字、时间、完成时、词性、句子改写。": " quiz sets: conjugation, numbers, time, perfect tense, gender and sentence rewriting.",

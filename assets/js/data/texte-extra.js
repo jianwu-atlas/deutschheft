@@ -161,5 +161,78 @@ window.TEXTE_EXTRA = {
         { k: "名词化", v: "etwas Neues（形容词名词化）" }
       ]
     }
+  },
+  t3: {
+    1: {
+      zhs: ["我叫 Nina，在一家实验室担任生物学家。", "我们检测来自不同花园的土壤样本。", "上周一我经历了一个不寻常的日子。"],
+      notes: [
+        { k: "语序", v: "Letzten Montag 提到句首 → 动词 habe 占第二位，主语 ich 顺延第三位（倒装）" },
+        { k: "搭配", v: "arbeiten als + 职业（als Biologin 作为生物学家）；in einem Labor（in + 第三格，静态位置）" },
+        { k: "词汇", v: "die Bodenprobe 土壤样本 · ungewöhnlich 不寻常的 · erleben 经历（hat erlebt，er- 不加 ge-）" }
+      ]
+    },
+    2: {
+      zhs: ["8 点我来到了实验室。", "首先我脱下夹克，穿上实验服。", "之后我打开电脑，读了工作计划。"],
+      notes: [
+        { k: "助动词", v: "kommen 是位移动词 → sein：bin … gekommen；sein 阵营只收 kommen / gehen / fahren 这类" },
+        { k: "可分动词", v: "ausziehen → ausgezogen（aus + ge + zogen）、anziehen → angezogen——ge- 夹在前缀与词干之间" },
+        { k: "介词", v: "ins Labor = in das Labor（第四格，回答 Wohin? 去哪里）" }
+      ]
+    },
+    3: {
+      zhs: ["上午我们预计有十二份土壤样本。", "但桌上我只找到九个容器。", "有三份样本不见了。", "我又核对了一遍编号。"],
+      notes: [
+        { k: "助动词", v: "fehlen 无位移且不及物 → haben：Drei Proben haben gefehlt." },
+        { k: "静态位置", v: "auf dem Tisch（auf + 第三格，回答 Wo?）；对比 auf den Tisch（第四格，表方向）" },
+        { k: "-ieren 动词", v: "kontrollieren → kontrolliert（-ieren 结尾不加 ge-）；starten → gestartet 同理" }
+      ]
+    },
+    4: {
+      zhs: ["然后我给我的同事 Ben 打了电话。", "他立刻来到我这里。", "我们一起在冰箱和仓库里找。", "在那里我们没有找到缺失的样本。"],
+      notes: [
+        { k: "可分动词", v: "anrufen → angerufen；宾语用第四格：meinen Kollegen（阳性弱变化名词）" },
+        { k: "词汇", v: "der Kühlschrank 冰箱 · das Lager 仓库 · die fehlenden Proben 缺失的样本（Partizip I 作定语）" },
+        { k: "否定", v: "nicht 否定整句放在句末成分前：… die fehlenden Proben nicht gefunden." }
+      ]
+    },
+    5: {
+      zhs: ["Ben 读了送货清单。", "其间他发现了一个错误：清单上写着一个错误的房间号。", "我们去了二楼的实验室。"],
+      notes: [
+        { k: "完成时", v: "stehen 的完成时 hat gestanden 表示「（纸上）写着」；entdecken → entdeckt（ent- 不加 ge-）" },
+        { k: "静三动四", v: "in das Labor im zweiten Stock：前半 in das = 第四格（去哪），后半 im = in dem 第三格（在哪层）" },
+        { k: "词汇", v: "die Lieferliste 送货清单 · der Fehler 错误 · die Raumnummer 房间号 · der Stock 楼层" }
+      ]
+    },
+    6: {
+      zhs: ["在那里我们找到了这三个容器。", "一位女同事早上把它们拿到了错误的房间。", "她道了歉。", "我们笑了，因为问题幸好很快就解决了。"],
+      notes: [
+        { k: "方向第四格", v: "in den falschen Raum（in + 第四格，Wohin? 拿到哪去）；bringen 强变化 → gebracht" },
+        { k: "反身动词", v: "sich entschuldigen 一律用 haben：Sie hat sich entschuldigt." },
+        { k: "从句", v: "weil 引导原因从句，变位动词 war 必须到句尾：… weil das Problem schnell gelöst war." }
+      ]
+    },
+    7: {
+      zhs: ["11 点我们终于开始工作。", "我准备了少量土壤，并检测了样本。", "Ben 把结果录入了表格。"],
+      notes: [
+        { k: "固定搭配", v: "beginnen mit + 第三格（mit der Arbeit beginnen）；beginnen → begonnen（be- 不加 ge-）" },
+        { k: "陷阱", v: "vorbereiten → vorbereitet：vor- 虽可分，但词干含不可分前缀 be-，所以没有 ge-" },
+        { k: "可分动词", v: "eintragen → eingetragen（ein + ge + tragen）；in eine Tabelle 第四格（录入到表格里）" }
+      ]
+    },
+    8: {
+      zhs: ["午休后我们清洗了仪器，写了一份简短的报告。", "16:30 我开车回家了。", "晚上我跟家人讲了这个小问题。"],
+      notes: [
+        { k: "助动词", v: "fahren 位移 → sein：bin … gefahren；nach Hause 固定搭配（回家，方向）" },
+        { k: "搭配", v: "erzählen von + 第三格（讲述关于某事）：von dem kleinen Problem" },
+        { k: "时间线", v: "um 8 Uhr → um 11 Uhr → nach der Mittagspause → um 16:30 Uhr → am Abend：时间状语置首即触发倒装" }
+      ]
+    },
+    9: {
+      zhs: ["我很累，但很满意。", "我们找到了所有样本，也完成了工作。"],
+      notes: [
+        { k: "过去时", v: "war = sein 的过去时，只用于描述状态；动作仍用完成时" },
+        { k: "框架结构", v: "两个第二分词同时钉在句末：haben … gefunden und … geschafft" }
+      ]
+    }
   }
 };

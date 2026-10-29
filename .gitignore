@@ -2,6 +2,7 @@
 Thumbs.db
 *.log
 .workbuddy-ai/
+.workbuddy/
 node_modules/
 __pycache__/
 .wrangler/

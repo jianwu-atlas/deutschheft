@@ -49,8 +49,11 @@ def gen(text: str, out: Path) -> bool:
 
 def main():
     OUTDIR.mkdir(parents=True, exist_ok=True)
-    texts = dump_texts()
-    manifest = []
+    want = [a for a in sys.argv[1:] if not a.startswith("-")]   # 可选：只生成指定课文 id（如 t3），留空则全部
+    texts = [t for t in dump_texts() if not want or t["id"] in want]
+    mpath = OUTDIR / "manifest.json"
+    old = json.loads(mpath.read_text(encoding="utf-8")) if mpath.exists() else []
+    manifest = [m for m in old if m.get("id") not in {t["id"] for t in texts}]   # 保留未重生课文的清单
     total = 0
     for t in texts:
         tid = t["id"]
@@ -70,9 +73,10 @@ def main():
                 manifest.append({"id": tid, "kind": "para", "n": i, "file": f"assets/audio/textes/{tid}_p{i}.mp3"})
                 total += 1
             time.sleep(0.3)
-    (OUTDIR / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    manifest.sort(key=lambda m: (m["id"], m["kind"], m.get("n", 0)))
+    mpath.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n✅ 完成：{total} 个 MP3 → {OUTDIR}")
-    print("   manifest:", OUTDIR / "manifest.json")
+    print("   manifest:", mpath, f"（共 {len(manifest)} 条）")
 
 
 if __name__ == "__main__":

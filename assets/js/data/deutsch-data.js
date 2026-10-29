@@ -318,6 +318,32 @@ const LESSONS = [
       { de: "Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", zh: "16:30 她骑自行车回家了。（位移 → sein）", ipa: "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ɪst ziː mɪt deːm ˈfaːɐ̯ʁaːt naːx ˈhaʊ̯zə ɡəˈfaːʁən]"  },
       { de: "Trotzdem war sie zufrieden, denn sie hat etwas Neues gelernt.", zh: "但她依然很满足，因为她学到了新东西。", ipa: "[ˈtʁɔt͡sdɛm vaːɐ̯ ziː t͡suˈfʁiːdn̩ dɛn ziː hat ˈʔɛtvas ˈnɔʏ̯əs ɡəˈlɛʁnt]" }
     ]
+  },
+  {
+    id: "a2t3", level: "A1.2", num: "A2-3", date: "2026-10-28",
+    title: "实验室样本风波", de: "Ein Problem mit den Laborproben",
+    topic: "实验室",
+    summary: "Nina 的一天：上午应到 12 份土壤样本，桌上只有 9 个容器。这篇叙事课文把现在完成时从「会造句」推进到「能叙事」——助动词选择、可分动词分词与静三动四介词在同一段里反复出现。",
+    focus: "叙事三件套：① 时间状语开头 → 动词占第二位（Um 8 Uhr bin ich … / Letzten Montag habe ich …）；② haben / sein 决定句子骨架，Partizip II 钉句尾；③ 可分动词的 ge- 夹在前缀与词干之间（aus-ge-zogen / an-ge-rufen / ein-ge-tragen）。",
+    grammar: [
+      "框架结构复习：助动词 haben/sein（第二位）+ … + Partizip II（句末）",
+      "sein 阵营：位移 kommen / gehen / fahren；fehlen、lachen、suchen 一类一律用 haben",
+      "可分动词分词：ausziehen → ausgezogen、anziehen → angezogen、anrufen → angerufen、eintragen → eingetragen",
+      "不加 ge-：不可分前缀 erlebt / entdeckt / gebracht / begonnen / erzählt；-ieren 结尾 kontrolliert / gestartet / gereinigt",
+      "静三动四：ins Labor / in den falschen Raum（Wohin? 第四格）↔ auf dem Tisch / im Kühlschrank / im zweiten Stock（Wo? 第三格）",
+      "weil 从句动词到句尾：…, weil das Problem zum Glück schnell gelöst war.",
+      "时间线叙事：um 8 Uhr → für den Vormittag → um 11 Uhr → nach der Mittagspause → um 16:30 Uhr → am Abend"
+    ],
+    sentences: [
+      { de: "Letzten Montag habe ich einen ungewöhnlichen Tag erlebt.", zh: "上周一我经历了一个不寻常的日子。（时间状语居首 → 动词第二位，主语后移）", ipa: "[ˈlɛt͡stn̩ ˈmoːntaːk ˈhaːbə ɪç ˈʔaɪ̯nən ʊnɡəˈvøːnlɪçn̩ taːk ɛɐ̯ˈleːpt]" },
+      { de: "Um 8 Uhr bin ich ins Labor gekommen.", zh: "8 点我到了实验室。（位移 → sein；ins = in das，第四格表方向）", ipa: "[ʊm ˈʔaxt uːɐ̯ bɪn ɪç ʔɪns laˈboːɐ̯ ɡəˈkɔmən]" },
+      { de: "Zuerst habe ich meine Jacke ausgezogen und meinen Laborkittel angezogen.", zh: "首先我脱下夹克，穿上实验服。（可分动词：aus-ge-zogen / an-ge-zogen）", ipa: "[t͡suˈʔeːɐ̯st ˈhaːbə ɪç ˈmaɪ̯nə ˈjakə ˈʔaʊ̯sɡəˌt͡soːɡn̩ ʊnt ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ ˈʔanɡəˌt͡soːɡn̩]" },
+      { de: "Aber auf dem Tisch habe ich nur neun Behälter gefunden.", zh: "但桌上我只找到九个容器。（auf + 第三格，静态位置）", ipa: "[ˈʔaːbɐ aʊ̯f deːm tɪʃ ˈhaːbə ɪç nuːɐ̯ nɔʏ̯n bəˈhɛltɐ ɡəˈfʊndn̩]" },
+      { de: "Wir sind in das Labor im zweiten Stock gegangen.", zh: "我们去了二楼的实验室。（in das 第四格 = 去哪；im zweiten Stock 第三格 = 在哪）", ipa: "[viːɐ̯ zɪnt ʔɪn das laˈboːɐ̯ ɪm ˈt͡svaɪ̯tn̩ ʃtɔk ɡəˈɡaŋən]" },
+      { de: "Sie hat sich entschuldigt.", zh: "她道了歉。（反身动词一律用 haben）", ipa: "[ziː hat zɪç ʔɛntˈʃʊldɪçt]" },
+      { de: "Wir haben gelacht, weil das Problem zum Glück schnell gelöst war.", zh: "我们笑了，因为问题幸好很快就解决了。（weil 从句：变位动词 war 到句尾）", ipa: "[viːɐ̯ ˈhaːbn̩ ɡəˈlaxt | vaɪ̯l das pʁoˈbleːm t͡sʊm ɡlʏk ʃnɛl ɡəˈløːst vaːɐ̯]" },
+      { de: "Wir haben alle Proben gefunden und unsere Arbeit geschafft.", zh: "我们找到了所有样本，也完成了工作。（框架结构：两个 Partizip II 都钉在句末）", ipa: "[viːɐ̯ ˈhaːbn̩ ˈʔalə ˈpʁoːbn̩ ɡəˈfʊndn̩ ʊnt ˈʔʊnzəʁə ˈʔaʁbaɪ̯t ɡəˈʃaft]" }
+    ]
   }
 ];
 
@@ -611,6 +637,37 @@ const VOCAB = [
   { de: "das Schiff", zh: "船", pos: "das", plural: "-e", topic: "交通问路" },
   { de: "die Apotheke", zh: "药房", pos: "die", plural: "-n", topic: "交通问路" },
   { de: "das Krankenhaus", zh: "医院", pos: "das", plural: "¨-er", topic: "交通问路" },
+  /* —— 2026-10-28 第三次课《Ein Problem mit den Laborproben》新增（主题：实验室）—— */
+  { de: "die Bodenprobe", zh: "土壤样本", pos: "die", plural: "-n", ipa: "[ˈboːdn̩ˌpʁoːbə]", topic: "实验室" },
+  { de: "die Laborprobe", zh: "实验室样本", pos: "die", plural: "-n", ipa: "[laˈboːɐ̯ˌpʁoːbə]", topic: "实验室" },
+  { de: "die Lieferliste", zh: "送货清单", pos: "die", plural: "-n", ipa: "[ˈliːfɐˌlɪstə]", topic: "实验室" },
+  { de: "das Lager", zh: "仓库；储藏室", pos: "das", plural: "-", ipa: "[ˈlaːɡɐ]", topic: "实验室" },
+  { de: "der Kühlschrank", zh: "冰箱", pos: "der", plural: "¨-e", ipa: "[ˈkyːlʃʁaŋk]", topic: "实验室" },
+  { de: "der Stock", zh: "楼层（im zweiten Stock 在二楼）", pos: "der", plural: "¨-e", ipa: "[ʃtɔk]", topic: "实验室" },
+  { de: "die Raumnummer", zh: "房间号", pos: "die", plural: "-n", ipa: "[ˈʁaʊ̯mˌnʊmɐ]", topic: "实验室" },
+  { de: "der Fehler", zh: "错误", pos: "der", plural: "-", ipa: "[ˈfeːlɐ]", topic: "实验室" },
+  { de: "die Erde", zh: "土壤；地球", pos: "die", plural: "-n", ipa: "[ˈʔeːɐ̯də]", topic: "实验室" },
+  { de: "die Tabelle", zh: "表格", pos: "die", plural: "-n", ipa: "[taˈbɛlə]", topic: "实验室" },
+  { de: "die Jacke", zh: "夹克；外套", pos: "die", plural: "-n", ipa: "[ˈjakə]", topic: "实验室" },
+  { de: "der Vormittag", zh: "上午", pos: "der", plural: "-e", ipa: "[ˈfoːɐ̯mɪtaːk]", topic: "实验室" },
+  { de: "die Mittagspause", zh: "午休", pos: "die", plural: "-n", ipa: "[ˈmɪtaːksˌpaʊ̯zə]", topic: "实验室" },
+  { de: "fehlen", zh: "缺少；缺失（hat gefehlt）", pos: "verb", ipa: "[ˈfeːlən]", topic: "实验室" },
+  { de: "ausziehen", zh: "脱下（可分；hat ausgezogen）", pos: "verb", ipa: "[ˈʔaʊ̯sˌt͡siːən]", topic: "实验室" },
+  { de: "anrufen", zh: "打电话（可分；hat angerufen）", pos: "verb", ipa: "[ˈʔanˌʁuːfn̩]", topic: "实验室" },
+  { de: "suchen", zh: "寻找（hat gesucht）", pos: "verb", ipa: "[ˈzuːxn̩]", topic: "实验室" },
+  { de: "lachen", zh: "笑（hat gelacht）", pos: "verb", ipa: "[ˈlaxn̩]", topic: "实验室" },
+  { de: "bringen", zh: "带来；送去（hat gebracht）", pos: "verb", ipa: "[ˈbʁɪŋən]", topic: "实验室" },
+  { de: "lösen", zh: "解决；溶解（hat gelöst）", pos: "verb", ipa: "[ˈløːzn̩]", topic: "实验室" },
+  { de: "beginnen", zh: "开始（hat begonnen；beginnen mit + Dativ）", pos: "verb", ipa: "[bəˈɡɪnən]", topic: "实验室" },
+  { de: "schaffen", zh: "完成；搞定（hat geschafft）", pos: "verb", ipa: "[ˈʃafn̩]", topic: "实验室" },
+  { de: "erleben", zh: "经历；体验（hat erlebt）", pos: "verb", ipa: "[ɛɐ̯ˈleːbn̩]", topic: "实验室" },
+  { de: "erwarten", zh: "预计；等待（hat erwartet）", pos: "verb", ipa: "[ɛɐ̯ˈvaʁtn̩]", topic: "实验室" },
+  { de: "stehen", zh: "写着；竖立（hat gestanden）", pos: "verb", ipa: "[ˈʃteːən]", topic: "实验室" },
+  { de: "sich entschuldigen", zh: "道歉（hat sich entschuldigt）", pos: "verb", ipa: "[zɪç ʔɛntˈʃʊldɪçn̩]", topic: "实验室" },
+  { de: "zum Glück", zh: "幸好；幸运的是", pos: "phrase", ipa: "[t͡sʊm ɡlʏk]", topic: "实验室" },
+  { de: "nach Hause fahren", zh: "开车/乘车回家", pos: "phrase", topic: "实验室" },
+  { de: "mit der Arbeit beginnen", zh: "开始工作（mit + Dativ）", pos: "phrase", topic: "实验室" },
+  { de: "im zweiten Stock", zh: "在二楼（Wo? 第三格）", pos: "phrase", topic: "实验室" },
   /* —— 教材新增词汇（零基础德语速成）—— 按 Jian 要求：课外教材词汇不计入单词项目，故整段注释（保留数据可恢复）
   { de: "die Fahrkarte", zh: "车票", pos: "die", plural: "-n", topic: "交通问路" },
   { de: "der Lokführer", zh: "火车司机", pos: "der", plural: "-", topic: "交通问路" },
@@ -628,7 +685,7 @@ const VOCAB = [
 const VOCAB_TOPICS = ["基础与发音", "自我介绍", "数字", "食物饮料", "休闲活动", "房屋家具", "时间作息", "服装颜色", "天气四季", "交通问路", "办公通勤", "实验室", "完成时"];
 
 /* ------------------------------------------------------------
-   三、语法专题（12 讲）
+   三、语法专题（13 讲）
    ------------------------------------------------------------ */
 const GRAMMAR = [
   {
@@ -803,6 +860,26 @@ const GRAMMAR = [
         <tr><td>不加 ge-</td><td>-ieren 结尾；不可分前缀 be-, er-, ent-, ver-, unter-, wieder-</td><td>kontrollieren → <b>kontrolliert</b>；benutzen → <b>benutzt</b>；erzählen → <b>erzählt</b></td></tr>
       </table>
       <p class="tip">💡 描述状态时可用 sein 的过去时 war 代替完成时：Am Abend <b>war</b> Mia müde.</p>`
+  },
+  {
+    id: "g13", title: "可分动词的完成时", de: "Trennbare Verben im Perfekt", tag: "时态",
+    body: `
+      <p class="rule">可分动词的 <strong>ge-</strong> 不长在最前面，而是<strong>夹在可分前缀与动词词干之间</strong>：前缀 + <b>ge</b> + 词干 + 词尾。</p>
+      <table>
+        <tr><th>原形</th><th>第二分词</th><th>拆解</th><th>课文例句</th></tr>
+        <tr><td>ausziehen</td><td><b>ausgezogen</b></td><td>aus + ge + zogen</td><td><em>Ich habe meine Jacke <b>ausgezogen</b>.</em></td></tr>
+        <tr><td>anziehen</td><td><b>angezogen</b></td><td>an + ge + zogen</td><td><em>Ich habe meinen Laborkittel <b>angezogen</b>.</em></td></tr>
+        <tr><td>anrufen</td><td><b>angerufen</b></td><td>an + ge + rufen</td><td><em>Ich habe Ben <b>angerufen</b>.</em></td></tr>
+        <tr><td>eintragen</td><td><b>eingetragen</b></td><td>ein + ge + tragen</td><td><em>Ben hat die Ergebnisse <b>eingetragen</b>.</em></td></tr>
+        <tr><td>aufräumen</td><td><b>aufgeräumt</b></td><td>auf + ge + räumt</td><td><em>Sie hat den Tisch <b>aufgeräumt</b>.</em></td></tr>
+      </table>
+      <table>
+        <tr><th>反例（不加 ge-）</th><th>原因</th><th>分词</th></tr>
+        <tr><td>vorbereiten</td><td>可分前缀 vor- + <b>不可分前缀 be-</b>，be- 压制 ge-</td><td><b>vorbereitet</b></td></tr>
+        <tr><td>entdecken / erleben / erzählen</td><td>不可分前缀 ent- / er-</td><td><b>entdeckt / erlebt / erzählt</b></td></tr>
+        <tr><td>kontrollieren / starten / reinigen</td><td>-ieren 结尾或 -en 结尾的弱变化外来词</td><td><b>kontrolliert / gestartet / gereinigt</b></td></tr>
+      </table>
+      <p class="tip">💡 判断顺序：先问「有没有不可分前缀（be-, er-, ent-, ver-, ge-）或 -ieren」→ 有就不加 ge-；再问「可分吗」→ 可分就把 ge- 塞进中间；都不是 → 正常 ge- 开头。<b>vorbereiten 是唯一高频陷阱</b>：vor- 可分，但 be- 不可分，所以是 vorbereitet 而不是 vorgebereitet。</p>`
   }
 ];
 
@@ -845,11 +922,28 @@ const TEXTS = [
       { title: "整理与下班", de: "Zum Schluss hat Mia ihren Arbeitsplatz aufgeräumt, die Geräte gereinigt und die Proben sicher weggeräumt. Um 16:30 Uhr ist sie mit dem Fahrrad nach Hause gefahren.", ips: ["[t͡sʊm ʃlʊs hat ˈmiːa ˈʔiːʁən ˈʔaʁbaɪ̯t͡sˌplat͡s ˈʔaʊ̯fɡəˌʁɔʏ̯mt diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt ʊnt diː ˈpʁoːbn̩ ˈzɪçɐ ˈvɛkɡəˌʁɔʏ̯mt]", "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ɪst ziː mɪt deːm ˈfaːɐ̯ʁaːt naːx ˈhaʊ̯zə ɡəˈfaːʁən]"], zh: "最后，Mia 整理了工作台、清洗了仪器，并将样品安全归位。16:30 她骑自行车回家了。", verbs: ["hat … aufgeräumt（可分）", "hat … gereinigt", "hat … weggeräumt（可分）", "ist … gefahren（位移 → sein）"] },
       { title: "总结与感受", de: "Am Abend war Mia müde. Trotzdem war sie zufrieden, denn sie hat an diesem Tag etwas Neues gelernt.", ips: ["[am ˈʔaːbn̩t vaːɐ̯ ˈmiːa ˈmyːdə]", "[ˈtʁɔt͡sdɛm vaːɐ̯ ziː t͡suˈfʁiːdn̩ dɛn ziː hat an ˈdiːzəm taːk ˈʔɛtvas ˈnɔʏ̯əs ɡəˈlɛʁnt]"], zh: "晚上 Mia 很累，但她依然很满足，因为这一天她学到了新东西。", verbs: ["war（sein 过去时，表状态）", "hat … gelernt"] }
     ]
+  },
+  {
+    id: "t3",
+    title: "实验室样本的问题", de: "Ein Problem mit den Laborproben",
+    level: "A1.2 · Das Perfekt", date: "2026-10-28",
+    intro: "Nina 的值班日：应到 12 份土壤样本，桌上却只有 9 个容器。全文以现在完成时叙述，是检验「haben/sein 选择 + 可分动词分词 + 静三动四」的最佳范本。",
+    paragraphs: [
+      { title: "人物与背景", de: "Ich heiße Nina und arbeite als Biologin in einem Labor. Wir untersuchen Bodenproben aus verschiedenen Gärten. Letzten Montag habe ich einen ungewöhnlichen Tag erlebt.", ips: ["[ɪç ˈhaɪ̯sə ˈniːna ʊnt ˈʔaʁbaɪ̯tə als bi̯oˈloːɡɪn ɪn ˈʔaɪ̯nəm laˈboːɐ̯]", "[viːɐ̯ ʔʊntɐˈzuːxn̩ ˈboːdn̩ˌpʁoːbn̩ aʊ̯s fɛɐ̯ˈʃiːdənən ˈɡɛʁtn̩]", "[ˈlɛt͡stn̩ ˈmoːntaːk ˈhaːbə ɪç ˈʔaɪ̯nən ʊnɡəˈvøːnlɪçn̩ taːk ɛɐ̯ˈleːpt]"], zh: "我叫 Nina，在一家实验室担任生物学家。我们检测来自不同花园的土壤样本。上周一我经历了一个不寻常的日子。", verbs: ["arbeite als Biologin（als + 职业）", "in einem Labor（in + 第三格，静态）", "habe … erlebt（er- 无 ge-）"] },
+      { title: "早晨准备", de: "Um 8 Uhr bin ich ins Labor gekommen. Zuerst habe ich meine Jacke ausgezogen und meinen Laborkittel angezogen. Danach habe ich meinen Computer gestartet und den Arbeitsplan gelesen.", ips: ["[ʊm ˈʔaxt uːɐ̯ bɪn ɪç ʔɪns laˈboːɐ̯ ɡəˈkɔmən]", "[t͡suˈʔeːɐ̯st ˈhaːbə ɪç ˈmaɪ̯nə ˈjakə ˈʔaʊ̯sɡəˌt͡soːɡn̩ ʊnt ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ ˈʔanɡəˌt͡soːɡn̩]", "[daˈnaːx ˈhaːbə ɪç ˈmaɪ̯nən kɔmˈpjuːtɐ ɡəˈʃtaʁtət ʊnt deːn ˈʔaʁbaɪ̯t͡sˌplaːn ɡəˈleːzn̩]"], zh: "8 点我来到了实验室。首先我脱下夹克，穿上实验服。之后我打开电脑，读了工作计划。", verbs: ["ist … gekommen（位移 → sein）", "hat … ausgezogen / angezogen（可分）", "hat … gestartet（-en 弱变化，无 ge-）", "hat … gelesen（e→e，强变化）"] },
+      { title: "发现样本缺失", de: "Für den Vormittag haben wir zwölf Bodenproben erwartet. Aber auf dem Tisch habe ich nur neun Behälter gefunden. Drei Proben haben gefehlt. Ich habe die Nummern noch einmal kontrolliert.", ips: ["[fyːɐ̯ deːn ˈfoːɐ̯mɪtaːk ˈhaːbn̩ viːɐ̯ t͡svœlf ˈboːdn̩ˌpʁoːbn̩ ɛɐ̯ˈvaʁtət]", "[ˈʔaːbɐ aʊ̯f deːm tɪʃ ˈhaːbə ɪç nuːɐ̯ nɔʏ̯n bəˈhɛltɐ ɡəˈfʊndn̩]", "[dʁaɪ̯ ˈpʁoːbn̩ ˈhaːbn̩ ɡəˈfeːlt]", "[ɪç ˈhaːbə diː ˈnʊmɐn nɔx ˈʔaɪ̯nmaːl kɔntʁoˈliːɐ̯t]"], zh: "上午我们预计有十二份土壤样本。但桌上我只找到九个容器。有三份样本不见了。我又核对了一遍编号。", verbs: ["haben … erwartet", "auf dem Tisch（auf + 第三格，静态）", "haben … gefehlt（fehlen 用 haben）", "hat … kontrolliert（-ieren 无 ge-）"] },
+      { title: "求助同事", de: "Dann habe ich meinen Kollegen Ben angerufen. Er ist sofort zu mir gekommen. Gemeinsam haben wir im Kühlschrank und im Lager gesucht. Dort haben wir die fehlenden Proben nicht gefunden.", ips: ["[dan ˈhaːbə ɪç ˈmaɪ̯nən kɔˈleːɡn̩ bɛn ˈʔanɡəˌʁuːfn̩]", "[eːɐ̯ ɪst zoˈfɔʁt t͡suː miːɐ̯ ɡəˈkɔmən]", "[ɡəˈmaɪ̯nzaːm ˈhaːbn̩ viːɐ̯ ɪm ˈkyːlʃʁaŋk ʊnt ɪm ˈlaːɡɐ ɡəˈzuːxt]", "[dɔʁt ˈhaːbn̩ viːɐ̯ diː ˈfeːləndn̩ ˈpʁoːbn̩ nɪçt ɡəˈfʊndn̩]"], zh: "然后我给我的同事 Ben 打了电话。他立刻来到我这里。我们一起在冰箱和仓库里找。在那里我们没有找到缺失的样本。", verbs: ["hat … angerufen（可分；第四格 meinen Kollegen）", "ist … gekommen（位移）", "im Kühlschrank / im Lager（in + 第三格）", "haben … gesucht"] },
+      { title: "发现错误", de: "Ben hat die Lieferliste gelesen. Dabei hat er einen Fehler entdeckt: Auf der Liste hat eine falsche Raumnummer gestanden. Wir sind in das Labor im zweiten Stock gegangen.", ips: ["[bɛn hat diː ˈliːfɐˌlɪstə ɡəˈleːzn̩]", "[daˈbaɪ̯ hat eːɐ̯ ˈʔaɪ̯nən ˈfeːlɐ ʔɛntˈdɛkt | aʊ̯f deːɐ̯ ˈlɪstə hat ˈʔaɪ̯nə ˈfalʃə ˈʁaʊ̯mˌnʊmɐ ɡəˈʃtandn̩]", "[viːɐ̯ zɪnt ʔɪn das laˈboːɐ̯ ɪm ˈt͡svaɪ̯tn̩ ʃtɔk ɡəˈɡaŋən]"], zh: "Ben 读了送货清单。其间他发现了一个错误：清单上写着一个错误的房间号。我们去了二楼的实验室。", verbs: ["hat … entdeckt（ent- 无 ge-）", "hat … gestanden（stehen 的完成时）", "sind … gegangen（位移 → sein）", "in das Labor（第四格）↔ im zweiten Stock（第三格）"] },
+      { title: "问题解决", de: "Dort haben wir die drei Behälter gefunden. Eine Kollegin hat sie am Morgen in den falschen Raum gebracht. Sie hat sich entschuldigt. Wir haben gelacht, weil das Problem zum Glück schnell gelöst war.", ips: ["[dɔʁt ˈhaːbn̩ viːɐ̯ diː dʁaɪ̯ bəˈhɛltɐ ɡəˈfʊndn̩]", "[ˈʔaɪ̯nə kɔˈleːɡɪn hat ziː am ˈmɔʁɡn̩ ʔɪn deːn ˈfalʃn̩ ʁaʊ̯m ɡəˈbʁaxt]", "[ziː hat zɪç ʔɛntˈʃʊldɪçt]", "[viːɐ̯ ˈhaːbn̩ ɡəˈlaxt | vaɪ̯l das pʁoˈbleːm t͡sʊm ɡlʏk ʃnɛl ɡəˈløːst vaːɐ̯]"], zh: "在那里我们找到了这三个容器。一位女同事早上把它们拿到了错误的房间。她道了歉。我们笑了，因为问题幸好很快就解决了。", verbs: ["in den falschen Raum（第四格，方向）", "hat … gebracht（bringen 强变化）", "hat sich entschuldigt（反身 → haben）", "weil … gelöst war（动词到句尾）"] },
+      { title: "终于开工", de: "Um 11 Uhr haben wir endlich mit der Arbeit begonnen. Ich habe kleine Mengen Erde vorbereitet und die Proben untersucht. Ben hat die Ergebnisse in eine Tabelle eingetragen.", ips: ["[ʊm ˈʔɛlf uːɐ̯ ˈhaːbn̩ viːɐ̯ ˈʔɛntlɪç mɪt deːɐ̯ ˈʔaʁbaɪ̯t bəˈɡɔnən]", "[ɪç ˈhaːbə ˈklaɪ̯nə ˈmɛŋən ˈʔeːɐ̯də foːɐ̯bəˈʁaɪ̯tət ʊnt diː ˈpʁoːbn̩ ʔʊntɐˈzuːxt]", "[bɛn hat diː ʔɛɐ̯ˈɡeːpnɪsə ʔɪn ˈʔaɪ̯nə taˈbɛlə ˈʔaɪ̯nɡəˌtʁaːɡn̩]"], zh: "11 点我们终于开始工作。我准备了少量土壤，并检测了样本。Ben 把结果录入了表格。", verbs: ["hat … begonnen（be- 无 ge-；beginnen mit + Dativ）", "hat … vorbereitet（vor- + be- → 无 ge-）", "hat … eingetragen（可分）"] },
+      { title: "收尾与回家", de: "Nach der Mittagspause haben wir die Geräte gereinigt und einen kurzen Bericht geschrieben. Um 16:30 Uhr bin ich nach Hause gefahren. Am Abend habe ich meiner Familie von dem kleinen Problem erzählt.", ips: ["[naːx deːɐ̯ ˈmɪtaːksˌpaʊ̯zə ˈhaːbn̩ viːɐ̯ diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt ʊnt ˈʔaɪ̯nən ˈkʊʁt͡sn̩ bəˈʁɪçt ɡəˈʃʁiːbn̩]", "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç bɪn ɪç naːx ˈhaʊ̯zə ɡəˈfaːʁən]", "[am ˈʔaːbn̩t ˈhaːbə ɪç ˈmaɪ̯nɐ faˈmiːliə fɔn deːm ˈklaɪ̯nən pʁoˈbleːm ɛɐ̯ˈt͡sɛːlt]"], zh: "午休后我们清洗了仪器，写了一份简短的报告。16:30 我开车回家了。晚上我跟家人讲了这个小问题。", verbs: ["hat … gereinigt", "hat … geschrieben（强变化）", "ist … gefahren（位移 → sein；nach Hause 固定搭配）", "hat … erzählt（erzählen von + Dativ）"] },
+      { title: "总结", de: "Ich war müde, aber zufrieden. Wir haben alle Proben gefunden und unsere Arbeit geschafft.", ips: ["[ɪç vaːɐ̯ ˈmyːdə | ˈʔaːbɐ t͡suˈfʁiːdn̩]", "[viːɐ̯ ˈhaːbn̩ ˈʔalə ˈpʁoːbn̩ ɡəˈfʊndn̩ ʊnt ˈʔʊnzəʁə ˈʔaʁbaɪ̯t ɡəˈʃaft]"], zh: "我很累，但很满意。我们找到了所有样本，也完成了工作。", verbs: ["war（sein 过去时，表状态）", "haben … gefunden / geschafft"] }
+    ]
   }
 ];
 
 /* ------------------------------------------------------------
-   五、互动练习（5 组测验）
+   五、互动练习（8 组测验）
    ------------------------------------------------------------ */
 const QUIZZES = [
   {
@@ -934,6 +1028,40 @@ const QUIZZES = [
       { q: "Mia telefoniert mit der Teamleiterin. →", options: ["Mia hat mit der Teamleiterin telefoniert.", "Mia ist mit der Teamleiterin telefoniert.", "Mia hat mit der Teamleiterin getelefoniert.", "Mia telefoniert mit der Teamleiterin telefoniert."], answer: 0, explain: "telefonieren 无位移 → hat；-ieren 不加 ge-。" },
       { q: "Sie räumt ihren Arbeitsplatz auf. →", options: ["Sie hat ihren Arbeitsplatz aufgeräumt.", "Sie hat ihren Arbeitsplatz geräumt auf.", "Sie ist ihren Arbeitsplatz aufgeräumt.", "Sie hat ihren Arbeitsplatz aufgeraümt."], answer: 0, explain: "可分动词 aufräumen：前缀与词干之间插 ge- → aufgeräumt。" },
       { q: "Mia fährt nach Hause. →", options: ["Mia hat nach Hause gefahren.", "Mia ist nach Hause gefahren.", "Mia ist nach Hause gefährt.", "Mia fährt nach Hause gefahren."], answer: 1, explain: "fahren 方向性位移 → sein；单数主语 → ist。" }
+    ]
+  },
+  {
+    id: "q7", title: "haben 还是 sein？", de: "Haben oder sein?", desc: "《Ein Problem mit den Laborproben》配套：助动词选择 + 可分动词第二分词",
+    questions: [
+      { q: "Nina ___ um 8 Uhr ins Labor gekommen.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "kommen 表示位置改变 → sein；主语 Nina（sie）→ ist。" },
+      { q: "Sie ___ den Computer gestartet.", options: ["ist", "hat", "haben", "sind"], answer: 1, explain: "starten 带第四格宾语（及物）→ haben；sie 单数 → hat。" },
+      { q: "Drei Proben ___ gefehlt.", options: ["hat", "ist", "haben", "sind"], answer: 2, explain: "fehlen 无位移，不及物 → haben；主语 Drei Proben 复数 → haben。" },
+      { q: "Ben ___ sofort zu Nina gekommen.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "kommen 位移 → sein；Ben（er）→ ist。" },
+      { q: "Sie ___ im Lager gesucht.", options: ["sind", "haben", "ist", "hat"], answer: 1, explain: "suchen 及物 → haben；主语 Sie = 他们 → haben。" },
+      { q: "Die beiden ___ in den zweiten Stock gegangen.", options: ["haben", "hat", "sind", "ist"], answer: 2, explain: "gehen 位移 → sein；Die beiden 复数 → sind。" },
+      { q: "Die Kollegin ___ sich entschuldigt.", options: ["ist", "hat", "haben", "sind"], answer: 1, explain: "反身动词一律用 haben：sie hat sich entschuldigt。" },
+      { q: "Nina ___ um 16:30 Uhr nach Hause gefahren.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "fahren 位移 → sein；单数 → ist。" },
+      { q: "anrufen → 第二分词是？", options: ["angeruft", "angerufen", "gerufen an", "geangrufen"], answer: 1, explain: "可分动词：an + ge + rufen → angerufen（anrufen 本身是强变化 rufen → gerufen）。" },
+      { q: "eintragen → 第二分词是？", options: ["geeintragen", "eingetragt", "eingetragen", "eintragen ge-"], answer: 2, explain: "ein + ge + tragen → eingetragen；tragen 强变化，分词为 getragen。" },
+      { q: "vorbereiten → 第二分词是？", options: ["vorgebereitet", "vorbereitet", "gevorbereitet", "vorbereitt"], answer: 1, explain: "vor- 虽可分，但词干含不可分前缀 be-，ge- 被压制：vorbereitet。" },
+      { q: "Er hat einen Fehler ___.", options: ["entdeckt", "geentdeckt", "entgedeckt", "gedeckt"], answer: 0, explain: "entdecken 的 ent- 不可分 → 不加 ge-：entdeckt。" }
+    ]
+  },
+  {
+    id: "q8", title: "课文理解", de: "Leseverstehen", desc: "《Ein Problem mit den Laborproben》12 题细节理解", hint: "根据课文内容选择正确答案",
+    questions: [
+      { q: "Was untersucht Nina in ihrem Labor?", options: ["Lebensmittel aus dem Supermarkt", "Bodenproben aus verschiedenen Gärten", "Wasser aus Flüssen", "Pflanzenzellen unter dem Mikroskop"], answer: 1, explain: "课文第一段：Wir untersuchen Bodenproben aus verschiedenen Gärten." },
+      { q: "An welchem Tag hat Nina das Problem erlebt?", options: ["letzten Montag", "letzten Freitag", "gestern", "am Wochenende"], answer: 0, explain: "Letzten Montag habe ich einen ungewöhnlichen Tag erlebt." },
+      { q: "Wann ist sie ins Labor gekommen?", options: ["um 7:15 Uhr", "um 8 Uhr", "um 11 Uhr", "um 16:30 Uhr"], answer: 1, explain: "Um 8 Uhr bin ich ins Labor gekommen." },
+      { q: "Was hat sie zuerst gemacht?", options: ["den Computer gestartet", "die Jacke ausgezogen und den Laborkittel angezogen", "die Proben untersucht", "Ben angerufen"], answer: 1, explain: "Zuerst habe ich meine Jacke ausgezogen und meinen Laborkittel angezogen." },
+      { q: "Wie viele Bodenproben hat das Team erwartet?", options: ["neun", "zehn", "zwölf", "drei"], answer: 2, explain: "Für den Vormittag haben wir zwölf Bodenproben erwartet." },
+      { q: "Wie viele Behälter hat Nina auf dem Tisch gefunden?", options: ["zwölf", "neun", "drei", "elf"], answer: 1, explain: "Auf dem Tisch habe ich nur neun Behälter gefunden.（12 − 9 = 3 份缺失）" },
+      { q: "Wen hat Nina angerufen?", options: ["ihre Teamleiterin", "ihren Kollegen Ben", "eine Kollegin aus dem zweiten Stock", "ihre Familie"], answer: 1, explain: "Dann habe ich meinen Kollegen Ben angerufen." },
+      { q: "Wo haben die beiden zuerst gesucht?", options: ["im zweiten Stock", "im Kühlschrank und im Lager", "in der Kantine", "im Büro"], answer: 1, explain: "Gemeinsam haben wir im Kühlschrank und im Lager gesucht." },
+      { q: "Was hat Ben auf der Lieferliste entdeckt?", options: ["eine fehlende Probe", "eine falsche Raumnummer", "einen falschen Namen", "ein falsches Datum"], answer: 1, explain: "Auf der Liste hat eine falsche Raumnummer gestanden." },
+      { q: "Warum waren die Proben im falschen Raum?", options: ["Ben hat sie dorthin gebracht.", "Eine Kollegin hat sie am Morgen dorthin gebracht.", "Nina hat sie vergessen.", "Sie sind von selbst dorthin gekommen."], answer: 1, explain: "Eine Kollegin hat sie am Morgen in den falschen Raum gebracht." },
+      { q: "Wann haben sie endlich mit der Arbeit begonnen?", options: ["um 8 Uhr", "um 9 Uhr", "um 11 Uhr", "nach der Mittagspause"], answer: 2, explain: "Um 11 Uhr haben wir endlich mit der Arbeit begonnen." },
+      { q: "Wie hat Nina sich am Abend gefühlt?", options: ["ärgerlich, aber wach", "müde, aber zufrieden", "krank und traurig", "nervös und unsicher"], answer: 1, explain: "Ich war müde, aber zufrieden. Wir haben alle Proben gefunden und unsere Arbeit geschafft." }
     ]
   }
 ];

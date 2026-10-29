@@ -128,5 +128,64 @@
     "kind": "para",
     "n": 10,
     "file": "assets/audio/textes/t2_p10.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "full",
+    "file": "assets/audio/textes/t3_full.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 1,
+    "file": "assets/audio/textes/t3_p1.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 2,
+    "file": "assets/audio/textes/t3_p2.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 3,
+    "file": "assets/audio/textes/t3_p3.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 4,
+    "file": "assets/audio/textes/t3_p4.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 5,
+    "file": "assets/audio/textes/t3_p5.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 6,
+    "file": "assets/audio/textes/t3_p6.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 7,
+    "file": "assets/audio/textes/t3_p7.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 8,
+    "file": "assets/audio/textes/t3_p8.mp3"
+  },
+  {
+    "id": "t3",
+    "kind": "para",
+    "n": 9,
+    "file": "assets/audio/textes/t3_p9.mp3"
   }
 ]
