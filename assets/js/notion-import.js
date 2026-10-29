@@ -181,9 +181,9 @@ function renderNotionPage(app) {
     <div class="notes-layout">
       <aside class="note-list" id="noteList">
         ${list.map((n, i) => `
-          <button class="note-item ${active && n.id === active.id ? "on" : ""}" data-id="${n.id}">
+          <button class="note-item ${i === 0 && !q ? "ni-latest" : ""} ${active && n.id === active.id ? "on" : ""}" data-id="${n.id}" title="${esc(n.title)}">
             <span class="ni-title">${n.title}</span>
-            <span class="ni-meta">${i === 0 ? '<span class="ni-new">最新</span>' : ""}<span class="ni-badge ${n.kind}">${n.kind === "builtin" ? "内置" : "导入"}</span>${n.classDate || n.date || ""} ${n.text.length > 1000 ? Math.round(n.text.length / 1000) + "k 字" : n.text.length + " 字"}</span>
+            <span class="ni-meta"><span class="ni-badge ${n.kind}">${n.kind === "builtin" ? "内置" : "导入"}</span>${n.classDate || n.date || ""} ${n.text.length > 1000 ? Math.round(n.text.length / 1000) + "k 字" : n.text.length + " 字"}</span>
           </button>`).join("")}
       </aside>
       <section class="note-reader card" id="noteReader" style="padding:30px 32px">

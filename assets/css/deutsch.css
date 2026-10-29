@@ -1425,9 +1425,12 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
   .player-status { flex-basis: 100%; text-align: center; }
 }
 
-/* Notion 笔记列表：最新一篇的标记（列表按上课日期降序，最新在上） */
-.ni-new {
-  display: inline-block; margin-right: 5px; padding: 0 6px; border-radius: 99px;
-  background: var(--accent); color: #fff; font-size: 10.5px; line-height: 16px;
-}
-[data-theme="dark"] .ni-new { background: var(--gold); color: #201B14; }
+/* Notion 笔记列表：最新一篇的标记（列表按上课日期降序；用左侧色条 + 标题色，不占高度、不换行） */
+/* 标题单行省略（列表卡片等高，长标题不换行；完整标题见 title 悬浮提示） */
+.note-item .ni-title { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* 标题单行省略（列表卡片等高，长标题不换行；完整标题见 title 悬浮提示） */
+.note-item .ni-title { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.note-item.ni-latest { box-shadow: inset 3px 0 0 var(--accent); }
+.note-item.ni-latest .ni-title { color: var(--accent); }
+[data-theme="dark"] .note-item.ni-latest { box-shadow: inset 3px 0 0 var(--gold); }
+[data-theme="dark"] .note-item.ni-latest .ni-title { color: var(--gold); }
