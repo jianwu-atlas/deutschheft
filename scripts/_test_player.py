@@ -53,7 +53,7 @@ with sync_playwright() as p:
     check("初始无高亮", pg.locator(".s-reading").count() == 0)
     check("t4 段落 8 段", pg.locator(".card.para").count() == 8, pg.locator(".card.para").count())
     ipa_stat = pg.evaluate("() => window.__dhIpaStats")
-    check("t4 音标 ≤60%", 0 < ipa_stat["shown"] <= ipa_stat["total"] * 0.6, ipa_stat)
+    check("t4 词级音标 ≤60%", 0 < ipa_stat["ratio"] <= 0.6 and ipa_stat["lines"] == ipa_stat["sentences"], ipa_stat)
     check("t4 逐句中文 27 条", pg.locator("#textBody .s-zh").count() == 27, pg.locator("#textBody .s-zh").count())
     check("初始停止按钮禁用", pg.locator("#btnStop").is_disabled())
 

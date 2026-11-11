@@ -879,36 +879,47 @@ function renderTexts(app) {
   const fullText = t.paragraphs.map(p => p.de).join(" ");
   const mp3Full = "assets/audio/textes/" + t.id + "_full.mp3";
 
-  /* ---- 课文音标标注原则（Jian 2026-11-12）：每篇课文最多 60% 的句子显示 IPA。
-     以基础功能词（ich / wir / und / ist …）为主的简单句优先跳过，
-     保留含专业词、长词、强变化的长句。数据层 ips 完整保留，仅裁剪展示。 ---- */
-  const IPA_MAX_RATIO = 0.6;
+  /* ---- 课文音标标注原则（Jian 2026-11-12 修订）：按「单词」计，最多 60%。
+     每句仍保留音标行，但行内只给难词注音；ich / und / wir / in 等基础词不标。
+     优先使用 TEXTS[].ips 的人工校音音段（逐词对齐时），不对齐的句子
+     （10:30 Uhr 之类）回退 text-word-ipa.js 的 espeak 示意音标。
+     数据层 ips 完整保留，仅裁剪展示。 ---- */
+  const IPA_MAX_WORD_RATIO = 0.6;
   const ipaBasic = window.DH_BASIC || new Set([
     "ich", "wir", "du", "er", "sie", "es", "und", "oder", "aber", "in", "im", "am", "um",
     "zu", "zur", "der", "die", "das", "den", "dem", "ein", "eine", "einen", "einem", "einer",
     "mit", "von", "für", "auf", "aus", "bei", "nach", "vor", "dann", "da", "dort", "auch",
     "ist", "sind", "bin", "hat", "haben", "habe", "war", "waren", "hatte", "mich", "uns", "sich"
   ]);
-  const ipaWords = s => String(s).toLowerCase().match(/[a-zäöüß]+/g) || [];
-  const ipaContent = s => ipaWords(s).filter(w => !ipaBasic.has(w) && w.length > 2);
-  const ipaScore = s => {
-    const ws = ipaWords(s), c = ipaContent(s);
-    return c.length * 2 + ws.length * 0.3 + c.filter(w => w.length >= 9).length * 1.5;
+  const ipaTable = window.TEXT_WORD_IPA || {};
+  const ipaKey = w => w.toLowerCase().replace(/[^a-zäöüß0-9]/g, "");
+  const ipaLine = (de, full) => {
+    if (!full) return "";
+    const ws = de.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'’-]*/g) || [];
+    const parts = full.replace(/^\[|\]$/g, "").replace(/\|/g, " ").trim().split(/\s+/).filter(Boolean);
+    const aligned = parts.length === ws.length;
+    const cands = ws.map((w, i) => {
+      const k = ipaKey(w);
+      const raw = aligned ? parts[i] : (ipaTable[k] || "").replace(/^\[|\]$/g, "");
+      return { w, k, i, raw };
+    }).filter(x => x.raw && x.k && x.k.length > 2 && !ipaBasic.has(x.k) && !/^\d/.test(x.k));
+    const quota = Math.floor(ws.length * IPA_MAX_WORD_RATIO);
+    cands.sort((a, b) => (b.k.length - a.k.length) || (a.i - b.i));
+    const picked = cands.slice(0, quota).sort((a, b) => a.i - b.i);
+    return picked.map(x => `<b>${esc(x.w)}</b> [${x.raw}]`).join(" · ");
   };
-  const ipaKeep = new Set();
+  const ipaLines = paras.map((sents, pi) => sents.map((s, si) =>
+    t.paragraphs[pi].ips && t.paragraphs[pi].ips[si] ? ipaLine(s, t.paragraphs[pi].ips[si]) : ""));
   {
-    const eligible = items.filter(x => {
-      const c = ipaContent(x.text);
-      if (c.length <= 2) return false;                                   // 几乎全是基础词
-      if (/^(ich|wir)\b/i.test(x.text) && c.length <= 6) return false;  // Ich/Wir 开头的简单句
-      return true;
-    });
-    eligible.sort((a, b) => ipaScore(b.text) - ipaScore(a.text));
-    eligible.slice(0, Math.floor(items.length * IPA_MAX_RATIO))
-      .forEach(x => ipaKeep.add(x.p + ":" + x.s));
+    const totalWords = paras.reduce((a, sents) =>
+      a + sents.reduce((b, s) => b + (s.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'’-]*/g) || []).length, 0), 0);
+    const marked = ipaLines.reduce((a, ls) =>
+      a + ls.reduce((b, l) => b + (l ? (l.match(/<b>/g) || []).length : 0), 0), 0);
+    window.__dhIpaStats = {
+      id: t.id, sentences: items.length, lines: ipaLines.flat().filter(Boolean).length,
+      words: totalWords, marked: marked, ratio: totalWords ? marked / totalWords : 0
+    };
   }
-  window.__dhIpaStats = { id: t.id, total: items.length, shown: ipaKeep.size,
-                          ratio: items.length ? ipaKeep.size / items.length : 0 };
 
   app.innerHTML = `
     <div class="text-tabs">
@@ -941,7 +952,7 @@ function renderTexts(app) {
                 <button class="s-sp" data-de="${esc(s)}" data-p="${i}" data-s="${si}" title="从本句开始连读到本段结束">🔊</button>
                 <div class="s-main">
                   <span class="s-text">${s}</span>
-                  ${p.ips && p.ips[si] && ipaKeep.has(i + ":" + si) ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}
+                  ${ipaLines[i][si] ? `<span class="s-ipa">${ipaLines[i][si]}</span>` : ""}
                   ${ex.zhs && ex.zhs[si] ? `<span class="s-zh">${esc(ex.zhs[si])}</span>` : ""}
                 </div>
               </div>`).join("")}

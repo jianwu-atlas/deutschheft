@@ -1440,3 +1440,9 @@ ruby.dh-ipa:hover rt { color: var(--gold); }
 .note-item.ni-latest .ni-title { color: var(--accent); }
 [data-theme="dark"] .note-item.ni-latest { box-shadow: inset 3px 0 0 var(--gold); }
 [data-theme="dark"] .note-item.ni-latest .ni-title { color: var(--gold); }
+
+
+/* 课文词级音标行：只标难词，基础词不出现（Jian 2026-11-12「按单词 ≤60%」） */
+.s-ipa { white-space: normal; line-height: 1.9; }
+.s-ipa b { font-weight: 500; color: var(--ink-2); }
+[data-theme="dark"] .s-ipa b { color: #E0A96D; }
