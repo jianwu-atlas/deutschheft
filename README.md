@@ -9,7 +9,7 @@
 ```
 ├── index.html            首页（学习地图 + 进度）
 ├── lektionen.html        分级课程（15 课：A1 × 11 + A1.2 × 4）
-├── wortschatz.html       生词表（双视图：272 词卡 + 全站词表 1053 词形，均带 IPA 与中文释义）
+├── wortschatz.html       生词表（双视图：326 词卡 + 全站词表 1176 词形，均带 IPA 与中文释义）
 ├── grammatik.html        语法十四讲
 ├── formen.html           词形变化：76 动词变位 / 185 名词复数 / 30 形容词比较级 / 冠词·代词变格
 ├── texte.html            课文精读（4 篇，逐段中德对照）
@@ -23,7 +23,7 @@
 │   └── js/
 │       ├── data/deutsch-data.js    课程/词汇/语法/课文/测验数据
 │       ├── data/pron.js            发音库：PRON 282 + 变位 94 + 裸词 221 + EXTRA/FUNC/MORE 补充 + PRON_ZH 中文释义
-│       ├── data/wortliste.js       全站词表（脚本生成，1051 词形：IPA + 中文释义 100% 覆盖）
+│       ├── data/wortliste.js       全站词表（脚本生成，1176 词形：IPA + 中文释义 100% 覆盖，其中 54 条为 espeak 近似音标）
 │       ├── data/formen.js          词形变化数据（动词变位 / 形容词比较级 / 冠词代词变格）
 │       ├── data/notion-notes.js    Notion 笔记（脚本生成，请勿手改）
 │       ├── deutsch.js              页面渲染与交互核心

@@ -50,6 +50,7 @@ Object.entries(PRON).forEach(([k, v]) => {
 VOCAB.forEach(v => {
   const key = v.de.toLowerCase().replace(/^(der|die|das)\\s+/, "");
   if (!ZH[key]) ZH[key] = v.zh;
+  if (v.ipa && !LEXIPA[key]) LEXIPA[key] = v.ipa;   // 词卡自带 IPA 也作为全站词表音标来源（Jian 2026-11-11）
   LEX.add(key);
 });
 LEHRBUECHER.filter(b => !b.extra).forEach(b => b.words.forEach(w => LEX.add(w[0].toLowerCase().replace(/^(der|die|das)\\s+/, ""))));
@@ -187,16 +188,76 @@ for (const [raw, v] of WORDS) {
   }
 }
 
+/* 强变化 / 可分动词的「分词 → 原形」映射：deriveBase 无法处理换音（gewinnen→gewonnen） */
+const FORM_BASE = {
+  gewonnen:"gewinnen", verglichen:"vergleichen", beschriftet:"beschriften", gebracht:"bringen",
+  gesehen:"sehen", gelobt:"loben", gezeigt:"zeigen", gestartet:"starten", gesucht:"suchen",
+  gesprochen:"sprechen", gegessen:"essen", getrunken:"trinken", gemacht:"machen", gewesen:"sein",
+  begonnen:"beginnen", angerufen:"anrufen", ausgezogen:"ausziehen", angezogen:"anziehen",
+  aufgeräumt:"aufräumen", aufgestanden:"aufstehen", entschuldigt:"entschuldigen",
+  gefunden:"finden", gekommen:"kommen", gegangen:"gehen", gefahren:"fahren",
+  geschrieben:"schreiben", getragen:"tragen", geholfen:"helfen", gewaschen:"waschen",
+  gereinigt:"reinigen", erzählt:"erzählen", wiederholt:"wiederholen", benutzt:"benutzen",
+  vorbereitet:"vorbereiten", kontrolliert:"kontrollieren", notiert:"notieren",
+  gefehlt:"fehlen", gelacht:"lachen", gelöst:"lösen", geschafft:"schaffen",
+  gekocht:"kochen", gerufen:"rufen", eingetragen:"eintragen", eingeschaltet:"einschalten",
+  untersucht:"untersuchen", entschieden:"entscheiden", telefoniert:"telefonieren",
+  fehlenden:"fehlen", sorgfältige:"sorgfältig", blättern:"blatt", kolleginnen:"kollegin",
+  untersuchungen:"untersuchung", pflanzen:"pflanze", proben:"probe", ergebnisse:"ergebnis",
+  geräte:"gerät", interessanter:"interessant", gerufen:"rufen", glück:"glück"
+};
+/* 词典未收的常用词形 / 语法术语 / 专名：补中文释义，保持全站词表 100% 可查 */
+const FILL_ZH = {
+  anders:"不同的；否则", arbeitsblatt:"练习页；工作单", arbeitsplan:"工作计划", ben:"人名 Ben",
+  bewegung:"运动；移动", bilde:"形成（bilden 的变形）", bilden:"形成；构成", blätt:"叶片（Blatt 词干）",
+  comput:"电脑（Computer 词干）", dafür:"为此；对此", dein:"你的", deiner:"你的（变格）",
+  dritte:"第三", dritten:"第三（变格）", emp:"不可分前缀 emp-", endlich:"终于",
+  entschuldigen:"道歉", entschuldigt:"道歉（过去分词）", etw:"etwas 的缩写（某事/某物）",
+  eva:"人名 Eva", falsche:"错误的", falschen:"错误的（变格）", fund:"发现；特别发现",
+  gemeinsam:"一起；共同", gerufen:"叫；打电话（rufen 过去分词）", gesicht:"脸",
+  gestartet:"启动（过去分词）", glück:"幸福；运气", ige:"形容词词尾 -ige",
+  interessanter:"有趣的（变格）", karim:"人名 Karim", korrigiert:"批改；更正（过去分词）",
+  lab:"Labor 的简称（实验室）", leseverstehen:"阅读理解", letzten:"上一个；最近的",
+  meisten:"大多；通常", mias:"人名 Mia", miss:"不可分前缀 miss-", montag:"星期一",
+  nina:"人名 Nina", nur:"只；仅仅", ortswechsel:"位置改变", pflanz:"植物（Pflanze 词干）",
+  problem:"问题", produktiv:"高效的", projekt:"项目", raum:"房间；空间", rufen:"叫；打电话",
+  satz:"句子", schnell:"快的；迅速地", schreibaufgabe:"写作任务", skript:"讲义；脚本",
+  sofort:"立刻", sorgfält:"细致的（sorgfältig 词干）", starten:"启动",
+  ungewöhnliches:"不寻常的事物", uns:"我们（第三/四格）", vorgebereitet:"准备（vorbereitet 的拼写变体）",
+  warum:"为什么", wechselpräpositionen:"可换格介词（静三动四）", welchem:"哪个（第三格）",
+  welches:"哪个（中性）", wem:"谁（第三格）", wen:"谁（第四格）", wiederholung:"重复；复习",
+  wissen:"知道", woher:"从哪里", wohin:"去哪里"
+};
+/* 词典未收的词形：用 espeak-ng 生成示意 IPA（近似，非人工校音；CLI 不可用则跳过） */
+let g2pOK = true, approx = 0;
+function g2p(w) {
+  if (!g2pOK) return "";
+  try {
+    const out = require("child_process").execFileSync("espeak-ng", ["-v", "de", "--ipa", "-q", w],
+      { encoding: "utf8", timeout: 3000 }).trim();
+    if (!out) return "";
+    approx++;
+    return "[" + out.replace(/\[|\]/g, "") + "]";
+  } catch (e) { g2pOK = false; return ""; }
+}
+
 const list = [];
 let derived = 0;
 for (const y of merged.values()) {
   let ipa = LEXIPA[y.w] || "";
+  let zh = ZH[y.w] || "";
   let base = "";
-  if (!ipa) {
-    base = deriveBase(y.w);
-    if (base) { ipa = LEXIPA[base] || ""; derived++; }
+  if (!ipa || !zh) {
+    base = FORM_BASE[y.w] || deriveBase(y.w);
+    if (base) {
+      if (!ipa) ipa = LEXIPA[base] || "";
+      if (!zh && ZH[base]) zh = ZH[base];
+      derived++;
+    }
   }
-  list.push({ w: y.w, n: y.n, ipa: ipa, zh: ZH[y.w] || "", pron: PRONAID[y.w] || "", base: base, src: [...y.src].sort() });
+  if (!zh) zh = FILL_ZH[y.w] || "";
+  if (!ipa) ipa = g2p(y.w);
+  list.push({ w: y.w, n: y.n, ipa: ipa, zh: zh, pron: PRONAID[y.w] || "", base: base, src: [...y.src].sort() });
 }
 list.sort((a, b) => a.w.localeCompare(b.w, "de"));
 list.forEach(x => { if (!x.base) delete x.base; if (!x.pron) delete x.pron; });
@@ -215,7 +276,7 @@ fs.writeFileSync(OUT, head, "utf8");
 
 const noipa = list.filter(x => !x.ipa).map(x => x.w);
 console.log("[✓] wortliste.js:", list.length, "词形 | 有音标", list.filter(x => x.ipa).length,
-  "| 有中文", list.filter(x => x.zh).length, "| 推导原形", derived,
+  "| 有中文", list.filter(x => x.zh).length, "| 推导原形", derived, "| espeak 近似音标", approx,
   "|", Math.round(head.length / 1024), "KB");
 if (noipa.length) console.log("仍无音标(" + noipa.length + "):", noipa.join(" "));
 `);

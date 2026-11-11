@@ -100,6 +100,20 @@ with sync_playwright() as p:
     pg.goto(BASE + "/wortschatz.html", wait_until="networkidle")
     pg.fill("#vSearch", "Gewächshaus"); pg.wait_for_timeout(350)
     check("新词可检索（Gewächshaus）", "Gewächshaus" in pg.locator("#vGrid").inner_text())
+    wl = pg.evaluate("""() => ({
+      total: WORTLISTE.length,
+      ipa: WORTLISTE.filter(x => x.ipa).length,
+      zh: WORTLISTE.filter(x => x.zh).length,
+      form: WORTLISTE.find(x => x.w === "gewonnen") || null
+    })""")
+    has_new = pg.evaluate("() => !!WORTLISTE.find(x => x.w === 'gewächshaus')")
+    check("全站词表含本课新词与变形", has_new and bool(wl["form"]))
+    check("全站词表 IPA 100%", wl["ipa"] == wl["total"], (wl["ipa"], wl["total"]))
+    check("全站词表中文 100%", wl["zh"] == wl["total"], (wl["zh"], wl["total"]))
+    check("分词变形带音标与释义", bool(wl["form"] and wl["form"]["ipa"] and wl["form"]["zh"]), wl["form"])
+    pg.locator('.vtab[data-tab="list"]').click(); pg.wait_for_timeout(400)
+    rows = pg.locator("#vocabBody tr").count()
+    check("全站词表视图有数据", rows > 50, rows)
 
     # ---- Notion 笔记 ----
     pg.goto(BASE + "/notion.html", wait_until="networkidle")
