@@ -58,6 +58,7 @@
     "aus", "für", "über", "unter", "um", "durch", "gegen", "seit", "ohne", "bis",
     "neben", "zwischen", "gegenüber"
   ]);
+  window.DH_BASIC = BASIC;   // 供课文页「句子级音标 ≤60%」筛选复用（Jian 2026-11-12）
 
   /* 不标注的容器：
      ① 已自带音标列 / 词卡 —— 重复标注纯属噪音

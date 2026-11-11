@@ -879,6 +879,37 @@ function renderTexts(app) {
   const fullText = t.paragraphs.map(p => p.de).join(" ");
   const mp3Full = "assets/audio/textes/" + t.id + "_full.mp3";
 
+  /* ---- 课文音标标注原则（Jian 2026-11-12）：每篇课文最多 60% 的句子显示 IPA。
+     以基础功能词（ich / wir / und / ist …）为主的简单句优先跳过，
+     保留含专业词、长词、强变化的长句。数据层 ips 完整保留，仅裁剪展示。 ---- */
+  const IPA_MAX_RATIO = 0.6;
+  const ipaBasic = window.DH_BASIC || new Set([
+    "ich", "wir", "du", "er", "sie", "es", "und", "oder", "aber", "in", "im", "am", "um",
+    "zu", "zur", "der", "die", "das", "den", "dem", "ein", "eine", "einen", "einem", "einer",
+    "mit", "von", "für", "auf", "aus", "bei", "nach", "vor", "dann", "da", "dort", "auch",
+    "ist", "sind", "bin", "hat", "haben", "habe", "war", "waren", "hatte", "mich", "uns", "sich"
+  ]);
+  const ipaWords = s => String(s).toLowerCase().match(/[a-zäöüß]+/g) || [];
+  const ipaContent = s => ipaWords(s).filter(w => !ipaBasic.has(w) && w.length > 2);
+  const ipaScore = s => {
+    const ws = ipaWords(s), c = ipaContent(s);
+    return c.length * 2 + ws.length * 0.3 + c.filter(w => w.length >= 9).length * 1.5;
+  };
+  const ipaKeep = new Set();
+  {
+    const eligible = items.filter(x => {
+      const c = ipaContent(x.text);
+      if (c.length <= 2) return false;                                   // 几乎全是基础词
+      if (/^(ich|wir)\b/i.test(x.text) && c.length <= 6) return false;  // Ich/Wir 开头的简单句
+      return true;
+    });
+    eligible.sort((a, b) => ipaScore(b.text) - ipaScore(a.text));
+    eligible.slice(0, Math.floor(items.length * IPA_MAX_RATIO))
+      .forEach(x => ipaKeep.add(x.p + ":" + x.s));
+  }
+  window.__dhIpaStats = { id: t.id, total: items.length, shown: ipaKeep.size,
+                          ratio: items.length ? ipaKeep.size / items.length : 0 };
+
   app.innerHTML = `
     <div class="text-tabs">
       ${TEXTS.map(x => `
@@ -910,7 +941,7 @@ function renderTexts(app) {
                 <button class="s-sp" data-de="${esc(s)}" data-p="${i}" data-s="${si}" title="从本句开始连读到本段结束">🔊</button>
                 <div class="s-main">
                   <span class="s-text">${s}</span>
-                  ${p.ips && p.ips[si] ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}
+                  ${p.ips && p.ips[si] && ipaKeep.has(i + ":" + si) ? `<span class="s-ipa">${p.ips[si]}</span>` : ""}
                   ${ex.zhs && ex.zhs[si] ? `<span class="s-zh">${esc(ex.zhs[si])}</span>` : ""}
                 </div>
               </div>`).join("")}

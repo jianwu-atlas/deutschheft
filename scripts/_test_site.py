@@ -76,8 +76,21 @@ with sync_playwright() as p:
     print("  最新课文:", meta)
     check("默认打开最新课文", pg.locator(".text-tab.on").get_attribute("data-id") == meta["id"])
     check("段落数一致", pg.locator(".card.para").count() == meta["paras"])
-    check("音标条数与句数一致", pg.locator("#textBody .s-ipa").count() == meta["sents"])
+    ipa_stat = pg.evaluate("() => window.__dhIpaStats")
+    check("课文音标 ≤60% 且仍有标注", 0 < ipa_stat["shown"] <= ipa_stat["total"] * 0.6, ipa_stat)
     check("逐句中文与句数一致", pg.locator("#textBody .s-zh").count() == meta["sents"] == meta["zhs"])
+    ipa_ratios = []
+    for tid in pg.locator(".text-tab").evaluate_all("els => els.map(e => e.dataset.id)"):
+        pg.locator(f'.text-tab[data-id={tid}]').click(); pg.wait_for_timeout(180)
+        n = pg.locator("#textBody .s-line").count()
+        k = pg.locator("#textBody .s-ipa").count()
+        ipa_ratios.append((tid, k, n, round(k / n, 3) if n else 0))
+    check("四篇课文音标均 ≤60%", all(r[3] <= 0.6 and r[3] > 0 for r in ipa_ratios), ipa_ratios)
+    pg.locator('.text-tab[data-id=t1]').click(); pg.wait_for_timeout(180)
+    basic_ok = pg.evaluate("""() => [...document.querySelectorAll('.s-line')]
+        .filter(e => /^Ich\\s/i.test(e.querySelector('.s-text').textContent.trim()))
+        .every(e => !e.querySelector('.s-ipa'))""")
+    check("Ich 开头的简单句不标音标", basic_ok)
     pg.click("#toggleZh"); pg.wait_for_timeout(250)
     check("隐藏中文开关生效", pg.locator("#textBody.hide-zh").count() == 1)
 

@@ -77,7 +77,7 @@
 - 更新 Notion 内容：`.md` 放入 `content-notion/` → `python3 scripts/notion_export_sync.py` → commit & push
 - 同步校验：`node --check assets/js/*.js`（CI 有同样检查）
 - 本地存储：`deutschheft_v1`（复习标记/测验成绩）、`deutschheft_notion_imports`（导入笔记）、`deutschheft_theme`、`deutschheft_annotate`（全文标注开关）
-- **音标体系**：① 词卡正面 IPA+谐音；② 课程 86 句型 / 课文 57 句句子级 IPA（数据内置）；③ annotate.js 全文词级 ruby 标注 + 点击朗读（浏览器 de-DE 语音）；右下角「音标」开关
+- **音标体系**：① 词卡正面 IPA+谐音；② 课程句型 IPA 全标，**课文句子级 IPA 按「最多 60%」原则展示**（数据层 `ips` 仍完整，仅渲染层裁剪；基础功能词为主的简单句优先跳过，见 `deutsch.js` 的 `IPA_MAX_RATIO` / `ipaKeep`）；③ annotate.js 全文词级 ruby 标注 + 点击朗读（浏览器 de-DE 语音）；右下角「音标」开关
 - 静态资源版本号：HTML 中 `?v=N`，改 JS/CSS 后需同步 +1
 
 ## 部署
@@ -97,6 +97,8 @@
 - 仓库：https://github.com/jianwu-atlas/deutschheft （描述用中文）
 
 ## 更新记录
+
+- 2026-11-12（**课文音标标注原则「最多 60%」**，Jian 拍板并明确「记住」）：课文页此前每句都带一条整句 IPA，基础句（Ich …）也标，视觉噪音大。改为渲染层裁剪：复用 `annotate.js` 既有的 `BASIC` 功能词表（暴露 `window.DH_BASIC`），跳过实词 ≤2 的句子与 Ich/Wir 开头且实词 ≤6 的句子，其余按信息量取前 `floor(总句数×0.6)`；数据层 `TEXTS[].ips` 完整保留，仅展示受限，课程页/词卡/全站词表不受影响。实测四篇 57.1%–59.3%，t1 所有 Ich 开头句无 IPA。`deutsch.js` 加 `window.__dhIpaStats` 便于验证；升版 `deutsch.js?v=48` / `annotate.js?v=34`；两套测试断言同步更新。
 
 - 2026-11-12（**补齐 10-28 课程页的 `der Arbeitsplan` 词卡**，Jian「按照推荐的执行」）：对照 10-28 Notion 页全量词汇清单，唯一未在词卡视图独立可查的词为 `der Arbeitsplan` → 补 1 条（带 IPA `[ˈʔaʁbaɪ̯t͡sˌplaːn]`、复数 -e，topic 实验室），词卡 326 → **327**。按长期约定重跑 `gen_wortliste.js`（1176 词形不变、IPA/中文仍双 100%、espeak 近似音标 54 → 53）、升版 `deutsch-data.js?v=36` / `wortliste.js?v=33`、README/AGENTS 数字同步、`_test_site.py` 新增 2 条断言。全站 36 项 + 播放器 34 项回归全过、零 JS 报错；线上 `v=36/v=33` 生效、词卡搜 Arbeitsplan 命中。提交 `d351cd7`，GitHub Pages + 手动 wrangler 均已发布。
 
