@@ -100,6 +100,14 @@ with sync_playwright() as p:
     pg.goto(BASE + "/wortschatz.html", wait_until="networkidle")
     pg.fill("#vSearch", "Gewächshaus"); pg.wait_for_timeout(350)
     check("新词可检索（Gewächshaus）", "Gewächshaus" in pg.locator("#vGrid").inner_text())
+    pg.fill("#vSearch", "Arbeitsplan"); pg.wait_for_timeout(350)
+    check("10-28 补词可检索（Arbeitsplan）", "Arbeitsplan" in pg.locator("#vGrid").inner_text())
+    has_ap = pg.evaluate("() => !!VOCAB.find(v => v.de === 'der Arbeitsplan' && v.ipa)")
+    check("Arbeitsplan 词卡带 IPA", has_ap)
+    pg.fill("#vSearch", "Arbeitsplan"); pg.wait_for_timeout(350)
+    check("10-28 补词可检索（Arbeitsplan）", "Arbeitsplan" in pg.locator("#vGrid").inner_text())
+    has_ap = pg.evaluate("() => !!VOCAB.find(v => v.de === 'der Arbeitsplan' && v.ipa)")
+    check("Arbeitsplan 词卡带 IPA", has_ap)
     wl = pg.evaluate("""() => ({
       total: WORTLISTE.length,
       ipa: WORTLISTE.filter(x => x.ipa).length,

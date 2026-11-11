@@ -667,6 +667,7 @@ const VOCAB = [
   { de: "die Bodenprobe", zh: "土壤样本", pos: "die", plural: "-n", ipa: "[ˈboːdn̩ˌpʁoːbə]", topic: "实验室" },
   { de: "die Laborprobe", zh: "实验室样本", pos: "die", plural: "-n", ipa: "[laˈboːɐ̯ˌpʁoːbə]", topic: "实验室" },
   { de: "die Lieferliste", zh: "送货清单", pos: "die", plural: "-n", ipa: "[ˈliːfɐˌlɪstə]", topic: "实验室" },
+  { de: "der Arbeitsplan", zh: "工作计划；工作安排", pos: "der", plural: "-e", ipa: "[ˈʔaʁbaɪ̯t͡sˌplaːn]", topic: "实验室" },
   { de: "das Lager", zh: "仓库；储藏室", pos: "das", plural: "-", ipa: "[ˈlaːɡɐ]", topic: "实验室" },
   { de: "der Kühlschrank", zh: "冰箱", pos: "der", plural: "¨-e", ipa: "[ˈkyːlʃʁaŋk]", topic: "实验室" },
   { de: "der Stock", zh: "楼层（im zweiten Stock 在二楼）", pos: "der", plural: "¨-e", ipa: "[ʃtɔk]", topic: "实验室" },
