@@ -98,6 +98,8 @@
 
 ## 更新记录
 
+- 2026-11-12（**补齐 10-28 课程页的 `der Arbeitsplan` 词卡**，Jian「按照推荐的执行」）：对照 10-28 Notion 页全量词汇清单，唯一未在词卡视图独立可查的词为 `der Arbeitsplan` → 补 1 条（带 IPA `[ˈʔaʁbaɪ̯t͡sˌplaːn]`、复数 -e，topic 实验室），词卡 326 → **327**。按长期约定重跑 `gen_wortliste.js`（1176 词形不变、IPA/中文仍双 100%、espeak 近似音标 54 → 53）、升版 `deutsch-data.js?v=36` / `wortliste.js?v=33`、README/AGENTS 数字同步、`_test_site.py` 新增 2 条断言。全站 36 项 + 播放器 34 项回归全过、零 JS 报错；线上 `v=36/v=33` 生效、词卡搜 Arbeitsplan 命中。提交 `d351cd7`，GitHub Pages + 手动 wrangler 均已发布。
+
 - 2026-11-11（**新增 A1.2 第 4 次课《Ein besonderer Fund im DNA-Labor》**，Jian 提供 Notion 课程页 + Gemini 分享链接）：
   - **来源核实**：Notion 页 `41520c5c739a80b0877dc2a9b2df377d`（父页「德语-最重要」已列在 10-28 之后）含课文 8 段、逐段翻译、语法体系、词级 IPA、15 题阅读、6 题 haben/sein 填空与发音提示，是 Gemini 多轮回答的整理版。**Gemini 分享页（`share.gemini.google/s43Rnfjsjo2r` → `gemini.google.com/share/8ad7f955c2d0`）当前需 Google 登录**：匿名浏览器三种 URL 均只返回 19 字符登录页；用已登录 Chrome 目视核对首尾，课程主体与 Notion 一致，另有一轮「写论文」德语表达与本次课堂无关，故未纳入（站点内容严格同步上课进度）。
   - **GitHub 检索**（按 Jian 约定）：组织内只有本仓库既有 `scripts/notion_export_sync.py`，无更通用现成同步工具 → 沿用既有流水线，未新造工具。
