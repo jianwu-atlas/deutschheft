@@ -11,11 +11,11 @@
 | 路径 | 用途 |
 |---|---|
 | `index.html` | 首页（学习地图、统计、当前重点） |
-| `lektionen.html` | 14 课（A1 × 11 + A1.2 × 3），手风琴 + 已复习标记 |
+| `lektionen.html` | 15 课（A1 × 11 + A1.2 × 4），手风琴 + 已复习标记 |
 | `wortschatz.html` | 双视图：272 词卡（筛选/搜索/翻面）+ **全站词表 1053 词形**（德语单词 / IPA / **中文释义** / 来源 / 次数，IPA 与释义 100% 覆盖，支持中文搜索） |
-| `grammatik.html` | 13 语法专题（手风琴 + 变位表） |
+| `grammatik.html` | 14 语法专题（手风琴 + 变位表） |
 | `formen.html` | 词形变化总表（5 页签）：**111 动词**（六人称变位 / 过去时 / 第二分词 / 助动词 / 类型）+ 185 名词复数分组 + 30 形容词比较级 + 冠词·人称代词·物主冠词变格 + **语料变形索引**（网页正文里真实出现过的每个变形） |
-| `texte.html` | 3 篇课文逐段中德对照（可隐藏中文自测） |
+| `texte.html` | 4 篇课文逐段中德对照（可隐藏中文自测） |
 | `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点；「零基础德语速成」卡片带 **📖 场景精读** 入口 |
 | `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，**三行格式**（德文 / 中文 / 中文近似发音）+ 逐句 🔊 + 隐藏中文自测 + 复制纯德文 |
 | `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
@@ -30,8 +30,8 @@
 | `scripts/_test_w6000_ipa.py` | w6000 IPA 验证（Playwright，**4 断言**：全部模式 w6 词带 `ruby.dh-ipa` / IPA 形如 `[..]` / 关闭模式 0 / 无 JS 报错）；先 pack 再跑，需 anaconda 解释器 |
 | `scripts/build_sucheng.py` | OCR 全文 → `assets/js/data/sucheng.js`（抽取「德文/中文/谐音」三元组 + OCR 清洗 + 规范标题覆盖） |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
-| `uebungen.html` | 6 组测验（54 题），即时解析 + 成绩页 |
-| `notion.html` | Notion 笔记库：14 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
+| `uebungen.html` | 10 组测验（100 题），即时解析 + 成绩页 |
+| `notion.html` | Notion 笔记库：16 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
 | `kursplan.html` | 15 主题大纲（9 已学 / 1 部分 / 5 待学） |
 | `tts.html` | 文本转 MP3 工具页（B：实时，调 edge-fn；未部署函数时显示提示、按钮禁用） |
 | `content-notion/` | **Notion 笔记源（.md）——改内容只动这里** |
@@ -40,7 +40,7 @@
 | `scripts/pack_site.py` | 打包 `dist/`（站点资源，用于 EdgeOne Pages 等静态托管） |
 | `scripts/_test_player.py` | 朗读播放器冒烟测试（Playwright + 系统 Chrome，34 断言：播放/暂停/继续/停止、高亮与滚动、MP3 断点、切页签停止、Esc、移动端） |
 | `scripts/gen_text_audio.py` | 用微软 Edge TTS 预生成课文德语 MP3（B'）→ `assets/audio/textes/{id}_p{n}.mp3` + `{id}_full.mp3` + `manifest.json`；音色 `TTS_VOICE`（默认 de-DE-KatjaNeural≈Lena）、语速 `TTS_RATE`（默认 -5%） |
-| `assets/audio/textes/` | 预生成课文 MP3（2 篇 × 10 段 + 2 全文 = 22 个，共 ~3.7M）；改课文后需重跑 gen_text_audio.py |
+| `assets/audio/textes/` | 预生成课文 MP3（4 篇逐段 + 4 全文 = 41 个）；改课文后需重跑 `python3 scripts/gen_text_audio.py <id>` |
 | `edge-fn/` | 文本转 MP3 云函数（B）：`server.js`（Node + msedge-tts，POST /tts）+ `package.json` + `README.md`；需部署到 FaaS 后把地址填入 `tts.html` 的 `TTS_ENDPOINT` |
 | `assets/js/data/deutsch-data.js` | 课程/词汇/语法/课文/测验数据（手维护） |
 | `assets/js/data/pron.js` | 发音库：PRON 282（含中文谐音）+ 变位 94 + 裸词 221 + `PRON_EXTRA` / `PRON_FUNC` / `PRON_MORE`（约 1200 条 IPA）+ `PRON_ZH`（813 条中文释义） |
@@ -98,6 +98,14 @@
 
 ## 更新记录
 
+- 2026-11-11（**新增 A1.2 第 4 次课《Ein besonderer Fund im DNA-Labor》**，Jian 提供 Notion 课程页 + Gemini 分享链接）：
+  - **来源核实**：Notion 页 `41520c5c739a80b0877dc2a9b2df377d`（父页「德语-最重要」已列在 10-28 之后）含课文 8 段、逐段翻译、语法体系、词级 IPA、15 题阅读、6 题 haben/sein 填空与发音提示，是 Gemini 多轮回答的整理版。**Gemini 分享页（`share.gemini.google/s43Rnfjsjo2r` → `gemini.google.com/share/8ad7f955c2d0`）当前需 Google 登录**：匿名浏览器三种 URL 均只返回 19 字符登录页；用已登录 Chrome 目视核对首尾，课程主体与 Notion 一致，另有一轮「写论文」德语表达与本次课堂无关，故未纳入（站点内容严格同步上课进度）。
+  - **GitHub 检索**（按 Jian 约定）：组织内只有本仓库既有 `scripts/notion_export_sync.py`，无更通用现成同步工具 → 沿用既有流水线，未新造工具。
+  - **数据**：`LESSONS.a2t4`（A2-4，7 条语法 + 8 条带 IPA 句型）→ 15 课；`TEXTS.t4`（8 段 / 27 句，逐句 IPA 全覆盖）→ 4 篇；`TEXTE_EXTRA.t4`（27 条逐句中文 + 8 段知识点）；`GRAMMAR.g14 完成时与过去时`（war / hatte / waren）→ 14 讲；`QUIZZES.q9/q10`（haben/sein 10 题 + 课文理解 12 题）→ 10 组 100 题；`VOCAB` +24 词（DNA / Gewächshaus / gewinnen / vergleichen …）→ 326 张词卡。
+  - **笔记**：`content-notion/16_DNA实验室的特别发现（A1.2-第4次）.md` 八节；`notion_export_sync.py` 补 `16_` 标题与日期映射 → 16 篇（列表「最新在上」，打开即展开本课）。
+  - **音频**：`python3 scripts/gen_text_audio.py t4` 新增 9 个 MP3，manifest 41 条。
+  - **其它**：默认课文 `t3 → t4`、`SITE.stand → 2026-11-11`；各页文案与首页统计/模块卡/重点同步；升版 `?v=`（deutsch-data 35、texte-extra 3、deutsch.js 47、**notion-notes 33**、i18n-en 37）——数据文件改内容必须升版，否则 SW 缓存优先会让线上看起来没更新。
+  - **验证**：新增 `scripts/_test_site.py`（**动态断言**：计数全部从数据层读取，以后加课不用改数字）29 项全过；`scripts/_test_player.py` 34 项回归全过；零 JS 报错；`pack_site.py` 重建 dist（15 页 31.8 MB）。
 - 2026-10-29（**Notion 笔记列表改为「最新在上」**，Jian「第 3 次课的内置笔记呢？」）：
   - **根因**：`notion-import.js` 的列表按上课日期**升序**、`activeId` 默认取 `list[0]`（最早一篇），
     于是 2026-10-28 的新笔记沉在列表最底部、右侧默认打开的还是最早那篇；`notion-notes.js` 又是

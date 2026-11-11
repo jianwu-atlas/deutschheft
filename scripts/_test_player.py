@@ -49,11 +49,11 @@ with sync_playwright() as p:
 
     # 1–3 初始与播放
     check("播放器 API 存在", pg.evaluate("() => typeof window.DhPlayer === 'object'"))
-    check("默认课文为 t3", pg.locator(".text-tab.on .tt-de").inner_text().startswith("Ein Problem"))
+    check("默认课文为 t4", pg.locator(".text-tab.on .tt-de").inner_text().startswith("Ein besonderer Fund"))
     check("初始无高亮", pg.locator(".s-reading").count() == 0)
-    check("t3 段落 9 段", pg.locator(".card.para").count() == 9, pg.locator(".card.para").count())
-    check("t3 音标 29 条", pg.locator("#textBody .s-ipa").count() == 29, pg.locator("#textBody .s-ipa").count())
-    check("t3 逐句中文 29 条", pg.locator("#textBody .s-zh").count() == 29, pg.locator("#textBody .s-zh").count())
+    check("t4 段落 8 段", pg.locator(".card.para").count() == 8, pg.locator(".card.para").count())
+    check("t4 音标 27 条", pg.locator("#textBody .s-ipa").count() == 27, pg.locator("#textBody .s-ipa").count())
+    check("t4 逐句中文 27 条", pg.locator("#textBody .s-zh").count() == 27, pg.locator("#textBody .s-zh").count())
     check("初始停止按钮禁用", pg.locator("#btnStop").is_disabled())
 
     pg.click("#btnPlay")

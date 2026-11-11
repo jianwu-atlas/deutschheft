@@ -7,7 +7,7 @@
 const SITE = {
   title: "Mein Deutschheft",
   subtitle: "Jian (Jack) Wu 的德语学习手册",
-  stand: "2026-10-12",
+  stand: "2026-11-11",
   level: "A1.2"
 };
 
@@ -344,6 +344,32 @@ const LESSONS = [
       { de: "Wir haben gelacht, weil das Problem zum Glück schnell gelöst war.", zh: "我们笑了，因为问题幸好很快就解决了。（weil 从句：变位动词 war 到句尾）", ipa: "[viːɐ̯ ˈhaːbn̩ ɡəˈlaxt | vaɪ̯l das pʁoˈbleːm t͡sʊm ɡlʏk ʃnɛl ɡəˈløːst vaːɐ̯]" },
       { de: "Wir haben alle Proben gefunden und unsere Arbeit geschafft.", zh: "我们找到了所有样本，也完成了工作。（框架结构：两个 Partizip II 都钉在句末）", ipa: "[viːɐ̯ ˈhaːbn̩ ˈʔalə ˈpʁoːbn̩ ɡəˈfʊndn̩ ʊnt ˈʔʊnzəʁə ˈʔaʁbaɪ̯t ɡəˈʃaft]" }
     ]
+  },
+  {
+    id: "a2t4", level: "A1.2", num: "A2-4", date: "2026-11-11",
+    title: "DNA 实验室的特别发现", de: "Ein besonderer Fund im DNA-Labor",
+    topic: "实验室",
+    summary: "Karim 与同事 Eva 提取植物 DNA：三株样本中第三株叶片发黄、结果出现差异，重复检测后仍需进一步研究。全篇以完成时叙述动作，并以 war / hatte / waren 交代状态，是第一次把 Perfekt 与 Präteritum 放在同一篇叙事里对照。",
+    focus: "时态分工：动作一律用完成时（haben/sein + Partizip II 句末）；但 sein / haben 本身描述状态时习惯直接用过去时 war / hatte / waren。全篇 8 段就是这条规则的一次完整演练。",
+    grammar: [
+      "框架结构：助动词（第二位）+ … + Partizip II（句末）；haben 用于绝大多数动词，sein 只配位移/状态改变（fahren, kommen, gehen）",
+      "过去时残留：Gestern war ein interessanter Tag. / Zwei Pflanzen waren gesund. / Die dritte Pflanze hatte gelbe Blätter.",
+      "Partizip II 四类：规则 ge-+-t（gemacht, gelobt）；强变化 ge-+-en（gewaschen, gewonnen, getrunken, gegessen, gesehen）；可分 前缀+ge+词干（angezogen, aufgeräumt）；不可分前缀与 -ieren 不加 ge-（bekommen, beschriftet, verglichen, benutzt, wiederholt, erzählt）",
+      "特殊分词：bekommen 的原形即分词（bekommen，不加 ge-）；bringen → gebracht；gewinnen → gewonnen；vergleichen → verglichen",
+      "可分动词陷阱：vorbereiten → vorbereitet（vor- 可分，但词干含不可分前缀 be-，无 ge-）",
+      "时间线叙事：Am Morgen → Um 11 Uhr → Nach der Pause → Am Nachmittag → Um 16:30 Uhr → Am Abend",
+      "疑问与因果：denn（因为，正语序）/ warum（为什么）/ dafür（为此）"
+    ],
+    sentences: [
+      { de: "Gestern war ein interessanter Tag, denn wir haben eine neue Aufgabe bekommen.", zh: "昨天是有意思的一天，因为我们接到了一项新任务。（war 用过去时，bekommen 用完成时）", ipa: "[ˈɡɛstɐn vaːɐ̯ ʔaɪ̯n ʔɪntəʁɛˈsantɐ taːk | dɛn viːɐ̯ ˈhaːbn̩ ˈʔaɪ̯nə ˈnɔʏ̯ə ˈʔaʊ̯fˌɡaːbə bəˈkɔmən]" },
+      { de: "Am Morgen bin ich um 8 Uhr zur Arbeit gefahren.", zh: "早上 8 点我乘车去上班。（位移 → sein）", ipa: "[am ˈmɔʁɡn̩ bɪn ɪç ʊm ˈʔaxt uːɐ̯ t͡suːɐ̯ ˈʔaʁbaɪ̯t ɡəˈfaːʁən]" },
+      { de: "Im Labor habe ich zuerst meine Hände gewaschen und meinen Laborkittel angezogen.", zh: "在实验室里，我先洗了手、穿上实验服。（gew… / an-ge-zogen）", ipa: "[ɪm laˈboːɐ̯ ˈhaːbə ɪç t͡suˈʔeːɐ̯st ˈmaɪ̯nə ˈhɛndə ɡəˈvaʃn̩ ʊnt ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ ˈʔanɡəˌt͡soːɡn̩]" },
+      { de: "Meine Kollegin Eva hat drei kleine Pflanzenproben gebracht.", zh: "我的同事 Eva 带来了三份小植物样本。（bringen → gebracht）", ipa: "[ˈmaɪ̯nə kɔˈleːɡɪn ˈʔeːva hat dʁaɪ̯ ˈklaɪ̯nə ˈpflant͡sn̩ˌpʁoːbn̩ ɡəˈbʁaxt]" },
+      { de: "Die dritte Pflanze hatte gelbe Blätter.", zh: "第三株植物有黄叶。（haben 的过去时 hatte）", ipa: "[diː ˈdʁɪtə ˈpflant͡sə ˈhatə ˈɡɛlbə ˈblɛtɐ]" },
+      { de: "Dann haben wir DNA aus den Blättern gewonnen.", zh: "然后我们从叶片中提取了 DNA。（gewinnen → gewonnen）", ipa: "[dan ˈhaːbn̩ viːɐ̯ deːʔɛnˈʔaː aʊ̯s deːn ˈblɛtɐn ɡəˈvɔnən]" },
+      { de: "Bei der dritten Pflanze haben wir einen Unterschied gesehen.", zh: "在第三株植物上我们看到了一个差异。（sehen → gesehen）", ipa: "[baɪ̯ deːɐ̯ ˈdʁɪtn̩ ˈpflant͡sə ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nən ˈʔʊntɐˌʃiːt ɡəˈzeːən]" },
+      { de: "Aber wir wissen noch nicht, warum die Blätter gelb sind.", zh: "但我们还不知道叶子为什么是黄的。（现在时收尾 → 悬念留到下一次检测）", ipa: "[ˈʔaːbɐ viːɐ̯ ˈvɪsn̩ nɔx nɪçt | vaˈʁʊm diː ˈblɛtɐ ɡɛlp zɪnt]" }
+    ]
   }
 ];
 
@@ -668,6 +694,31 @@ const VOCAB = [
   { de: "nach Hause fahren", zh: "开车/乘车回家", pos: "phrase", topic: "实验室" },
   { de: "mit der Arbeit beginnen", zh: "开始工作（mit + Dativ）", pos: "phrase", topic: "实验室" },
   { de: "im zweiten Stock", zh: "在二楼（Wo? 第三格）", pos: "phrase", topic: "实验室" },
+  /* —— 2026-11-11 第四次课《Ein besonderer Fund im DNA-Labor》新增（主题：实验室）—— */
+  { de: "die DNA", zh: "脱氧核糖核酸（读 [deːʔɛnˈʔaː]）", pos: "die", ipa: "[deːʔɛnˈʔaː]", topic: "实验室" },
+  { de: "das Biologielabor", zh: "生物实验室", pos: "das", plural: "-e", ipa: "[bi̯oloˈɡiːlaˌboːɐ̯]", topic: "实验室" },
+  { de: "die Pflanzenprobe", zh: "植物样本", pos: "die", plural: "-n", ipa: "[ˈpflant͡sn̩ˌpʁoːbə]", topic: "实验室" },
+  { de: "das Gewächshaus", zh: "温室", pos: "das", plural: "¨-er", ipa: "[ɡəˈvɛksˌhaʊ̯s]", topic: "实验室" },
+  { de: "das Blatt", zh: "叶片（复数 Blätter）", pos: "das", plural: "¨-er", ipa: "[blat]", topic: "实验室" },
+  { de: "die Aufgabe", zh: "任务；作业", pos: "die", plural: "-n", ipa: "[ˈʔaʊ̯fˌɡaːbə]", topic: "实验室" },
+  { de: "der Unterschied", zh: "差异；区别", pos: "der", plural: "-e", ipa: "[ˈʔʊntɐˌʃiːt]", topic: "实验室" },
+  { de: "die Chefin", zh: "女主管；女老板", pos: "die", plural: "-innen", ipa: "[ˈʃɛfɪn]", topic: "实验室" },
+  { de: "die Schwester", zh: "姐妹（姐姐/妹妹）", pos: "die", plural: "-n", ipa: "[ˈʃvɛstɐ]", topic: "实验室" },
+  { de: "der Feierabend", zh: "下班；收工时间", pos: "der", plural: "-e", ipa: "[ˈfaɪ̯ɐˌʔaːbn̩t]", topic: "实验室" },
+  { de: "die Untersuchung", zh: "检测；检查", pos: "die", plural: "-en", ipa: "[ʔʊntɐˈzuːxʊŋ]", topic: "实验室" },
+  { de: "gelb", zh: "黄色的", pos: "adj", ipa: "[ɡɛlp]", topic: "实验室" },
+  { de: "neugierig", zh: "好奇的", pos: "adj", ipa: "[ˈnɔʏ̯ˌɡiːʁɪç]", topic: "实验室" },
+  { de: "sorgfältig", zh: "细致认真的", pos: "adj", ipa: "[ˈzɔʁkfɛltɪç]", topic: "实验室" },
+  { de: "vorsichtig", zh: "小心地；谨慎的", pos: "adv", ipa: "[ˈfoːɐ̯ˌzɪçtɪç]", topic: "实验室" },
+  { de: "beschriften", zh: "贴标签；标注（hat beschriftet）", pos: "verb", ipa: "[bəˈʃʁɪftn̩]", topic: "实验室" },
+  { de: "gewinnen", zh: "提取；获得（hat gewonnen）", pos: "verb", ipa: "[ɡəˈvɪnən]", topic: "实验室" },
+  { de: "vergleichen", zh: "比较；对比（hat verglichen）", pos: "verb", ipa: "[fɛɐ̯ˈɡlaɪ̯çn̩]", topic: "实验室" },
+  { de: "zeigen", zh: "展示；指出（hat gezeigt）", pos: "verb", ipa: "[ˈt͡saɪ̯ɡn̩]", topic: "实验室" },
+  { de: "loben", zh: "表扬（hat gelobt）", pos: "verb", ipa: "[ˈloːbn̩]", topic: "实验室" },
+  { de: "bekommen", zh: "得到；接到（hat bekommen）", pos: "verb", ipa: "[bəˈkɔmən]", topic: "实验室" },
+  { de: "brauchen", zh: "需要（hat gebraucht）", pos: "verb", ipa: "[ˈbʁaʊ̯xn̩]", topic: "实验室" },
+  { de: "zur Arbeit fahren", zh: "去上班（位移 → sein）", pos: "phrase", topic: "实验室" },
+  { de: "weitere Untersuchungen", zh: "进一步的检测", pos: "phrase", topic: "实验室" },
   /* —— 教材新增词汇（零基础德语速成）—— 按 Jian 要求：课外教材词汇不计入单词项目，故整段注释（保留数据可恢复）
   { de: "die Fahrkarte", zh: "车票", pos: "die", plural: "-n", topic: "交通问路" },
   { de: "der Lokführer", zh: "火车司机", pos: "der", plural: "-", topic: "交通问路" },
@@ -685,7 +736,7 @@ const VOCAB = [
 const VOCAB_TOPICS = ["基础与发音", "自我介绍", "数字", "食物饮料", "休闲活动", "房屋家具", "时间作息", "服装颜色", "天气四季", "交通问路", "办公通勤", "实验室", "完成时"];
 
 /* ------------------------------------------------------------
-   三、语法专题（13 讲）
+   三、语法专题（14 讲）
    ------------------------------------------------------------ */
 const GRAMMAR = [
   {
@@ -880,11 +931,29 @@ const GRAMMAR = [
         <tr><td>kontrollieren / starten / reinigen</td><td>-ieren 结尾或 -en 结尾的弱变化外来词</td><td><b>kontrolliert / gestartet / gereinigt</b></td></tr>
       </table>
       <p class="tip">💡 判断顺序：先问「有没有不可分前缀（be-, er-, ent-, ver-, ge-）或 -ieren」→ 有就不加 ge-；再问「可分吗」→ 可分就把 ge- 塞进中间；都不是 → 正常 ge- 开头。<b>vorbereiten 是唯一高频陷阱</b>：vor- 可分，但 be- 不可分，所以是 vorbereitet 而不是 vorgebereitet。</p>`
+  },
+  {
+    id: "g14", title: "完成时与过去时", de: "Perfekt vs. Präteritum", tag: "时态",
+    body: `
+      <p class="rule">口语叙事里 <strong>动作</strong>用完成时，<strong>状态</strong>用 sein / haben 的过去时。两者可以在同一段里并存。</p>
+      <table>
+        <tr><th>功能</th><th>形式</th><th>课文例句</th></tr>
+        <tr><td>动作（多数情况）</td><td>haben / sein + Partizip II</td><td><em>Wir <b>haben</b> DNA <b>gewonnen</b>.</em> / <em>Eva <b>hat</b> Proben <b>gebracht</b>.</em></td></tr>
+        <tr><td>状态（sein 的过去时）</td><td>war / waren</td><td><em>Gestern <b>war</b> ein interessanter Tag.</em> / <em>Zwei Pflanzen <b>waren</b> gesund.</em></td></tr>
+        <tr><td>状态（haben 的过去时）</td><td>hatte / hatten</td><td><em>Die dritte Pflanze <b>hatte</b> gelbe Blätter.</em></td></tr>
+        <tr><td>位移（完成时用 sein）</td><td>bin/ist/sind + gefahren / gekommen</td><td><em>Ich <b>bin</b> zur Arbeit <b>gefahren</b>.</em> / <em>Die Chefin <b>ist</b> <b>gekommen</b>.</em></td></tr>
+      </table>
+      <table>
+        <tr><th>人称</th><th>sein 过去时</th><th>haben 过去时</th></tr>
+        <tr><td>ich / er, sie, es</td><td>war</td><td>hatte</td></tr>
+        <tr><td>wir / sie (Pl.)</td><td>waren</td><td>hatten</td></tr>
+      </table>
+      <p class="tip">💡 判断口诀：句子在说「做了什么」→ Perfekt；在说「当时是什么样 / 有什么」→ war / hatte。别把 <em>Zwei Pflanzen waren gesund.</em> 写成 <em>haben gesund gewesen</em>。</p>`
   }
 ];
 
 /* ------------------------------------------------------------
-   四、课文阅读（2 篇，逐段中德对照）
+   四、课文阅读（4 篇，逐段中德对照）
    ------------------------------------------------------------ */
 const TEXTS = [
   {
@@ -939,11 +1008,27 @@ const TEXTS = [
       { title: "收尾与回家", de: "Nach der Mittagspause haben wir die Geräte gereinigt und einen kurzen Bericht geschrieben. Um 16:30 Uhr bin ich nach Hause gefahren. Am Abend habe ich meiner Familie von dem kleinen Problem erzählt.", ips: ["[naːx deːɐ̯ ˈmɪtaːksˌpaʊ̯zə ˈhaːbn̩ viːɐ̯ diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt ʊnt ˈʔaɪ̯nən ˈkʊʁt͡sn̩ bəˈʁɪçt ɡəˈʃʁiːbn̩]", "[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç bɪn ɪç naːx ˈhaʊ̯zə ɡəˈfaːʁən]", "[am ˈʔaːbn̩t ˈhaːbə ɪç ˈmaɪ̯nɐ faˈmiːliə fɔn deːm ˈklaɪ̯nən pʁoˈbleːm ɛɐ̯ˈt͡sɛːlt]"], zh: "午休后我们清洗了仪器，写了一份简短的报告。16:30 我开车回家了。晚上我跟家人讲了这个小问题。", verbs: ["hat … gereinigt", "hat … geschrieben（强变化）", "ist … gefahren（位移 → sein；nach Hause 固定搭配）", "hat … erzählt（erzählen von + Dativ）"] },
       { title: "总结", de: "Ich war müde, aber zufrieden. Wir haben alle Proben gefunden und unsere Arbeit geschafft.", ips: ["[ɪç vaːɐ̯ ˈmyːdə | ˈʔaːbɐ t͡suˈfʁiːdn̩]", "[viːɐ̯ ˈhaːbn̩ ˈʔalə ˈpʁoːbn̩ ɡəˈfʊndn̩ ʊnt ˈʔʊnzəʁə ˈʔaʁbaɪ̯t ɡəˈʃaft]"], zh: "我很累，但很满意。我们找到了所有样本，也完成了工作。", verbs: ["war（sein 过去时，表状态）", "haben … gefunden / geschafft"] }
     ]
+  },
+  {
+    id: "t4",
+    title: "DNA 实验室的特别发现", de: "Ein besonderer Fund im DNA-Labor",
+    level: "A1.2 · Perfekt & Präteritum", date: "2026-11-11",
+    intro: "Karim 与 Eva 在生物实验室提取植物 DNA，第三株植物的黄叶带来一个尚未解开的差异。全文以完成时叙述动作、以 war / hatte / waren 交代状态，是两种过去时态同篇对照的范本。",
+    paragraphs: [
+      { title: "背景与新任务", de: "Ich heiße Karim und arbeite in einem Biologielabor. Wir untersuchen DNA aus Pflanzen. Gestern war ein interessanter Tag, denn wir haben eine neue Aufgabe bekommen.", ips: ["[ɪç ˈhaɪ̯sə ˈkaːʁɪm ʊnt ˈʔaʁbaɪ̯tə ɪn ˈʔaɪ̯nəm bi̯oloˈɡiːlaˌboːɐ̯]", "[viːɐ̯ ʔʊntɐˈzuːxn̩ deːʔɛnˈʔaː aʊ̯s ˈpflant͡sn̩]", "[ˈɡɛstɐn vaːɐ̯ ʔaɪ̯n ʔɪntəʁɛˈsantɐ taːk | dɛn viːɐ̯ ˈhaːbn̩ ˈʔaɪ̯nə ˈnɔʏ̯ə ˈʔaʊ̯fˌɡaːbə bəˈkɔmən]"], zh: "我叫 Karim，在一家生物实验室工作。我们研究植物 DNA。昨天是有意思的一天，因为我们接到了一项新任务。", verbs: ["war（sein 过去时，表状态）", "haben … bekommen（be- 不加 ge-）", "denn + 正语序"] },
+      { title: "早晨准备", de: "Am Morgen bin ich um 8 Uhr zur Arbeit gefahren. Im Labor habe ich zuerst meine Hände gewaschen und meinen Laborkittel angezogen. Danach habe ich den Computer gestartet.", ips: ["[am ˈmɔʁɡn̩ bɪn ɪç ʊm ˈʔaxt uːɐ̯ t͡suːɐ̯ ˈʔaʁbaɪ̯t ɡəˈfaːʁən]", "[ɪm laˈboːɐ̯ ˈhaːbə ɪç t͡suˈʔeːɐ̯st ˈmaɪ̯nə ˈhɛndə ɡəˈvaʃn̩ ʊnt ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ ˈʔanɡəˌt͡soːɡn̩]", "[daˈnaːx ˈhaːbə ɪç deːn kɔmˈpjuːtɐ ɡəˈʃtaʁtət]"], zh: "早上 8 点我乘车去上班。在实验室里，我先洗了手、穿上实验服。之后我启动了电脑。", verbs: ["bin … gefahren（位移 → sein；zur Arbeit 固定搭配）", "hat … gewaschen（强变化）", "hat … angezogen（可分）", "hat … gestartet"] },
+      { title: "样本与异常", de: "Meine Kollegin Eva hat drei kleine Pflanzenproben gebracht. Die Pflanzen sind aus einem Gewächshaus gekommen. Zwei Pflanzen waren gesund. Die dritte Pflanze hatte gelbe Blätter.", ips: ["[ˈmaɪ̯nə kɔˈleːɡɪn ˈʔeːva hat dʁaɪ̯ ˈklaɪ̯nə ˈpflant͡sn̩ˌpʁoːbn̩ ɡəˈbʁaxt]", "[diː ˈpflant͡sn̩ zɪnt aʊ̯s ˈʔaɪ̯nəm ɡəˈvɛksˌhaʊ̯s ɡəˈkɔmən]", "[t͡svaɪ̯ ˈpflant͡sn̩ ˈvaːʁən ɡəˈzʊnt]", "[diː ˈdʁɪtə ˈpflant͡sə ˈhatə ˈɡɛlbə ˈblɛtɐ]"], zh: "我的同事 Eva 带来了三份小植物样本。这些植物来自温室。两株植物是健康的。第三株有黄叶。", verbs: ["hat … gebracht（bringen 混合变化）", "sind … gekommen（位移 → sein）", "waren / hatte（过去时表状态）"] },
+      { title: "DNA 提取", de: "Wir haben die Proben beschriftet und vorsichtig vorbereitet. Dann haben wir DNA aus den Blättern gewonnen. Dafür haben wir verschiedene Geräte benutzt.", ips: ["[viːɐ̯ ˈhaːbn̩ diː ˈpʁoːbn̩ bəˈʃʁɪftət ʊnt ˈfoːɐ̯ˌzɪçtɪç foːɐ̯bəˈʁaɪ̯tət]", "[dan ˈhaːbn̩ viːɐ̯ deːʔɛnˈʔaː aʊ̯s deːn ˈblɛtɐn ɡəˈvɔnən]", "[daˈfyːɐ̯ ˈhaːbn̩ viːɐ̯ fɛɐ̯ˈʃiːdənə ɡəˈʁɛːtə bəˈnʊt͡st]"], zh: "我们给样本贴了标签，并小心地做了预处理。然后我们从叶片中提取了 DNA。为此我们使用了不同的仪器。", verbs: ["hat … beschriftet（be- 不加 ge-）", "hat … vorbereitet（vor- + be- 无 ge-）", "hat … gewonnen（i→o）", "hat … benutzt（be- 无 ge-）"] },
+      { title: "上午茶歇", de: "Um 11 Uhr haben wir eine Pause gemacht. Eva hat einen Tee getrunken und ich habe ein Brot gegessen. Wir haben über das Wochenende gesprochen.", ips: ["[ʊm ˈʔɛlf uːɐ̯ ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nə ˈpaʊ̯zə ɡəˈmaxt]", "[ˈʔeːva hat ˈʔaɪ̯nən teː ɡəˈtʁʊŋkn̩ ʊnt ɪç ˈhaːbə ʔaɪ̯n bʁoːt ɡəˈɡɛsn̩]", "[viːɐ̯ ˈhaːbn̩ ˈʔyːbɐ das ˈvɔxn̩ˌʔɛndə ɡəˈʃpʁɔxn̩]"], zh: "11 点我们休息了一下。Eva 喝了茶，我吃了面包。我们聊了周末的事。", verbs: ["haben … gemacht", "hat … getrunken / gegessen（强变化）", "sprechen über + Akk（gesprochen）"] },
+      { title: "结果对比与重复实验", de: "Nach der Pause haben wir die Ergebnisse am Computer verglichen. Bei der dritten Pflanze haben wir einen Unterschied gesehen. Wir waren neugierig und haben die Untersuchung wiederholt.", ips: ["[naːx deːɐ̯ ˈpaʊ̯zə ˈhaːbn̩ viːɐ̯ diː ʔɛɐ̯ˈɡeːpnɪsə ʔam kɔmˈpjuːtɐ fɛɐ̯ˈɡlɪçn̩]", "[baɪ̯ deːɐ̯ ˈdʁɪtn̩ ˈpflant͡sə ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nən ˈʔʊntɐˌʃiːt ɡəˈzeːən]", "[viːɐ̯ ˈvaːʁən ˈnɔʏ̯ˌɡiːʁɪç ʊnt ˈhaːbn̩ diː ʔʊntɐˈzuːxʊŋ ˌviːdɐˈhoːlt]"], zh: "休息后我们在电脑上对比了结果。在第三株植物上我们看到了一个差异。我们很好奇，便重复了这项检测。", verbs: ["haben … verglichen（ver- 不加 ge-）", "haben … gesehen（sehen → gesehen）", "haben … wiederholt（wieder- 不加 ge-）"] },
+      { title: "向主管汇报", de: "Am Nachmittag ist unsere Chefin ins Labor gekommen. Wir haben ihr die Ergebnisse gezeigt. Sie hat uns für die sorgfältige Arbeit gelobt. Aber wir wissen noch nicht, warum die Blätter gelb sind. Dafür brauchen wir weitere Untersuchungen.", ips: ["[am ˈnaːxmɪˌtaːk ɪst ˈʔʊnzəʁə ˈʃɛfɪn ʔɪns laˈboːɐ̯ ɡəˈkɔmən]", "[viːɐ̯ ˈhaːbn̩ ʔiːɐ̯ diː ʔɛɐ̯ˈɡeːpnɪsə ɡəˈt͡saɪ̯kt]", "[ziː hat ʔʊns fyːɐ̯ diː ˈzɔʁkfɛltɪɡə ˈʔaʁbaɪ̯t ɡəˈloːpt]", "[ˈʔaːbɐ viːɐ̯ ˈvɪsn̩ nɔx nɪçt | vaˈʁʊm diː ˈblɛtɐ ɡɛlp zɪnt]", "[daˈfyːɐ̯ ˈbʁaʊ̯xn̩ viːɐ̯ ˈvaɪ̯təʁə ʔʊntɐˈzuːxʊŋən]"], zh: "下午我们的女主管来到了实验室。我们向她展示了结果。她表扬了我们细致的工作。但我们还不知道叶子为什么是黄的。为此我们需要进一步的检测。", verbs: ["ist … gekommen（位移 → sein）", "jdm. etw. zeigen（第三格 ihr）", "für + Akk（für die sorgfältige Arbeit）", "warum 间接疑问句"] },
+      { title: "收尾与回家", de: "Um 16:30 Uhr habe ich meinen Arbeitsplatz aufgeräumt und die Geräte gereinigt. Danach bin ich nach Hause gefahren. Am Abend habe ich meiner Schwester von dem Tag erzählt.", ips: ["[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ˈhaːbə ɪç ˈmaɪ̯nən ˈʔaʁbaɪ̯t͡sˌplat͡s ˈʔaʊ̯fɡəˌʁɔʏ̯mt ʊnt diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt]", "[daˈnaːx bɪn ɪç naːx ˈhaʊ̯zə ɡəˈfaːʁən]", "[am ˈʔaːbn̩t ˈhaːbə ɪç ˈmaɪ̯nɐ ˈʃvɛstɐ fɔn deːm taːk ɛɐ̯ˈt͡sɛːlt]"], zh: "16:30 我整理了工位并清洁了仪器。之后我回家了。晚上我跟妹妹讲了这一天的经历。", verbs: ["hat … aufgeräumt（可分）", "hat … gereinigt", "ist … gefahren（位移 → sein）", "erzählen von + Dativ（er- 无 ge-）"] }
+    ]
   }
 ];
 
 /* ------------------------------------------------------------
-   五、互动练习（8 组测验）
+   五、互动练习（10 组测验）
    ------------------------------------------------------------ */
 const QUIZZES = [
   {
@@ -1062,6 +1147,38 @@ const QUIZZES = [
       { q: "Warum waren die Proben im falschen Raum?", options: ["Ben hat sie dorthin gebracht.", "Eine Kollegin hat sie am Morgen dorthin gebracht.", "Nina hat sie vergessen.", "Sie sind von selbst dorthin gekommen."], answer: 1, explain: "Eine Kollegin hat sie am Morgen in den falschen Raum gebracht." },
       { q: "Wann haben sie endlich mit der Arbeit begonnen?", options: ["um 8 Uhr", "um 9 Uhr", "um 11 Uhr", "nach der Mittagspause"], answer: 2, explain: "Um 11 Uhr haben wir endlich mit der Arbeit begonnen." },
       { q: "Wie hat Nina sich am Abend gefühlt?", options: ["ärgerlich, aber wach", "müde, aber zufrieden", "krank und traurig", "nervös und unsicher"], answer: 1, explain: "Ich war müde, aber zufrieden. Wir haben alle Proben gefunden und unsere Arbeit geschafft." }
+    ]
+  },
+  {
+    id: "q9", title: "haben 还是 sein？（DNA 课文）", de: "Haben oder sein? II", desc: "《Ein besonderer Fund im DNA-Labor》配套：原练习 6 题 + 分词辨析 4 题",
+    questions: [
+      { q: "Karim ___ ins Labor gefahren.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "fahren 位移 → sein；Karim（er）→ ist。" },
+      { q: "Eva ___ drei Proben gebracht.", options: ["ist", "hat", "haben", "sind"], answer: 1, explain: "bringen 是及物动词，不表位移 → hat；分词 gebracht。" },
+      { q: "Wir ___ die Proben vorbereitet.", options: ["sind", "haben", "ist", "hat"], answer: 1, explain: "vorbereiten 及物 → haben；复数主语 wir。" },
+      { q: "Die Chefin ___ ins Labor gekommen.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "kommen 表示「来到」，明确位移 → ist。" },
+      { q: "Karim ___ die Geräte gereinigt.", options: ["ist", "hat", "haben", "sind"], answer: 1, explain: "reinigen 及物 → hat；分词 gereinigt。" },
+      { q: "Die Kollegen ___ eine Pause gemacht.", options: ["haben", "sind", "hat", "ist"], answer: 0, explain: "eine Pause machen 固定搭配 → haben；复数 → haben。" },
+      { q: "gewinnen → 完成时是？", options: ["hat gewinnt", "hat gewonnen", "ist gewonnen", "hat gewinnen"], answer: 1, explain: "强变化 i→o：gewinnen → gewonnen（提取/获得）。" },
+      { q: "vergleichen → 完成时是？", options: ["hat gevorglichen", "hat verglichen", "hat vergleicht", "ist verglichen"], answer: 1, explain: "ver- 不可分 → 不加 ge-，分词 verglichen（对比）。" },
+      { q: "bekommen → 完成时是？", options: ["hat gebekommt", "hat gekommen", "hat bekommen", "ist bekommen"], answer: 2, explain: "be- 不可分，分词与原形同形：bekommen（得到）。" },
+      { q: "vorbereiten → 完成时是？", options: ["hat vorgebereitet", "hat vorbereitet", "ist vorbereitet", "hat vorbereiten"], answer: 1, explain: "vor- 可分但词干含 be-，ge- 被压制：vorbereitet。" }
+    ]
+  },
+  {
+    id: "q10", title: "课文理解：DNA 实验室", de: "Leseverstehen: DNA-Labor", desc: "《Ein besonderer Fund im DNA-Labor》12 题细节理解", hint: "根据课文内容选择正确答案",
+    questions: [
+      { q: "Wo arbeitet Karim?", options: ["in einem Krankenhaus", "in einem Biologielabor", "in einem Gewächshaus", "an einer Universität"], answer: 1, explain: "Ich heiße Karim und arbeite in einem Biologielabor." },
+      { q: "Was untersucht das Labor?", options: ["DNA aus Pflanzen", "Bodenproben aus Gärten", "Lebensmittel", "Bakterien im Wasser"], answer: 0, explain: "Wir untersuchen DNA aus Pflanzen." },
+      { q: "Wann ist Karim zur Arbeit gefahren?", options: ["um 7 Uhr", "am Morgen um 8 Uhr", "um 11 Uhr", "um 16:30 Uhr"], answer: 1, explain: "Am Morgen bin ich um 8 Uhr zur Arbeit gefahren." },
+      { q: "Was hat er zuerst im Labor gemacht?", options: ["den Computer gestartet", "die Hände gewaschen und den Laborkittel angezogen", "die Proben beschriftet", "einen Tee getrunken"], answer: 1, explain: "Im Labor habe ich zuerst meine Hände gewaschen und meinen Laborkittel angezogen." },
+      { q: "Wie viele Pflanzenproben hat Eva gebracht?", options: ["zwei", "drei", "vier", "zwölf"], answer: 1, explain: "Meine Kollegin Eva hat drei kleine Pflanzenproben gebracht." },
+      { q: "Woher sind die Pflanzen gekommen?", options: ["aus dem Garten", "aus dem Wald", "aus einem Gewächshaus", "aus dem Kühlschrank"], answer: 2, explain: "Die Pflanzen sind aus einem Gewächshaus gekommen." },
+      { q: "Was war an der dritten Pflanze anders?", options: ["Sie war sehr groß.", "Sie hatte gelbe Blätter.", "Sie hatte keine Blätter.", "Sie war gesünder als die anderen."], answer: 1, explain: "Die dritte Pflanze hatte gelbe Blätter." },
+      { q: "Was haben sie aus den Blättern gewonnen?", options: ["Wasser", "DNA", "Zucker", "Eiweiß"], answer: 1, explain: "Dann haben wir DNA aus den Blättern gewonnen." },
+      { q: "Wann haben sie Pause gemacht?", options: ["um 8 Uhr", "um 10 Uhr", "um 11 Uhr", "um 16:30 Uhr"], answer: 2, explain: "Um 11 Uhr haben wir eine Pause gemacht." },
+      { q: "Was haben sie in der Pause getrunken und gegessen?", options: ["Kaffee und Kuchen", "Tee und Brot", "Wasser und Joghurt", "Tee und Kekse"], answer: 1, explain: "Eva hat einen Tee getrunken und ich habe ein Brot gegessen." },
+      { q: "Warum haben sie die Untersuchung wiederholt?", options: ["Die Geräte waren kaputt.", "Sie hatten einen Unterschied gesehen und waren neugierig.", "Die Chefin hat es befohlen.", "Die Proben waren zu klein."], answer: 1, explain: "Bei der dritten Pflanze haben wir einen Unterschied gesehen. Wir waren neugierig." },
+      { q: "Wissen sie schon, warum die Blätter gelb sind?", options: ["Ja, sie haben die Ursache gefunden.", "Nein, sie brauchen weitere Untersuchungen.", "Ja, es lag am Licht.", "Nein, aber es ist ihnen egal."], answer: 1, explain: "Aber wir wissen noch nicht, warum die Blätter gelb sind. Dafür brauchen wir weitere Untersuchungen." }
     ]
   }
 ];

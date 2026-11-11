@@ -234,5 +234,72 @@ window.TEXTE_EXTRA = {
         { k: "框架结构", v: "两个第二分词同时钉在句末：haben … gefunden und … geschafft" }
       ]
     }
+  },
+  t4: {
+    1: {
+      zhs: ["我叫 Karim，在一家生物实验室工作。", "我们研究植物 DNA。", "昨天是有意思的一天，因为我们接到了一项新任务。"],
+      notes: [
+        { k: "时态", v: "war = sein 的过去时，用来交代状态；haben … bekommen 才是动作（完成时）" },
+        { k: "分词", v: "bekommen 带不可分前缀 be-，第二分词与原形同形，不加 ge-" },
+        { k: "连词", v: "denn（因为）连接正语序主句，不倒装；对比 weil 会把动词甩到从句句尾" }
+      ]
+    },
+    2: {
+      zhs: ["早上 8 点我乘车去上班。", "在实验室里，我先洗了手、穿上实验服。", "之后我启动了电脑。"],
+      notes: [
+        { k: "助动词", v: "fahren 位移 → sein：bin … gefahren；zur Arbeit fahren 是「去上班」固定搭配" },
+        { k: "强变化", v: "waschen → gewaschen（a 不变但 -en）；anziehen → angezogen（可分，ge- 夹中间）" },
+        { k: "时间", v: "am Morgen / um 8 Uhr 置首 → 动词第二位，主语后移（倒装）" }
+      ]
+    },
+    3: {
+      zhs: ["我的同事 Eva 带来了三份小植物样本。", "这些植物来自温室。", "两株植物是健康的。", "第三株有黄叶。"],
+      notes: [
+        { k: "分词", v: "bringen → gebracht（混合变化）；kommen → gekommen（强变化）" },
+        { k: "过去时", v: "waren（sein 复数过去时）/ hatte（haben 单数过去时）——两句都在描述状态，不用完成时" },
+        { k: "词汇", v: "das Gewächshaus 温室 · die Pflanzenprobe 植物样本 · gelb 黄色的 · gesund 健康的" }
+      ]
+    },
+    4: {
+      zhs: ["我们给样本贴了标签，并小心地做了预处理。", "然后我们从叶片中提取了 DNA。", "为此我们使用了不同的仪器。"],
+      notes: [
+        { k: "不加 ge-", v: "beschriftet / vorbereitet / benutzt 都带不可分前缀 be-，第二分词一律不加 ge-" },
+        { k: "强变化", v: "gewinnen → gewonnen（i→o），本文语境指「提取 DNA」" },
+        { k: "词汇", v: "vorsichtig 小心地 · die Blätter 叶片 · verschiedene Geräte 各种仪器 · dafür 为此" }
+      ]
+    },
+    5: {
+      zhs: ["11 点我们休息了一下。", "Eva 喝了茶，我吃了面包。", "我们聊了周末的事。"],
+      notes: [
+        { k: "固定搭配", v: "eine Pause machen（休息一下）；sprechen über + 第四格（谈论某事）" },
+        { k: "强变化", v: "trinken → getrunken、essen → gegessen、sprechen → gesprochen（e→o）" }
+      ]
+    },
+    6: {
+      zhs: ["休息后我们在电脑上对比了结果。", "在第三株植物上我们看到了一个差异。", "我们很好奇，便重复了这项检测。"],
+      notes: [
+        { k: "不加 ge-", v: "vergleichen → verglichen（ver- 不可分）；wiederholen → wiederholt（wieder- 不可分）" },
+        { k: "强变化", v: "sehen → gesehen；bei der dritten Pflanze 用第三格（bei + Dativ）" },
+        { k: "词汇", v: "der Unterschied 差异 · neugierig 好奇的 · die Untersuchung 检测" }
+      ]
+    },
+    7: {
+      zhs: ["下午我们的女主管来到了实验室。", "我们向她展示了结果。", "她表扬了我们细致的工作。", "但我们还不知道叶子为什么是黄的。", "为此我们需要进一步的检测。"],
+      notes: [
+        { k: "助动词", v: "kommen 位移 → ist … gekommen；ihr 是第三格（jdm. etw. zeigen 向某人展示）" },
+        { k: "介词", v: "für + 第四格（für die sorgfältige Arbeit 因为细致的工作）；gelobt 是 loben 的规则分词" },
+        { k: "从句", v: "warum die Blätter gelb sind 是间接疑问句；weil / warum 引导时变位动词到句尾" },
+        { k: "词汇", v: "die Chefin 女主管 · sorgfältig 细致的 · weitere Untersuchungen 进一步的检测" }
+      ]
+    },
+    8: {
+      zhs: ["16:30 我整理了工位并清洁了仪器。", "之后我回家了。", "晚上我跟妹妹讲了这一天的经历。"],
+      notes: [
+        { k: "可分动词", v: "aufräumen → aufgeräumt（auf + ge + räumt）；reinigen → gereinigt" },
+        { k: "助动词", v: "nach Hause fahren（回家）位移 → bin … gefahren" },
+        { k: "搭配", v: "erzählen von + 第三格（讲述某事）；er- 不可分 → erzählt 不加 ge-" },
+        { k: "词汇", v: "der Feierabend 下班/收工 · die Schwester 姐妹 · der Arbeitsplatz 工位" }
+      ]
+    }
   }
 };
