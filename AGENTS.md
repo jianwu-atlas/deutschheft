@@ -77,7 +77,7 @@
 - 更新 Notion 内容：`.md` 放入 `content-notion/` → `python3 scripts/notion_export_sync.py` → commit & push
 - 同步校验：`node --check assets/js/*.js`（CI 有同样检查）
 - 本地存储：`deutschheft_v1`（复习标记/测验成绩）、`deutschheft_notion_imports`（导入笔记）、`deutschheft_theme`、`deutschheft_annotate`（全文标注开关）
-- **音标体系**：① 词卡正面 IPA+谐音；② 课程句型 IPA 全标；③ **课文按「单词最多 60%」标注**（每句仍有一条音标行，行内只给难词注音，ich/und/wir 等基础词不出现；`deutsch.js` 的 `IPA_MAX_WORD_RATIO` / `ipaLine`，复用 `annotate.js` 的 `DH_BASIC`，并用 `text-word-ipa.js` 兜底不对齐句子）；④ annotate.js 全文词级 ruby 标注 + 点击朗读；右下角「音标」开关
+- **音标体系**：① 词卡正面 IPA+谐音；② 课程句型 IPA 全标；③ **课文按「单词最多 60%」标注**：每句仍有一条音标行（行内只给难词注音，ich/und/wir 等基础词不出现），**同一批词还在德语句子内用 `<ruby>` 把 IPA 标在单词上方**（点 ruby 读该词）——选词一次（`ipaPick()`，共享词边界 `IPAW`），双路渲染（`ipaText()` 上方 + `ipaLineHtml()` 下方，逐词一一对应）；复用 `annotate.js` 的 `DH_BASIC`，并用 `text-word-ipa.js` 兜底不对齐句子；④ annotate.js 全文词级 ruby 标注 + 点击朗读；右下角「音标」开关（课文正文带 `.no-ipa`，与 ③ 不重复标注）
 - 静态资源版本号：HTML 中 `?v=N`，改 JS/CSS 后需同步 +1
 
 ## 部署
@@ -97,6 +97,8 @@
 - 仓库：https://github.com/jianwu-atlas/deutschheft （描述用中文）
 
 ## 更新记录
+
+- 2026-11-12（**课文选中词在德语单词上方也标 IPA（ruby）**，Jian「这些有国际音标，在这个德语的单词上方也标注出对应的国际音标」）：在「按单词 ≤60%」基础上把渲染拆成**选词一次、双路同源**——`deutsch.js` 的 `ipaLine()` 重构为 `ipaPick()`（≤60%、无基础词、长词优先，共享词边界正则 `IPAW` 保证选词/渲染下标一致）→ ① `ipaText()`：德语句内选中词包 `<ruby class="s-ruby">词<rt>ipa</rt>`，IPA 骑在词上，hover 提示「词 · [ipa]（点击朗读）」，**点击 ruby 单独读该词**（全局委托 click 处理器，重渲染免重绑）；② `ipaLineHtml()`：下方音标行原样保留。CSS `.s-ruby rt`（mono 0.5em、`--accent`，dark `#E0A96D`，`ruby-position: over`）+ `.s-text` 行高 1.75→1.9 防注音裁切。与 `annotate.js` 全局「音标」开关不冲突（课文正文 `.no-ipa` 在 SKIP_SEL 内）；TTS/MP3/复制全文走数据层纯文本不受影响。`_test_site.py` 新增 5 断言（ruby 存在、ruby 与下方行逐句同词、ruby 无基础词、四篇 ruby 数=行数）→ 45 项全过、零 JS 报错；浅/深主题截图目检对齐美观。升版 `deutsch.js?v=50` / `deutsch.css?v=60`（13 js 页 + 14 css 页）。
 
 - 2026-11-12（**按单词 ≤60% 重做课文音标**，Jian 纠正「不是按句子，是按单词不超过 60%，你现在是整句话都没有音标」）：初版把 40% 句子的整句 IPA 行整行删掉，方向错了。改为**每句都保留音标行，但行内只列出 ≤60% 的难词及其 IPA**（`词 [ipa] · 词 [ipa]`）。实现：新增 `scripts/gen_text_word_ipa.js`（espeak-ng 生成 346 词的词级示意 IPA，8KB）→ `assets/js/data/text-word-ipa.js`；`deutsch.js` 的 `ipaLine()` 优先把既有人工整句 `ips` 按词对齐切段（105/113 句对齐），不对齐的 8 句（10:30 Uhr 类时间读法、E-Mails）回退词级表；`DH_BASIC` 过滤基础词，按词长优先取 `floor(词数×0.6)`。`window.__dhIpaStats` 改报 words/marked/ratio/lines。实测四篇 45.3%–51.8%、每句都有音标行、基础词零出现。升版 `deutsch.js?v=49` / `deutsch.css?v=59` / `text-word-ipa.js?v=1`；两套测试断言改按单词口径。
 

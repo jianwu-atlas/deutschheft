@@ -80,13 +80,33 @@ with sync_playwright() as p:
     check("词级音标 ≤60% 且仍有标注", 0 < ipa_stat["ratio"] <= 0.6, ipa_stat)
     check("每句都有音标行", ipa_stat["lines"] == ipa_stat["sentences"], ipa_stat)
     check("逐句中文与句数一致", pg.locator("#textBody .s-zh").count() == meta["sents"] == meta["zhs"])
+    # 词上方 ruby 音标（Jian 2026-11-12：选中词同时在德语上方标注）
+    ruby_n = pg.evaluate("() => document.querySelectorAll('#textBody .s-text ruby.s-ruby').length")
+    check("词上方有 ruby 音标标注", ruby_n > 0, ruby_n)
+    ruby_ok = pg.evaluate("""() => {
+      const lines = [...document.querySelectorAll('#textBody .s-line')];
+      if (!lines.length) return false;
+      return lines.every(l => {
+        const rbs = [...l.querySelectorAll('.s-text ruby.s-ruby')];
+        const ln = l.querySelector('.s-ipa');
+        const bb = ln ? ln.querySelectorAll('b').length : 0;
+        return rbs.length === bb && rbs.every(r => r.dataset.word
+          && (r.querySelector('rt') || { textContent: '' }).textContent.trim());
+      });
+    }""")
+    check("ruby 与音标行逐句同词同源", ruby_ok)
+    rb_basic = pg.evaluate("""() => [...document.querySelectorAll('#textBody .s-text ruby.s-ruby')]
+      .some(r => /^(ich|wir|und|ist|sind|in|im|am|der|die|das|zu|ein|eine|mit|von|haben)$/.test(r.dataset.word.toLowerCase()))""")
+    check("ruby 标注不含基础词", not rb_basic)
     ipa_ratios = []
     for tid in pg.locator(".text-tab").evaluate_all("els => els.map(e => e.dataset.id)"):
         pg.locator(f'.text-tab[data-id={tid}]').click(); pg.wait_for_timeout(180)
-        st = pg.evaluate("() => window.__dhIpaStats")
-        ipa_ratios.append((tid, round(st["ratio"], 3), st["marked"], st["words"], st["lines"], st["sentences"]))
+        st = pg.evaluate("""() => ({ ...window.__dhIpaStats,
+          rubies: document.querySelectorAll('#textBody .s-text ruby.s-ruby').length })""")
+        ipa_ratios.append((tid, round(st["ratio"], 3), st["marked"], st["words"], st["lines"], st["sentences"], st["rubies"]))
     check("四篇课文词级音标均 ≤60%", all(r[1] <= 0.6 and r[1] > 0 for r in ipa_ratios), ipa_ratios)
     check("四篇课文每句都有音标行", all(r[4] == r[5] for r in ipa_ratios), ipa_ratios)
+    check("四篇课文 ruby 数 = 音标行数", all(r[6] == r[2] for r in ipa_ratios), ipa_ratios)
     pg.locator('.text-tab[data-id=t1]').click(); pg.wait_for_timeout(180)
     basic_ok = pg.evaluate("""() => [...document.querySelectorAll('.s-ipa')]
         .every(e => !/(^|·\\s)(ich|wir|und|ist|sind|in|im|der|die|das|zu|am|um|haben|eine|ein)\\s*\\[/i.test(e.textContent.trim()))""")

@@ -510,6 +510,11 @@ function renderLehrbuch(app) {
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initBurger();
+  // 课文「词上方 ruby 音标」：点击该词单独朗读（Jian 2026-11-12）
+  document.addEventListener("click", e => {
+    const rb = e.target.closest("ruby.s-ruby");
+    if (rb && rb.dataset.word && window.__dhSpeak) { window.__dhSpeak(rb.dataset.word); return; }
+  });
   // 朗读按钮（句型表 / 课文逐句）：课文页的句🔊 = 从本句连读到本段结束
   document.addEventListener("click", e => {
     const sp = e.target.closest(".s-sp");
@@ -893,9 +898,11 @@ function renderTexts(app) {
   ]);
   const ipaTable = window.TEXT_WORD_IPA || {};
   const ipaKey = w => w.toLowerCase().replace(/[^a-zäöüß0-9]/g, "");
-  const ipaLine = (de, full) => {
-    if (!full) return "";
-    const ws = de.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'’-]*/g) || [];
+  const IPAW = /[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'’-]*/g;   // 选词与渲染共用同一词边界，保证下标对齐
+  /* 选出本句要注音的词（≤60%、无基础词、长词优先）→ [{w,k,i,raw}] */
+  const ipaPick = (de, full) => {
+    if (!full) return [];
+    const ws = de.match(IPAW) || [];
     const parts = full.replace(/^\[|\]$/g, "").replace(/\|/g, " ").trim().split(/\s+/).filter(Boolean);
     const aligned = parts.length === ws.length;
     const cands = ws.map((w, i) => {
@@ -905,18 +912,30 @@ function renderTexts(app) {
     }).filter(x => x.raw && x.k && x.k.length > 2 && !ipaBasic.has(x.k) && !/^\d/.test(x.k));
     const quota = Math.floor(ws.length * IPA_MAX_WORD_RATIO);
     cands.sort((a, b) => (b.k.length - a.k.length) || (a.i - b.i));
-    const picked = cands.slice(0, quota).sort((a, b) => a.i - b.i);
-    return picked.map(x => `<b>${esc(x.w)}</b> [${x.raw}]`).join(" · ");
+    return cands.slice(0, quota).sort((a, b) => a.i - b.i);
   };
   const ipaLines = paras.map((sents, pi) => sents.map((s, si) =>
-    t.paragraphs[pi].ips && t.paragraphs[pi].ips[si] ? ipaLine(s, t.paragraphs[pi].ips[si]) : ""));
+    ipaPick(s, (t.paragraphs[pi].ips && t.paragraphs[pi].ips[si]) || "")));
+  /* 下方音标行：词 + 音标（保持不变） */
+  const ipaLineHtml = picked => picked.map(x => `<b>${esc(x.w)}</b> [${x.raw}]`).join(" · ");
+  /* 上方注音：德语句内选中词包 <ruby>，音标骑在词上（Jian 2026-11-12「在单词上方也标注」） */
+  const ipaText = (de, picked) => {
+    if (!picked.length) return esc(de);
+    const pm = new Map(picked.map(x => [x.i, x]));
+    let idx = 0;
+    return de.replace(IPAW, m => {
+      const x = pm.get(idx); idx++;
+      return x
+        ? `<ruby class="s-ruby" data-word="${esc(m)}" title="${esc(m)} · [${esc(x.raw)}]（点击朗读）">${esc(m)}<rt>${esc(x.raw)}</rt></ruby>`
+        : esc(m);
+    });
+  };
   {
     const totalWords = paras.reduce((a, sents) =>
-      a + sents.reduce((b, s) => b + (s.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß'’-]*/g) || []).length, 0), 0);
-    const marked = ipaLines.reduce((a, ls) =>
-      a + ls.reduce((b, l) => b + (l ? (l.match(/<b>/g) || []).length : 0), 0), 0);
+      a + sents.reduce((b, s) => b + (s.match(IPAW) || []).length, 0), 0);
+    const marked = ipaLines.reduce((a, ls) => a + ls.reduce((b, l) => b + l.length, 0), 0);
     window.__dhIpaStats = {
-      id: t.id, sentences: items.length, lines: ipaLines.flat().filter(Boolean).length,
+      id: t.id, sentences: items.length, lines: ipaLines.flat().filter(l => l.length).length,
       words: totalWords, marked: marked, ratio: totalWords ? marked / totalWords : 0
     };
   }
@@ -951,8 +970,8 @@ function renderTexts(app) {
               <div class="s-line" data-p="${i}" data-s="${si}">
                 <button class="s-sp" data-de="${esc(s)}" data-p="${i}" data-s="${si}" title="从本句开始连读到本段结束">🔊</button>
                 <div class="s-main">
-                  <span class="s-text">${s}</span>
-                  ${ipaLines[i][si] ? `<span class="s-ipa">${ipaLines[i][si]}</span>` : ""}
+                  <span class="s-text">${ipaText(s, ipaLines[i][si])}</span>
+                  ${ipaLines[i][si].length ? `<span class="s-ipa">${ipaLineHtml(ipaLines[i][si])}</span>` : ""}
                   ${ex.zhs && ex.zhs[si] ? `<span class="s-zh">${esc(ex.zhs[si])}</span>` : ""}
                 </div>
               </div>`).join("")}
