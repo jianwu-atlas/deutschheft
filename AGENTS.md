@@ -6,10 +6,17 @@
 
 静态多页学习站：课程 / 生词表 / 语法 / 课文 / 练习 / Notion 同步 / 大纲。内容严格同步 Jian 的实际上课进度与 Notion 笔记（jackng833.notion.site「德语-最重要」）。
 
+## 两文件铁律（2026-11-18 Jian 拍板，最高优先）
+
+> **每轮开工前先读 `AGENTS.md` 与 `analysis_log.md`，收工后立即追加 `analysis_log.md` 条目（新条目置顶）。上一次运行未记录，不开始下一次。**
+> 与 LungAgingERV / LungERVIPF 同规；`analysis_log.md` 为**本地运行账本**（已 `.gitignore`，含指令引文与 Notion 页 id，不入公开仓库），并同步备份至 Obsidian `memory/WORKBuddy/daily-log/`。
+> **本项目三条硬约定**：① 改 `assets/js/data/*.js` 必须同步升 HTML 的 `?v=`（SW 缓存优先）；② 加课流水线顺序见 `analysis_log.md` 抬头；③ 新动词必须登记 `FORMEN_VERBEN`，词干 `-t/-d` 结尾用 `art:"t"`。
+
 ## 目录与产物
 
 | 路径 | 用途 |
 |---|---|
+| `analysis_log.md` | **本地运行账本**（五项格式，新条目置顶；每轮先读后更新；已 gitignore 不入库） |
 | `index.html` | 首页（学习地图、统计、当前重点） |
 | `lektionen.html` | 16 课（A1 × 11 + A1.2 × 5），手风琴 + 已复习标记 |
 | `wortschatz.html` | 双视图：352 词卡（筛选/搜索/翻面）+ **全站词表 1234 词形**（德语单词 / IPA / **中文释义** / 来源 / 次数，IPA 与释义 100% 覆盖，其中 76 条为 espeak 近似音标，支持中文搜索） |
@@ -98,6 +105,10 @@
 
 ## 更新记录
 
+- 2026-11-18（**建立两文件铁律与 `analysis_log.md` 运行账本**，Jian「在本录目录下有没有保存为 analysis_log.md 日志文件？生成并且及时更新」）：
+  - **现状核实**：本仓库原先**无** `analysis_log.md`（`find` 确认）；`/Users/Jack/jian_wu/6_scCOPD/` 下 8+ 个研究项目均有，格式取自 LungAgingERV 版（140 行 / 18.4 KB，五项记录 + 新条目置顶）。
+  - **落地**：新建账本（三条项目硬约定 + 五项格式 + 今日 2 条条目，含把同日加课运行**补记**入账）；`.gitignore` 加 `analysis_log.md`（公开仓库不宜收录指令引文与 Notion 页 id，改为本地账本 + Obsidian `memory/WORKBuddy/daily-log/` 备份）；AGENTS.md 顶部新增「两文件铁律」节并把本文件登记进目录表首行，确保后续会话自动加载即会先读。
+  - **未搬运**：2026-10-12 → 2026-11-12 的既往运行不重复抄录，按分工仍留在本文件更新记录与 `.workbuddy/memory/`，避免两处漂移。
 - 2026-11-18（**新增 A1.2 第 5 次课《Ein Experiment mit Hefe》**，Jian 提供 Notion 课程页 + Gemini 分享链接 + 两张课件照片）：
   - **来源核实**：Notion 页 `41c20c5c739a802bbf78e5da45f66b9c`（「德语-最重要」下）含课文 8 段、逐段翻译与语法解读、词汇表、15 题阅读问答、6 题 haben/sein 填空，是 Gemini 会话的整理版。**Gemini 分享链接匿名抓取只返回登录壳**（`share.gemini.google/VqFqvLfWhldj` → `gemini.google.com/share/abc1903e216d`，headless 201 字符）；改用**已登录本机浏览器**（browser-use `navigate_page` + `evaluate_script`）取到 33913 字符全文，内容与 Notion 一致，另含发酵原理（温水最适 / 冷水抑酶 / 过热失活）与「人三物四」讲解，已并入知识点。⚠️ anaconda playwright 的 `chromium.launch(headless=True)` 在本机会报 headless-shell 缺失，须 `channel="chrome"`。
   - **数据**：`LESSONS.a2t5`（A2-5，7 条语法 + 8 条带 IPA 句型）→ 16 课；`TEXTS.t5`（8 段 / **28 句**，逐句 IPA 全覆盖）→ 5 篇；`TEXTE_EXTRA.t5`（28 条逐句中文 + 32 条知识点）；`GRAMMAR.g15 静三动四（Wechselpräpositionen）`（含 stellen/legen/setzen ↔ stehen/liegen/sitzen 动词对）→ 15 讲；`QUIZZES.q11/q12`（haben/sein 10 题 + 课文理解 15 题）→ 12 组 125 题；`VOCAB` +28 词（Hefe / Schaum / Zucker / Glas / Temperatur / Wert / Brötchen / füllen / messen / markieren / herausfinden / sich bilden …）→ **352** 张词卡。

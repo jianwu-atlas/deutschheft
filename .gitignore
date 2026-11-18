@@ -10,3 +10,6 @@ dist/
 .edgeone/
 .env
 /data/
+
+# 运行账本：本地工作记录，含指令引文与 Notion 页 id，不入公开仓库
+analysis_log.md
