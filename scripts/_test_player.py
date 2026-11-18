@@ -49,12 +49,21 @@ with sync_playwright() as p:
 
     # 1–3 初始与播放
     check("播放器 API 存在", pg.evaluate("() => typeof window.DhPlayer === 'object'"))
-    check("默认课文为 t4", pg.locator(".text-tab.on .tt-de").inner_text().startswith("Ein besonderer Fund"))
+    # 最新课文元数据从数据层动态读取（新增课程后无需改脚本数字）
+    LT = pg.evaluate("() => { const t = TEXTS[TEXTS.length - 1]; "
+                     "return { id: t.id, de: t.de, paras: t.paragraphs.length }; }")
+    sents = pg.evaluate("() => window.__textItems.length")
+    check("默认打开最新课文", pg.locator(".text-tab.on").get_attribute("data-id") == LT["id"],
+          [pg.locator(".text-tab.on").get_attribute("data-id"), LT["id"]])
+    check("最新课文标题渲染", LT["de"] in pg.locator(".text-tab.on .tt-de").inner_text(), LT["de"])
     check("初始无高亮", pg.locator(".s-reading").count() == 0)
-    check("t4 段落 8 段", pg.locator(".card.para").count() == 8, pg.locator(".card.para").count())
+    check("段落数与数据层一致", pg.locator(".card.para").count() == LT["paras"],
+          [pg.locator(".card.para").count(), LT["paras"]])
     ipa_stat = pg.evaluate("() => window.__dhIpaStats")
-    check("t4 词级音标 ≤60%", 0 < ipa_stat["ratio"] <= 0.6 and ipa_stat["lines"] == ipa_stat["sentences"], ipa_stat)
-    check("t4 逐句中文 27 条", pg.locator("#textBody .s-zh").count() == 27, pg.locator("#textBody .s-zh").count())
+    check("词级音标 ≤60% 且每句有行", 0 < ipa_stat["ratio"] <= 0.6 and ipa_stat["lines"] == ipa_stat["sentences"] == sents,
+          [ipa_stat, sents])
+    check("逐句中文与句数一致", pg.locator("#textBody .s-zh").count() == sents,
+          [pg.locator("#textBody .s-zh").count(), sents])
     check("初始停止按钮禁用", pg.locator("#btnStop").is_disabled())
 
     pg.click("#btnPlay")

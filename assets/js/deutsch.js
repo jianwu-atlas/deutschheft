@@ -614,11 +614,11 @@ function renderStart(app) {
   const pct = Math.round((doneTopics / totalTopics) * 100);
 
   const modules = [
-    { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 4 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
+    { route: "lektionen.html", num: "01", de: "Lektionen", zh: "分级课程", desc: "11 节 A1 主题课 + 5 节 A1.2 实验室课文课，按你的实际上课顺序排列。" },
     { route: "wortschatz.html", num: "02", de: "Wortschatz", zh: "生词表", desc: VOCAB.length + " 张词汇卡：每张含国际音标 + 中文谐音，按主题与词性筛选，点卡片翻面看释义。" },
     { route: "grammatik.html", num: "03", de: "Grammatik", zh: "语法讲解", desc: GRAMMAR.length + " 个语法专题：从动词第二位到现在完成时。" },
     { route: "formen.html", num: "04", de: "Formen", zh: "词形变化", desc: "112 个动词的六人称变位 + 过去时 + 第二分词，另有名词复数、形容词比较级、冠词代词变格，以及「语料变形索引」。" },
-    { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "四篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
+    { route: "texte.html", num: "05", de: "Texte", zh: "课文阅读", desc: "五篇实验室课文逐段中德对照，完成时重点动词逐一标注。" },
     { route: "lehrbuch.html", num: "06", de: "Lehrbuch", zh: "教材", desc: "6 份教材 PDF 原件在线阅读/下载，附结构化词汇、核心句型（含音标）与语法要点。" },
     { route: "referenz.html", num: "07", de: "Referenz", zh: "速查表", desc: "打开就能查：数字 0–100 全表、口语报时、18 种颜色、四季/月份/星期/天气，全部注有音标与中文谐音。" },
     { route: "uebungen.html", num: "08", de: "Übungen", zh: "互动练习", desc: QUIZZES.length + " 组测验：变位、数字、时间、完成时、词性、句子改写、haben/sein、课文理解与 DNA 专项。" },
@@ -659,7 +659,7 @@ function renderStart(app) {
 
     <div class="focus-box">
       <h3>🎯 当前学习重点 · Aktueller Fokus</h3>
-      <p>你正在 <strong>A1.2</strong> 阶段，最近一课是 <strong>Ein besonderer Fund im DNA-Labor</strong>（2026-11-11）：Karim 与 Eva 提取植物 DNA，第三株的黄叶带来一个尚未解开的差异。这一课第一次把<strong>完成时与过去时</strong>放进同一篇叙事——动作用 Perfekt，状态用 war / hatte / waren。建议先读课文《Ein besonderer Fund im DNA-Labor》并隐藏中文自测，再做「haben 还是 sein？（DNA 课文）」与「课文理解：DNA 实验室」，最后用语法专题《完成时与过去时》收口。大纲上 <strong>Bürokratie（办事）</strong>与 <strong>Arztbesuch（看病）</strong>仍是接下来最值得优先攻克的两个生存主题。</p>
+      <p>你正在 <strong>A1.2</strong> 阶段，最近一课是 <strong>Ein Experiment mit Hefe</strong>（2026-11-18）：Felix 与 Lina 用三只杯子做酵母发酵对照实验——温水大量起泡、冷水很少、过热几乎不起泡。这一课把<strong>完成时用成了实验记录</strong>，并第一次成对出现<strong>静三动四</strong>（in das Glas füllen ↔ im Glas）、<strong>反身动词完成时</strong>（hat sich gebildet）与双宾语<strong>「人三物四」</strong>（ihr die Tabelle gezeigt）。建议先读课文《Ein Experiment mit Hefe》并隐藏中文自测，再做「haben 还是 sein？（酵母课文）」与「课文理解：酵母实验」，最后用语法专题《静三动四》收口。大纲上 <strong>Bürokratie（办事）</strong>与 <strong>Arztbesuch（看病）</strong>仍是接下来最值得优先攻克的两个生存主题。</p>
     </div>
   `;
   requestAnimationFrame(() => { const f = $("#hpFill"); if (f) f.style.width = pct + "%"; });
@@ -846,7 +846,7 @@ function renderGrammar(app, openId) {
 /* ============================================================
    课文 Texte
    ============================================================ */
-let textState = { id: "t4", hideZh: false };
+let textState = { id: "t5", hideZh: false };
 
 /* ---- 句子切分（与播放器共用：句队列按 [段-句] 坐标寻址，不依赖 DOM 引用）---- */
 function splitSentences(str) {

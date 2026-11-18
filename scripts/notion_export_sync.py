@@ -44,6 +44,7 @@ TITLE_OVERRIDES = {
     "14_": "14 · 现在完成时 Das Perfekt（A1.2 第 2 次）",
     "15_": "15 · Ein Problem mit den Laborproben（A1.2 第 3 次）",
     "16_": "16 · Ein besonderer Fund im DNA-Labor（A1.2 第 4 次）",
+    "17_": "17 · Ein Experiment mit Hefe（A1.2 第 5 次）",
     "2026-08-10": "2026-08-10 · 八主题例句 + Malawi 的一天",
 }
 
@@ -57,6 +58,7 @@ CLASSDATE_OVERRIDES = {
     "13_": "2026-08-31",  # A1.2 第 1 次
     "15_": "2026-10-28",  # A1.2 第 3 次
     "16_": "2026-11-11",  # A1.2 第 4 次
+    "17_": "2026-11-18",  # A1.2 第 5 次
 }
 
 

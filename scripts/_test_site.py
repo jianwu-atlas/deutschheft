@@ -40,8 +40,19 @@ with sync_playwright() as p:
       vocab: VOCAB.length,
       notes: NOTION_NOTES.length,
       lastLesson: LESSONS[LESSONS.length - 1].id,
+      lastLessonDe: LESSONS[LESSONS.length - 1].de,
+      lastLessonDate: LESSONS[LESSONS.length - 1].date,
       lastText: TEXTS[TEXTS.length - 1].id,
-      lastGrammar: GRAMMAR[GRAMMAR.length - 1].id
+      lastGrammar: GRAMMAR[GRAMMAR.length - 1].id,
+      lastGrammarTitle: GRAMMAR[GRAMMAR.length - 1].title,
+      lastQuiz: QUIZZES[QUIZZES.length - 1].id,
+      lastQuizQ0: QUIZZES[QUIZZES.length - 1].questions[0].q,
+      lastQuizHint: QUIZZES[QUIZZES.length - 1].hint || "选择正确的德语形式",
+      noteLatest: (() => {
+        const s = NOTION_NOTES.slice().sort((a, b) =>
+          String(b.classDate || b.date || "").localeCompare(String(a.classDate || a.date || "")));
+        return { title: s[0].title, date: s[0].classDate || s[0].date || "" };
+      })()
     })""")
     print("  数据层:", D)
 
@@ -51,7 +62,7 @@ with sync_playwright() as p:
     check("首页语法数与数据层一致", any(x.startswith(str(D["grammar"])) and "语法" in x for x in stats))
     check("首页课文数与数据层一致", any(x.startswith(str(D["texts"])) and "课文" in x for x in stats))
     check("首页笔记数与数据层一致", any(x.startswith(str(D["notes"])) and "Notion" in x for x in stats))
-    check("首页重点为最新课", "Ein besonderer Fund im DNA-Labor" in pg.locator(".focus-box").inner_text())
+    check("首页重点为最新课", D["lastLessonDe"] in pg.locator(".focus-box").inner_text(), D["lastLessonDe"])
 
     # ---- 课程页 ----
     pg.goto(BASE + "/lektionen.html", wait_until="networkidle")
@@ -59,7 +70,8 @@ with sync_playwright() as p:
     check("A1.2 课程数一致", pg.locator(".card.lesson[id^=lesson-a2]").count() == D["a12"])
     last = pg.locator("#lesson-" + D["lastLesson"])
     check("最新课存在", last.count() == 1)
-    check("最新课标题/日期", "Ein besonderer Fund im DNA-Labor" in last.inner_text() and "2026-11-11" in last.inner_text())
+    check("最新课标题/日期", D["lastLessonDe"] in last.inner_text() and D["lastLessonDate"] in last.inner_text(),
+          [D["lastLessonDe"], D["lastLessonDate"]])
     check("最新课句型 8 条且带 IPA", last.locator("table.sentence-table tr").count() == 8 and last.locator(".s-ipa").count() == 8)
 
     # ---- 课文页 ----
@@ -117,17 +129,56 @@ with sync_playwright() as p:
     # ---- 语法页 ----
     pg.goto(BASE + "/grammatik.html", wait_until="networkidle")
     check("语法专题数 = GRAMMAR", pg.locator(".card.grammar-item").count() == D["grammar"])
-    pg.locator("#g14 .grammar-head").click(); pg.wait_for_timeout(200)
-    g14 = pg.locator("#g14").inner_text()
-    check("最新语法专题含 war / hatte", "war" in g14 and "hatte" in g14)
+    lg = "#" + D["lastGrammar"]
+    pg.locator(lg + " .grammar-head").click(); pg.wait_for_timeout(200)
+    check("最新语法专题标题渲染", D["lastGrammarTitle"] in pg.locator(lg).inner_text(), D["lastGrammarTitle"])
+    check("最新语法专题正文非空", len(pg.locator(lg + " .grammar-body").inner_text().strip()) > 120,
+          len(pg.locator(lg + " .grammar-body").inner_text().strip()))
 
     # ---- 练习页 ----
     pg.goto(BASE + "/uebungen.html", wait_until="networkidle")
     check("测验组数 = QUIZZES", pg.locator(".card.quiz-card").count() == D["quizzes"])
-    check("题数合计 = 100", D["questions"] == 100, D["questions"])
-    pg.locator('.quiz-card[data-id=q10]').click(); pg.wait_for_timeout(300)
-    check("q10 题干与提示语", "Wo arbeitet Karim" in pg.locator(".quiz-qcard").inner_text()
-          and "根据课文内容选择正确答案" in pg.locator(".quiz-qcard").inner_text())
+    qcards = [int(x) for x in pg.evaluate(
+        """() => [...document.querySelectorAll('.quiz-card .module-num')]
+             .map(e => (e.textContent.match(/(\\d+)\\s*题/) || [])[1]).filter(Boolean)""")]
+    check("题数合计 = 各组卡片题数之和", sum(qcards) == D["questions"],
+          [sum(qcards), D["questions"], qcards])
+    pg.locator('.quiz-card[data-id=%s]' % D["lastQuiz"]).click(); pg.wait_for_timeout(300)
+    check("末组测验题干与提示语", D["lastQuizQ0"] in pg.locator(".quiz-qcard").inner_text()
+          and D["lastQuizHint"] in pg.locator(".quiz-qcard").inner_text(),
+          [D["lastQuizQ0"], D["lastQuizHint"]])
+    check("末组测验选项 4 个", pg.locator(".quiz-opts .opt").count() == 4,
+          pg.locator(".quiz-opts .opt").count())
+
+    # 纯文本字段（focus / summary / intro / zh）不做 Markdown 解析，残留 ** 会原样显示
+    md_leak = pg.evaluate(r"""() => {
+      const bad = [];
+      LESSONS.forEach(l => ['focus','summary'].forEach(k => { if (/\*\*/.test(l[k] || '')) bad.push(l.id + '.' + k); }));
+      TEXTS.forEach(t => { if (/\*\*/.test(t.intro || '')) bad.push(t.id + '.intro'); });
+      return bad;
+    }""")
+    check("纯文本字段无残留 Markdown 星号", len(md_leak) == 0, md_leak)
+
+    # ---- 词形变化页（含通用变位守卫） ----
+    pg.goto(BASE + "/formen.html", wait_until="networkidle")
+    FVn = pg.evaluate("() => FORMEN_VERBEN.length")
+    check("动词表条目数 = 数据层", pg.locator("#formenBody tr").count() >= FVn, [pg.locator("#formenBody tr").count(), FVn])
+    # 通用守卫：词干以 -t/-d 结尾须插 -e-（wartest/bildest），以 -s/-ß/-z 结尾 du 只加 -t
+    bad_forms = pg.evaluate("""() => {
+      const out = [];
+      FORMEN_VERBEN.forEach(v => {
+        if (v.formen || !v.stamm) return;
+        const st = v.stamm;
+        const du = konjugiere(v)[1], er = konjugiere(v)[2];
+        if (/[td]$/.test(st) && !new RegExp('^' + st + 'est$').test(du)) out.push(v.de + ' → ' + du);
+        if (/[szß]$/.test(st) && !new RegExp('^' + st + 't$').test(du)) out.push(v.de + ' → ' + du);
+      });
+      return out;
+    }""")
+    check("无「词干 -t/-d/-s/-z 结尾变位未插 -e-」错形", len(bad_forms) == 0, bad_forms)
+    pg.locator('[data-tab="index"]').click(); pg.wait_for_timeout(400)
+    idx = pg.locator("#formenBody").inner_text()
+    check("语料索引收录本课新变形", "gefüllt" in idx and "verglichen" in idx, idx[:60])
 
     # ---- 生词表 ----
     pg.goto(BASE + "/wortschatz.html", wait_until="networkidle")
@@ -156,8 +207,10 @@ with sync_playwright() as p:
     pg.goto(BASE + "/notion.html", wait_until="networkidle")
     check("笔记数 = NOTION_NOTES", pg.locator(".note-item").count() == D["notes"])
     first = pg.locator(".note-item").first
-    check("最新笔记排首位", "Ein besonderer Fund im DNA-Labor" in first.inner_text() and "2026-11-11" in first.inner_text())
-    check("默认展开最新笔记", "Ein besonderer Fund im DNA-Labor" in pg.locator("#noteReader .nr-title").inner_text())
+    check("最新笔记排首位", D["noteLatest"]["title"] in first.inner_text() and D["noteLatest"]["date"] in first.inner_text(),
+          [D["noteLatest"], first.inner_text()[:70]])
+    check("默认展开最新笔记", D["noteLatest"]["title"] in pg.locator("#noteReader .nr-title").inner_text(),
+          pg.locator("#noteReader .nr-title").inner_text())
     hs = pg.evaluate("() => [...document.querySelectorAll('.note-item')].map(e => Math.round(e.getBoundingClientRect().height))")
     check("笔记卡片等高", len(set(hs)) == 1, set(hs))
 

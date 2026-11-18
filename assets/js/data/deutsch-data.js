@@ -7,12 +7,12 @@
 const SITE = {
   title: "Mein Deutschheft",
   subtitle: "Jian (Jack) Wu 的德语学习手册",
-  stand: "2026-11-11",
+  stand: "2026-11-18",
   level: "A1.2"
 };
 
 /* ------------------------------------------------------------
-   一、课程目录（13 课：A1 × 11 + A1.2 × 2）
+   一、课程目录（16 课：A1 × 11 + A1.2 × 5）
    ------------------------------------------------------------ */
 const LESSONS = [
   {
@@ -370,6 +370,32 @@ const LESSONS = [
       { de: "Bei der dritten Pflanze haben wir einen Unterschied gesehen.", zh: "在第三株植物上我们看到了一个差异。（sehen → gesehen）", ipa: "[baɪ̯ deːɐ̯ ˈdʁɪtn̩ ˈpflant͡sə ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nən ˈʔʊntɐˌʃiːt ɡəˈzeːən]" },
       { de: "Aber wir wissen noch nicht, warum die Blätter gelb sind.", zh: "但我们还不知道叶子为什么是黄的。（现在时收尾 → 悬念留到下一次检测）", ipa: "[ˈʔaːbɐ viːɐ̯ ˈvɪsn̩ nɔx nɪçt | vaˈʁʊm diː ˈblɛtɐ ɡɛlp zɪnt]" }
     ]
+  },
+  {
+    id: "a2t5", level: "A1.2", num: "A2-5", date: "2026-11-18",
+    title: "酵母实验", de: "Ein Experiment mit Hefe",
+    topic: "实验室",
+    summary: "Felix 与 Lina 做一组对照实验：三只杯子分别装入冷水、温水与很热的水，各加酵母和一点糖，二十分钟后比较泡沫——温水大量起泡、冷水很少、过热几乎不起泡。本课把现在完成时从「叙事」推进到「实验记录」，并第一次把静三动四、反身动词完成时与双宾语语序集中在同一篇里。",
+    focus: "三条新线：① 静三动四成对出现——in das zweite Glas füllen（Wohin? 第四格）↔ im Glas mit warmem Wasser（Wo? 第三格）；② 反身动词的完成时——hat sich viel Schaum gebildet，sich 紧跟变位助动词；③ 双宾语「人三物四」——Wir haben ihr（三格·人）die Tabelle（四格·物）gezeigt。",
+    grammar: [
+      "静三动四（Wechselpräpositionen）：auf / in / an / über / hinter… 表方向用第四格（Wohin?），表位置用第三格（Wo?）",
+      "无冠词时格词尾落在形容词上：in warmem und kaltem Wasser（中性第三格强变化 -em）；对比 kaltes Wasser gefüllt（中性第四格 -es）",
+      "反身动词的完成时：sich bilden → hat sich … gebildet；反身代词 sich 紧跟变位助动词，分词仍钉句末",
+      "双宾语语序「人三物四」：人称代词第三格（ihr / uns / ihm）在前，名词第四格（die Tabelle）在后",
+      "情态动词过去时 + 动词原形句末：Wir wollten wissen, was … passiert（wollen → wollten，属 Präteritum，口语中情态动词常用过去时）",
+      "weil 从句复习：变位动词（含助动词 haben）踢到从句句尾——weil wir viel über Hefe gelernt haben.",
+      "实验记录时间线：um acht Uhr → nach zwanzig Minuten → um halb elf → am Nachmittag → um vier Uhr（um + 钟点，halb elf = 10:30）"
+    ],
+    sentences: [
+      { de: "Wir wollten wissen: Was passiert mit Hefe in warmem und kaltem Wasser?", zh: "我们想知道：酵母在温水和冷水中会发生什么？（wollten = wollen 过去时；in + 第三格表静态环境）", ipa: "[viːɐ̯ ˈvɔltn̩ ˈvɪsn̩ | vas paˈsiːɐ̯t mɪt ˈheːfə ɪn ˈvaʁməm ʊnt ˈkaltəm ˈvasɐ]" },
+      { de: "Wir haben drei Gläser auf den Tisch gestellt.", zh: "我们把三个杯子放到桌上。（auf + 第四格：Wohin? 放到哪儿）", ipa: "[viːɐ̯ ˈhaːbn̩ dʁaɪ̯ ˈɡlɛːzɐ aʊ̯f deːn tɪʃ ɡəˈʃtɛlt]" },
+      { de: "In das zweite Glas haben wir warmes Wasser gefüllt.", zh: "我们在第二个杯子里装入温水。（in das = 第四格方向；warmes Wasser 无冠词第四格 -es）", ipa: "[ɪn das ˈt͡svaɪ̯tə ɡlaːs ˈhaːbn̩ viːɐ̯ ˈvaʁməs ˈvasɐ ɡəˈfʏlt]" },
+      { de: "Im Glas mit warmem Wasser hat sich viel Schaum gebildet.", zh: "装温水的杯子里形成了大量泡沫。（im = in dem 第三格位置；反身完成时 hat sich … gebildet）", ipa: "[ʔɪm ɡlaːs mɪt ˈvaʁməm ˈvasɐ hat zɪç fiːl ʃaʊ̯m ɡəˈbɪldət]" },
+      { de: "Lina hat die Gläser mit Nummern markiert.", zh: "莉娜用编号给杯子做了标记。（markieren → markiert：-ieren 结尾不加 ge-）", ipa: "[ˈliːna hat diː ˈɡlɛːzɐ mɪt ˈnʊmɐn maʁˈkiːɐ̯t]" },
+      { de: "Ich habe die Temperatur gemessen und die Werte in eine Tabelle geschrieben.", zh: "我测量了温度并把数值写进表格。（messen → gemessen 强变化；in eine Tabelle 第四格）", ipa: "[ɪç ˈhaːbə diː tɛmpəʁaˈtuːɐ̯ ɡəˈmɛsn̩ ʊnt diː ˈveːɐ̯tə ɪn ˈʔaɪ̯nə taˈbɛlə ɡəˈʃʁiːbn̩]" },
+      { de: "Wir haben ihr die Tabelle gezeigt und das Experiment erklärt.", zh: "我们向她展示了表格并解释了实验。（人三物四：ihr 第三格在前，die Tabelle 第四格在后）", ipa: "[viːɐ̯ ˈhaːbn̩ iːɐ̯ diː taˈbɛlə ɡəˈtsaɪ̯kt ʊnt das ˌɛkspeʁiˈmɛnt ʔɛɐ̯ˈklɛːɐ̯t]" },
+      { de: "Der Tag war interessant, weil wir viel über Hefe gelernt haben.", zh: "这一天很有趣，因为我们学到了很多关于酵母的知识。（weil 从句：haben 到句尾）", ipa: "[deːr taːk vaːɐ̯ ˌɪntəʁɛˈsantɐ | vaɪ̯l viːɐ̯ fiːl ˈyːbɐ ˈheːfə ɡəˈlɛʁnt ˈhaːbn̩]" }
+    ]
   }
 ];
 
@@ -480,7 +506,7 @@ const VOCAB = [
   { de: "der Schrank", zh: "柜子", pos: "der", plural: "¨-e", topic: "房屋家具" },
   { de: "der Stuhl", zh: "椅子", pos: "der", plural: "¨-e", topic: "房屋家具" },
   { de: "der Fernseher", zh: "电视机", pos: "der", plural: "-", topic: "房屋家具" },
-  { de: "der Kühlschrank", zh: "冰箱", pos: "der", plural: "¨-e", topic: "房屋家具" },
+  { de: "der Kühlschrank", zh: "冰箱", pos: "der", plural: "¨-e", ipa: "[ˈkyːlʃʁaŋk]", topic: "房屋家具" },
   { de: "das Bett", zh: "床", pos: "das", plural: "-en", topic: "房屋家具" },
   { de: "das Sofa", zh: "沙发", pos: "das", plural: "-s", topic: "房屋家具" },
   { de: "die Lampe", zh: "灯", pos: "die", plural: "-n", topic: "房屋家具" },
@@ -502,7 +528,7 @@ const VOCAB = [
   { de: "abends / nachts", zh: "在晚上 / 在夜里", pos: "adv", topic: "时间作息" },
   // 服装颜色
   { de: "die Hose", zh: "裤子（单数）", pos: "die", plural: "-n", topic: "服装颜色" },
-  { de: "die Jacke", zh: "外套；夹克", pos: "die", plural: "-n", topic: "服装颜色" },
+  { de: "die Jacke", zh: "外套；夹克", pos: "die", plural: "-n", ipa: "[ˈjakə]", topic: "服装颜色" },
   { de: "das T-Shirt", zh: "T 恤", pos: "das", plural: "-s", topic: "服装颜色" },
   { de: "das Hemd", zh: "衬衫", pos: "das", plural: "-en", topic: "服装颜色" },
   { de: "der Schuh (die Schuhe)", zh: "鞋（常用复数）", pos: "der", plural: "-e", topic: "服装颜色" },
@@ -634,7 +660,7 @@ const VOCAB = [
   { de: "das Gerät", zh: "仪器；设备", pos: "das", plural: "-e", topic: "完成时" },
   { de: "der Joghurt", zh: "酸奶", pos: "der", plural: "-s", topic: "完成时" },
   { de: "der Urlaub", zh: "假期", pos: "der", plural: "-e", topic: "完成时" },
-  { de: "die Untersuchung", zh: "检测；检查", pos: "die", plural: "-en", topic: "完成时" },
+  { de: "die Untersuchung", zh: "检测；检查", pos: "die", plural: "-en", ipa: "[ʔʊntɐˈzuːxʊŋ]", topic: "完成时" },
   { de: "die Teamleiterin", zh: "团队主管（女）", pos: "die", plural: "-innen", topic: "完成时" },
   { de: "eintragen", zh: "录入；登记（可分）", pos: "verb", topic: "完成时" },
   { de: "wiederholen", zh: "重复（不可分）", pos: "verb", topic: "完成时" },
@@ -669,13 +695,11 @@ const VOCAB = [
   { de: "die Lieferliste", zh: "送货清单", pos: "die", plural: "-n", ipa: "[ˈliːfɐˌlɪstə]", topic: "实验室" },
   { de: "der Arbeitsplan", zh: "工作计划；工作安排", pos: "der", plural: "-e", ipa: "[ˈʔaʁbaɪ̯t͡sˌplaːn]", topic: "实验室" },
   { de: "das Lager", zh: "仓库；储藏室", pos: "das", plural: "-", ipa: "[ˈlaːɡɐ]", topic: "实验室" },
-  { de: "der Kühlschrank", zh: "冰箱", pos: "der", plural: "¨-e", ipa: "[ˈkyːlʃʁaŋk]", topic: "实验室" },
   { de: "der Stock", zh: "楼层（im zweiten Stock 在二楼）", pos: "der", plural: "¨-e", ipa: "[ʃtɔk]", topic: "实验室" },
   { de: "die Raumnummer", zh: "房间号", pos: "die", plural: "-n", ipa: "[ˈʁaʊ̯mˌnʊmɐ]", topic: "实验室" },
   { de: "der Fehler", zh: "错误", pos: "der", plural: "-", ipa: "[ˈfeːlɐ]", topic: "实验室" },
   { de: "die Erde", zh: "土壤；地球", pos: "die", plural: "-n", ipa: "[ˈʔeːɐ̯də]", topic: "实验室" },
   { de: "die Tabelle", zh: "表格", pos: "die", plural: "-n", ipa: "[taˈbɛlə]", topic: "实验室" },
-  { de: "die Jacke", zh: "夹克；外套", pos: "die", plural: "-n", ipa: "[ˈjakə]", topic: "实验室" },
   { de: "der Vormittag", zh: "上午", pos: "der", plural: "-e", ipa: "[ˈfoːɐ̯mɪtaːk]", topic: "实验室" },
   { de: "die Mittagspause", zh: "午休", pos: "die", plural: "-n", ipa: "[ˈmɪtaːksˌpaʊ̯zə]", topic: "实验室" },
   { de: "fehlen", zh: "缺少；缺失（hat gefehlt）", pos: "verb", ipa: "[ˈfeːlən]", topic: "实验室" },
@@ -706,7 +730,6 @@ const VOCAB = [
   { de: "die Chefin", zh: "女主管；女老板", pos: "die", plural: "-innen", ipa: "[ˈʃɛfɪn]", topic: "实验室" },
   { de: "die Schwester", zh: "姐妹（姐姐/妹妹）", pos: "die", plural: "-n", ipa: "[ˈʃvɛstɐ]", topic: "实验室" },
   { de: "der Feierabend", zh: "下班；收工时间", pos: "der", plural: "-e", ipa: "[ˈfaɪ̯ɐˌʔaːbn̩t]", topic: "实验室" },
-  { de: "die Untersuchung", zh: "检测；检查", pos: "die", plural: "-en", ipa: "[ʔʊntɐˈzuːxʊŋ]", topic: "实验室" },
   { de: "gelb", zh: "黄色的", pos: "adj", ipa: "[ɡɛlp]", topic: "实验室" },
   { de: "neugierig", zh: "好奇的", pos: "adj", ipa: "[ˈnɔʏ̯ˌɡiːʁɪç]", topic: "实验室" },
   { de: "sorgfältig", zh: "细致认真的", pos: "adj", ipa: "[ˈzɔʁkfɛltɪç]", topic: "实验室" },
@@ -720,6 +743,35 @@ const VOCAB = [
   { de: "brauchen", zh: "需要（hat gebraucht）", pos: "verb", ipa: "[ˈbʁaʊ̯xn̩]", topic: "实验室" },
   { de: "zur Arbeit fahren", zh: "去上班（位移 → sein）", pos: "phrase", topic: "实验室" },
   { de: "weitere Untersuchungen", zh: "进一步的检测", pos: "phrase", topic: "实验室" },
+  /* —— 2026-11-18 第 5 次课《Ein Experiment mit Hefe》新增 —— */
+  { de: "die Hefe", zh: "酵母", pos: "die", plural: "-n", ipa: "[ˈheːfə]", topic: "实验室" },
+  { de: "der Schaum", zh: "泡沫", pos: "der", plural: "-", ipa: "[ʃaʊ̯m]", topic: "实验室" },
+  { de: "der Zucker", zh: "糖", pos: "der", plural: "-", ipa: "[ˈtsʊkɐ]", topic: "实验室" },
+  { de: "das Glas", zh: "玻璃杯；烧杯", pos: "das", plural: "¨-er", ipa: "[ɡlaːs]", topic: "实验室" },
+  { de: "die Temperatur", zh: "温度", pos: "die", plural: "-en", ipa: "[tɛmpəʁaˈtuːɐ̯]", topic: "实验室" },
+  { de: "der Wert", zh: "数值；价值（复数 die Werte）", pos: "der", plural: "-e", ipa: "[veːɐ̯t]", topic: "实验室" },
+  { de: "die Frage", zh: "问题", pos: "die", plural: "-n", ipa: "[ˈfraːɡə]", topic: "实验室" },
+  { de: "das Brötchen", zh: "小圆面包；早餐面包", pos: "das", plural: "-", ipa: "[ˈbʁøːtçən]", topic: "食物饮料" },
+  { de: "der Nachmittag", zh: "下午", pos: "der", plural: "-e", ipa: "[ˈnaːxmɪˌtaːk]", topic: "实验室" },
+  { de: "füllen", zh: "装入；倒满（hat gefüllt）", pos: "verb", ipa: "[ˈfʏln̩]", topic: "实验室" },
+  { de: "messen", zh: "测量（hat gemessen，强变化）", pos: "verb", ipa: "[ˈmɛsn̩]", topic: "实验室" },
+  { de: "markieren", zh: "标记（hat markiert，-ieren 不加 ge-）", pos: "verb", ipa: "[maʁˈkiːɐ̯t]", topic: "实验室" },
+  { de: "benutzen", zh: "使用（hat benutzt，be- 不加 ge-）", pos: "verb", ipa: "[bəˈnʊt͡sn̩]", topic: "实验室" },
+  { de: "erklären", zh: "解释（hat erklärt，er- 不加 ge-）", pos: "verb", ipa: "[ʔɛɐ̯ˈklɛːʁən]", topic: "实验室" },
+  { de: "warten", zh: "等待（hat gewartet）", pos: "verb", ipa: "[ˈvaʁtn̩]", topic: "实验室" },
+  { de: "geben", zh: "给；加入（hat gegeben）", pos: "verb", ipa: "[ˈɡeːbn̩]", topic: "实验室" },
+  { de: "stellen", zh: "摆放（及物 → 第四格；对比 stehen）", pos: "verb", ipa: "[ˈʃtɛln̩]", topic: "实验室" },
+  { de: "legen", zh: "平放（及物 → 第四格；对比 liegen）", pos: "verb", ipa: "[ˈleːɡn̩]", topic: "实验室" },
+  { de: "passieren", zh: "发生（hat passiert）", pos: "verb", ipa: "[paˈsiːʁən]", topic: "实验室" },
+  { de: "herausfinden", zh: "弄清楚；查明（hat herausgefunden）", pos: "verb", ipa: "[hɛˈʁaʊ̯sˌfɪndn̩]", topic: "实验室" },
+  { de: "zurückgehen", zh: "回去（sind zurückgegangen，位移用 sein）", pos: "verb", ipa: "[t͡suˈʁʏkˌɡeːən]", topic: "实验室" },
+  { de: "sich bilden", zh: "形成；产生（hat sich gebildet）", pos: "verb", ipa: "[zɪç ˈbɪldn̩]", topic: "实验室" },
+  { de: "warm", zh: "温的；温暖的", pos: "adj", ipa: "[vaʁm]", topic: "天气四季" },
+  { de: "kalt", zh: "冷的", pos: "adj", ipa: "[kalt]", topic: "天气四季" },
+  { de: "gemeinsam", zh: "一起；共同", pos: "adv", ipa: "[ɡəˈmaɪ̯nzaːm]", topic: "实验室" },
+  { de: "fast", zh: "几乎", pos: "adv", ipa: "[fast]", topic: "实验室" },
+  { de: "etwas", zh: "一点；某事", pos: "adv", ipa: "[ˈɛtvas]", topic: "实验室" },
+  { de: "wenig", zh: "少的；很少", pos: "adv", ipa: "[ˈveːnɪç]", topic: "实验室" },
   /* —— 教材新增词汇（零基础德语速成）—— 按 Jian 要求：课外教材词汇不计入单词项目，故整段注释（保留数据可恢复）
   { de: "die Fahrkarte", zh: "车票", pos: "die", plural: "-n", topic: "交通问路" },
   { de: "der Lokführer", zh: "火车司机", pos: "der", plural: "-", topic: "交通问路" },
@@ -737,7 +789,7 @@ const VOCAB = [
 const VOCAB_TOPICS = ["基础与发音", "自我介绍", "数字", "食物饮料", "休闲活动", "房屋家具", "时间作息", "服装颜色", "天气四季", "交通问路", "办公通勤", "实验室", "完成时"];
 
 /* ------------------------------------------------------------
-   三、语法专题（14 讲）
+   三、语法专题（15 讲）
    ------------------------------------------------------------ */
 const GRAMMAR = [
   {
@@ -950,11 +1002,26 @@ const GRAMMAR = [
         <tr><td>wir / sie (Pl.)</td><td>waren</td><td>hatten</td></tr>
       </table>
       <p class="tip">💡 判断口诀：句子在说「做了什么」→ Perfekt；在说「当时是什么样 / 有什么」→ war / hatte。别把 <em>Zwei Pflanzen waren gesund.</em> 写成 <em>haben gesund gewesen</em>。</p>`
+  },
+  {
+    id: "g15", title: "静三动四（Wechselpräpositionen）", de: "Dativ oder Akkusativ?", tag: "格",
+    body: `
+      <p class="rule">九个介词 <strong>auf · in · an · über · unter · vor · hinter · neben · zwischen</strong> 两套格都能接。判断只看一个问题：<strong>问 Wohin?（去哪儿，有方向/位移）→ 第四格；问 Wo?（在哪儿，静止位置）→ 第三格。</strong>这就是「静三动四」。</p>
+      <table>
+        <tr><th>动作（Wohin? → 第四格）</th><th>位置（Wo? → 第三格）</th></tr>
+        <tr><td>Wir stellen die Gläser <b>auf den Tisch</b>.</td><td>Die Gläser stehen <b>auf dem Tisch</b>.</td></tr>
+        <tr><td>Wir füllen das Wasser <b>in das zweite Glas</b>（<b>ins</b>）.</td><td><b>In dem Glas</b>（<b>Im Glas</b>）ist warmes Wasser.</td></tr>
+        <tr><td>Ich gehe <b>in den Raum</b>.</td><td>Ich arbeite <b>in dem Raum</b>（<b>im Raum</b>）.</td></tr>
+        <tr><td>Er legt das Buch <b>auf den Tisch</b>.</td><td>Das Buch liegt <b>auf dem Tisch</b>.</td></tr>
+      </table>
+      <p class="rule">第三格常用缩写：<strong>in + dem = im</strong>，<strong>an + dem = am</strong>，<strong>auf + dem = auf dem</strong>（无缩写）；第四格 <strong>in + das = ins</strong>。</p>
+      <p class="tip">💡 无冠词时，格词尾落在<strong>形容词</strong>上，这是本课的难点：<em>in warmem und kaltem Wasser</em>（第三格 -em，静态环境）对比 <em>kaltes Wasser gefüllt</em>（第四格 -es，被装入的东西）。同一个介词、同一个名词，词尾不同就是格不同。</p>
+      <p class="tip">💡 易混：<strong>stellen / legen / setzen</strong>（摆放动作）永远接第四格；<strong>stehen / liegen / sitzen</strong>（摆放后的状态）永远接第三格。它们成对出现，正是「动四静三」最好的试纸。</p>`
   }
 ];
 
 /* ------------------------------------------------------------
-   四、课文阅读（4 篇，逐段中德对照）
+   四、课文阅读（5 篇，逐段中德对照）
    ------------------------------------------------------------ */
 const TEXTS = [
   {
@@ -1025,11 +1092,27 @@ const TEXTS = [
       { title: "向主管汇报", de: "Am Nachmittag ist unsere Chefin ins Labor gekommen. Wir haben ihr die Ergebnisse gezeigt. Sie hat uns für die sorgfältige Arbeit gelobt. Aber wir wissen noch nicht, warum die Blätter gelb sind. Dafür brauchen wir weitere Untersuchungen.", ips: ["[am ˈnaːxmɪˌtaːk ɪst ˈʔʊnzəʁə ˈʃɛfɪn ʔɪns laˈboːɐ̯ ɡəˈkɔmən]", "[viːɐ̯ ˈhaːbn̩ ʔiːɐ̯ diː ʔɛɐ̯ˈɡeːpnɪsə ɡəˈt͡saɪ̯kt]", "[ziː hat ʔʊns fyːɐ̯ diː ˈzɔʁkfɛltɪɡə ˈʔaʁbaɪ̯t ɡəˈloːpt]", "[ˈʔaːbɐ viːɐ̯ ˈvɪsn̩ nɔx nɪçt | vaˈʁʊm diː ˈblɛtɐ ɡɛlp zɪnt]", "[daˈfyːɐ̯ ˈbʁaʊ̯xn̩ viːɐ̯ ˈvaɪ̯təʁə ʔʊntɐˈzuːxʊŋən]"], zh: "下午我们的女主管来到了实验室。我们向她展示了结果。她表扬了我们细致的工作。但我们还不知道叶子为什么是黄的。为此我们需要进一步的检测。", verbs: ["ist … gekommen（位移 → sein）", "jdm. etw. zeigen（第三格 ihr）", "für + Akk（für die sorgfältige Arbeit）", "warum 间接疑问句"] },
       { title: "收尾与回家", de: "Um 16:30 Uhr habe ich meinen Arbeitsplatz aufgeräumt und die Geräte gereinigt. Danach bin ich nach Hause gefahren. Am Abend habe ich meiner Schwester von dem Tag erzählt.", ips: ["[ʊm ˈzɛçt͡seːn uːɐ̯ ˈdʁaɪ̯sɪç ˈhaːbə ɪç ˈmaɪ̯nən ˈʔaʁbaɪ̯t͡sˌplat͡s ˈʔaʊ̯fɡəˌʁɔʏ̯mt ʊnt diː ɡəˈʁɛːtə ɡəˈʁaɪ̯nɪçt]", "[daˈnaːx bɪn ɪç naːx ˈhaʊ̯zə ɡəˈfaːʁən]", "[am ˈʔaːbn̩t ˈhaːbə ɪç ˈmaɪ̯nɐ ˈʃvɛstɐ fɔn deːm taːk ɛɐ̯ˈt͡sɛːlt]"], zh: "16:30 我整理了工位并清洁了仪器。之后我回家了。晚上我跟妹妹讲了这一天的经历。", verbs: ["hat … aufgeräumt（可分）", "hat … gereinigt", "ist … gefahren（位移 → sein）", "erzählen von + Dativ（er- 无 ge-）"] }
     ]
+  },
+  {
+    id: "t5",
+    title: "酵母实验", de: "Ein Experiment mit Hefe",
+    level: "A1.2 · Perfekt & Wechselpräpositionen", date: "2026-11-18",
+    intro: "Felix 与 Lina 的对照实验：三只杯子分别装冷水、温水与很热的水，各加酵母和一点糖，二十分钟后比较泡沫。全篇把「静三动四」与反身动词完成时用在了真实的实验记录语境里。",
+    paragraphs: [
+      { title: "背景与科学问题", de: "Ich heiße Felix und arbeite in einem Biologielabor. Gestern haben wir ein Experiment mit Hefe gemacht. Wir wollten wissen: Was passiert mit Hefe in warmem und kaltem Wasser?", ips: ["[ɪç ˈhaɪ̯sə ˈfeːlɪks ʊnt ˈʔaʁbaɪ̯tə ɪn ˈʔaɪ̯nəm bi̯oloˈɡiːlaˌboːɐ̯]", "[ˈɡɛstɐn ˈhaːbn̩ viːɐ̯ ʔaɪ̯n ˌɛkspeʁiˈmɛnt mɪt ˈheːfə ɡəˈmaxt]", "[viːɐ̯ ˈvɔltn̩ ˈvɪsn̩ | vas paˈsiːɐ̯t mɪt ˈheːfə ɪn ˈvaʁməm ʊnt ˈkaltəm ˈvasɐ]"], zh: "我叫 Felix，在一家生物实验室工作。昨天我们做了一个关于酵母的实验。我们想知道：酵母在温水和冷水中会发生什么变化？", verbs: ["haben … gemacht", "wollten wissen（wollen 过去时 + 原形句末）", "in warmem und kaltem Wasser（in + 第三格，静态环境）"] },
+      { title: "早晨准备", de: "Um acht Uhr bin ich ins Labor gekommen. Zuerst habe ich meinen Laborkittel angezogen und den Arbeitsplatz vorbereitet. Meine Kollegin Lina ist zehn Minuten später gekommen. Gemeinsam haben wir den Arbeitsplan gelesen.", ips: ["[ʊm ˈaxt uːɐ̯ bɪn ɪç ʔɪns laˈboːɐ̯ ɡəˈkɔmən]", "[t͡suˈʔeːɐ̯st ˈhaːbə ɪç ˈmaɪ̯nən laˈboːɐ̯ˌkɪtl̩ ˈanɡəˌt͡soːɡn̩ ʊnt deːn ˈʔaʁbaɪ̯t͡sˌplat͡s ˈfoːɐ̯bəˌʁaɪ̯tət]", "[ˈmaɪ̯nə kɔˈleːɡɪn ˈliːna ɪst t͡seːn miˈnuːtn̩ ˈʃpɛːtɐ ɡəˈkɔmən]", "[ɡəˈmaɪ̯nzaːm ˈhaːbn̩ viːɐ̯ deːn ˈʔaʁbaɪ̯t͡sˌplaːn ɡəˈleːzn̩]"], zh: "八点我来到了实验室。首先我穿上实验服、准备好了工位。我的同事 Lina 十分钟后到了。我们一起读了工作计划。", verbs: ["ist … gekommen（位移 → sein）", "hat … angezogen（可分）", "hat … vorbereitet（be- 压制 ge-）", "hat … gelesen（强变化 e→e）"] },
+      { title: "分组与变量设置", de: "Wir haben drei Gläser auf den Tisch gestellt. In das erste Glas haben wir kaltes Wasser gefüllt. In das zweite Glas haben wir warmes Wasser gefüllt. In das dritte Glas haben wir sehr warmes Wasser gefüllt. Danach haben wir in jedes Glas Hefe und etwas Zucker gegeben.", ips: ["[viːɐ̯ ˈhaːbn̩ dʁaɪ̯ ˈɡlɛːzɐ aʊ̯f deːn tɪʃ ɡəˈʃtɛlt]", "[ɪn das ˈʔɛʁstə ɡlaːs ˈhaːbn̩ viːɐ̯ ˈkaltəs ˈvasɐ ɡəˈfʏlt]", "[ɪn das ˈt͡svaɪ̯tə ɡlaːs ˈhaːbn̩ viːɐ̯ ˈvaʁməs ˈvasɐ ɡəˈfʏlt]", "[ɪn das ˈdʁɪtə ɡlaːs ˈhaːbn̩ viːɐ̯ zeːɐ̯ ˈvaʁməs ˈvasɐ ɡəˈfʏlt]", "[daˈnaːx ˈhaːbn̩ viːɐ̯ ɪn ˈjeːdəs ɡlaːs ˈheːfə ʊnt ˈʔɛtvas ˈtsʊkɐ ɡəˈɡeːbn̩]"], zh: "我们把三个杯子放到桌上。第一个杯子装入冷水，第二个杯子装入温水，第三个杯子装入很热的水。之后我们在每个杯子里加入了酵母和一点糖。", verbs: ["haben … gestellt", "haben … gefüllt", "auf den Tisch / in das Glas（第四格，回答 Wohin?）", "haben … gegeben"] },
+      { title: "标记、测量与观察", de: "Lina hat die Gläser mit Nummern markiert. Ich habe die Temperatur gemessen und die Werte in eine Tabelle geschrieben. Dann haben wir gewartet und die Gläser beobachtet.", ips: ["[ˈliːna hat diː ˈɡlɛːzɐ mɪt ˈnʊmɐn maʁˈkiːɐ̯t]", "[ɪç ˈhaːbə diː tɛmpəʁaˈtuːɐ̯ ɡəˈmɛsn̩ ʊnt diː ˈveːɐ̯tə ɪn ˈʔaɪ̯nə taˈbɛlə ɡəˈʃʁiːbn̩]", "[dan ˈhaːbn̩ viːɐ̯ ɡəˈvaʁtət ʊnt diː ˈɡlɛːzɐ bəˈʔoːbaxtət]"], zh: "Lina 用编号给杯子做了标记。我测量了温度并把数值写进了一张表格。然后我们等待并观察这些杯子。", verbs: ["hat … markiert（-ieren 结尾不加 ge-）", "hat … gemessen（强变化，词干不变音）", "hat … geschrieben（e→i）", "haben … beobachtet（be- 无 ge-）"] },
+      { title: "实验现象与结果", de: "Nach zwanzig Minuten haben wir einen Unterschied gesehen. Im Glas mit warmem Wasser hat sich viel Schaum gebildet. Im Glas mit kaltem Wasser haben wir nur wenig Schaum gesehen. Im sehr warmen Wasser hat sich fast kein Schaum gebildet.", ips: ["[naːx ˈtsvant͡sɪç miˈnuːtn̩ ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nən ˈʊntɐˌʃiːt ɡəˈzeːən]", "[ʔɪm ɡlaːs mɪt ˈvaʁməm ˈvasɐ hat zɪç fiːl ʃaʊ̯m ɡəˈbɪldət]", "[ʔɪm ɡlaːs mɪt ˈkaltəm ˈvasɐ ˈhaːbn̩ viːɐ̯ nuːɐ̯ ˈveːnɪç ʃaʊ̯m ɡəˈzeːən]", "[ʔɪm zeːɐ̯ ˈvaʁmən ˈvasɐ hat zɪç fast kaɪ̯n ʃaʊ̯m ɡəˈbɪldət]"], zh: "二十分钟后我们看到了差异。装温水的杯子里形成了大量泡沫；装冷水的杯子里我们只看到很少的泡沫；很热的水里几乎没有形成泡沫。", verbs: ["haben … gesehen", "hat sich … gebildet（反身动词完成时）", "im Glas / im Wasser（第三格，回答 Wo?）", "viel / wenig / fast kein（程度对比）"] },
+      { title: "上午茶歇", de: "Um halb elf haben wir eine Pause gemacht. Ich habe einen Tee getrunken und Lina hat ein Brötchen gegessen. Danach sind wir zurück ins Labor gegangen.", ips: ["[ʊm halp ɛlf ˈhaːbn̩ viːɐ̯ ˈʔaɪ̯nə ˈpaʊ̯zə ɡəˈmaxt]", "[ɪç ˈhaːbə ˈʔaɪ̯nən teː ɡəˈtʁʊŋkn̩ ʊnt ˈliːna hat ʔaɪ̯n ˈbʁøːtçən ɡəˈɡɛsn̩]", "[daˈnaːx zɪnt viːɐ̯ t͡suˈʁʏk ʔɪns laˈboːɐ̯ ɡəˈɡaŋən]"], zh: "十点半我们休息了一下。我喝了杯茶，Lina 吃了个小圆面包。之后我们回到了实验室。", verbs: ["um halb elf = 10:30（德语「半」向下一整点看齐）", "hat … getrunken（i→u）", "hat … gegessen", "sind … gegangen（位移 → sein）"] },
+      { title: "数据分析与汇报", de: "Am Nachmittag haben wir die Ergebnisse verglichen und einen kurzen Bericht geschrieben. Unsere Teamleiterin hat uns einige Fragen gestellt. Wir haben ihr die Tabelle gezeigt und das Experiment erklärt.", ips: ["[am ˈnaːxmɪˌtaːk ˈhaːbn̩ viːɐ̯ diː ʔɛɐ̯ˈɡeːpnɪsə fɛɐ̯ˈɡlɪçn̩ ʊnt ˈʔaɪ̯nən ˈkʊʁtn̩ bəˈʁɪçt ɡəˈʃʁiːbn̩]", "[ˈʔuːnzəʁə ˈtiːmˌlaɪ̯təʁɪn hat ʔʊns ˈʔaɪ̯nɪɡə ˈfʁaːɡn̩ ɡəˈʃtɛlt]", "[viːɐ̯ ˈhaːbn̩ iːɐ̯ diː taˈbɛlə ɡəˈtsaɪ̯kt ʊnt das ˌɛkspeʁiˈmɛnt ʔɛɐ̯ˈklɛːɐ̯t]"], zh: "下午我们对比了结果并写了一份简短的报告。我们的女团队负责人问了我们几个问题。我们向她展示了表格并解释了实验。", verbs: ["haben … verglichen（ver- 无 ge-）", "hat … gestellt（Fragen stellen 固定搭配）", "人三物四：ihr（三格）+ die Tabelle（四格）", "hat … erklärt（er- 无 ge-）"] },
+      { title: "收尾与总结", de: "Um vier Uhr habe ich die Gläser gereinigt und meinen Arbeitsplatz aufgeräumt. Danach bin ich nach Hause gefahren. Der Tag war interessant, weil wir viel über Hefe gelernt haben.", ips: ["[ʊm fiːɐ̯ uːɐ̯ ˈhaːbə ɪç diː ˈɡlɛːzɐ ɡəˈʁaɪ̯nɪçt ʊnt ˈmaɪ̯nən ˈʔaʁbaɪ̯t͡sˌplat͡s ˈʔaʊ̯fɡəˌʁɔʏ̯mt]", "[daˈnaːx bɪn ɪç naːx ˈhaʊ̯zə ɡəˈfaːʁən]", "[deːr taːk vaːɐ̯ ˌɪntəʁɛˈsantɐ | vaɪ̯l viːɐ̯ fiːl ˈyːbɐ ˈheːfə ɡəˈlɛʁnt ˈhaːbn̩]"], zh: "四点我清洗了杯子并整理了工位。之后我回家了。这一天很有趣，因为我们学到了很多关于酵母的知识。", verbs: ["hat … gereinigt", "hat … aufgeräumt（可分）", "ist … gefahren（位移 → sein）", "weil 从句：变位动词 haben 到句尾"] }
+    ]
   }
 ];
 
 /* ------------------------------------------------------------
-   五、互动练习（10 组测验）
+   五、互动练习（12 组测验）
    ------------------------------------------------------------ */
 const QUIZZES = [
   {
@@ -1180,6 +1263,41 @@ const QUIZZES = [
       { q: "Was haben sie in der Pause getrunken und gegessen?", options: ["Kaffee und Kuchen", "Tee und Brot", "Wasser und Joghurt", "Tee und Kekse"], answer: 1, explain: "Eva hat einen Tee getrunken und ich habe ein Brot gegessen." },
       { q: "Warum haben sie die Untersuchung wiederholt?", options: ["Die Geräte waren kaputt.", "Sie hatten einen Unterschied gesehen und waren neugierig.", "Die Chefin hat es befohlen.", "Die Proben waren zu klein."], answer: 1, explain: "Bei der dritten Pflanze haben wir einen Unterschied gesehen. Wir waren neugierig." },
       { q: "Wissen sie schon, warum die Blätter gelb sind?", options: ["Ja, sie haben die Ursache gefunden.", "Nein, sie brauchen weitere Untersuchungen.", "Ja, es lag am Licht.", "Nein, aber es ist ihnen egal."], answer: 1, explain: "Aber wir wissen noch nicht, warum die Blätter gelb sind. Dafür brauchen wir weitere Untersuchungen." }
+    ]
+  },
+  {
+    id: "q11", title: "haben 还是 sein？（酵母课文）", de: "Haben oder sein? (Hefe)", desc: "《Ein Experiment mit Hefe》配套：位移、反身与及物动词的助动词判断", hint: "选择正确的助动词形式",
+    questions: [
+      { q: "Karim ___ ins Labor gefahren.", options: ["hat", "ist", "sind", "haben"], answer: 1, explain: "fahren 表位移 → sein；单数主语 → ist。" },
+      { q: "Eva ___ drei Proben gebracht.", options: ["ist", "hat", "haben", "sind"], answer: 1, explain: "bringen 是及物动词、无位移 → haben；sie 单数 → hat。" },
+      { q: "Wir ___ die Proben vorbereitet.", options: ["haben", "sind", "ist", "hat"], answer: 0, explain: "vorbereiten 虽可分但属及物 → haben；wir → haben。" },
+      { q: "Die Chefin ___ ins Labor gekommen.", options: ["hat", "haben", "ist", "sind"], answer: 2, explain: "kommen 位移 → sein；sie（单数）→ ist。" },
+      { q: "Karim ___ die Geräte gereinigt.", options: ["ist", "sind", "haben", "hat"], answer: 3, explain: "reinigen 及物 → haben；er → hat。" },
+      { q: "Die Kollegen ___ eine Pause gemacht.", options: ["haben", "sind", "ist", "hat"], answer: 0, explain: "eine Pause machen → haben；复数 → haben。" },
+      { q: "Wir ___ das Wasser in das Glas gefüllt.", options: ["sind", "haben", "ist", "hat"], answer: 1, explain: "füllen 及物（带第四格宾语）→ haben；wir → haben。" },
+      { q: "Im warmen Wasser ___ sich viel Schaum gebildet.", options: ["ist", "sind", "hat", "haben"], answer: 2, explain: "反身动词一律用 haben：hat sich … gebildet（sich 紧跟助动词）。" },
+      { q: "Lina ___ zehn Minuten später gekommen.", options: ["hat", "haben", "sind", "ist"], answer: 3, explain: "kommen 位移 → sein；Lina（sie）→ ist。" },
+      { q: "Felix ___ nach Hause gefahren.", options: ["ist", "hat", "haben", "sind"], answer: 0, explain: "fahren 位移 → sein；nach Hause 不加冠词。" }
+    ]
+  },
+  {
+    id: "q12", title: "课文理解：酵母实验", de: "Verstehen: Ein Experiment mit Hefe", desc: "15 题阅读理解，覆盖实验目的、分组变量、结果对比与时间线", hint: "根据课文《Ein Experiment mit Hefe》选择正确答案",
+    questions: [
+      { q: "Wo arbeitet Felix?", options: ["In einem Krankenhaus.", "In einem Biologielabor.", "In einer Schule.", "In einer Apotheke."], answer: 1, explain: "Ich heiße Felix und arbeite in einem Biologielabor." },
+      { q: "Was wollten Felix und Lina herausfinden?", options: ["Wie viel Zucker die Hefe braucht.", "Wie lange Hefe haltbar ist.", "Was mit Hefe in warmem und kaltem Wasser passiert.", "Ob Hefe ohne Wasser wächst."], answer: 2, explain: "Wir wollten wissen: Was passiert mit Hefe in warmem und kaltem Wasser?" },
+      { q: "Wann ist Felix ins Labor gekommen?", options: ["Um acht Uhr.", "Um halb elf.", "Um zehn Uhr.", "Um vier Uhr."], answer: 0, explain: "Um acht Uhr bin ich ins Labor gekommen." },
+      { q: "Was hat Felix zuerst gemacht?", options: ["Er hat die Gläser markiert.", "Er hat die Temperatur gemessen.", "Er hat eine Pause gemacht.", "Er hat seinen Laborkittel angezogen und den Arbeitsplatz vorbereitet."], answer: 3, explain: "Zuerst habe ich meinen Laborkittel angezogen und den Arbeitsplatz vorbereitet." },
+      { q: "Wie viele Gläser haben sie benutzt?", options: ["Drei.", "Zwei.", "Vier.", "Fünf."], answer: 0, explain: "Wir haben drei Gläser auf den Tisch gestellt — 冷水 / 温水 / 很热的水，构成对照实验。" },
+      { q: "Was haben sie in jedes Glas gegeben?", options: ["Nur Hefe.", "Hefe und etwas Zucker.", "Salz und Hefe.", "Nur Zucker."], answer: 1, explain: "Danach haben wir in jedes Glas Hefe und etwas Zucker gegeben." },
+      { q: "Wer hat die Gläser markiert?", options: ["Felix.", "Die Teamleiterin.", "Lina.", "Ein Kollege aus dem zweiten Stock."], answer: 2, explain: "Lina hat die Gläser mit Nummern markiert." },
+      { q: "Was hat Felix in die Tabelle geschrieben?", options: ["Die gemessenen Werte der Temperatur.", "Die Namen der Kollegen.", "Die Preise des Materials.", "Die Fragen der Teamleiterin."], answer: 0, explain: "Ich habe die Temperatur gemessen und die Werte in eine Tabelle geschrieben." },
+      { q: "In welchem Glas hat sich viel Schaum gebildet?", options: ["Im Glas mit kaltem Wasser.", "Im Glas mit sehr warmem Wasser.", "In keinem Glas.", "Im Glas mit warmem Wasser."], answer: 3, explain: "Im Glas mit warmem Wasser hat sich viel Schaum gebildet — 温水最适酵母发酵。" },
+      { q: "Was ist im kalten Wasser passiert?", options: ["Es hat sich viel Schaum gebildet.", "Sie haben nur wenig Schaum gesehen.", "Es hat sich fast kein Schaum gebildet.", "Das Wasser wurde heiß."], answer: 1, explain: "Im Glas mit kaltem Wasser haben wir nur wenig Schaum gesehen." },
+      { q: "Was ist im sehr warmen Wasser passiert?", options: ["Es hat sich fast kein Schaum gebildet.", "Es hat sich viel Schaum gebildet.", "Es hat sich genauso viel Schaum gebildet wie im warmen.", "Das Glas ist kaputtgegangen."], answer: 0, explain: "Im sehr warmen Wasser hat sich fast kein Schaum gebildet — 过热使酵母失活。" },
+      { q: "Wann haben die beiden Pause gemacht?", options: ["Um acht Uhr.", "Um vier Uhr.", "Um halb elf.", "Um zwanzig Minuten nach acht."], answer: 2, explain: "Um halb elf haben wir eine Pause gemacht（= 10:30，德语「半」向下一整点看齐）。" },
+      { q: "Was haben sie nach der Pause gemacht?", options: ["Sie sind nach Hause gefahren.", "Sie sind zurück ins Labor gegangen.", "Sie haben die Gläser gereinigt.", "Sie haben Mittagessen gekauft."], answer: 1, explain: "Danach sind wir zurück ins Labor gegangen（zurückgehen 位移 → sein）。" },
+      { q: "Wem haben sie die Ergebnisse gezeigt?", options: ["Ihrer Teamleiterin.", "Ihrem Chef.", "Den Kollegen.", "Niemandem."], answer: 0, explain: "Wir haben ihr die Tabelle gezeigt — ihr 是第三格「向她」，人三物四。" },
+      { q: "Warum fand Felix den Tag interessant?", options: ["Weil er früh fertig war.", "Weil das Experiment misslungen ist.", "Weil die Teamleiterin gelobt hat.", "Weil sie viel über Hefe gelernt haben."], answer: 3, explain: "Der Tag war interessant, weil wir viel über Hefe gelernt haben — weil 从句动词到句尾。" }
     ]
   }
 ];

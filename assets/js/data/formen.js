@@ -130,7 +130,20 @@ const FORMEN_VERBEN = [
   { de: "ansehen", zh: "观看；注视", art: "stark", trenn: "an", hilf: "hat", praet: "sah an", part: "angesehen", formen: ["sehe an", "siehst an", "sieht an", "sehen an", "seht an", "sehen an"], note: "可分 + 强变化" },
   { de: "ausgehen", zh: "外出；约会", art: "stark", trenn: "aus", hilf: "ist", praet: "ging aus", part: "ausgegangen", formen: ["gehe aus", "gehst aus", "geht aus", "gehen aus", "geht aus", "gehen aus"], note: "可分 + 强变化" },
   { de: "durchgehen", zh: "走过；过一遍", art: "stark", trenn: "durch", hilf: "ist", praet: "ging durch", part: "durchgegangen", formen: ["gehe durch", "gehst durch", "geht durch", "gehen durch", "geht durch", "gehen durch"], note: "可分 + 强变化" },
-  { de: "einschlafen", zh: "入睡", art: "stark", trenn: "ein", hilf: "ist", praet: "schlief ein", part: "eingeschlafen", formen: ["schlafe ein", "schläfst ein", "schläft ein", "schlafen ein", "schlaft ein", "schlafen ein"], note: "可分 + 变音 + 强变化" }
+  { de: "einschlafen", zh: "入睡", art: "stark", trenn: "ein", hilf: "ist", praet: "schlief ein", part: "eingeschlafen", formen: ["schlafe ein", "schläfst ein", "schläft ein", "schlafen ein", "schlaft ein", "schlafen ein"], note: "可分 + 变音 + 强变化" },
+  /* —— 2026-11-18 第 5 次课《Ein Experiment mit Hefe》新增 —— */
+  { de: "füllen", zh: "装入；倒满", art: "reg", stamm: "füll", hilf: "hat", praet: "füllte", part: "gefüllt" },
+  { de: "messen", zh: "测量", art: "stark", hilf: "hat", praet: "maß", part: "gemessen", formen: ["messe", "misst", "misst", "messen", "messt", "messen"], note: "强变化：du/er 换音 e→i" },
+  { de: "markieren", zh: "标记", art: "reg", stamm: "markier", hilf: "hat", praet: "markierte", part: "markiert", note: "-ieren 结尾：第二分词不加 ge-" },
+  { de: "stellen", zh: "摆放（及物 → 第四格）", art: "reg", stamm: "stell", hilf: "hat", praet: "stellte", part: "gestellt", note: "静三动四试纸：stellen（动·四格）↔ stehen（静·三格）" },
+  { de: "warten", zh: "等待", art: "t", stamm: "wart", hilf: "hat", praet: "wartete", part: "gewartet", note: "词干以 -t 结尾 → 插 -e-" },
+  { de: "vergleichen", zh: "比较；对比", art: "stark", hilf: "hat", praet: "verglich", part: "verglichen", formen: ["vergleiche", "vergleichst", "vergleicht", "vergleichen", "vergleicht", "vergleichen"], note: "不可分前缀 ver-：不加 ge-；换音 ie→i" },
+  { de: "erklären", zh: "解释", art: "reg", stamm: "erklär", hilf: "hat", praet: "erklärte", part: "erklärt", note: "不可分前缀 er-：不加 ge-" },
+  { de: "sich bilden", zh: "形成；产生", art: "t", stamm: "bild", hilf: "hat", praet: "bildete sich", part: "gebildet", note: "词干以 -d 结尾 → 插 -e-；反身完成时 hat sich gebildet（sich 紧跟助动词）" },
+  { de: "herausfinden", zh: "弄清楚；查明", art: "stark", trenn: "heraus", hilf: "hat", praet: "fand heraus", part: "herausgefunden", formen: ["finde heraus", "findest heraus", "findet heraus", "finden heraus", "findet heraus", "finden heraus"], note: "可分 + 强变化" },
+  { de: "zurückgehen", zh: "回去", art: "stark", trenn: "zurück", hilf: "ist", praet: "ging zurück", part: "zurückgegangen", formen: ["gehe zurück", "gehst zurück", "geht zurück", "gehen zurück", "geht zurück", "gehen zurück"], note: "可分 + 位移 → sein" },
+  { de: "wissen", zh: "知道", art: "stark", hilf: "hat", praet: "wusste", part: "gewusst", formen: ["weiß", "weißt", "weiß", "wissen", "wisst", "wissen"], note: "不规则：词干换音，du/er 无 -e" },
+  { de: "bringen", zh: "带来；送去", art: "stark", hilf: "hat", praet: "brachte", part: "gebracht", formen: ["bringe", "bringst", "bringt", "bringen", "bringt", "bringen"], note: "混合变化：bringen → brachte / gebracht" }
 ];
 
 /* ---------- ② 形容词比较级 ---------- */

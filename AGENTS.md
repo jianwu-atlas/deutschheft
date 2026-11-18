@@ -11,11 +11,11 @@
 | 路径 | 用途 |
 |---|---|
 | `index.html` | 首页（学习地图、统计、当前重点） |
-| `lektionen.html` | 15 课（A1 × 11 + A1.2 × 4），手风琴 + 已复习标记 |
-| `wortschatz.html` | 双视图：327 词卡（筛选/搜索/翻面）+ **全站词表 1176 词形**（德语单词 / IPA / **中文释义** / 来源 / 次数，IPA 与释义 100% 覆盖，其中 53 条为 espeak 近似音标，支持中文搜索） |
-| `grammatik.html` | 14 语法专题（手风琴 + 变位表） |
-| `formen.html` | 词形变化总表（5 页签）：**111 动词**（六人称变位 / 过去时 / 第二分词 / 助动词 / 类型）+ 185 名词复数分组 + 30 形容词比较级 + 冠词·人称代词·物主冠词变格 + **语料变形索引**（网页正文里真实出现过的每个变形） |
-| `texte.html` | 4 篇课文逐段中德对照（可隐藏中文自测） |
+| `lektionen.html` | 16 课（A1 × 11 + A1.2 × 5），手风琴 + 已复习标记 |
+| `wortschatz.html` | 双视图：352 词卡（筛选/搜索/翻面）+ **全站词表 1234 词形**（德语单词 / IPA / **中文释义** / 来源 / 次数，IPA 与释义 100% 覆盖，其中 76 条为 espeak 近似音标，支持中文搜索） |
+| `grammatik.html` | 15 语法专题（手风琴 + 变位表） |
+| `formen.html` | 词形变化总表（5 页签）：**123 动词**（六人称变位 / 过去时 / 第二分词 / 助动词 / 类型）+ 185 名词复数分组 + 30 形容词比较级 + 冠词·人称代词·物主冠词变格 + **语料变形索引**（网页正文里真实出现过的每个变形） |
+| `texte.html` | 5 篇课文逐段中德对照（可隐藏中文自测） |
 | `lehrbuch.html` | 教材库：5 份 PDF（00 零基础德语速成 338 页 + 06/09/10/11 课程课件）在线阅读/下载 + 结构化词汇/句型/语法要点；「零基础德语速成」卡片带 **📖 场景精读** 入口 |
 | `sucheng.html` | **教材精读**：《零基础德语速成》场景篇 70 场景 / 606 句型，**三行格式**（德文 / 中文 / 中文近似发音）+ 逐句 🔊 + 隐藏中文自测 + 复制纯德文 |
 | `english.html` | **跳转页**：英语单词内容已独立成站 → https://englishheft.pages.dev/ |
@@ -30,8 +30,8 @@
 | `scripts/_test_w6000_ipa.py` | w6000 IPA 验证（Playwright，**4 断言**：全部模式 w6 词带 `ruby.dh-ipa` / IPA 形如 `[..]` / 关闭模式 0 / 无 JS 报错）；先 pack 再跑，需 anaconda 解释器 |
 | `scripts/build_sucheng.py` | OCR 全文 → `assets/js/data/sucheng.js`（抽取「德文/中文/谐音」三元组 + OCR 清洗 + 规范标题覆盖） |
 | `referenz.html` | 速查表：数字 0–100（含 21–99 组合规则表）/ 口语报时 / 18 色 / 四季·月份·星期·天气（全带 IPA+谐音） |
-| `uebungen.html` | 10 组测验（100 题），即时解析 + 成绩页 |
-| `notion.html` | Notion 笔记库：16 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
+| `uebungen.html` | 12 组测验（125 题），即时解析 + 成绩页 |
+| `notion.html` | Notion 笔记库：17 篇内置 + 拖拽/粘贴导入 + 全文搜索 |
 | `kursplan.html` | 15 主题大纲（9 已学 / 1 部分 / 5 待学） |
 | `tts.html` | 文本转 MP3 工具页（B：实时，调 edge-fn；未部署函数时显示提示、按钮禁用） |
 | `content-notion/` | **Notion 笔记源（.md）——改内容只动这里** |
@@ -98,6 +98,17 @@
 
 ## 更新记录
 
+- 2026-11-18（**新增 A1.2 第 5 次课《Ein Experiment mit Hefe》**，Jian 提供 Notion 课程页 + Gemini 分享链接 + 两张课件照片）：
+  - **来源核实**：Notion 页 `41c20c5c739a802bbf78e5da45f66b9c`（「德语-最重要」下）含课文 8 段、逐段翻译与语法解读、词汇表、15 题阅读问答、6 题 haben/sein 填空，是 Gemini 会话的整理版。**Gemini 分享链接匿名抓取只返回登录壳**（`share.gemini.google/VqFqvLfWhldj` → `gemini.google.com/share/abc1903e216d`，headless 201 字符）；改用**已登录本机浏览器**（browser-use `navigate_page` + `evaluate_script`）取到 33913 字符全文，内容与 Notion 一致，另含发酵原理（温水最适 / 冷水抑酶 / 过热失活）与「人三物四」讲解，已并入知识点。⚠️ anaconda playwright 的 `chromium.launch(headless=True)` 在本机会报 headless-shell 缺失，须 `channel="chrome"`。
+  - **数据**：`LESSONS.a2t5`（A2-5，7 条语法 + 8 条带 IPA 句型）→ 16 课；`TEXTS.t5`（8 段 / **28 句**，逐句 IPA 全覆盖）→ 5 篇；`TEXTE_EXTRA.t5`（28 条逐句中文 + 32 条知识点）；`GRAMMAR.g15 静三动四（Wechselpräpositionen）`（含 stellen/legen/setzen ↔ stehen/liegen/sitzen 动词对）→ 15 讲；`QUIZZES.q11/q12`（haben/sein 10 题 + 课文理解 15 题）→ 12 组 125 题；`VOCAB` +28 词（Hefe / Schaum / Zucker / Glas / Temperatur / Wert / Brötchen / füllen / messen / markieren / herausfinden / sich bilden …）→ **352** 张词卡。
+  - **顺带修数据 bug**：发现 3 张**既有重复词卡**（der Kühlschrank / die Jacke / die Untersuchung，源自 2026-10-29 跨主题重加）→ 合并为「首次出现 + 补 IPA」，删重复项；词卡去重后零重复。
+  - **词表**：重跑 `gen_wortliste.js` → **1234 词形**，中文一度掉到 1207（27 个新词形无释义）→ 按既有机制在 `pron.js` 的 `PRON_ZH` **定点插入 27 条**（该块非严格字典序，整块重排会产生巨大 diff，故按折叠序找锚点插入），恢复 **IPA / 中文双 100%**，espeak 近似音标 53 → 76。
+  - **笔记**：`content-notion/17_Ein-Experiment-mit-Hefe（A1.2-第5次）.md` 七节；`notion_export_sync.py` 补 `17_` 标题与日期映射 → 17 篇。
+  - **音频**：`gen_text_audio.py t5` 新增 9 个 MP3，manifest 50 条。
+  - **文案与版本**：lektionen（16 课）/ texte（五篇）/ grammatik（十五讲，顺带修正页头长期滞后的「十二讲」）/ uebungen（12 组，修正滞后的「6 组」meta）/ notion（17 篇）/ 首页统计与 `focus-box` 全部改为本课；`i18n.js` 的 `head.*` 英文长期滞后（A1.2 × 2 / 12 chapters / Two lab texts / Five quiz sets / 14 entries）一并校正；升版 `deutsch-data 37`、`texte-extra 4`、`notion-notes 34`、`wortliste 34`、`pron 31`、`deutsch.js 51`、`i18n 37`、`i18n-en 38`。
+  - **测试脚本还债**：`_test_site.py` 与 `_test_player.py` 多处**写死上一课数值**（100 题 / t4 / g14 / q10 / Ein besonderer Fund），违反脚本自身「断言值全部动态读取」的设计 → 改为从数据层取 `lastLesson/lastGrammar/lastQuiz/noteLatest/__textItems.length`，并新增「题数合计 = 各组卡片题数之和」「末组选项 4 个」两条真校验；另为**此前完全无覆盖的词形页**补 3 条（条目数一致、通用变位守卫「词干 -t/-d/-s/-z 未插 -e- 即报错」、语料索引收录本课新变形）。今后加课**无需再改测试脚本数字**。
+  - **词形页补登**：语料变形索引由 `FORMEN_VERBEN` ∩ 语料派生，新动词不登记就不出现 → 本课补登 **12 个**（füllen / messen / markieren / stellen / warten / vergleichen / erklären / sich bilden / herausfinden / zurückgehen / wissen / bringen，111 → **123**；passieren 已存在故未重复加）。⚠️ 首版把 `sich bilden` 误标 `art:"reg"`，渲染出 **bildst / bildt** —— 词干以 -d 结尾必须 `art:"t"`。已用 konjugiere() 对 12 词逐一比对预期变位修正。
+  - **验证**：站点 **49 项** + 播放器 **37 项** = 86 条断言全过、零 JS 报错；`pack_site.py` 重建 dist（15 页 33.4 MB）。
 - 2026-11-12（**课文选中词在德语单词上方也标 IPA（ruby）**，Jian「这些有国际音标，在这个德语的单词上方也标注出对应的国际音标」）：在「按单词 ≤60%」基础上把渲染拆成**选词一次、双路同源**——`deutsch.js` 的 `ipaLine()` 重构为 `ipaPick()`（≤60%、无基础词、长词优先，共享词边界正则 `IPAW` 保证选词/渲染下标一致）→ ① `ipaText()`：德语句内选中词包 `<ruby class="s-ruby">词<rt>ipa</rt>`，IPA 骑在词上，hover 提示「词 · [ipa]（点击朗读）」，**点击 ruby 单独读该词**（全局委托 click 处理器，重渲染免重绑）；② `ipaLineHtml()`：下方音标行原样保留。CSS `.s-ruby rt`（mono 0.5em、`--accent`，dark `#E0A96D`，`ruby-position: over`）+ `.s-text` 行高 1.75→1.9 防注音裁切。与 `annotate.js` 全局「音标」开关不冲突（课文正文 `.no-ipa` 在 SKIP_SEL 内）；TTS/MP3/复制全文走数据层纯文本不受影响。`_test_site.py` 新增 5 断言（ruby 存在、ruby 与下方行逐句同词、ruby 无基础词、四篇 ruby 数=行数）→ 45 项全过、零 JS 报错；浅/深主题截图目检对齐美观。升版 `deutsch.js?v=50` / `deutsch.css?v=60`（13 js 页 + 14 css 页）。
 
 - 2026-11-12（**按单词 ≤60% 重做课文音标**，Jian 纠正「不是按句子，是按单词不超过 60%，你现在是整句话都没有音标」）：初版把 40% 句子的整句 IPA 行整行删掉，方向错了。改为**每句都保留音标行，但行内只列出 ≤60% 的难词及其 IPA**（`词 [ipa] · 词 [ipa]`）。实现：新增 `scripts/gen_text_word_ipa.js`（espeak-ng 生成 346 词的词级示意 IPA，8KB）→ `assets/js/data/text-word-ipa.js`；`deutsch.js` 的 `ipaLine()` 优先把既有人工整句 `ips` 按词对齐切段（105/113 句对齐），不对齐的 8 句（10:30 Uhr 类时间读法、E-Mails）回退词级表；`DH_BASIC` 过滤基础词，按词长优先取 `floor(词数×0.6)`。`window.__dhIpaStats` 改报 words/marked/ratio/lines。实测四篇 45.3%–51.8%、每句都有音标行、基础词零出现。升版 `deutsch.js?v=49` / `deutsch.css?v=59` / `text-word-ipa.js?v=1`；两套测试断言改按单词口径。

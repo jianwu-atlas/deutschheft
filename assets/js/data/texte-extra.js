@@ -301,5 +301,79 @@ window.TEXTE_EXTRA = {
         { k: "词汇", v: "der Feierabend 下班/收工 · die Schwester 姐妹 · der Arbeitsplatz 工位" }
       ]
     }
+  },
+  t5: {
+    1: {
+      zhs: ["我叫 Felix，在一家生物实验室工作。", "昨天我们做了一个关于酵母的实验。", "我们想知道：酵母在温水和冷水中会发生什么变化？"],
+      notes: [
+        { k: "科学问题", v: "全文围绕一个可检验的问题展开：Was passiert mit Hefe in warmem und kaltem Wasser?（温度如何影响酵母）" },
+        { k: "情态动词过去时", v: "wollten = wollen 的过去时（Präteritum）；情态动词在叙事中习惯直接用过去时，实义动词 wissen 保持原形并被踢到句末" },
+        { k: "静三动四", v: "in warmem und kaltem Wasser —— in 表静态环境用第三格；中性 das Wasser 无冠词，格词尾 -em 落在形容词上" },
+        { k: "词汇", v: "die Hefe 酵母 · das Experiment 实验 · das Biologielabor 生物实验室" }
+      ]
+    },
+    2: {
+      zhs: ["八点我来到了实验室。", "首先我穿上实验服，并准备好了工位。", "我的同事莉娜十分钟后到了。", "我们一起阅读了工作计划。"],
+      notes: [
+        { k: "助动词分工", v: "kommen 表位移 → ist … gekommen；anziehen / vorbereiten / lesen 及物 → haben" },
+        { k: "可分与不可分", v: "anziehen → angezogen（ge- 夹中间）；vorbereiten → vorbereitet（vor- 可分但 be- 压制 ge-）" },
+        { k: "时间", v: "um acht Uhr（8 点整）· zehn Minuten später（十分钟后）" },
+        { k: "词汇", v: "der Laborkittel 实验服 · der Arbeitsplatz 工位 · gemeinsam 一起" }
+      ]
+    },
+    3: {
+      zhs: ["我们把三个杯子放到桌上。", "在第一个杯子里我们装入冷水。", "在第二个杯子里我们装入温水。", "在第三个杯子里我们装入很热的水。", "之后我们在每个杯子里加入了酵母和一点糖。"],
+      notes: [
+        { k: "第四格方向", v: "auf den Tisch stellen、in das erste/zweite/dritte Glas füllen —— 回答 Wohin?，介词后接第四格（der Tisch → den Tisch）" },
+        { k: "形容词词尾", v: "kaltes / warmes / sehr warmes Wasser —— 无冠词中性第四格，词尾 -es 落在形容词上" },
+        { k: "实验设计", v: "唯一变量是温度，其余（杯子、酵母、糖量）保持一致 —— 这就是对照实验（Kontrollversuch）" },
+        { k: "序数词", v: "das erste / zweite / dritte Glas（第一/第二/第三个杯子）" }
+      ]
+    },
+    4: {
+      zhs: ["莉娜用编号给杯子做了标记。", "我测量了温度，并把数值写进了一张表格。", "然后我们等待并观察这些杯子。"],
+      notes: [
+        { k: "-ieren 动词", v: "markieren → markiert（-ieren 结尾不加 ge-）" },
+        { k: "强变化", v: "messen → gemessen（词干 e 不变音）；schreiben → geschrieben（e → i）" },
+        { k: "不可分前缀", v: "beobachten → beobachtet（be- 不加 ge-）；warten → gewartet" },
+        { k: "词汇", v: "die Temperatur 温度 · der Wert / die Werte 数值 · die Nummer 编号 · die Tabelle 表格" }
+      ]
+    },
+    5: {
+      zhs: ["二十分钟后我们看到了差异。", "装温水的杯子里形成了大量泡沫。", "装冷水的杯子里我们只看到很少的泡沫。", "很热的水里几乎没有形成泡沫。"],
+      notes: [
+        { k: "反身动词完成时", v: "sich bilden → hat sich … gebildet：反身代词 sich 紧跟变位助动词 hat，分词仍钉句末" },
+        { k: "第三格位置", v: "im Glas / im sehr warmen Wasser —— im = in dem，回答 Wo?，用第三格；与第 3 段的 in das Glas（第四格）正好成对" },
+        { k: "结果三档", v: "viel Schaum（温水）→ wenig Schaum（冷水）→ fast kein Schaum（过热），用程度词读出实验结论" },
+        { k: "生物学原理", v: "温水最适酵母发酵，产生大量 CO₂ 泡沫；冷水抑制酶活性；过热水使酵母失活，故几乎不起泡" }
+      ]
+    },
+    6: {
+      zhs: ["十点半我们休息了一下。", "我喝了杯茶，莉娜吃了个小圆面包。", "之后我们回到了实验室。"],
+      notes: [
+        { k: "时间表达", v: "um halb elf = 10:30 —— 德语的「半」向下一个整点看齐，halb elf 不是 11:30" },
+        { k: "强变化分词", v: "trinken → getrunken（i → u）；essen → gegessen" },
+        { k: "可分 + sein", v: "zurückgehen → sind zurück … gegangen：位移 → sein，可分前缀 zurück 留在助动词前" },
+        { k: "词汇", v: "das Brötchen 小圆面包（注意 ö 与 -chen 的 [ç]）· die Pause 休息" }
+      ]
+    },
+    7: {
+      zhs: ["下午我们对比了结果，并写了一份简短的报告。", "我们的女团队负责人问了我们几个问题。", "我们向她展示了表格，并解释了这项实验。"],
+      notes: [
+        { k: "固定搭配", v: "Fragen stellen 提出问题（不用 fragen 重复）；ein Experiment erklären 解释实验" },
+        { k: "双宾语「人三物四」", v: "Wir haben ihr（第三格·人）die Tabelle（第四格·物）gezeigt —— 人称代词第三格必须排在名词第四格之前" },
+        { k: "不可分前缀", v: "vergleichen → verglichen（ver-）、erklären → erklärt（er-）、zeigen → gezeigt，均不加 ge-" },
+        { k: "词尾", v: "einen kurzen Bericht —— 阳性第四格，形容词词尾 -en；die Teamleiterin 女团队负责人（-in 表女性）" }
+      ]
+    },
+    8: {
+      zhs: ["四点我清洗了杯子，并整理了工位。", "之后我回家了。", "这一天很有趣，因为我们学到了很多关于酵母的知识。"],
+      notes: [
+        { k: "可分动词", v: "aufräumen → aufgeräumt（auf + ge + räumt）；reinigen → gereinigt（-igen 弱变化）" },
+        { k: "介词与零冠词", v: "nach Hause fahren 回家 —— nach + 城市/国家名不带冠词，nach Hause 为固定副词短语" },
+        { k: "weil 从句", v: "… weil wir viel über Hefe gelernt haben —— 从句中变位动词（助动词 haben）必须到句末，这是 A1 升 A2 的核心从句规则" },
+        { k: "词汇", v: "der Schaum 泡沫 · etwas 一点 · wenig 很少 · fast 几乎" }
+      ]
+    }
   }
 };
